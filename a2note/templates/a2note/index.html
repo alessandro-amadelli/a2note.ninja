@@ -1,0 +1,24 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% block title %}
+  a2note.ninja
+{% endblock %}
+
+{% block body %}
+  <div class="container p-5">
+    <br>
+    <h3 class="intro-0" align="center">a<sub>2</sub>note.ninja lets you create to-do lists, notes and shopping lists</h3>
+    <br>
+    <h1 class="intro-1" align="center">Site under <span class="under-constr">construction</span></h1>
+    <br>
+    <br>
+    <p class="intro-2" align="center">
+      If you are curious about what we are building, you could try our <a href="{% url 'todolist_view' %}">To-do list demo</a>...
+      <br>
+      ...or our <a href="{% url 'shoplist_view' %}">Shopping list demo</a>
+    </p>
+
+  </div>
+
+{% endblock %}

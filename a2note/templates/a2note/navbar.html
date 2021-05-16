@@ -1,0 +1,30 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index_view' %}">
+      a<sub>2</sub>note.  <img id="logo-dark" src="{% static 'a2note/ninja_logo.png' %}"><img id="logo-light" class="hidden" src="{% static 'a2note/ninja_logo_light.png' %}">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link{% if request.resolver_match.url_name == 'index_view' %} active{% endif %}" aria-current="page" href="{% url 'index_view' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.resolver_match.url_name == 'todolist_view' %} active{% endif %}" href="{% url 'todolist_view' %}">To-do list DEMO</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.resolver_match.url_name == 'shoplist_view' %} active{% endif %}" href="{% url 'shoplist_view' %}">Shopping list DEMO</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <div id="darkModeSelector" aria-label="dark mode toggle">
+          <span class="material-icons-outlined">light_mode</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,534 @@
+/** CSS VARIABLES */
+:root {
+  --background-color: #1a1a1a;
+  --body-background-color: #000;
+  --border-color: #0275d8;
+  --darkmod-selector-background: #fff;
+  --donetask-background: rgba(0, 0, 0, 0.1);
+  --element-background: rgba(0,0,0,0.9);
+  --progress-background: #fff;
+  --shadow-color: #000;
+  --task-background: rgba(255,255,255,0.1);
+  --text-color: #fff;
+
+  /** shoplist sections */
+  --fruit-background: rgba(242, 148, 7, 0.8);
+  --vegetable-background: rgba(0, 184, 8, 0.7);
+  --dairy-background: rgba(45, 245, 239, 0.8);
+  --legume-background: rgba(164, 48, 17, 0.8);
+  --beverage-background: rgba(73, 184, 255, 0.8);
+  --alcohol-background: rgba(3, 4, 139, 0.8);
+  --hygiene-background: rgba(246, 250, 175, 0.8);
+  --supplies-background: rgba(95, 136, 129, 0.8);
+  --cleaning-background: rgba(209, 50, 212, 0.7);
+  --other-background: rgba(233, 61, 71, 0.8);
+}
+
+.light-theme {
+  --background-color: rgba(20, 130, 232, 0.50);
+  --body-background-color: #f7f7f7;
+  --border-color: rgb(70, 70, 70);
+  --darkmod-selector-background: rgba(7, 1, 56, 0.85);
+  --donetask-background: rgba(0, 0, 0, 0.1);
+  --element-background: rgba(247, 247, 247, 0.9);
+  --progress-background: #000;
+  --shadow-color: #000;
+  --task-background: rgba(247, 247, 247, 0.9);
+  --text-color: #000;
+
+  /** shoplist sections */
+  --fruit-background: rgba(242, 148, 7, 0.8);
+  --vegetable-background: rgba(0, 184, 8, 0.8);
+  --dairy-background: rgba(45, 245, 239, 0.8);
+  --legume-background: rgba(164, 48, 17, 0.8);
+  --beverage-background: rgba(73, 184, 255, 0.8);
+  --alcohol-background: rgba(3, 4, 139, 0.8);
+  --hygiene-background: rgba(246, 250, 175, 0.8);
+  --supplies-background: rgba(95, 136, 129, 0.8);
+  --cleaning-background: rgba(209, 50, 212, 0.8);
+  --other-background: rgba(233, 61, 71, 0.8);
+}
+
+/** ANIMATIONS */
+@keyframes breathAnimation {
+  0 % {
+    box-shadow: 0px 0px 5px var(--shadow-color);
+  }
+  100% {
+    box-shadow: 0px 0px 15px var(--shadow-color);
+  }
+}
+
+@keyframes introAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes brokenNeonAnimation {
+  0% {
+   opacity:0.1;
+   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1);
+ }
+
+ 2% {
+   opacity:1;
+   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1);
+ }
+ 8% {
+   opacity:0.1;
+   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1);
+ }
+ 9% {
+   opacity:1;
+   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1);
+ }
+ 12% {
+   opacity:0.1;
+   text-shadow: 0px 0px rgba(242, 240, 22, 1);
+ }
+ 20% {
+   opacity:1;
+   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
+ }
+ 25% {
+   opacity:0.3;
+   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
+ }
+ 30% {
+   opacity:1;
+   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
+ }
+
+ 70% {
+   opacity:0.7;
+   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
+ }
+
+ 72% {
+   opacity:0.2;
+   text-shadow:0px 0px 29px rgba(242, 240, 22, 1)
+ }
+
+ 77% {
+   opacity:.9;
+   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
+ }
+ 100% {
+   opacity:.9;
+   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
+ }
+
+}
+
+@keyframes alertAnimation {
+  0% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0px 0px 25px #ff0000;
+  }
+}
+
+@keyframes glowGreenAnimation{
+  0% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0px 0px 25px #33ff33;
+  }
+}
+
+@keyframes taskAnimation {
+  0% {
+    opacity: 1;
+    position: relative;
+    right: 0%;
+  }
+  100% {
+    opacity: 0;
+    position: relative;
+    right: 50%;
+  }
+}
+
+@keyframes progressbarAnimation {
+  0% {
+    background-color: var(--border-color);
+    opacity: 1;
+  }
+  20% {
+    background-color: var(--border-color);
+    opacity: 0.3;
+  }
+  40% {
+    background-color: var(--border-color);
+    opacity: 1;
+  }
+  100% {
+    background-color: var(--border-color);
+    opacity: 1;
+  }
+}
+
+@keyframes updatedStatAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes toastAnimation {
+  0% {
+    opacity: 0;
+    position: relative;
+    left: 50%;
+  }
+  10% {
+    opacity: 1;
+    position: relative;
+    left: 0%;
+  }
+  100% {
+    opacity: 1;
+    position: relative;
+    left: 0%;
+  }
+}
+
+/** STYLE */
+body {
+  font-family: sans-serif, helvetica;
+  color: var(--text-color);
+  background-color: var(--body-background-color);
+  transition: background-color 2.5s ease;
+}
+
+nav {
+  transition: background-color 1s ease;
+  box-shadow: 3px -3px 15px var(--shadow-color);
+}
+
+.container {
+  background-color: var(--background-color);
+  transition: background-color 2.5s ease;
+  min-height: 100vh;
+}
+
+#darkModeSelector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  user-select: none;
+  box-shadow: 0px 0px 5px var(--shadow-color);
+}
+
+.intro-0 {
+  opacity: 0;
+  animation-name: introAnimation;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+}
+
+.intro-1 {
+  opacity: 0;
+  animation-name: introAnimation;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+  animation-delay: 1s;
+}
+
+.intro-2 {
+  opacity: 0;
+  animation-name: introAnimation;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+  animation-delay: 1.5s;
+}
+
+#logo-dark, #logo-light {
+  width: 60px;
+  height: 60px;
+  margin: 0;
+  border-radius: 50%;
+  animation-name: breathAnimation;
+  animation-duration: 2s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-delay: 2s;
+}
+
+.under-constr {
+  animation-name: brokenNeonAnimation;
+  animation-duration: 3.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-delay: 2s;
+}
+
+input {
+  color: inherit;
+  border-color: transparent;
+  background-color: var(--task-background);
+  padding: 4px;
+  border-radius: 6px;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0px 0px 15px var(--shadow-color);
+}
+
+#taskText, #itemText {
+  margin: 2px;
+  margin-bottom: 10px;
+}
+
+#btnAddTask, #btnAddItem {
+  margin: 2px;
+  margin-bottom: 10px;
+  transition: background-color 1.5s;
+}
+
+.alertAnimated {
+  animation-name: alertAnimation;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 2;
+  animation-play-state: running;
+}
+
+#taskViewSelect, #categorySelect {
+  background-color: var(--task-background);
+  max-width: 40%;
+  color: inherit;
+}
+
+option {
+  color: inherit;
+  background-color: var(--background-color);
+}
+
+#statDiv {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding: 1px;
+}
+
+.updatedStat {
+  animation-name: updatedStatAnimation;
+  animation-duration: .6s;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-iteration-count: 1;
+}
+
+.progress {
+  min-height: 20px;
+  padding: 2px;
+  border-radius: 8px;
+  /* border: solid thin var(--border-color); */
+  background-color: var(--task-background);
+  box-shadow: 3px 2px 2px var(--shadow-color);
+}
+
+.progress-bar {
+  margin: 0;
+  border-radius: 8px;
+  animation-name: progressbarAnimation;
+  animation-duration: 4s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+}
+
+.element {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding: 0px;
+  min-height: 10rem;
+  max-height: 20rem;
+  border-radius: 6px;
+  word-wrap: break-word;
+  background-color: var(--element-background);
+  box-shadow: 4px 3px 3px var(--shadow-color);
+  transition: transform .2s;
+  transition: box-shadow .2s;
+}
+
+.element div {
+  background-color: transparent;
+}
+
+.element:hover {
+  box-shadow: 9px 6px 15px var(--shadow-color);
+  /* font-size: 1.15em; */
+  transform: scale(1.02);
+  z-index: 1;
+}
+
+.singleTask {
+  background-color: var(--task-background);
+}
+
+.deletingTask:hover {
+  animation-name: alertAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+  box-shadow: 0px 0px 15px red;
+}
+
+.completingTask:hover {
+  animation-name: glowGreenAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+  box-shadow: 0px 0px 15px #33ff33;
+}
+
+.taskDeleteArea, .taskDoneArea {
+  display: flex;
+  cursor: pointer;
+  margin: 0;
+  align-items: center;
+}
+
+.taskTextArea {
+  max-height: 10rem;
+  overflow-y: auto;
+  font-size: 1.15em;
+}
+
+.taskFooter {
+  padding-left: 4px;
+  height: auto;
+}
+
+.taskFooter > span {
+  font-size: .85em;
+}
+
+.taskFooter > i {
+  font-size: .95em;
+}
+
+.taskArrow {
+  cursor: pointer;
+}
+
+.movedTask {
+  animation-name: introAnimation;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+}
+
+.deletedTask {
+  animation-name: taskAnimation;
+  animation-duration: .3s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+}
+
+.newTask {
+  animation-name: taskAnimation;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  animation-direction: reverse;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+}
+
+.doneTask {
+  background-color: var(--donetask-background);
+  box-shadow: 2px 1px 3px #000;
+}
+
+.doneTask .taskTextArea {
+  text-decoration: line-through;
+}
+
+.doneTask:hover {
+  box-shadow: none;
+  font-size: 1em;
+  transform: scale(.999);
+}
+
+.section {
+  min-height: auto;
+}
+
+.section-title {
+  background-color: var(--element-background);
+  font-size: 2em;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.fruit-section {
+  background-color: var(--fruit-background);
+}
+
+.vegetable-section {
+  background-color: var(--vegetable-background);
+}
+
+.dairy-section {
+  background-color: var(--dairy-background);
+}
+
+.legume-section {
+  background-color: var(--legume-background);
+}
+
+.beverage-section {
+  background-color: var(--beverage-background);
+}
+
+.alcohol-section {
+  background-color: var(--alcohol-background);
+}
+
+.hygiene-section {
+  background-color: var(--hygiene-background);
+}
+
+.supplies-section {
+  background-color: var(--supplies-background);
+}
+
+.cleaning-section {
+  background-color: var(--cleaning-background);
+}
+
+.other-section {
+  background-color: var(--other-background);
+}
+
+.toast-animated {
+  animation-name: toastAnimation;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+}
+
+.hidden {
+  display: none;
+}

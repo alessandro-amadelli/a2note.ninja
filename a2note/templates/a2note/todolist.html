@@ -1,0 +1,57 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% block title %}
+  ninja todolist
+{% endblock %}
+
+{% block body %}
+
+  <script src="{% static 'a2note/todolist.js' %}"></script>
+
+  <div class="container p-5">
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      This is just a demo. Data is not saved!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <h3 class="intro-1">To-do list</h3>
+
+    <div class="row">
+      <input type="text" id="taskText" class="d-inline col-9 col-lg-10" placeholder="Task..."/>
+      <button type="button" id="btnAddTask" class="d-inline btn btn-light col-2 col-lg-1"><span class="material-icons-outlined">plus_one</span></button>
+      <div class="w-100"></div>
+      <div class="col-12">
+        <label for="taskViewSelect" class="d-inline">Filter tasks</label>
+        <select id="taskViewSelect" class="form-select form-select-sm d-inline" aria-label="View tasks">
+          <option value="All" selected>All</option>
+          <option value="ToDo">To-do</option>
+          <option value="Done">Completed</option>
+        </select>
+      </div>
+
+      <div id="statDiv" class="hidden w-100">
+        <div class="row">
+          <div class="col text-center">
+            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="Total">rule</span> <span id="statTotal">0</span>
+          </div>
+          <div class="col text-center">
+            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="Pending">pending</span> <span id="statTodo">0</span>
+          </div>
+          <div class="col text-center">
+            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="Done">task_alt</span> <span id="statDone">0</span>
+          </div>
+        </div>
+        <div class="progress w-100">
+          <div id="taskProgress" class="progress-bar progress-bar-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="taskList" class="row"></div>
+
+  </div>
+
+{% endblock %}
