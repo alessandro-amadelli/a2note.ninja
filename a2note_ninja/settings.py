@@ -28,7 +28,10 @@ SECRET_KEY = 'django-insecure-rn#ht8v*51+e3dkze+sxrt74dje5xq!tjh#qk4v%m&9vvlhhef
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'a2note-ninja.herokuapp.com'
+    ]
 
 # Application definition
 
