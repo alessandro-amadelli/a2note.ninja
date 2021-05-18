@@ -18,9 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 #heroku
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-    )
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -32,7 +29,6 @@ SECRET_KEY = 'django-insecure-rn#ht8v*51+e3dkze+sxrt74dje5xq!tjh#qk4v%m&9vvlhhef
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
