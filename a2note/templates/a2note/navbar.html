@@ -14,10 +14,10 @@
           <a class="nav-link{% if request.resolver_match.url_name == 'index_view' %} active{% endif %}" aria-current="page" href="{% url 'index_view' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link{% if request.resolver_match.url_name == 'todolist_view' %} active{% endif %}" href="{% url 'todolist_view' %}">To-do list DEMO</a>
+          <a class="nav-link{% if request.resolver_match.url_name == 'todolist_view' %} active{% endif %}" href="{% url 'todolist_view' %}">To-do list</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link{% if request.resolver_match.url_name == 'shoplist_view' %} active{% endif %}" href="{% url 'shoplist_view' %}">Shopping list DEMO</a>
+          <a class="nav-link{% if request.resolver_match.url_name == 'shoplist_view' %} active{% endif %}" href="{% url 'shoplist_view' %}">Shopping list</a>
         </li>
       </ul>
       <div class="d-flex">

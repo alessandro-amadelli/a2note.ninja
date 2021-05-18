@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-  document.querySelector("#darkModeSelector").addEventListener('click', () => {
-    toggleTheme();
-  });
-
   document.querySelector("#btnAddTask").onclick = () => {
     addTask();
   }
@@ -39,7 +35,7 @@ function addTask(){
   //Creation of new list element
   // ### TASK ###
   let newTask = document.createElement("div");
-  newTask.setAttribute("class", "singleTask element card");
+  newTask.setAttribute("class", "singleTask element card rounded-3");
   newTask.dataset.status = 'ToDo';
 
   // ### HEADER ###
@@ -300,6 +296,7 @@ function updateStats() {
   }
 }
 
+/**
 function toggleTheme(){
   let body = document.querySelector("body");
   let darkSelector = document.querySelector("#darkModeSelector");
@@ -348,5 +345,5 @@ function toggleTheme(){
       button.classList.add("btn-light");
     });
   }
-
 }
+*/

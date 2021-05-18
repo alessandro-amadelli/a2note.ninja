@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-  document.querySelector("#darkModeSelector").addEventListener('click', () => {
-    toggleTheme();
-  });
-
   document.querySelector("#btnAddItem").onclick = () => {
     addItem();
   }
@@ -30,7 +26,7 @@ function createSections() {
     secIcon = option.dataset.icon;
 
     let sectionTitle = document.createElement("div");
-    sectionTitle.setAttribute("class", "section-title row");
+    sectionTitle.setAttribute("class", "section-title row p-1 rounded-3");
     sectionTitle.innerHTML = `<span class="d-inline">${secTitle} <i class="material-icons-outlined d-inline">${secIcon}</i></span>`;
 
     targetSection.appendChild(sectionTitle);
@@ -72,7 +68,7 @@ function addItem() {
   //Creation of new list item
   // ### ITEM ###
   let newItem = document.createElement("div");
-  newItem.setAttribute("class", "element card");
+  newItem.setAttribute("class", "element card rounded-3");
 
   // ### HEADER ###
   let itemHeader = document.createElement("div");
@@ -187,7 +183,7 @@ function completeItem(item){
   item.classList.toggle('doneTask');
 }
 
-
+/**
 function toggleTheme(){
   let body = document.querySelector("body");
   let darkSelector = document.querySelector("#darkModeSelector");
@@ -238,8 +234,8 @@ function toggleTheme(){
       button.classList.add("btn-light");
     });
   }
-
 }
+*/
 
 function notify(text) {
   //Deletion of pre-existing toasts
