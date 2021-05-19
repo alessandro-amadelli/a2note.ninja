@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+#translation
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import activate, get_language
 
 
 def index(request):

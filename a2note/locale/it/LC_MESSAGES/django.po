@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-19 16:03+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\a2note\index.html:14
+msgid "Welcome to a<sub>2</sub>note.ninja!"
+msgstr "Benvenuto su a<sub>2</sub>note.ninja!"
+
+#: .\templates\a2note\index.html:21
+msgid "Without an account"
+msgstr "Senza un account"
+
+#: .\templates\a2note\index.html:25
+msgid "You can use a<sub>2</sub>note.ninja whithout the need to register."
+msgstr "Puoi usare a<sub>2</sub>note.ninja senza il bisogno di registrarti."
+
+#: .\templates\a2note\index.html:29
+msgid ""
+"Save up to <strong>1 to-do list</strong> and <strong>1 shopping list</"
+"strong>."
+msgstr ""
+"Salva fino a <strong>1 to-do list</strong> e <strong>1 shopping list</"
+"strong>."
+
+#: .\templates\a2note\index.html:33
+msgid ""
+"Everything is saved locally on your browser so you can modify and consult "
+"your lists any time you want."
+msgstr ""
+"Viene tutto salvato in locale sul tuo browser in modo che tu possa "
+"modificare e consultare le tue liste ogni volta che vuoi."
+
+#: .\templates\a2note\index.html:40
+msgid "With a free account (coming soon)"
+msgstr "Con un account gratuito (in arrivo)"
+
+#: .\templates\a2note\index.html:44
+msgid "Register a free account and unlock new ninja techniques!"
+msgstr "Registra un account gratuito e sblocca nuove tecniche ninja!"
+
+#: .\templates\a2note\index.html:48
+msgid "Create multiple To-do lists and shopping lists."
+msgstr "Crea più to-do list e shopping list."
+
+#: .\templates\a2note\index.html:52
+msgid ""
+"Everything will be saved in the cloud so you can access it across multiple "
+"devices."
+msgstr ""
+"Viene tutto salvato sul cloud, in modo che tu possa accedervi da più "
+"dispositivi."
+
+#: .\templates\a2note\index.html:56
+msgid "Also:"
+msgstr "Inoltre:"
+
+#: .\templates\a2note\index.html:60
+msgid ""
+"Share your <strong>To-do lists</strong> and <strong>shopping lists</strong> "
+"like a ninja!<br>\n"
+"            You can share with everyone, even with someone who doesn't have "
+"an account on a<sub>2</sub>note.ninja<br>"
+msgstr ""
+"Condividi le tue <strong>To-do list</strong> e <strong>shopping list</strong> "
+"come un ninja!<br>\n"
+"            Puoi condividere con chiunque, anche con chi non ha "
+"un account su a<sub>2</sub>note.ninja<br>"
