@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+#translation
+from django.utils.translation import gettext_lazy as _
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -53,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'a2note_ninja.urls'
@@ -74,7 +78,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'a2note_ninja.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -105,11 +108,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'it'
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('it', _('Italian'))
+]
+
+LOCALE_PATH = (
+    os.path.join(BASE_DIR, "a2note/locale"),
+    os.path.join(BASE_DIR, "locale"),
+)
 
 TIME_ZONE = 'UTC'
 
