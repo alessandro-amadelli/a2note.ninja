@@ -15,28 +15,45 @@ document.addEventListener('DOMContentLoaded', function(){
     displayTasks();
   });
 
+  loadTodoFromLocalStorage();
+
   updateStats();
 });
 
-function addTask(){
+function addTask(text=null, creationTime=null, taskStatus=null, loadedFromStorage=false){
   //Adds a new task to the list by creating a new list element
-  let inp = document.querySelector("#taskText");
-  let text = inp.value;
+  //if text is null then the text is taken from the input field
+
   let taskList = document.querySelector("#taskList");
 
-  if (text == "") {
-    inp.addEventListener('animationend', function(){
-      this.classList.remove("alertAnimated");
-    });
-    inp.classList.add("alertAnimated");
-    return false;
+  if (text == null) {
+    let inp = document.querySelector("#taskText");
+    text = inp.value;
+    if (text == "") {
+      inp.addEventListener('animationend', function(){
+        this.classList.remove("alertAnimated");
+      });
+      inp.classList.add("alertAnimated");
+      return false;
+    }
+    //Clear the original input text
+    inp.value = "";
   }
 
   //Creation of new list element
   // ### TASK ###
   let newTask = document.createElement("div");
   newTask.setAttribute("class", "singleTask element card rounded-3");
-  newTask.dataset.status = 'ToDo';
+
+  //Task status
+  if (taskStatus == null) {
+    newTask.dataset.status = 'ToDo';
+  } else {
+    newTask.dataset.status = taskStatus;
+    if (taskStatus == "Done") {
+      newTask.classList.add("doneTask");
+    }
+  }
 
   // ### HEADER ###
   let taskHeader = document.createElement("div");
@@ -110,15 +127,22 @@ function addTask(){
   taskFooter.setAttribute("class", "card-footer taskFooter d-flex");
   let timeDiv = document.createElement("div");
   timeDiv.setAttribute("class", "col-10 col-sm-10 col-lg-11 text-muted d-inline");
-  //Current timestamp
-  let timestamp = Date.now();
-  let today = new Date(timestamp);
-  let dateArr = [today.getFullYear(), String((today.getMonth()+1)).padStart(2,'0'), String(today.getDate()).padStart(2,'0'),
-  String(today.getHours()).padStart(2,'0'),
-  String(today.getMinutes()).padStart(2,'0'),
-  String(today.getSeconds()).padStart(2,'0')]
-  timeDiv.innerHTML = `<i class="material-icons-outlined">schedule</i>
-    <span>${dateArr[0]}-${dateArr[1]}-${dateArr[2]} h.${dateArr[3]}:${dateArr[4]}:${dateArr[5]}</span>`;
+
+  if (creationTime == null) {
+    //Current timestamp
+    let timestamp = Date.now();
+    let today = new Date(timestamp);
+    let dateArr = [today.getFullYear(), String((today.getMonth()+1)).padStart(2,'0'), String(today.getDate()).padStart(2,'0'),
+    String(today.getHours()).padStart(2,'0'),
+    String(today.getMinutes()).padStart(2,'0'),
+    String(today.getSeconds()).padStart(2,'0')]
+    timeDiv.innerHTML = `<i class="material-icons-outlined">schedule</i>
+      <span class="taskCreationTime">${dateArr[0]}-${dateArr[1]}-${dateArr[2]} h.${dateArr[3]}:${dateArr[4]}:${dateArr[5]}</span>`;
+  } else {
+    //take the timestamp already present in the saved to-do list
+    timeDiv.innerHTML = `<i class="material-icons-outlined">schedule</i><span class="taskCreationTime">${creationTime}</span>`;
+  }
+
   taskFooter.appendChild(timeDiv);
 
   let moveDiv = document.createElement("div");
@@ -152,11 +176,13 @@ function addTask(){
 
   taskList.appendChild(newTask);
 
-  //Clear the original input text
-  inp.value = "";
-
   updateStats();
   displayTasks();
+
+  if (!loadedFromStorage) {
+    //Save updated list to localStorage
+    saveTodoToLocalStorage();
+  }
 
 }
 
@@ -171,6 +197,9 @@ function deleteTask(task) {
   task.addEventListener('animationend', () => {
     task.remove();
     updateStats();
+
+    //Save updated list to localStorage
+    saveTodoToLocalStorage();
   });
 
   //Adding class for deletion animation
@@ -187,6 +216,9 @@ function completeTask(task){
   }
   updateStats();
   displayTasks();
+
+  //Save updated list to localStorage
+  saveTodoToLocalStorage();
 }
 
 function displayTasks(){
@@ -209,6 +241,8 @@ function moveTaskUp(task){
     task.parentElement.insertBefore(task, task.previousSibling);
     task.classList.add("movedTask");
   }
+  //Save updated list to localStorage
+  saveTodoToLocalStorage();
 }
 
 function moveTaskDown(task){
@@ -223,9 +257,11 @@ function moveTaskDown(task){
       task.parentElement.insertBefore(task, null);
       task.classList.add("movedTask");
     }
+
+    //Save updated list to localStorage
+    saveTodoToLocalStorage();
   }
 }
-
 
 function updateStats() {
   //Updates stats regarding to-do and completed tasks
@@ -296,54 +332,34 @@ function updateStats() {
   }
 }
 
-/**
-function toggleTheme(){
-  let body = document.querySelector("body");
-  let darkSelector = document.querySelector("#darkModeSelector");
-  let nav = document.querySelector("nav");
+function saveTodoToLocalStorage() {
+  //Generate a JSON object representing the To-do list and save it to the local storage
+  //This function will overwrite an existing list if already present
 
-  body.classList.toggle("light-theme");
-  if (body.classList.contains("light-theme")){
-    //Applying LIGHT THEME
-    //Darkmode icon
-    darkSelector.innerHTML = `<span class="material-icons-outlined">dark_mode</span>`;
+  let jsonList = {};
+  document.querySelectorAll(".singleTask").forEach((task, i) => {
+    let contentText = task.querySelector(".taskTextArea").innerText;
+    let creationTime = task.querySelector(".taskCreationTime").innerText;
+    let status = task.dataset.status;
+    jsonList[i] = {"taskContent": contentText, "taskCreationTime": creationTime, "taskStatus": status};
+  });
 
-    //Logo
-    document.querySelector("#logo-dark").classList.add("hidden");
-    document.querySelector("#logo-light").classList.remove("hidden");
-
-    //navbar
-    nav.classList.remove("navbar-dark");
-    nav.classList.remove("bg-dark");
-    nav.classList.add("navbar-light");
-    nav.classList.add("bg-light");
-
-    //buttons
-    document.querySelectorAll(".btn").forEach((button, i) => {
-      button.classList.remove("btn-light");
-      button.classList.add("btn-dark");
-    });
-
-  } else {
-    //Applying DARK THEME
-    //Darkmode icon
-    darkSelector.innerHTML = `<span class="material-icons-outlined">light_mode</span>`;
-
-    //Logo
-    document.querySelector("#logo-light").classList.add("hidden");
-    document.querySelector("#logo-dark").classList.remove("hidden");
-
-    //navbar
-    nav.classList.remove("navbar-light");
-    nav.classList.remove("bg-light");
-    nav.classList.add("navbar-dark");
-    nav.classList.add("bg-dark");
-
-    //buttons
-    document.querySelectorAll(".btn").forEach((button, i) => {
-      button.classList.remove("btn-dark");
-      button.classList.add("btn-light");
-    });
-  }
+  localStorage.setItem("localNinjaTodo", JSON.stringify(jsonList));
 }
-*/
+
+function loadTodoFromLocalStorage() {
+  //Load the locally saved to-do list (if present)
+
+  let localTodo = localStorage.getItem("localNinjaTodo");
+  if (!localTodo) {
+    return false;
+  }
+
+  localTodo = JSON.parse(localTodo);
+
+  Object.keys(localTodo).forEach((key) => {
+    //addTask(text, datetime, status, loadedFromStorage)
+    addTask(localTodo[key].taskContent, localTodo[key].taskCreationTime, localTodo[key].taskStatus, true);
+  });
+
+}
