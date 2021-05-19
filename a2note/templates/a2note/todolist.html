@@ -11,6 +11,13 @@
 
   <div class="container p-5">
 
+    {% if not user.is_authenticated %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        You are not logged in, yout to-do list is saved locally.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
+
     <h3 class="intro-1">To-do list</h3>
 
     <div class="row">
