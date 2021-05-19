@@ -1,6 +1,9 @@
 {% extends 'a2note/layout.html' %}
 {% load static %}
 
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 {% block title %}
   ninja shopping list
 {% endblock %}
@@ -12,7 +15,7 @@
 
     {% if not user.is_authenticated %}
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        You are not logged in, your shopping list is saved locally.
+        {% translate 'You are not logged in, your shopping list is saved locally.' %}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     {% endif %}
@@ -20,22 +23,22 @@
     <h3 class="intro-1">Shopping list</h3>
 
     <div class="row">
-      <input type="text" id="itemText" class="d-inline col-9 col-lg-10 rounded-3" placeholder="Insert item..." maxlength="50"/>
+      <input type="text" id="itemText" class="d-inline col-9 col-lg-10 rounded-3" placeholder="{% translate 'Insert item...' %}" maxlength="50"/>
       <button type="button" id="btnAddItem" class="d-inline btn btn-light col-2 col-lg-1"><span class="material-icons-outlined">plus_one</span></button>
       <div class="w-100"></div>
       <div class="col-12">
-        <label for="categorySelect" class="d-inline">Category</label>
+        <label for="categorySelect" class="d-inline">{% translate 'Category' %}</label>
         <select id="categorySelect" class="form-select form-select-sm d-inline" aria-label="View tasks">
-          <option value="fruit"  data-icon="restaurant_menu" selected>Fruit</option>
-          <option value="vegetable" data-icon="restaurant_menu">Vegetables</option>
-          <option value="dairy" data-icon="restaurant_menu">Dairy products</option>
-          <option value="legume" data-icon="restaurant_menu">Legumes</option>
-          <option value="beverage" data-icon="emoji_food_beverage">Beverages</option>
-          <option value="alcohol" data-icon="local_bar">Alcohol</option>
-          <option value="hygiene" data-icon="clean_hands">Hygiene</option>
-          <option value="supplies" data-icon="kitchen">Supplies</option>
-          <option value="cleaning" data-icon="cleaning_services">Cleaning</option>
-          <option value="other" data-icon="inventory">Other</option>
+          <option value="fruit"  data-icon="restaurant_menu" selected>{% translate 'Fruit' %}</option>
+          <option value="vegetable" data-icon="restaurant_menu">{% translate 'Vegetables' %}</option>
+          <option value="dairy" data-icon="restaurant_menu">{% translate 'Dairy products' %}</option>
+          <option value="legume" data-icon="restaurant_menu">{% translate 'Legumes' %}</option>
+          <option value="beverage" data-icon="emoji_food_beverage">{% translate 'Beverages' %}</option>
+          <option value="alcohol" data-icon="local_bar">{% translate 'Alcohol' %}</option>
+          <option value="hygiene" data-icon="clean_hands">{% translate 'Hygiene' %}</option>
+          <option value="supplies" data-icon="kitchen">{% translate 'Supplies' %}</option>
+          <option value="cleaning" data-icon="cleaning_services">{% translate 'Cleaning' %}</option>
+          <option value="other" data-icon="inventory">{% translate 'Other' %}</option>
         </select>
       </div>
     </div>

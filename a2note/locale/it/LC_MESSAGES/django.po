@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 16:14+0200\n"
+"POT-Creation-Date: 2021-05-19 17:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,3 +81,80 @@ msgstr ""
 "strong> come un ninja!<br>\n"
 "            Puoi condividere con chiunque, anche con chi non ha un account "
 "su a<sub>2</sub>note.ninja<br>"
+
+#: .\templates\a2note\shoplist.html:18
+msgid "You are not logged in, your shopping list is saved locally."
+msgstr ""
+"Non hai eseguito il log in, la tua shopping list è salvata in locale."
+
+#: .\templates\a2note\shoplist.html:26
+msgid "Insert item..."
+msgstr "Inserisci elemento..."
+
+#: .\templates\a2note\shoplist.html:30
+msgid "Category"
+msgstr "Categorie"
+
+#: .\templates\a2note\shoplist.html:32
+msgid "Fruit"
+msgstr "Frutta"
+
+#: .\templates\a2note\shoplist.html:33
+msgid "Vegetables"
+msgstr "Verdura"
+
+#: .\templates\a2note\shoplist.html:34
+msgid "Dairy products"
+msgstr "Latticini"
+
+#: .\templates\a2note\shoplist.html:35
+msgid "Legumes"
+msgstr "Legumi"
+
+#: .\templates\a2note\shoplist.html:36
+msgid "Beverages"
+msgstr "Bevande"
+
+#: .\templates\a2note\shoplist.html:37
+msgid "Alcohol"
+msgstr "Alcolici"
+
+#: .\templates\a2note\shoplist.html:38
+msgid "Hygiene"
+msgstr "Igiene"
+
+#: .\templates\a2note\shoplist.html:39
+msgid "Supplies"
+msgstr "Forniture"
+
+#: .\templates\a2note\shoplist.html:40
+msgid "Cleaning"
+msgstr "Pulizia"
+
+#: .\templates\a2note\shoplist.html:41
+msgid "Other"
+msgstr "Altro"
+
+#: .\templates\a2note\todolist.html:19
+msgid "You are not logged in, your to-do list is saved locally."
+msgstr "Non hai eseguito il log in, la tua to-do list è salvata in locale."
+
+#: .\templates\a2note\todolist.html:27
+msgid "Insert task..."
+msgstr "Inserisci task..."
+
+#: .\templates\a2note\todolist.html:31
+msgid "Filter tasks"
+msgstr "Filtra i task"
+
+#: .\templates\a2note\todolist.html:33
+msgid "All"
+msgstr "Tutti"
+
+#: .\templates\a2note\todolist.html:34
+msgid "To-do"
+msgstr "Da fare"
+
+#: .\templates\a2note\todolist.html:35
+msgid "Completed"
+msgstr "Completati"

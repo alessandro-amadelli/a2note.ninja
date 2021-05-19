@@ -1,6 +1,9 @@
 {% extends 'a2note/layout.html' %}
 {% load static %}
 
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 {% block title %}
   ninja to-do list
 {% endblock %}
@@ -13,7 +16,7 @@
 
     {% if not user.is_authenticated %}
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        You are not logged in, your to-do list is saved locally.
+        {% translate 'You are not logged in, your to-do list is saved locally.' %}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     {% endif %}
@@ -21,15 +24,15 @@
     <h3 class="intro-1">To-do list</h3>
 
     <div class="row">
-      <input type="text" id="taskText" class="d-inline col-9 col-lg-10 rounded-3" placeholder="Task..."/>
+      <input type="text" id="taskText" class="d-inline col-9 col-lg-10 rounded-3" placeholder="{% translate 'Insert task...' %}"/>
       <button type="button" id="btnAddTask" class="d-inline btn btn-light col-2 col-lg-1"><span class="material-icons-outlined">plus_one</span></button>
       <div class="w-100"></div>
       <div class="col-12">
-        <label for="taskViewSelect" class="d-inline">Filter tasks</label>
+        <label for="taskViewSelect" class="d-inline">{% translate 'Filter tasks' %}</label>
         <select id="taskViewSelect" class="form-select form-select-sm d-inline" aria-label="View tasks">
-          <option value="All" selected>All</option>
-          <option value="ToDo">To-do</option>
-          <option value="Done">Completed</option>
+          <option value="All" selected>{% translate 'All' %}</option>
+          <option value="ToDo">{% translate 'To-do' %}</option>
+          <option value="Done">{% translate 'Completed' %}</option>
         </select>
       </div>
 
