@@ -9,6 +9,12 @@ def index(request):
 
     return render(request, "a2note/index.html")
 
+def register(request):
+    return render(request, "a2note/register.html")
+
+
+def login(request):
+    return render(request, "a2note/login.html")
 
 def todolist(request):
 
