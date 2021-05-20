@@ -170,7 +170,7 @@ function addItem(category=null, text=null, itemStatus=null, loadedFromStorage=fa
     saveShoplistToLocalStorage();
 
     //Notification toast
-    notify(`<strong>${text}</strong> added`);
+    notify(`<strong>${text}</strong> ` + gettext("added"));
   }
 }
 
