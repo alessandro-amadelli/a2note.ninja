@@ -183,7 +183,6 @@ function addTask(text=null, creationTime=null, taskStatus=null, loadedFromStorag
     //Save updated list to localStorage
     saveTodoToLocalStorage();
   }
-
 }
 
 function deleteTask(task) {

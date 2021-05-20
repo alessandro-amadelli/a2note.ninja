@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   createSections();
 
+  loadShoplistFromLocalStorage();
+
 });
 
 function createSections() {
@@ -23,6 +25,7 @@ function createSections() {
     let secTitle = option.innerText;
     let targetSection = document.createElement("div");
     targetSection.setAttribute("class", `container p-5 section ${category}-section hidden`);
+    targetSection.dataset.category = category;
     secIcon = option.dataset.icon;
 
     let sectionTitle = document.createElement("div");
@@ -36,20 +39,26 @@ function createSections() {
 
 }
 
-function addItem() {
+function addItem(category=null, text=null, itemStatus=null, loadedFromStorage=false) {
   //Adds a new element in the shopping list
 
-  let catSelect = document.querySelector("#categorySelect");
-  let category = catSelect.value;
-  let inp = document.querySelector("#itemText");
-  let text = inp.value;
+  if (category == null) {
+    let catSelect = document.querySelector("#categorySelect");
+    category = catSelect.value;
+  }
 
-  if (text == "") {
-    inp.addEventListener('animationend', function(){
-      this.classList.remove("alertAnimated");
-    });
-    inp.classList.add("alertAnimated");
-    return false;
+  if (text == null) {
+    let inp = document.querySelector("#itemText");
+    text = inp.value;
+    if (text == "") {
+      inp.addEventListener('animationend', function(){
+        this.classList.remove("alertAnimated");
+      });
+      inp.classList.add("alertAnimated");
+      return false;
+    }
+    //Clear the original input text
+    inp.value = "";
   }
 
   //Adding section class to main container to make it the right size now that at least one
@@ -69,6 +78,16 @@ function addItem() {
   // ### ITEM ###
   let newItem = document.createElement("div");
   newItem.setAttribute("class", "element card rounded-3");
+
+  //Item status
+  if (itemStatus == null) {
+    newItem.dataset.status = "ToDo";
+  } else {
+    newItem.dataset.status = itemStatus;
+    if (itemStatus == "Done") {
+      newItem.classList.add("doneTask");
+    }
+  }
 
   // ### HEADER ###
   let itemHeader = document.createElement("div");
@@ -146,11 +165,13 @@ function addItem() {
 
   targetSection.appendChild(newItem);
 
-  //Clear the original input text
-  inp.value = "";
+  if (!loadedFromStorage) {
+    //Save updated list to localStorage
+    saveShoplistToLocalStorage();
 
-  notify(`<strong>${text}</strong> added`);
-
+    //Notification toast
+    notify(`<strong>${text}</strong> added`);
+  }
 }
 
 function deleteItem(item) {
@@ -162,16 +183,15 @@ function deleteItem(item) {
 
   //Event listener for animation end
   item.addEventListener('animationend', () => {
-
     //If the current one is the last remaining item in section, then
-    //all section i eliminated
+    //all section is hidden
     let itemsInSection = item.parentElement.querySelectorAll('.element');
     if (itemsInSection.length <= 1) {
       item.parentElement.classList.add("hidden");
-    } else {
-      item.remove();
     }
-
+    item.remove();
+    //Save updated list to local storage
+    saveShoplistToLocalStorage();
   });
 
   //Adding class for deletion animation
@@ -181,61 +201,14 @@ function deleteItem(item) {
 function completeItem(item){
   //Completion of a task from the to-do list
   item.classList.toggle('doneTask');
-}
-
-/**
-function toggleTheme(){
-  let body = document.querySelector("body");
-  let darkSelector = document.querySelector("#darkModeSelector");
-  let nav = document.querySelector("nav");
-
-  //Toggling dark/light theme
-  body.classList.toggle("light-theme");
-
-  if (body.classList.contains("light-theme")){
-    //Applying LIGHT THEME
-    //Darkmode icon
-    darkSelector.innerHTML = `<span class="material-icons-outlined">dark_mode</span>`;
-
-    //Logo
-    document.querySelector("#logo-dark").classList.add("hidden");
-    document.querySelector("#logo-light").classList.remove("hidden");
-
-    //navbar
-    nav.classList.remove("navbar-dark");
-    nav.classList.remove("bg-dark");
-    nav.classList.add("navbar-light");
-    nav.classList.add("bg-light");
-
-    //buttons
-    document.querySelectorAll(".btn").forEach((button, i) => {
-      button.classList.remove("btn-light");
-      button.classList.add("btn-dark");
-    });
-
+  if (item.dataset.status == 'ToDo') {
+    item.dataset.status = "Done";
   } else {
-    //Applying DARK THEME
-    //Darkmode icon
-    darkSelector.innerHTML = `<span class="material-icons-outlined">light_mode</span>`;
-
-    //Logo
-    document.querySelector("#logo-light").classList.add("hidden");
-    document.querySelector("#logo-dark").classList.remove("hidden");
-
-    //navbar
-    nav.classList.remove("navbar-light");
-    nav.classList.remove("bg-light");
-    nav.classList.add("navbar-dark");
-    nav.classList.add("bg-dark");
-
-    //buttons
-    document.querySelectorAll(".btn").forEach((button, i) => {
-      button.classList.remove("btn-dark");
-      button.classList.add("btn-light");
-    });
+    item.dataset.status = "ToDo";
   }
+  //Save updated list to local storage
+  saveShoplistToLocalStorage();
 }
-*/
 
 function notify(text) {
   //Deletion of pre-existing toasts
@@ -267,7 +240,47 @@ function notify(text) {
 
   toast.addEventListener('animationend', () => {
     toast.classList.remove("show");
-    toast.classList.hide("hide");
+    toast.classList.add("hide");
   })
+}
+
+function saveShoplistToLocalStorage(){
+  //Generate a JSON object representing the Shopping list and save it to the local storage
+  //This function will overwrite an existing list if already present
+
+  let jsonList = {};
+  document.querySelectorAll(".section").forEach((section) => {
+    let elementList = section.querySelectorAll(".element");
+    if (elementList.length > 0) {
+      let secName = section.dataset.category;
+      jsonList[secName] = {};
+      elementList.forEach((element, e) => {
+        let elemStatus = element.dataset.status;
+        let elemContent = element.querySelector(".taskTextArea").innerText;
+        let elemData = {"itemContent": elemContent, "itemStatus": elemStatus};
+        jsonList[secName][e] = elemData;
+      });
+    }
+  });
+
+  localStorage.setItem("localNinjaShoplist", JSON.stringify(jsonList));
+}
+
+function loadShoplistFromLocalStorage() {
+  //Load the locally saved shopping list (if present)
+
+  let localShoplist = localStorage.getItem("localNinjaShoplist");
+  if (!localShoplist) {
+    return false;
+  }
+
+  localShoplist = JSON.parse(localShoplist);
+
+  Object.keys(localShoplist).forEach((section) => {
+    Object.keys(localShoplist[section]).forEach((element) => {
+      //addItem(category, text, status, loadedFromStorage)
+      addItem(section, localShoplist[section][element].itemContent, localShoplist[section][element].itemStatus, true);
+    });
+  });
 
 }
