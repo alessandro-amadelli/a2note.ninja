@@ -1,3 +1,9 @@
+"""
+All the views rendered by a2note_ninja
+
+Author: Ama
+"""
+
 from django.shortcuts import render
 
 #translation

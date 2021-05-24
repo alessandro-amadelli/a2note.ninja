@@ -37,7 +37,6 @@ ALLOWED_HOSTS = [
     ]
 
 # Application definition
-
 INSTALLED_APPS = [
     'a2note.apps.A2NoteConfig',
     'django.contrib.admin',
@@ -89,7 +88,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -112,7 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-# LANGUAGE_CODE = 'it'
 
 LANGUAGES = [
     ('en', _('English')),
