@@ -54,5 +54,34 @@ function toggleTheme(){
       button.classList.add("btn-light");
     });
   }
+}
 
+function showLoading(message=gettext("Throwing some ninja stars...")){
+  let overlay = document.createElement("div");
+  overlay.setAttribute("class", "loading-overlay")
+  let overlayContent = document.createElement("div");
+  overlayContent.setAttribute("class", "overlay-content");
+
+  let loadDiv = document.createElement("div");
+  loadDiv.setAttribute("class", "spinner-border text-primary overlay-content");
+  loadDiv.setAttribute("role", "status");
+  let loadSpan = document.createElement("span");
+  loadSpan.setAttribute("class", "sr-only");
+  loadSpan.innerText = "";
+
+  let loadingText = document.createElement("p");
+  loadingText.style.color = "white";
+  loadingText.innerText = message;
+
+  loadDiv.appendChild(loadSpan);
+  overlayContent.appendChild(loadDiv);
+  overlayContent.appendChild(loadingText);
+  overlay.appendChild(overlayContent);
+  document.querySelector(".container").appendChild(overlay);
+}
+
+function removeLoading(){
+  document.querySelectorAll(".loading-overlay").forEach((item, i) => {
+    item.remove();
+  });
 }

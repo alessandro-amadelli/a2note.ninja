@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 20:18+0200\n"
+"POT-Creation-Date: 2021-05-28 11:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgstr "Non hai ancora un account? Nessun problema,"
 msgid "register</a> for free."
 msgstr "registrati</a> gratuitamente."
 
-#: .\a2note\templates\a2note\navbar.html:30
+#: .\a2note\templates\a2note\navbar.html:32
 msgid "Register"
 msgstr "Registrati"
 
@@ -106,55 +106,59 @@ msgstr "Registrati su a<sub>2</sub>note.ninja"
 msgid "coming soon"
 msgstr "in arrivo"
 
-#: .\a2note\templates\a2note\shoplist.html:18
+#: .\a2note\templates\a2note\shoplist.html:20
 msgid "You are not logged in, your shopping list is saved locally."
 msgstr "Non hai eseguito il log in, la tua shopping list è salvata in locale."
 
-#: .\a2note\templates\a2note\shoplist.html:26
+#: .\a2note\templates\a2note\shoplist.html:29
 msgid "Insert item..."
 msgstr "Inserisci elemento..."
 
-#: .\a2note\templates\a2note\shoplist.html:30
+#: .\a2note\templates\a2note\shoplist.html:34
 msgid "Category"
 msgstr "Categorie"
 
-#: .\a2note\templates\a2note\shoplist.html:32
+#: .\a2note\templates\a2note\shoplist.html:36
 msgid "Fruit"
 msgstr "Frutta"
 
-#: .\a2note\templates\a2note\shoplist.html:33
+#: .\a2note\templates\a2note\shoplist.html:37
 msgid "Vegetables"
 msgstr "Verdura"
 
-#: .\a2note\templates\a2note\shoplist.html:34
+#: .\a2note\templates\a2note\shoplist.html:38
 msgid "Dairy products"
 msgstr "Latticini"
 
-#: .\a2note\templates\a2note\shoplist.html:35
+#: .\a2note\templates\a2note\shoplist.html:39
 msgid "Legumes"
 msgstr "Legumi"
 
-#: .\a2note\templates\a2note\shoplist.html:36
+#: .\a2note\templates\a2note\shoplist.html:40
+msgid "Seasoning"
+msgstr "Condimenti"
+
+#: .\a2note\templates\a2note\shoplist.html:41
 msgid "Beverages"
 msgstr "Bevande"
 
-#: .\a2note\templates\a2note\shoplist.html:37
+#: .\a2note\templates\a2note\shoplist.html:42
 msgid "Alcohol"
 msgstr "Alcolici"
 
-#: .\a2note\templates\a2note\shoplist.html:38
+#: .\a2note\templates\a2note\shoplist.html:43
 msgid "Hygiene"
 msgstr "Igiene"
 
-#: .\a2note\templates\a2note\shoplist.html:39
+#: .\a2note\templates\a2note\shoplist.html:44
 msgid "Supplies"
 msgstr "Forniture"
 
-#: .\a2note\templates\a2note\shoplist.html:40
+#: .\a2note\templates\a2note\shoplist.html:45
 msgid "Cleaning"
 msgstr "Pulizia"
 
-#: .\a2note\templates\a2note\shoplist.html:41
+#: .\a2note\templates\a2note\shoplist.html:46
 msgid "Other"
 msgstr "Altro"
 
@@ -194,10 +198,10 @@ msgstr "Da fare"
 msgid "Done"
 msgstr "Completati"
 
-#: .\a2note_ninja\settings.py:118
+#: .\a2note_ninja\settings.py:115
 msgid "English"
 msgstr ""
 
-#: .\a2note_ninja\settings.py:119
+#: .\a2note_ninja\settings.py:116
 msgid "Italian"
 msgstr ""

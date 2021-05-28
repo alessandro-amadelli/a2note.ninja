@@ -11,6 +11,8 @@
 {% block body %}
   <script src="{% static 'a2note/shoplist.js' %}"></script>
 
+  {% csrf_token %}
+
   <div id="main-container" class="container p-5">
 
     {% if not user.is_authenticated %}
@@ -23,22 +25,25 @@
     <h3 class="intro-1">Shopping list</h3>
 
     <div class="row">
-      <input type="text" id="itemText" class="d-inline col-9 col-lg-10 rounded-3" placeholder="{% translate 'Insert item...' %}" maxlength="50"/>
-      <button type="button" id="btnAddItem" class="d-inline btn btn-light col-2 col-lg-1"><span class="material-icons-outlined">plus_one</span></button>
+      <div class="autocomplete w-100 mb-2 d-flex">
+        <input type="text" id="itemText" class="col-9 col-lg-10 rounded-3 m-1 mb-3 p-1 d-inline" placeholder="{% translate 'Insert item...' %}" maxlength="50" autocomplete="off"/>
+        <button type="button" id="btnAddItem" class="btn btn-light col-2 col-lg-1 m-1 mb-3 p-1 d-inline"><span class="material-icons-outlined">plus_one</span></button>
+      </div>
       <div class="w-100"></div>
       <div class="col-12">
         <label for="categorySelect" class="d-inline">{% translate 'Category' %}</label>
         <select id="categorySelect" class="form-select form-select-sm d-inline" aria-label="View tasks">
-          <option value="fruit"  data-icon="restaurant_menu" selected>{% translate 'Fruit' %}</option>
+          <option value="fruit"  data-icon="restaurant_menu">{% translate 'Fruit' %}</option>
           <option value="vegetable" data-icon="restaurant_menu">{% translate 'Vegetables' %}</option>
           <option value="dairy" data-icon="restaurant_menu">{% translate 'Dairy products' %}</option>
           <option value="legume" data-icon="restaurant_menu">{% translate 'Legumes' %}</option>
+          <option value="seasoning" data-icon="lunch_dining">{% translate 'Seasoning' %}</option>
           <option value="beverage" data-icon="emoji_food_beverage">{% translate 'Beverages' %}</option>
           <option value="alcohol" data-icon="local_bar">{% translate 'Alcohol' %}</option>
           <option value="hygiene" data-icon="clean_hands">{% translate 'Hygiene' %}</option>
           <option value="supply" data-icon="kitchen">{% translate 'Supplies' %}</option>
           <option value="cleaning" data-icon="cleaning_services">{% translate 'Cleaning' %}</option>
-          <option value="other" data-icon="inventory">{% translate 'Other' %}</option>
+          <option value="other" data-icon="inventory" selected>{% translate 'Other' %}</option>
         </select>
       </div>
     </div>
