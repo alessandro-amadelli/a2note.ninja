@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   document.querySelector("#btnAddItem").onclick = () => {
     addItem();
+    //Reset category selection to 'other'
+    document.querySelector("#categorySelect").value = 'other';
   }
 
   document.querySelector("#itemText").addEventListener("keydown", function(e) {
@@ -348,7 +350,6 @@ function autocomplete(inp, arr) {
               inp.value = valueToInsert;
 
               document.querySelector("#categorySelect").value = arr[valueToInsert];
-
 
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
