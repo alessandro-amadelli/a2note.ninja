@@ -13,12 +13,16 @@ import random
 import boto3
 from boto3.dynamodb.conditions import Key, Attr
 
-AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
-AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
-dynamodb = boto3.resource('dynamodb', region_name='eu-central-1',
-    aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+#Using production DATABASE if environment is PRODUCTION
+#otherwise using local test db
+if os.environ['A2NOTE_ENVIRONMENT'] == 'PRODUCTION':
+    AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+    AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
+    dynamodb = boto3.resource('dynamodb', region_name='eu-central-1',
+        aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+else:
+    dynamodb = boto3.resource('dynamodb', endpoint_url="http://localhost:8080")
 
-#dynamodb = boto3.resource('dynamodb', endpoint_url="http://localhost:8080")
 
 table = dynamodb.Table('a2note_ninja')
 
