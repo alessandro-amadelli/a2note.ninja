@@ -35,7 +35,7 @@ function createSections() {
     secIcon = option.dataset.icon;
 
     let sectionTitle = document.createElement("div");
-    sectionTitle.setAttribute("class", "section-title row p-1 rounded-3");
+    sectionTitle.setAttribute("class", "section-title w-100 p-1 rounded-3");
     sectionTitle.innerHTML = `<span class="d-inline">${secTitle} <i class="material-icons-outlined d-inline">${secIcon}</i></span>`;
 
     targetSection.appendChild(sectionTitle);
@@ -104,7 +104,7 @@ function addItem(category=null, text=null, itemStatus=null, loadedFromStorage=fa
   //Creation of new list item
   // ### ITEM ###
   let newItem = document.createElement("div");
-  newItem.setAttribute("class", "element card rounded-3");
+  newItem.setAttribute("class", "element singleItem card rounded-3");
 
   //Item status
   if (itemStatus == null) {

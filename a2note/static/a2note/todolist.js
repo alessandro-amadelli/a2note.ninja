@@ -43,7 +43,7 @@ function addTask(text=null, creationTime=null, taskStatus=null, loadedFromStorag
   //Creation of new list element
   // ### TASK ###
   let newTask = document.createElement("div");
-  newTask.setAttribute("class", "singleTask element card rounded-3");
+  newTask.setAttribute("class", "element singleTask card rounded-3");
 
   //Task status
   if (taskStatus == null) {

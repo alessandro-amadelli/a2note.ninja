@@ -1,10 +1,10 @@
 /** CSS VARIABLES */
 :root {
   --autocomplete-active-background: rgba(0,0,0,0.98);
+  --autocomplete-background: rgb(26, 26, 26);
   --background-color: rgb(26, 26, 26);
   --body-background-color: #000;
   --border-color: #0275d8;
-  --darkmod-selector-background: #fff;
   --donetask-background: rgba(0, 0, 0, 0.4);
   --element-background: rgba(0,0,0,0.9);
   --progress-background: #fff;
@@ -17,6 +17,7 @@
   --vegetable-background: rgba(0, 184, 8, 0.7);
   --dairy-background: rgba(45, 245, 239, 0.8);
   --legume-background: rgba(164, 48, 17, 0.8);
+  --seasoning-background: rgba(224, 224, 223, 0.8);
   --beverage-background: rgba(73, 184, 255, 0.8);
   --alcohol-background: rgba(3, 4, 139, 0.8);
   --hygiene-background: rgba(246, 250, 175, 0.8);
@@ -27,10 +28,10 @@
 
 .light-theme {
   --autocomplete-active-background: rgba(255,255,255,0.98);
-  --background-color: rgba(20, 130, 232, 0.98);
+  --autocomplete-background: rgba(20, 130, 232, 0.98);
+  --background-color: rgba(20, 130, 232, 0.75);
   --body-background-color: #f7f7f7;
   --border-color: rgb(70, 70, 70);
-  --darkmod-selector-background: rgba(7, 1, 56, 0.85);
   --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(247, 247, 247, 0.9);
   --progress-background: #000;
@@ -43,6 +44,7 @@
   --vegetable-background: rgba(0, 184, 8, 0.8);
   --dairy-background: rgba(45, 245, 239, 0.8);
   --legume-background: rgba(164, 48, 17, 0.8);
+  --seasoning-background: rgba(224, 224, 223, 0.8);
   --beverage-background: rgba(73, 184, 255, 0.8);
   --alcohol-background: rgba(3, 4, 139, 0.8);
   --hygiene-background: rgba(246, 250, 175, 0.8);
@@ -454,6 +456,10 @@ option {
   transform: scale(.999);
 }
 
+.singleItem {
+  min-height: 4rem;
+}
+
 .section {
   min-height: auto;
 }
@@ -477,6 +483,10 @@ option {
 
 .legume-section {
   background-color: var(--legume-background);
+}
+
+.seasoning-section {
+  background-color: var(--seasoning-background);
 }
 
 .beverage-section {
@@ -547,7 +557,7 @@ option {
 .autocomplete-items div {
   padding: 10px;
   cursor: pointer;
-  background-color: var(--background-color);
+  background-color: var(--autocomplete-background);
   border-bottom: 1px solid #d4d4d4;
 }
 

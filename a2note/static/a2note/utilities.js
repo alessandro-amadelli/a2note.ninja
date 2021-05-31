@@ -3,15 +3,37 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelector("#darkModeSelector").addEventListener('click', () => {
     toggleTheme();
   });
+
+  //Loading of current theme saved on localStorage
+  loadTheme();
+
 });
 
+function loadTheme(){
 
-function toggleTheme(){
+  let currTheme = localStorage.getItem("currentTheme");
+
+  if (currTheme) {
+    toggleTheme(currTheme);
+  }
+
+}
+
+
+function toggleTheme(selection=""){
   let body = document.querySelector("body");
   let darkSelector = document.querySelector("#darkModeSelector");
   let nav = document.querySelector("nav");
 
-  body.classList.toggle("light-theme");
+  if (selection == "") {
+    body.classList.toggle("light-theme");
+  } else if (selection == "light") {
+    body.classList.add("light-theme");
+  } else {
+    body.classList.remove("light-theme");
+  }
+
+
   if (body.classList.contains("light-theme")){
     //Applying LIGHT THEME
     //Darkmode icon
@@ -33,6 +55,8 @@ function toggleTheme(){
       button.classList.add("btn-dark");
     });
 
+    localStorage.setItem("currentTheme", "light");
+
   } else {
     //Applying DARK THEME
     //Darkmode icon
@@ -53,6 +77,9 @@ function toggleTheme(){
       button.classList.remove("btn-dark");
       button.classList.add("btn-light");
     });
+
+    localStorage.setItem("currentTheme", "dark");
+
   }
 }
 
