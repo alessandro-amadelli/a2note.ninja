@@ -82,12 +82,28 @@ WSGI_APPLICATION = 'a2note_ninja.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if os.environ['A2NOTE_ENVIRONMENT'] != 'PRODUCTION':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'a2note_ninja_DB',
+            'USER': 'postgres',
+            'PASSWORD': 'Tgh32j13',
+            'HOST': 'localhost',
+            'PORT': '5433',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['POSTGRESQL_DB_NAME'],
+            'USER': os.environ['POSTGRESQL_USER'],
+            'PASSWORD': os.environ['POSTGRESQL_PSW'],
+            'HOST': os.environ['POSTGRESQL_HOST'],
+            'PORT': os.environ['POSTGRESQL_PORT'],
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -106,6 +122,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+#LOGIN/LOGOUT
+LOGIN_REDIRECT_URL = 'index_view'
+LOGOUT_REDIRECT_URL = 'index_view'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

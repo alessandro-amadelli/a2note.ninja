@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-28 11:58+0200\n"
+"POT-Creation-Date: 2021-06-01 17:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,11 +86,15 @@ msgstr ""
 msgid "a<sub>2</sub>note.ninja Login"
 msgstr "Login a<sub>2</sub>note.ninja!"
 
-#: .\a2note\templates\a2note\login.html:18
+#: .\a2note\templates\a2note\login.html:17
+msgid "Welcome back, fellow ninja. Please provide your credentials..."
+msgstr "Bentornato, fedele ninja. Per favore fornisci le tue credenziali..."
+
+#: .\a2note\templates\a2note\login.html:40
 msgid "Don't have an account yet? No problem, just"
 msgstr "Non hai ancora un account? Nessun problema,"
 
-#: .\a2note\templates\a2note\login.html:18
+#: .\a2note\templates\a2note\login.html:40
 msgid "register</a> for free."
 msgstr "registrati</a> gratuitamente."
 
@@ -198,10 +202,10 @@ msgstr "Da fare"
 msgid "Done"
 msgstr "Completati"
 
-#: .\a2note_ninja\settings.py:115
+#: .\a2note_ninja\settings.py:137
 msgid "English"
 msgstr ""
 
-#: .\a2note_ninja\settings.py:116
+#: .\a2note_ninja\settings.py:138
 msgid "Italian"
 msgstr ""
