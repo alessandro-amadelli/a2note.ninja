@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-  <div class="container p-5">
+  <div class="container my-container p-5">
     <br>
     <h1 class="intro-0" align="center">{% translate 'a<sub>2</sub>note.ninja Login' %}</h1>
     <br>
@@ -25,11 +25,11 @@
       {% csrf_token %}
       <table>
         <tr>
-          <td>{{ form.username.label_tag }}</td>
+          <td><i class="material-icons-outlined">account_circle</i> </td>
           <td>{{ form.username }}</td>
         </tr>
         <tr>
-          <td>{{ form.password.label_tag }}</td>
+          <td><i class="material-icons-outlined">lock</i> </td>
           <td>{{ form.password }}</td>
         </tr>
       </table>

@@ -224,7 +224,7 @@ body a {
   color: var(--link-color);
 }
 
-.container {
+.my-container {
   background-color: var(--background-color);
   transition: background-color 2.5s ease;
   min-height: 100vh;

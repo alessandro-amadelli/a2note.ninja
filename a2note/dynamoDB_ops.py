@@ -85,7 +85,7 @@ def generate_UID():
     This function generates a new Unique IDentifier for an element that has to
     be inserted into the DB.
     """
-    UID_LENGTH = 9
+    UID_LENGTH = 6
     charset = string.ascii_uppercase + string.ascii_lowercase + string.digits + "-_"
 
     return "".join(random.SystemRandom().choices(charset, k=UID_LENGTH))

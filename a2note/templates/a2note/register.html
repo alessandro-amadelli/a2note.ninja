@@ -9,13 +9,57 @@
 {% endblock %}
 
 {% block body %}
-  <div class="container p-5">
+  <div class="container my-container p-5">
     <br>
     <h1 class="intro-0" align="center">{% translate 'a<sub>2</sub>note.ninja Registration' %}</h1>
     <br>
     <br>
 
-    <h3>{% translate 'coming soon' %}</h3>
+    <form method="post" action="{% url 'register_success' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="ninjaName">ninja-name</label>
+        <input type="text" class="form-control" id="ninjaName" name="ninjaName" placeholder="{% translate 'Choose your username...' %}" value="{{ username }}" required>
+      </div>
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="{% translate 'Enter email address...' %}" value="{{ email }}" required>
+      </div>
+      <div class="form-group">
+        <label for="password0">password</label>
+        <input type="password" class="form-control" id="password0" name="password0" placeholder="{% translate 'Choose a password...' %}" required>
+      </div>
+      <div class="form-group">
+        <label for="password1">{% translate 'repeat password' %}</label>
+        <input type="password" class="form-control" id="password1" name="password1" placeholder="{% translate 'Repeat password...' %}" required>
+      </div>
+
+      <div class="form-group">
+        <h3>{% translate 'Before you continue...' %}</h3>
+        <h4>{% translate 'Which data do we collect?' %}</h4>
+        <p>
+          <ul>
+            <li>{% translate 'The email address you provide on this form, for authentication purposes and to ensure univocity of registration' %}</li>
+            <li>{% translate 'The username and password you choose for your account. We suggest, as a common practice, to use a unique password for each site and not reuse the same password for different accounts.' %}</li>
+            <li>{% translate 'The To-do and shopping lists you save on this site.' %}</li>
+          </ul>
+          {% translate "That's it." %}
+        </p>
+        <h4>{% translate 'Where are data stored?' %}</h4>
+        <p>{% translate 'We chose to use existent and secure services to store the data.' %}<br>
+          {% translate 'Account data are saved in a database on Heroku, while to-do lists and shopping lists are saved in a NoSql database on AWS, with standard encryption on rest.' %}
+        </p>
+
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="consentCheck" name="consentCheck" value="consent" />
+        <label class="form-check-label" for="consentCheck">
+          {% translate 'I understand and I wish to proceed.' %}
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">{% translate 'Sign up' %}</button>
+    </form>
+
 
   </div>
 {% endblock %}

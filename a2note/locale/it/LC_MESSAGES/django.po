@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-01 17:59+0200\n"
+"POT-Creation-Date: 2021-06-02 18:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,9 +106,85 @@ msgstr "Registrati"
 msgid "a<sub>2</sub>note.ninja Registration"
 msgstr "Registrati su a<sub>2</sub>note.ninja"
 
-#: .\a2note\templates\a2note\register.html:18
-msgid "coming soon"
-msgstr "in arrivo"
+#: .\a2note\templates\a2note\register.html:22
+msgid "Choose your username..."
+msgstr "Scegli il tuo username..."
+
+#: .\a2note\templates\a2note\register.html:26
+msgid "Enter email address..."
+msgstr "Inserisci l'indirizzo mail..."
+
+#: .\a2note\templates\a2note\register.html:30
+msgid "Choose a password..."
+msgstr "Scegli una password..."
+
+#: .\a2note\templates\a2note\register.html:33
+msgid "repeat password"
+msgstr "ripeti password..."
+
+#: .\a2note\templates\a2note\register.html:34
+msgid "Repeat password..."
+msgstr "Ripeti la tua password..."
+
+#: .\a2note\templates\a2note\register.html:38
+msgid "Before you continue..."
+msgstr "Prima di continuare..."
+
+#: .\a2note\templates\a2note\register.html:39
+msgid "Which data do we collect?"
+msgstr "Quali dati raccogliamo?"
+
+#: .\a2note\templates\a2note\register.html:42
+msgid ""
+"The email address you provide on this form, for authentication purposes and "
+"to ensure univocity of registration"
+msgstr ""
+"L'indirizzo email che fornisci su questo form, a scopo di autenticazione e "
+"per garantire l'univocità della registrazione"
+
+#: .\a2note\templates\a2note\register.html:43
+msgid ""
+"The username and password you choose for your account. We suggest, as a "
+"common practice, to use a unique password for each site and not reuse the "
+"same password for different accounts."
+msgstr ""
+"Lo username e la password che scegli per il tuo account. Suggeriamo, come "
+"pratica standard, di usare una password unica per ogni sito e di non riutilizzare la "
+"stessa password per account differenti."
+
+#: .\a2note\templates\a2note\register.html:44
+msgid "The To-do and shopping lists you save on this site."
+msgstr "Le liste To-do e le shopping list che salvi sul sito."
+
+#: .\a2note\templates\a2note\register.html:46
+msgid "That's it."
+msgstr "E' tutto."
+
+#: .\a2note\templates\a2note\register.html:48
+msgid "Where are data stored?"
+msgstr "Dove vengono salvati i dati?"
+
+#: .\a2note\templates\a2note\register.html:49
+msgid "We chose to use existent and secure services to store the data."
+msgstr "Abbiamo scelto servizi già esistenti e sicuri per salvare i dati."
+
+#: .\a2note\templates\a2note\register.html:50
+msgid ""
+"Account data are saved in a database on Heroku, while to-do lists and "
+"shopping lists are saved in a NoSql database on AWS, with standard "
+"encryption on rest."
+msgstr ""
+"I dati degli account sono salvati in un database di Heroku, mentre le To-do list e "
+"le shopping list sono salvate in un database NoSql su AWS, con crittografia "
+"standard a riposo."
+
+#: .\a2note\templates\a2note\register.html:57
+msgid "I understand and I wish to proceed."
+msgstr "Comprendo e desidero procedere."
+
+#: .\a2note\templates\a2note\register.html:60
+msgid "Sign up"
+msgstr "Registrati"
 
 #: .\a2note\templates\a2note\shoplist.html:20
 msgid "You are not logged in, your shopping list is saved locally."
@@ -202,6 +278,26 @@ msgstr "Da fare"
 msgid "Done"
 msgstr "Completati"
 
+#: .\a2note\views.py:53
+msgid ""
+"Oh no! The ninja name you chose seems to be already taken...don't worry! "
+"Just choose a different one : )"
+msgstr ""
+"Oh no! Il nome ninja che hai scelto sembra sia già stato preso...non preoccuparti! "
+"Basta che tu ne scelga uno diverso : )"
+
+#: .\a2note\views.py:66
+msgid ""
+"Ooops...the email address you inserted is already associated with another "
+"ninja..."
+msgstr ""
+"Ooops...l'indirizzo email che hai inserito è già associato ad un altro "
+"ninja..."
+
+#: .\a2note\views.py:78
+msgid "The two password you inserted do not correspond..."
+msgstr "Le due password che hai inserito non corrispondono..."
+
 #: .\a2note_ninja\settings.py:137
 msgid "English"
 msgstr ""
@@ -209,3 +305,6 @@ msgstr ""
 #: .\a2note_ninja\settings.py:138
 msgid "Italian"
 msgstr ""
+
+#~ msgid "coming soon"
+#~ msgstr "in arrivo"
