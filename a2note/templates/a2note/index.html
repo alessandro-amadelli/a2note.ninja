@@ -10,6 +10,10 @@
 
 {% block body %}
   <div class="container my-container p-5">
+    {% if user.is_authenticated %}
+    <h1 class="intro-0">{% translate 'Hi,' %} {{ user.username }}</h1>
+    <h2>{% translate "It's good to see you again!" %}</h2>
+    {% else %}
     <br>
     <h1 class="intro-0" align="center">{% translate 'Welcome to a<sub>2</sub>note.ninja!' %}</h1>
     <br>
@@ -64,6 +68,7 @@
       </div>
 
     </div>
+    {% endif %}
   </div>
 
 {% endblock %}

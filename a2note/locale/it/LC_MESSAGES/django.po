@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-02 18:34+0200\n"
+"POT-Creation-Date: 2021-06-04 16:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,18 +19,26 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: .\a2note\templates\a2note\index.html:14
+msgid "Hi,"
+msgstr "Ciao,"
+
+#: .\a2note\templates\a2note\index.html:15
+msgid "It's good to see you again!"
+msgstr "E' bello rivederti!"
+
+#: .\a2note\templates\a2note\index.html:18
 msgid "Welcome to a<sub>2</sub>note.ninja!"
 msgstr "Benvenuto su a<sub>2</sub>note.ninja!"
 
-#: .\a2note\templates\a2note\index.html:21
+#: .\a2note\templates\a2note\index.html:25
 msgid "Without an account"
 msgstr "Senza un account"
 
-#: .\a2note\templates\a2note\index.html:25
+#: .\a2note\templates\a2note\index.html:29
 msgid "You can use a<sub>2</sub>note.ninja whithout the need to register."
 msgstr "Puoi usare a<sub>2</sub>note.ninja senza il bisogno di registrarti."
 
-#: .\a2note\templates\a2note\index.html:29
+#: .\a2note\templates\a2note\index.html:33
 msgid ""
 "Save up to <strong>1 to-do list</strong> and <strong>1 shopping list</"
 "strong>."
@@ -38,7 +46,7 @@ msgstr ""
 "Salva fino a <strong>1 to-do list</strong> e <strong>1 shopping list</"
 "strong>."
 
-#: .\a2note\templates\a2note\index.html:33
+#: .\a2note\templates\a2note\index.html:37
 msgid ""
 "Everything is saved locally on your browser so you can modify and consult "
 "your lists any time you want."
@@ -46,19 +54,19 @@ msgstr ""
 "Viene tutto salvato in locale sul tuo browser in modo che tu possa "
 "modificare e consultare le tue liste ogni volta che vuoi."
 
-#: .\a2note\templates\a2note\index.html:40
+#: .\a2note\templates\a2note\index.html:44
 msgid "With a free account (coming soon)"
 msgstr "Con un account gratuito (in arrivo)"
 
-#: .\a2note\templates\a2note\index.html:44
+#: .\a2note\templates\a2note\index.html:48
 msgid "Register a free account and unlock new ninja techniques!"
 msgstr "Registra un account gratuito e sblocca nuove tecniche ninja!"
 
-#: .\a2note\templates\a2note\index.html:48
+#: .\a2note\templates\a2note\index.html:52
 msgid "Create multiple To-do lists and shopping lists."
 msgstr "Crea più to-do list e shopping list."
 
-#: .\a2note\templates\a2note\index.html:52
+#: .\a2note\templates\a2note\index.html:56
 msgid ""
 "Everything will be saved in the cloud so you can access it across multiple "
 "devices."
@@ -66,11 +74,11 @@ msgstr ""
 "Viene tutto salvato sul cloud, in modo che tu possa accedervi da più "
 "dispositivi."
 
-#: .\a2note\templates\a2note\index.html:56
+#: .\a2note\templates\a2note\index.html:60
 msgid "Also:"
 msgstr "Inoltre:"
 
-#: .\a2note\templates\a2note\index.html:60
+#: .\a2note\templates\a2note\index.html:64
 msgid ""
 "Share your <strong>To-do lists</strong> and <strong>shopping lists</strong> "
 "like a ninja!<br>\n"
@@ -98,9 +106,37 @@ msgstr "Non hai ancora un account? Nessun problema,"
 msgid "register</a> for free."
 msgstr "registrati</a> gratuitamente."
 
-#: .\a2note\templates\a2note\navbar.html:32
+#: .\a2note\templates\a2note\my_account.html:13
+msgid "Your ninja account"
+msgstr "Il tuo account ninja"
+
+#: .\a2note\templates\a2note\my_account.html:14
+msgid "In this page you can see all your information"
+msgstr "In questa pagina puoi vedere tutte le tue informazioni"
+
+#: .\a2note\templates\a2note\my_account.html:17
+msgid "Account information"
+msgstr "Informazioni account"
+
+#: .\a2note\templates\a2note\my_account.html:28
+msgid "Registration"
+msgstr "Registrazione"
+
+#: .\a2note\templates\a2note\my_account.html:35
+msgid "Your activity"
+msgstr "La tua attività"
+
+#: .\a2note\templates\a2note\my_account.html:38
+msgid "Last login"
+msgstr "Ultimo login"
+
+#: .\a2note\templates\a2note\navbar.html:38
 msgid "Register"
 msgstr "Registrati"
+
+#: .\a2note\templates\a2note\navbar.html:46
+msgid "My account"
+msgstr "Il mio account"
 
 #: .\a2note\templates\a2note\register.html:14
 msgid "a<sub>2</sub>note.ninja Registration"
@@ -149,8 +185,8 @@ msgid ""
 "same password for different accounts."
 msgstr ""
 "Lo username e la password che scegli per il tuo account. Suggeriamo, come "
-"pratica standard, di usare una password unica per ogni sito e di non riutilizzare la "
-"stessa password per account differenti."
+"pratica standard, di usare una password unica per ogni sito e di non "
+"riutilizzare la stessa password per account differenti."
 
 #: .\a2note\templates\a2note\register.html:44
 msgid "The To-do and shopping lists you save on this site."
@@ -165,7 +201,7 @@ msgid "Where are data stored?"
 msgstr "Dove vengono salvati i dati?"
 
 #: .\a2note\templates\a2note\register.html:49
-msgid "We chose to use existent and secure services to store the data."
+msgid "We've chosen to use existent and secure services to store the data."
 msgstr "Abbiamo scelto servizi già esistenti e sicuri per salvare i dati."
 
 #: .\a2note\templates\a2note\register.html:50
@@ -174,9 +210,9 @@ msgid ""
 "shopping lists are saved in a NoSql database on AWS, with standard "
 "encryption on rest."
 msgstr ""
-"I dati degli account sono salvati in un database di Heroku, mentre le To-do list e "
-"le shopping list sono salvate in un database NoSql su AWS, con crittografia "
-"standard a riposo."
+"I dati degli account sono salvati in un database di Heroku, mentre le To-do "
+"list e le shopping list sono salvate in un database NoSql su AWS, con "
+"crittografia standard a riposo."
 
 #: .\a2note\templates\a2note\register.html:57
 msgid "I understand and I wish to proceed."
@@ -278,15 +314,15 @@ msgstr "Da fare"
 msgid "Done"
 msgstr "Completati"
 
-#: .\a2note\views.py:53
+#: .\a2note\views.py:56
 msgid ""
 "Oh no! The ninja name you chose seems to be already taken...don't worry! "
 "Just choose a different one : )"
 msgstr ""
-"Oh no! Il nome ninja che hai scelto sembra sia già stato preso...non preoccuparti! "
-"Basta che tu ne scelga uno diverso : )"
+"Oh no! Il nome ninja che hai scelto sembra sia già stato preso...non "
+"preoccuparti! Basta che tu ne scelga uno diverso : )"
 
-#: .\a2note\views.py:66
+#: .\a2note\views.py:69
 msgid ""
 "Ooops...the email address you inserted is already associated with another "
 "ninja..."
@@ -294,7 +330,7 @@ msgstr ""
 "Ooops...l'indirizzo email che hai inserito è già associato ad un altro "
 "ninja..."
 
-#: .\a2note\views.py:78
+#: .\a2note\views.py:81
 msgid "The two password you inserted do not correspond..."
 msgstr "Le due password che hai inserito non corrispondono..."
 

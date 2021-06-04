@@ -46,13 +46,13 @@
           {% translate "That's it." %}
         </p>
         <h4>{% translate 'Where are data stored?' %}</h4>
-        <p>{% translate 'We chose to use existent and secure services to store the data.' %}<br>
+        <p>{% translate "We've chosen to use existent and secure services to store the data." %}<br>
           {% translate 'Account data are saved in a database on Heroku, while to-do lists and shopping lists are saved in a NoSql database on AWS, with standard encryption on rest.' %}
         </p>
 
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="consentCheck" name="consentCheck" value="consent" />
+        <input class="form-check-input" type="checkbox" id="consentCheck" name="consentCheck" value="consent" required/>
         <label class="form-check-label" for="consentCheck">
           {% translate 'I understand and I wish to proceed.' %}
         </label>

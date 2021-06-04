@@ -8,6 +8,8 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 
 from django.contrib.auth.models import User
+from a2note.models import AdditionalInfo
+from django.contrib.auth import authenticate, login
 
 #translation
 from django.utils.translation import gettext_lazy as _
@@ -41,8 +43,6 @@ def register_success(request):
         consent = request.POST.get("consentCheck") == "consent"
     except:
         consent = False
-
-    print(username, email, psw0, psw1, consent, sep="\n")
 
     ### Perform checks ###
 
@@ -93,14 +93,23 @@ def register_success(request):
         ip_address = request.META.get('REMOTE_ADDR')
 
     #...user registration TO-DO
+    new_user = User.objects.create_user(username=username, email=email, password=psw0)
+    additional_info = AdditionalInfo(user=new_user, consent_ip=ip_address)
+
+    #Last check and auto login of the new user
+    user = authenticate(username=username, password=psw0)
+    if user:
+        login(request, user)
 
 
     return redirect('index_view')
 
 
-def login(request):
+def login_view(request):
     return render(request, "a2note/login.html")
 
+def my_account_view(request):
+    return render(request, "a2note/my_account.html")
 
 def todolist(request):
 
