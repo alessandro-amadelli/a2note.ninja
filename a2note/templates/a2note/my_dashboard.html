@@ -1,0 +1,87 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+  welcome ninja!
+{% endblock %}
+
+{% block body %}
+  <div class="container my-container p-5">
+    <h1 class="intro-0">{% translate 'Your personal dashboard' %}</h1>
+
+    <h4>{% translate "Here you can see some numbers and some statistics about your lists." %}</h4>
+
+    <hr>
+
+    <h3>{% translate "Report" %} <span class="material-icons-outlined">summarize</span></h3>
+
+    <table class="table table-dark">
+      <tr>
+        <th class="table-active"><span class="material-icons-outlined">checklist_rtl</span> {% translate 'Todolists created' %}</th>
+        <th class="table-active">{{ todolists_total }}</th>
+      </tr>
+      <tr>
+        <th><span class="material-icons-outlined">tag</span> {% translate 'Tasks in to-do lists' %}</th>
+        <td>{{ total_tasks }}</td>
+      </tr>
+      <tr>
+        <th><span class="material-icons-outlined">check</span> {% translate 'Tasks done' %}</th>
+        <td>{{ tasks_done }}</td>
+      </tr>
+      <tr>
+        <th><span class="material-icons-outlined">pending</span> {% translate 'Tasks to do' %}</th>
+        <td>{{ tasks_todo }}</td>
+      </tr>
+      <tr>
+        <th class="table-active"><span class="material-icons-outlined">shopping_cart</span> {% translate 'Shopping lists created' %}</th>
+        <th class="table-active">{{ shoplists_total }}</th>
+      </tr>
+      <tr>
+        <th><span class="material-icons-outlined">add_shopping_cart</span> {% translate 'Items in shopping lists' %}</th>
+        <td>{{ total_items }}</td>
+      </tr>
+      <tr>
+        <th class="table-active"><span class="material-icons-outlined">functions</span> {% translate 'Total' %}</th>
+        <th class="table-active">{{ total }}</th>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h3>{% translate "Statistics" %} <span class="material-icons-outlined">bar_chart</span></h3>
+
+    <div class="row">
+      {% if type_donut_plot %}
+      <div class="col-lg-6 col-12 p-1">
+        <h4>{% translate "Type of lists you make" %}</h4>
+        {{ type_donut_plot|safe }}
+      </div>
+      {% endif %}
+
+      {% if task_donut_plot %}
+      <div class="col-lg-6 col-12 p-1">
+        <h4>{% translate "Your overall progress with the tasks" %}</h4>
+        {{ task_donut_plot|safe }}
+      </div>
+      {% endif %}
+
+      {% if todo_weekday_plot  %}
+      <div class="col-lg-6 col-12 p-1">
+        <h4>{% translate "Your favourite days to make a to-do list" %}</h4>
+        {{ todo_weekday_plot|safe }}
+      </div>
+      {% endif %}
+
+      {% if shop_weekday_plot %}
+      <div class="col-lg-6 col-12 p-1">
+        <h4>{% translate "Your favourite days to make a shopping list" %}</h4>
+        {{ shop_weekday_plot|safe }}
+      </div>
+      {% endif %}
+
+    </div>
+
+{% endblock %}

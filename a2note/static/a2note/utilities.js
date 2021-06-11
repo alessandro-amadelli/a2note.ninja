@@ -55,6 +55,13 @@ function toggleTheme(selection=""){
       button.classList.add("btn-dark");
     });
 
+    //tables
+    document.querySelectorAll(".table").forEach((table, i) => {
+      table.classList.remove("table-dark");
+      table.classList.add("table-light");
+    });
+
+    //localstorage
     localStorage.setItem("currentTheme", "light");
 
   } else {
@@ -78,12 +85,40 @@ function toggleTheme(selection=""){
       button.classList.add("btn-light");
     });
 
+    //tables
+    document.querySelectorAll(".table").forEach((table, i) => {
+      table.classList.remove("table-light");
+      table.classList.add("table-dark");
+    });
+
+    //localstorage
     localStorage.setItem("currentTheme", "dark");
 
   }
 }
 
-function showLoading(message=gettext("Throwing some ninja stars...")){
+function showLoading(message=""){
+  if (message == "") {
+    //If message is empty, choose a random message from the array
+    messages = [
+      gettext("Throwing some ninja stars..."),
+      gettext("Browsing my interesting recipe book..."),
+      gettext("Using my ninja techniques..."),
+      gettext("Polishing my katana..."),
+      gettext("Lunch break...be right back!"),
+      gettext("Breaking some boards..."),
+      gettext("Practicing with nunchacks..."),
+      gettext("Throwing some kunais..."),
+      gettext("Hiding somewhere in the shadows..."),
+      gettext("Doing laundry..."),
+      gettext("Meditating, please wait..."),
+      gettext("Doing some top-secret thing...be right back!")
+    ]
+
+    let randMsg = Math.floor(Math.random() * messages.length);
+    message = messages[randMsg];
+  }
+
   let overlay = document.createElement("div");
   overlay.setAttribute("class", "loading-overlay")
   let overlayContent = document.createElement("div");

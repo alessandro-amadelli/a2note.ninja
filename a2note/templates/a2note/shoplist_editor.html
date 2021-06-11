@@ -5,7 +5,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block title %}
-  ninja shopping list
+  ninja editor
 {% endblock %}
 
 {% block body %}
@@ -13,28 +13,10 @@
 
   <div id="main-container" class="container my-container p-5">
 
-    {% if user.is_authenticated %}
-    <script>
-      var is_authenticated = true;
-    </script>
-    {% else %}
-    <script>
-      var is_authenticated = false;
-    </script>
-
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      {% translate 'You are not logged in, your shopping list is saved locally.' %}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endif %}
-
-    <script src="{% static 'a2note/shoplist_functions.js' %}"></script>
-    <script src="{% static 'a2note/shoplist.js' %}"></script>
-
-    <h3 class="intro-1">Shopping list</h3>
+    <h3 class="intro-1">Shopping list EDITOR</h3>
 
     {% if element_id %}
-    <h4>{{ element_id }}</h4>
+    <h4><span class="material-icons-outlined">shopping_cart</span> <span id="elementID">{{ element_id }}</span></h4>
     {% endif %}
 
     <div class="row">
@@ -61,5 +43,12 @@
       </div>
     </div>
   </div>
+
+  <!-- Passing list items to the javascript -->
+  <script>
+    var items = {{ items|safe }};
+  </script>
+  <script src="{% static 'a2note/shoplist_functions.js' %}"></script>
+  <script src="{% static 'a2note/shoplist_editor.js' %}"></script>
 
 {% endblock %}

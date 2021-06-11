@@ -7,7 +7,8 @@
   --border-color: #0275d8;
   --donetask-background: rgba(0, 0, 0, 0.4);
   --element-background: rgba(0,0,0,0.9);
-  --link-color: rgb(16, 74, 249);
+  --link-color: rgb(27, 174, 237);
+  --plot-img-opacity: .7;
   --progress-background: #fff;
   --shadow-color: #000;
   --task-background: rgba(255,255,255,0.1);
@@ -36,6 +37,7 @@
   --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(247, 247, 247, 0.9);
   --link-color: rgb(3, 40, 200);
+  --plot-img-opacity: .85;
   --progress-background: #000;
   --shadow-color: #000;
   --task-background: rgba(247, 247, 247, 0.9);
@@ -220,6 +222,11 @@ nav {
   box-shadow: 3px -3px 15px var(--shadow-color);
 }
 
+.dropdown-menu, .dropdown-item {
+  color: var(--text-color);
+  background-color: var(--body-background-color);
+}
+
 body a {
   color: var(--link-color);
 }
@@ -291,6 +298,21 @@ body a {
   animation-iteration-count: infinite;
   animation-play-state: running;
   animation-delay: 2s;
+}
+
+.newList-card {
+  min-width: 10rem;
+  height: auto;
+  background-color: var(--element-background);
+}
+
+.thumbnail-div {
+  overflow-y: auto;
+  background-color: var(--task-background);
+}
+
+.list-thumbnail {
+  background-color: var(--element-background);
 }
 
 input {
@@ -577,6 +599,10 @@ option {
 .autocomplete-active {
   /*when navigating through the items using the arrow keys:*/
   background-color: var(--autocomplete-active-background) !important;
+}
+
+.plot-img {
+  opacity: var(--plot-img-opacity)
 }
 
 .hidden {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-27 23:06+0200\n"
+"POT-Creation-Date: 2021-06-06 18:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\a2note\static\a2note\shoplist.js:49
-msgid "Browsing my interesting recipe book..."
-msgstr "Sto sfogliando il mio interessante libro di ricette..."
-
-#: .\a2note\static\a2note\shoplist.js:198
+#: .\a2note\static\a2note\shoplist.js:203
 msgid "added"
 msgstr "aggiunto"
 
-#: .\a2note\static\a2note\utilities.js:59
+#: .\a2note\static\a2note\utilities.js:104
 msgid "Throwing some ninja stars..."
 msgstr "Sto lanciando qualche stelletta ninja..."
+
+#: .\a2note\static\a2note\utilities.js:105
+msgid "Browsing my interesting recipe book..."
+msgstr "Sto sfogliando il mio interessante libro di ricette..."
+
+#: .\a2note\static\a2note\utilities.js:106
+msgid "Using my ninja techniques..."
+msgstr "Sto usando le mie tecniche ninja..."
+
+#: .\a2note\static\a2note\utilities.js:107
+msgid "Polishing my katana..."
+msgstr "Sto lucidando la mia katana..."
+
+#: .\a2note\static\a2note\utilities.js:108
+msgid "Lunch break...be right back!"
+msgstr "Pausa pranzo...torno subito!"
+
+#: .\a2note\static\a2note\utilities.js:109
+msgid "Breaking some boards..."
+msgstr "Sto spezzando qualche tavola..."
+
+#: .\a2note\static\a2note\utilities.js:110
+msgid "Practicing with nunchacks..."
+msgstr "Sto facendo pratica coi nunchaco..."
+
+#: .\a2note\static\a2note\utilities.js:111
+msgid "Throwing some kunais..."
+msgstr "Sto lanciando qualche kunai..."
+
+#: .\a2note\static\a2note\utilities.js:112
+msgid "Hiding somewhere in the shadows..."
+msgstr "Mi sto nacondendo da qualche parte nell'ombra"
+
+#: .\a2note\static\a2note\utilities.js:113
+msgid "Doing laundry..."
+msgstr "Sto facendo la lavatrice..."
+
+#: .\a2note\static\a2note\utilities.js:114
+msgid "Meditating, please wait..."
+msgstr "Sto meditanto, attendi per favore..."
+
+#: .\a2note\static\a2note\utilities.js:115
+msgid "Doing some top-secret thing...be right back!"
+msgstr "Sto facendo qualcosa di top-secret...torno subito!"

@@ -9,30 +9,15 @@
 {% endblock %}
 
 {% block body %}
+  {% csrf_token %}
 
   <div class="container my-container p-5">
 
-    {% if user.is_authenticated %}
-    <script>
-      var is_authenticated = true;
-    </script>
-    {% else %}
-    <script>
-      var is_authenticated = false;
-    </script>
+    <!-- <script src="{% static 'a2note/todolist.js' %}"></script> -->
 
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      {% translate 'You are not logged in, your to-do list is saved locally.' %}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endif %}
-
-    <script src="{% static 'a2note/todolist_functions.js' %}"></script>
-    <script src="{% static 'a2note/todolist.js' %}"></script>
-
-    <h3 class="intro-1">To-do list</h3>
+    <h3 class="intro-1">To-do list editor</h3>
     {% if element_id %}
-      {{ element_id }}
+      <h4><span class="material-icons-outlined">checklist_rtl</span> <span id="elementID">{{ element_id }}</span></h4>
     {% endif %}
 
     <div class="row">
@@ -66,6 +51,13 @@
       </div>
 
     </div>
+
+    <!-- Passing list items to the javascript -->
+    <script>
+      var tasks = {{ items|safe }};
+    </script>
+    <script src="{% static 'a2note/todolist_functions.js' %}"></script>
+    <script src="{% static 'a2note/todolist_editor.js' %}"></script>
 
     <div id="taskList" class="row"></div>
 

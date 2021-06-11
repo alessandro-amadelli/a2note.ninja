@@ -11,6 +11,32 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link{% if request.resolver_match.url_name == 'index_view' %} active{% endif %}" aria-current="page" href="{% url 'index_view' %}">
+            <span class="material-icons-outlined">home</span> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.resolver_match.url_name == 'dashboard_view' %} active{% endif %}" href="{% url 'dashboard_view' %}">
+            <span class="material-icons-outlined">data_usage</span> {% translate 'My dashboard' %}
+          </a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="material-icons-outlined">account_circle</span> {{ user.username }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'my_account_view' %}"><span class="material-icons-outlined">badge</span> {% translate 'My account' %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}"><span class="material-icons-outlined">logout</span> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      {% else %}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'index_view' %} active{% endif %}" aria-current="page" href="{% url 'index_view' %}">
@@ -30,29 +56,20 @@
       </ul>
       <div class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {% if not user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link{% if request.resolver_match.url_name == 'login_view' %} active{% endif %}" aria-current="page" href="{% url 'login_view' %}">Log in</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link{% if request.resolver_match.url_name == 'register_view' %} active{% endif %}" aria-current="page" href="{% url 'register_view' %}">{% translate 'Register' %}</a>
-        </li>
-        {% else %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="material-icons-outlined">account_circle</span> {{ user.username }}
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{% url 'my_account_view' %}"><span class="material-icons-outlined">badge</span> {% translate 'My account' %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'logout' %}"><span class="material-icons-outlined">logout</span> Logout</a></li>
-          </ul>
-        </li>
-        {% endif %}
+          <li class="nav-item">
+            <a class="nav-link{% if request.resolver_match.url_name == 'login_view' %} active{% endif %}" aria-current="page" href="{% url 'login_view' %}">Log in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link{% if request.resolver_match.url_name == 'register_view' %} active{% endif %}" aria-current="page" href="{% url 'register_view' %}">{% translate 'Register' %}</a>
+          </li>
         </ul>
+      {% endif %}
+
         <div id="darkModeSelector" aria-label="dark mode toggle">
           <span class="material-icons-outlined">light_mode</span>
         </div>
       </div>
+
     </div>
   </div>
 </nav>

@@ -17,9 +17,11 @@
     <h3>{% translate 'Welcome back, fellow ninja. Please provide your credentials...' %}</h3>
 
     {% if form.errors %}
-      <p>Your username and password didn't match. Please try again.</p>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {% translate 'Your ninja-name and/or password are incorrect. Please try again...' %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     {% endif %}
-
 
     <form method="post" action="{% url 'login_view' %}">
       {% csrf_token %}

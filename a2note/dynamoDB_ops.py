@@ -93,17 +93,17 @@ def generate_UID():
 def insert_item(item):
     """
     This function takes a table item in input:
-      _adds the current timestamp
+      _adds the current timestamp (if not present)
       _if the element_id is empty or not present (eg: for shopping lists or to-do lists)
        it assigns a new element_id
     """
-    timestamp = datetime.now().strftime("%Y-%m-%d h.%H:%M:%S.%f")
-    item["creation_timestamp"] = timestamp
+    if "creation_timestamp" not in item:
+        timestamp = datetime.now().strftime("%Y-%m-%d h.%H:%M:%S.%f")
+        item["creation_timestamp"] = timestamp
 
     element_id = ""
     if "element_id" in item:
         element_id = item["element_id"]
-
 
     if element_id == "":
         while(element_id == ""):
@@ -115,8 +115,10 @@ def insert_item(item):
 
         if item["element_type"] == "TODOLIST":
             item["element_id"] = "TL#" + element_id
+            item["items"] = {}
         elif item["element_type"] == "SHOPLIST":
             item["element_id"] = "SL#" + element_id
+            item["items"] = {}
         else:
             item["element_id"] = "A2#" + element_id
 
