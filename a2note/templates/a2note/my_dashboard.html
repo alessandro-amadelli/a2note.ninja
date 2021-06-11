@@ -18,6 +18,7 @@
 
     <h3>{% translate "Report" %} <span class="material-icons-outlined">summarize</span></h3>
 
+    {% if total > 0 %}
     <table class="table table-dark">
       <tr>
         <th class="table-active"><span class="material-icons-outlined">checklist_rtl</span> {% translate 'Todolists created' %}</th>
@@ -48,11 +49,15 @@
         <th class="table-active">{{ total }}</th>
       </tr>
     </table>
+    {% else %}
+    <p><span class="material-icons-outlined">sentiment_dissatisfied</span> {% translate "Nothing to reprt here..." %}</p>
+    {% endif %}
 
     <hr>
 
     <h3>{% translate "Statistics" %} <span class="material-icons-outlined">bar_chart</span></h3>
 
+    {% if total > 0 %}
     <div class="row">
       {% if type_donut_plot %}
       <div class="col-lg-6 col-12 p-1">
@@ -83,5 +88,7 @@
       {% endif %}
 
     </div>
+    {% else %}
+    <p><span class="material-icons-outlined">not_interested</span> {% translate "You haven't created any list...yet" %}</p>
 
 {% endblock %}

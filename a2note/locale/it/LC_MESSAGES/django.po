@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 18:25+0200\n"
+"POT-Creation-Date: 2021-06-11 20:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,8 +31,8 @@ msgid ""
 "Here you can create new to-do lists and shopping lists and see the lists "
 "you've already created."
 msgstr ""
-"Qui puoi creare nuove to-do list e shopping list e vedere le liste "
-"che hai già creato."
+"Qui puoi creare nuove to-do list e shopping list e vedere le liste che hai "
+"già creato."
 
 #: .\a2note\templates\a2note\index.html:28
 msgid ""
@@ -53,10 +53,8 @@ msgstr ""
 "appartiene alla propria categoria."
 
 #: .\a2note\templates\a2note\index.html:58
-#, fuzzy
-#| msgid "Your activity"
 msgid "Your lists"
-msgstr "La tua attività"
+msgstr "Le tue liste"
 
 #: .\a2note\templates\a2note\index.html:72
 msgid "Items"
@@ -191,39 +189,63 @@ msgstr "Qui puoi vedere qualche numero e qualche statistica sulle tue liste."
 msgid "Report"
 msgstr "Report"
 
-#: .\a2note\templates\a2note\my_dashboard.html:23
+#: .\a2note\templates\a2note\my_dashboard.html:24
 msgid "Todolists created"
 msgstr "To-do list create"
 
-#: .\a2note\templates\a2note\my_dashboard.html:27
+#: .\a2note\templates\a2note\my_dashboard.html:28
 msgid "Tasks in to-do lists"
 msgstr "Task nelle to-do list"
 
-#: .\a2note\templates\a2note\my_dashboard.html:31
+#: .\a2note\templates\a2note\my_dashboard.html:32
 msgid "Tasks done"
 msgstr "Task completati"
 
-#: .\a2note\templates\a2note\my_dashboard.html:35
+#: .\a2note\templates\a2note\my_dashboard.html:36
 msgid "Tasks to do"
 msgstr "Task da fare"
 
-#: .\a2note\templates\a2note\my_dashboard.html:39
+#: .\a2note\templates\a2note\my_dashboard.html:40
 msgid "Shopping lists created"
 msgstr "Shopping list create"
 
-#: .\a2note\templates\a2note\my_dashboard.html:43
+#: .\a2note\templates\a2note\my_dashboard.html:44
 msgid "Items in shopping lists"
 msgstr "Prodotti nelle shopping list"
 
-#: .\a2note\templates\a2note\my_dashboard.html:47
+#: .\a2note\templates\a2note\my_dashboard.html:48
 #: .\a2note\templates\a2note\todolist.html:54
 #: .\a2note\templates\a2note\todolist_editor.html:39
 msgid "Total"
 msgstr "Totale"
 
-#: .\a2note\templates\a2note\my_dashboard.html:54
+#: .\a2note\templates\a2note\my_dashboard.html:53
+msgid "Nothing to reprt here..."
+msgstr "Niente da riportare qui..."
+
+#: .\a2note\templates\a2note\my_dashboard.html:58
 msgid "Statistics"
 msgstr "Statistiche"
+
+#: .\a2note\templates\a2note\my_dashboard.html:64
+msgid "Type of lists you make"
+msgstr "Tipi di liste che crei"
+
+#: .\a2note\templates\a2note\my_dashboard.html:71
+msgid "Your overall progress with the tasks"
+msgstr "I tuoi progressi con i task"
+
+#: .\a2note\templates\a2note\my_dashboard.html:78
+msgid "Your favourite days to make a to-do list"
+msgstr "I giorni che preferisci per creare to-do list"
+
+#: .\a2note\templates\a2note\my_dashboard.html:85
+msgid "Your favourite days to make a shopping list"
+msgstr "I giorni che preferisci per creare shopping list"
+
+#: .\a2note\templates\a2note\my_dashboard.html:92
+msgid "You haven't created any list...yet"
+msgstr "Non hai creato alcuna lista...per ora"
 
 #: .\a2note\templates\a2note\navbar.html:23
 msgid "My dashboard"
