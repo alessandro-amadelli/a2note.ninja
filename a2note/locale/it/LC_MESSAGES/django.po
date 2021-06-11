@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 20:01+0200\n"
+"POT-Creation-Date: 2021-06-11 20:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,11 +61,8 @@ msgid "Items"
 msgstr "Elementi"
 
 #: .\a2note\templates\a2note\index.html:79
-msgid ""
-"Look! The dashboard is empty and sad...go make some lists to cheer it up."
-msgstr ""
-"Guarda! La dashboard è triste e vuota...vai a creare qualche lista per "
-"tirarla su di morale."
+msgid "Oh no! It's all sad and empty here...go make some lists."
+msgstr "Oh no! E' tutto triste e vuoto qui...vai a creare qualche lista."
 
 #: .\a2note\templates\a2note\index.html:86
 msgid "Welcome to a<sub>2</sub>note.ninja!"
