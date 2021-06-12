@@ -12,8 +12,9 @@
   {% csrf_token %}
 
   <div class="container my-container p-5">
-
-    <!-- <script src="{% static 'a2note/todolist.js' %}"></script> -->
+    {% if user.username == author %}
+    <button type="button" class="intro-2 btn btn-danger" id="btnDeleteList">{% translate 'Delete' %}<span class="material-icons-outlined">delete</span></button>
+    {% endif %}
 
     <h3 class="intro-1">To-do list editor</h3>
     {% if element_id %}

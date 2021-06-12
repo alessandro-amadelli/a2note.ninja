@@ -228,7 +228,7 @@ def dashboard_view(request):
         context["type_donut_plot"] = type_donut_plot
 
     if total_done > 0 or total_todo > 0:
-        task_donut_plot = make_donut(values=[total_done, total_todo], labels=["Done", "To do"], colors=["green", "grey"])
+        task_donut_plot = make_donut(values=[total_done, total_todo], labels=[gettext("Done"), gettext("To do")], colors=["green", "grey"])
         context["task_donut_plot"] = task_donut_plot
 
     if todolists_ctr > 0:
@@ -382,7 +382,6 @@ def save_list_view(request):
     element_type = request.POST["element_type"]
     items = request.POST["items"]
     items = json.loads(items)
-    print(items)
     shared = request.POST["shared"]
     edit_enabled = request.POST["edit_enabled"]
 
@@ -432,4 +431,29 @@ def save_list_view(request):
         'STATUS': 'OK'
     }
 
+    return JsonResponse(response)
+
+@login_required
+def delete_list(request):
+    """
+    Deletion of a list
+    Allowed only if the user is logged in and is the author of the list.
+    """
+    element_type = request.POST.get("element_type")
+    element_id = request.POST.get("element_id")
+
+    old_list = select_element_by_id(element_id, element_type)
+    if len(old_list) > 0:
+        old_list = old_list[0]
+
+    #CHECK if the user is the author of the list
+    if request.user.username != old_list["author"]:
+        response = {"RESULT": "ERROR",
+        "DESCRIPTION": "Only the author of the list can delete it."}
+
+        return JsonResponse(response)
+
+    delete_item(element_type, element_id)
+
+    response = {"RESULT": "OK"}
     return JsonResponse(response)

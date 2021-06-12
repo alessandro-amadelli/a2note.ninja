@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 20:07+0200\n"
+"POT-Creation-Date: 2021-06-12 12:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -244,6 +244,10 @@ msgstr "I giorni che preferisci per creare shopping list"
 msgid "You haven't created any list...yet"
 msgstr "Non hai creato alcuna lista...per ora"
 
+#: .\a2note\templates\a2note\navbar.html:18
+msgid "My lists"
+msgstr "Le mie liste"
+
 #: .\a2note\templates\a2note\navbar.html:23
 msgid "My dashboard"
 msgstr "La mia dashboard"
@@ -345,69 +349,73 @@ msgid "You are not logged in, your shopping list is saved locally."
 msgstr "Non hai eseguito il log in, la tua shopping list è salvata in locale."
 
 #: .\a2note\templates\a2note\shoplist.html:42
-#: .\a2note\templates\a2note\shoplist_editor.html:24
+#: .\a2note\templates\a2note\shoplist_editor.html:27
 msgid "Insert item..."
 msgstr "Inserisci elemento..."
 
 #: .\a2note\templates\a2note\shoplist.html:47
-#: .\a2note\templates\a2note\shoplist_editor.html:29
+#: .\a2note\templates\a2note\shoplist_editor.html:32
 msgid "Category"
 msgstr "Categorie"
 
 #: .\a2note\templates\a2note\shoplist.html:49
-#: .\a2note\templates\a2note\shoplist_editor.html:31
+#: .\a2note\templates\a2note\shoplist_editor.html:34
 msgid "Fruit"
 msgstr "Frutta"
 
 #: .\a2note\templates\a2note\shoplist.html:50
-#: .\a2note\templates\a2note\shoplist_editor.html:32
+#: .\a2note\templates\a2note\shoplist_editor.html:35
 msgid "Vegetables"
 msgstr "Verdura"
 
 #: .\a2note\templates\a2note\shoplist.html:51
-#: .\a2note\templates\a2note\shoplist_editor.html:33
+#: .\a2note\templates\a2note\shoplist_editor.html:36
 msgid "Dairy products"
 msgstr "Latticini"
 
 #: .\a2note\templates\a2note\shoplist.html:52
-#: .\a2note\templates\a2note\shoplist_editor.html:34
+#: .\a2note\templates\a2note\shoplist_editor.html:37
 msgid "Legumes"
 msgstr "Legumi"
 
 #: .\a2note\templates\a2note\shoplist.html:53
-#: .\a2note\templates\a2note\shoplist_editor.html:35
+#: .\a2note\templates\a2note\shoplist_editor.html:38
 msgid "Seasoning"
 msgstr "Condimenti"
 
 #: .\a2note\templates\a2note\shoplist.html:54
-#: .\a2note\templates\a2note\shoplist_editor.html:36
+#: .\a2note\templates\a2note\shoplist_editor.html:39
 msgid "Beverages"
 msgstr "Bevande"
 
 #: .\a2note\templates\a2note\shoplist.html:55
-#: .\a2note\templates\a2note\shoplist_editor.html:37
+#: .\a2note\templates\a2note\shoplist_editor.html:40
 msgid "Alcohol"
 msgstr "Alcolici"
 
 #: .\a2note\templates\a2note\shoplist.html:56
-#: .\a2note\templates\a2note\shoplist_editor.html:38
+#: .\a2note\templates\a2note\shoplist_editor.html:41
 msgid "Hygiene"
 msgstr "Igiene"
 
 #: .\a2note\templates\a2note\shoplist.html:57
-#: .\a2note\templates\a2note\shoplist_editor.html:39
+#: .\a2note\templates\a2note\shoplist_editor.html:42
 msgid "Supplies"
 msgstr "Forniture"
 
 #: .\a2note\templates\a2note\shoplist.html:58
-#: .\a2note\templates\a2note\shoplist_editor.html:40
+#: .\a2note\templates\a2note\shoplist_editor.html:43
 msgid "Cleaning"
 msgstr "Pulizia"
 
 #: .\a2note\templates\a2note\shoplist.html:59
-#: .\a2note\templates\a2note\shoplist_editor.html:41
+#: .\a2note\templates\a2note\shoplist_editor.html:44
 msgid "Other"
 msgstr "Altro"
+
+#: .\a2note\templates\a2note\shoplist_editor.html:17
+msgid "Delete"
+msgstr ""
 
 #: .\a2note\templates\a2note\todolist.html:25
 msgid "You are not logged in, your to-do list is saved locally."
@@ -444,7 +452,7 @@ msgid "Pending"
 msgstr "Da fare"
 
 #: .\a2note\templates\a2note\todolist.html:60
-#: .\a2note\templates\a2note\todolist_editor.html:45
+#: .\a2note\templates\a2note\todolist_editor.html:45 .\a2note\views.py:231
 msgid "Done"
 msgstr "Completati"
 
@@ -467,6 +475,10 @@ msgstr ""
 #: .\a2note\views.py:125
 msgid "The two password you inserted do not correspond..."
 msgstr "Le due password che hai inserito non corrispondono..."
+
+#: .\a2note\views.py:231
+msgid "To do"
+msgstr "Da fare"
 
 #: .\a2note\views.py:235 .\a2note\views.py:239
 msgid "Mon"

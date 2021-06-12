@@ -13,6 +13,9 @@
 
   <div id="main-container" class="container my-container p-5">
 
+    {% if user.username == author %}
+    <button type="button" class="intro-2 btn btn-danger" id="btnDeleteList">{% translate 'Delete' %}<span class="material-icons-outlined">delete</span></button>
+    {% endif %}
     <h3 class="intro-1">Shopping list EDITOR</h3>
 
     {% if element_id %}

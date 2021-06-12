@@ -124,3 +124,19 @@ def insert_item(item):
 
     table.put_item(Item=item)
     return item
+
+# -- DELETE OPERATIONS -- #
+def delete_item(element_type=None, element_id=None):
+    """
+    Delete an item based on primary key
+    """
+
+    if element_type == None or element_id==None:
+        return False
+
+    deleted_element = table.delete_item(Key={
+        'element_type': element_type,
+        'element_id': element_id
+    })
+
+    return deleted_element

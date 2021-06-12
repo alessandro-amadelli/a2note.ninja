@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   loadShoplist();
 
+  initializeBtnDelete();
+
 });
 
 function saveShoplist() {
@@ -79,5 +81,40 @@ function loadShoplist(){
     addItem(items[item]["category"], item, items[item]["status"], true);
   });
 
+}
 
+function initializeBtnDelete(){
+  let btnDel = document.querySelector("#btnDeleteList");
+  if (btnDel) {
+    btnDel.onclick = () => {
+      showLoading();
+      deleteList();
+    }
+  }
+}
+
+function deleteList() {
+  var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  const request = new XMLHttpRequest();
+  const url = `/delete_list/`;
+  request.open('POST', url);
+  request.setRequestHeader('X-CSRFToken', csrftoken);
+  request.onload = () => {
+    const response = JSON.parse(request.responseText);
+    if (response["RESULT"] == "OK"){
+      window.location.href = `/`;
+    }
+    removeLoading();
+  };
+  const data = new FormData();
+  element_id = document.querySelector("#elementID").innerText;
+  if (element_id.substring(0,2) == "SL") {
+    element_type = "SHOPLIST";
+  } else {
+    element_type = "TODOLIST";
+  }
+  data.append("element_id", element_id);
+  data.append("element_type", element_type);
+
+  request.send(data);
 }

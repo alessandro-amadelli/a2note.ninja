@@ -33,7 +33,6 @@ function toggleTheme(selection=""){
     body.classList.remove("light-theme");
   }
 
-
   if (body.classList.contains("light-theme")){
     //Applying LIGHT THEME
     //Darkmode icon
@@ -51,8 +50,10 @@ function toggleTheme(selection=""){
 
     //buttons
     document.querySelectorAll(".btn").forEach((button, i) => {
-      button.classList.remove("btn-light");
-      button.classList.add("btn-dark");
+      if (!button.classList.contains("btn-danger")) {
+        button.classList.remove("btn-light");
+        button.classList.add("btn-dark");
+      }
     });
 
     //tables
@@ -81,8 +82,10 @@ function toggleTheme(selection=""){
 
     //buttons
     document.querySelectorAll(".btn").forEach((button, i) => {
-      button.classList.remove("btn-dark");
-      button.classList.add("btn-light");
+      if (!button.classList.contains("btn-danger")) {
+        button.classList.remove("btn-dark");
+        button.classList.add("btn-light");
+      }
     });
 
     //tables

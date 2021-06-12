@@ -18,6 +18,7 @@ urlpatterns = [
     path("new_shoplist/", views.new_shoplist_view, name="new_shoplist_view"),
     path("list_editor/<str:listUID>", views.list_editor, name="list_editor"),
     path("save_list_view/", views.save_list_view, name="save_list_view"),
+    path("delete_list/", views.delete_list, name="delete_list"),
     path("product_list_view/", views.product_list_view, name="product_list_view"),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 ]
