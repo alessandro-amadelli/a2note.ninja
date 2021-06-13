@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-12 12:15+0200\n"
+"POT-Creation-Date: 2021-06-13 12:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,14 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: .\a2note\templates\a2note\index.html:16
-msgid "Hi,"
-msgstr "Ciao,"
+msgid "Hi"
+msgstr "Ciao"
 
 #: .\a2note\templates\a2note\index.html:17
-msgid "It's good to see you again!"
-msgstr "E' bello rivederti!"
+msgid "it's good to see you again!"
+msgstr "è bello rivederti!"
 
-#: .\a2note\templates\a2note\index.html:18
+#: .\a2note\templates\a2note\index.html:19
 msgid ""
 "Here you can create new to-do lists and shopping lists and see the lists "
 "you've already created."
@@ -34,7 +34,7 @@ msgstr ""
 "Qui puoi creare nuove to-do list e shopping list e vedere le liste che hai "
 "già creato."
 
-#: .\a2note\templates\a2note\index.html:28
+#: .\a2note\templates\a2note\index.html:29
 msgid ""
 "To-do lists are a great way to put your commitments and important things pen "
 "to paper. That way you can see your progress."
@@ -42,7 +42,7 @@ msgstr ""
 "Le to-do list sono un ottimo modo per mettere i tuoi impegni nero su bianco. "
 "In questo modo puoi vedere i tuoi progressi."
 
-#: .\a2note\templates\a2note\index.html:29
+#: .\a2note\templates\a2note\index.html:30
 msgid ""
 "With a shopping list it's easy to remember everything you have to buy. You "
 "can see progress as you put items in the cart and everything falls into its "
@@ -52,31 +52,37 @@ msgstr ""
 "Puoi vedere l'avanzamento man mano che metti i prodotti nel carrello e tutto "
 "appartiene alla propria categoria."
 
-#: .\a2note\templates\a2note\index.html:58
+#: .\a2note\templates\a2note\index.html:59
 msgid "Your lists"
 msgstr "Le tue liste"
 
-#: .\a2note\templates\a2note\index.html:72
+#: .\a2note\templates\a2note\index.html:73
+#: .\a2note\templates\a2note\todolist.html:45
+#: .\a2note\templates\a2note\todolist_editor.html:55
+msgid "All"
+msgstr "Tutto"
+
+#: .\a2note\templates\a2note\index.html:91
 msgid "Items"
 msgstr "Elementi"
 
-#: .\a2note\templates\a2note\index.html:79
+#: .\a2note\templates\a2note\index.html:98
 msgid "Oh no! It's all sad and empty here...go make some lists."
 msgstr "Oh no! E' tutto triste e vuoto qui...vai a creare qualche lista."
 
-#: .\a2note\templates\a2note\index.html:86
+#: .\a2note\templates\a2note\index.html:106
 msgid "Welcome to a<sub>2</sub>note.ninja!"
 msgstr "Benvenuto su a<sub>2</sub>note.ninja!"
 
-#: .\a2note\templates\a2note\index.html:93
+#: .\a2note\templates\a2note\index.html:113
 msgid "Without an account"
 msgstr "Senza un account"
 
-#: .\a2note\templates\a2note\index.html:97
+#: .\a2note\templates\a2note\index.html:117
 msgid "You can use a<sub>2</sub>note.ninja whithout the need to register."
 msgstr "Puoi usare a<sub>2</sub>note.ninja senza il bisogno di registrarti."
 
-#: .\a2note\templates\a2note\index.html:101
+#: .\a2note\templates\a2note\index.html:121
 msgid ""
 "Save up to <strong>1 to-do list</strong> and <strong>1 shopping list</"
 "strong>."
@@ -84,7 +90,7 @@ msgstr ""
 "Salva fino a <strong>1 to-do list</strong> e <strong>1 shopping list</"
 "strong>."
 
-#: .\a2note\templates\a2note\index.html:105
+#: .\a2note\templates\a2note\index.html:125
 msgid ""
 "Everything is saved locally on your browser so you can modify and consult "
 "your lists any time you want."
@@ -92,19 +98,19 @@ msgstr ""
 "Viene tutto salvato in locale sul tuo browser in modo che tu possa "
 "modificare e consultare le tue liste ogni volta che vuoi."
 
-#: .\a2note\templates\a2note\index.html:112
+#: .\a2note\templates\a2note\index.html:132
 msgid "With a free account (coming soon)"
 msgstr "Con un account gratuito (in arrivo)"
 
-#: .\a2note\templates\a2note\index.html:116
+#: .\a2note\templates\a2note\index.html:136
 msgid "Register a free account and unlock new ninja techniques!"
 msgstr "Registra un account gratuito e sblocca nuove tecniche ninja!"
 
-#: .\a2note\templates\a2note\index.html:120
+#: .\a2note\templates\a2note\index.html:140
 msgid "Create multiple To-do lists and shopping lists."
 msgstr "Crea più to-do list e shopping list."
 
-#: .\a2note\templates\a2note\index.html:124
+#: .\a2note\templates\a2note\index.html:144
 msgid ""
 "Everything will be saved in the cloud so you can access it across multiple "
 "devices."
@@ -112,11 +118,11 @@ msgstr ""
 "Viene tutto salvato sul cloud, in modo che tu possa accedervi da più "
 "dispositivi."
 
-#: .\a2note\templates\a2note\index.html:128
+#: .\a2note\templates\a2note\index.html:148
 msgid "Also:"
 msgstr "Inoltre:"
 
-#: .\a2note\templates\a2note\index.html:132
+#: .\a2note\templates\a2note\index.html:152
 msgid ""
 "Share your <strong>To-do lists</strong> and <strong>shopping lists</strong> "
 "like a ninja!<br>\n"
@@ -212,7 +218,7 @@ msgstr "Prodotti nelle shopping list"
 
 #: .\a2note\templates\a2note\my_dashboard.html:48
 #: .\a2note\templates\a2note\todolist.html:54
-#: .\a2note\templates\a2note\todolist_editor.html:39
+#: .\a2note\templates\a2note\todolist_editor.html:64
 msgid "Total"
 msgstr "Totale"
 
@@ -228,19 +234,19 @@ msgstr "Statistiche"
 msgid "Type of lists you make"
 msgstr "Tipi di liste che crei"
 
-#: .\a2note\templates\a2note\my_dashboard.html:71
+#: .\a2note\templates\a2note\my_dashboard.html:74
 msgid "Your overall progress with the tasks"
 msgstr "I tuoi progressi con i task"
 
-#: .\a2note\templates\a2note\my_dashboard.html:78
+#: .\a2note\templates\a2note\my_dashboard.html:85
 msgid "Your favourite days to make a to-do list"
 msgstr "I giorni che preferisci per creare to-do list"
 
-#: .\a2note\templates\a2note\my_dashboard.html:85
+#: .\a2note\templates\a2note\my_dashboard.html:96
 msgid "Your favourite days to make a shopping list"
 msgstr "I giorni che preferisci per creare shopping list"
 
-#: .\a2note\templates\a2note\my_dashboard.html:92
+#: .\a2note\templates\a2note\my_dashboard.html:107
 msgid "You haven't created any list...yet"
 msgstr "Non hai creato alcuna lista...per ora"
 
@@ -349,110 +355,147 @@ msgid "You are not logged in, your shopping list is saved locally."
 msgstr "Non hai eseguito il log in, la tua shopping list è salvata in locale."
 
 #: .\a2note\templates\a2note\shoplist.html:42
-#: .\a2note\templates\a2note\shoplist_editor.html:27
+#: .\a2note\templates\a2note\shoplist_editor.html:53
 msgid "Insert item..."
 msgstr "Inserisci elemento..."
 
 #: .\a2note\templates\a2note\shoplist.html:47
-#: .\a2note\templates\a2note\shoplist_editor.html:32
+#: .\a2note\templates\a2note\shoplist_editor.html:58
 msgid "Category"
 msgstr "Categorie"
 
 #: .\a2note\templates\a2note\shoplist.html:49
-#: .\a2note\templates\a2note\shoplist_editor.html:34
+#: .\a2note\templates\a2note\shoplist_editor.html:60
 msgid "Fruit"
 msgstr "Frutta"
 
 #: .\a2note\templates\a2note\shoplist.html:50
-#: .\a2note\templates\a2note\shoplist_editor.html:35
+#: .\a2note\templates\a2note\shoplist_editor.html:61
 msgid "Vegetables"
 msgstr "Verdura"
 
 #: .\a2note\templates\a2note\shoplist.html:51
-#: .\a2note\templates\a2note\shoplist_editor.html:36
+#: .\a2note\templates\a2note\shoplist_editor.html:62
 msgid "Dairy products"
 msgstr "Latticini"
 
 #: .\a2note\templates\a2note\shoplist.html:52
-#: .\a2note\templates\a2note\shoplist_editor.html:37
+#: .\a2note\templates\a2note\shoplist_editor.html:63
 msgid "Legumes"
 msgstr "Legumi"
 
 #: .\a2note\templates\a2note\shoplist.html:53
-#: .\a2note\templates\a2note\shoplist_editor.html:38
+#: .\a2note\templates\a2note\shoplist_editor.html:64
 msgid "Seasoning"
 msgstr "Condimenti"
 
 #: .\a2note\templates\a2note\shoplist.html:54
-#: .\a2note\templates\a2note\shoplist_editor.html:39
+#: .\a2note\templates\a2note\shoplist_editor.html:65
 msgid "Beverages"
 msgstr "Bevande"
 
 #: .\a2note\templates\a2note\shoplist.html:55
-#: .\a2note\templates\a2note\shoplist_editor.html:40
+#: .\a2note\templates\a2note\shoplist_editor.html:66
 msgid "Alcohol"
 msgstr "Alcolici"
 
 #: .\a2note\templates\a2note\shoplist.html:56
-#: .\a2note\templates\a2note\shoplist_editor.html:41
+#: .\a2note\templates\a2note\shoplist_editor.html:67
 msgid "Hygiene"
 msgstr "Igiene"
 
 #: .\a2note\templates\a2note\shoplist.html:57
-#: .\a2note\templates\a2note\shoplist_editor.html:42
+#: .\a2note\templates\a2note\shoplist_editor.html:68
 msgid "Supplies"
 msgstr "Forniture"
 
 #: .\a2note\templates\a2note\shoplist.html:58
-#: .\a2note\templates\a2note\shoplist_editor.html:43
+#: .\a2note\templates\a2note\shoplist_editor.html:69
 msgid "Cleaning"
 msgstr "Pulizia"
 
 #: .\a2note\templates\a2note\shoplist.html:59
-#: .\a2note\templates\a2note\shoplist_editor.html:44
+#: .\a2note\templates\a2note\shoplist_editor.html:70
 msgid "Other"
 msgstr "Altro"
 
-#: .\a2note\templates\a2note\shoplist_editor.html:17
+#: .\a2note\templates\a2note\shoplist_editor.html:19
+#: .\a2note\templates\a2note\todolist_editor.html:17
 msgid "Delete"
+msgstr "Elimina"
+
+#: .\a2note\templates\a2note\shoplist_editor.html:26
+#: .\a2note\templates\a2note\todolist_editor.html:24
+msgid "List deletion"
+msgstr "Eliminazione lista"
+
+#: .\a2note\templates\a2note\shoplist_editor.html:30
+#: .\a2note\templates\a2note\todolist_editor.html:28
+msgid "Warning"
+msgstr "Attenzione"
+
+#: .\a2note\templates\a2note\shoplist_editor.html:31
+#: .\a2note\templates\a2note\todolist_editor.html:29
+msgid "You are about to delete this list and all of its content."
+msgstr "Stai per eliminare questa lista e tutto il suo contenuto."
+
+#: .\a2note\templates\a2note\shoplist_editor.html:32
+#: .\a2note\templates\a2note\todolist_editor.html:30
+msgid ""
+"This list will do <a href='https://en.wikipedia.org/wiki/Seppuku' "
+"target='_blank' rel='noopener noreferrer'>seppuku</a> for the shame of "
+"failing you!"
 msgstr ""
+"Questa lista farà <a href='https://it.wikipedia.org/wiki/Seppuku' "
+"target='_blank' rel='noopener noreferrer'>seppuku</a> per la vergogna di "
+"averti deluso!"
+
+#: .\a2note\templates\a2note\shoplist_editor.html:33
+#: .\a2note\templates\a2note\todolist_editor.html:31
+msgid "This action is irreversible, do you wish to continue?"
+msgstr "Questa azione è irreversibile, desideri continuare?"
+
+#: .\a2note\templates\a2note\shoplist_editor.html:36
+#: .\a2note\templates\a2note\todolist_editor.html:34
+msgid "Nah...nevermind"
+msgstr "Nah...non importa"
+
+#: .\a2note\templates\a2note\shoplist_editor.html:37
+#: .\a2note\templates\a2note\todolist_editor.html:35
+msgid "Yes, go ahed!"
+msgstr "Sì, procedi!"
 
 #: .\a2note\templates\a2note\todolist.html:25
 msgid "You are not logged in, your to-do list is saved locally."
 msgstr "Non hai eseguito il log in, la tua to-do list è salvata in locale."
 
 #: .\a2note\templates\a2note\todolist.html:39
-#: .\a2note\templates\a2note\todolist_editor.html:24
+#: .\a2note\templates\a2note\todolist_editor.html:49
 msgid "Insert task..."
 msgstr "Inserisci task..."
 
 #: .\a2note\templates\a2note\todolist.html:43
-#: .\a2note\templates\a2note\todolist_editor.html:28
+#: .\a2note\templates\a2note\todolist_editor.html:53
 msgid "Filter tasks"
 msgstr "Filtra i task"
 
-#: .\a2note\templates\a2note\todolist.html:45
-#: .\a2note\templates\a2note\todolist_editor.html:30
-msgid "All"
-msgstr "Tutti"
-
 #: .\a2note\templates\a2note\todolist.html:46
-#: .\a2note\templates\a2note\todolist_editor.html:31
+#: .\a2note\templates\a2note\todolist_editor.html:56
 msgid "To-do"
 msgstr "Da fare"
 
 #: .\a2note\templates\a2note\todolist.html:47
-#: .\a2note\templates\a2note\todolist_editor.html:32
+#: .\a2note\templates\a2note\todolist_editor.html:57
 msgid "Completed"
 msgstr "Completati"
 
 #: .\a2note\templates\a2note\todolist.html:57
-#: .\a2note\templates\a2note\todolist_editor.html:42
+#: .\a2note\templates\a2note\todolist_editor.html:67
 msgid "Pending"
 msgstr "Da fare"
 
 #: .\a2note\templates\a2note\todolist.html:60
-#: .\a2note\templates\a2note\todolist_editor.html:45 .\a2note\views.py:231
+#: .\a2note\templates\a2note\todolist_editor.html:70 .\a2note\views.py:231
 msgid "Done"
 msgstr "Completati"
 

@@ -13,9 +13,10 @@
     {% if user.is_authenticated %}
     <script src="{% static 'a2note/index.js' %}"></script>
 
-    <h1 class="intro-0">{% translate 'Hi,' %} {{ user.username }}</h1>
-    <h2>{% translate "It's good to see you again!" %}</h2>
-    <h4>{% translate "Here you can create new to-do lists and shopping lists and see the lists you've already created." %}</h4>
+    <h2 class="intro-0">{% translate 'Hi' %} {{ user.username }},</h2>
+    <h2 class="intro-1">{% translate "it's good to see you again!" %}</h2>
+
+    <h4 class="intro-2">{% translate "Here you can create new to-do lists and shopping lists and see the lists you've already created." %}</h4>
 
     <hr>
 
@@ -56,10 +57,28 @@
     <hr>
 
     <h4>{% translate "Your lists" %} ( {{ total }} )</h4>
+
+    <div class="m-1 p-1">
+    <span class="material-icons-outlined">filter_alt</span>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="TODOLIST">
+        <label class="form-check-label" for="inlineRadio1">To-do lists</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="SHOPLIST">
+        <label class="form-check-label" for="inlineRadio2">Shopping lists</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="ALL" checked>
+        <label class="form-check-label" for="inlineRadio3">{% translate 'All' %}</label>
+      </div>
+    </div>
+
+
     <div class="row thumbnail-div rounded">
       {% for list in lists %}
       <div class="col-lg-3 col-12 p-1">
-        <div class="card list-thumbnail rounded shadow-sm">
+        <div class="card list-thumbnail rounded shadow-sm" data-type="{{ list.element_type }}">
           <h5 class="card-header">
             {% if list.element_type == 'SHOPLIST' %}
             <span class="material-icons-outlined">shopping_cart</span>
@@ -82,6 +101,7 @@
 
 
     {% else %}
+    <!-- User not authenticated -->
     <br>
     <h1 class="intro-0" align="center">{% translate 'Welcome to a<sub>2</sub>note.ninja!' %}</h1>
     <br>

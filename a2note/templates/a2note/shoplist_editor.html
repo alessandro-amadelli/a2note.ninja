@@ -14,7 +14,33 @@
   <div id="main-container" class="container my-container p-5">
 
     {% if user.username == author %}
-    <button type="button" class="intro-2 btn btn-danger" id="btnDeleteList">{% translate 'Delete' %}<span class="material-icons-outlined">delete</span></button>
+
+    <!-- Button trigger delete modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteList">{% translate 'Delete' %}<span class="material-icons-outlined">delete</span></button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalDeleteList" tabindex="-1" aria-labelledby="modalDeleteListLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalDeleteListLabel"><span class="material-icons-outlined">delete_forever</span> {% translate "List deletion" %}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h4><span class="material-icons-outlined">report_problem</span> {% translate "Warning"%}</h4>
+            <p>{% translate "You are about to delete this list and all of its content." %}<br>
+            {% translate "This list will do <a href='https://en.wikipedia.org/wiki/Seppuku' target='_blank' rel='noopener noreferrer'>seppuku</a> for the shame of failing you!" %}</p>
+            <p><strong>{% translate "This action is irreversible, do you wish to continue?" %}</strong></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate "Nah...nevermind" %}</button>
+            <button type="button" class="btn btn-danger" id="btnDeleteList">{% translate "Yes, go ahed!" %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     {% endif %}
     <h3 class="intro-1">Shopping list EDITOR</h3>
 

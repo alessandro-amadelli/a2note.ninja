@@ -21,8 +21,8 @@
     {% if total > 0 %}
     <table class="table table-dark">
       <tr>
-        <th class="table-active"><span class="material-icons-outlined">checklist_rtl</span> {% translate 'Todolists created' %}</th>
-        <th class="table-active">{{ todolists_total }}</th>
+        <th class="table-active fs-5"><span class="material-icons-outlined">checklist_rtl</span> {% translate 'Todolists created' %}</th>
+        <th class="table-active fs-5">{{ todolists_total }}</th>
       </tr>
       <tr>
         <th><span class="material-icons-outlined">tag</span> {% translate 'Tasks in to-do lists' %}</th>
@@ -37,16 +37,16 @@
         <td>{{ tasks_todo }}</td>
       </tr>
       <tr>
-        <th class="table-active"><span class="material-icons-outlined">shopping_cart</span> {% translate 'Shopping lists created' %}</th>
-        <th class="table-active">{{ shoplists_total }}</th>
+        <th class="table-active fs-5"><span class="material-icons-outlined">shopping_cart</span> {% translate 'Shopping lists created' %}</th>
+        <th class="table-active fs-5">{{ shoplists_total }}</th>
       </tr>
       <tr>
         <th><span class="material-icons-outlined">add_shopping_cart</span> {% translate 'Items in shopping lists' %}</th>
         <td>{{ total_items }}</td>
       </tr>
       <tr>
-        <th class="table-active"><span class="material-icons-outlined">functions</span> {% translate 'Total' %}</th>
-        <th class="table-active">{{ total }}</th>
+        <th class="table-active fs-5"><span class="material-icons-outlined">functions</span> {% translate 'Total' %}</th>
+        <th class="table-active fs-5">{{ total }}</th>
       </tr>
     </table>
     {% else %}
@@ -62,28 +62,43 @@
       {% if type_donut_plot %}
       <div class="col-lg-6 col-12 p-1">
         <h4>{% translate "Type of lists you make" %}</h4>
-        <img class="img-fluid" src="data:image/png;base64,{{ type_donut_plot|safe }}" loading="lazy"/>
+        <div class="position-relative">
+          <img class="img-fluid" src="data:image/png;base64,{{ type_donut_plot|safe }}" loading="lazy"/>
+          <div class="graph-overlay"></div>
+        </div>
       </div>
       {% endif %}
 
       {% if task_donut_plot %}
       <div class="col-lg-6 col-12 p-1">
         <h4>{% translate "Your overall progress with the tasks" %}</h4>
-        <img class="img-fluid" src="data:image/png;base64,{{ task_donut_plot|safe }}" loading="lazy"/>
+        <div class="position-relative">
+          <img class="img-fluid" src="data:image/png;base64,{{ task_donut_plot|safe }}" loading="lazy"/>
+          <div class="graph-overlay">
+          </div>
+        </div>
       </div>
       {% endif %}
 
       {% if todo_weekday_plot  %}
       <div class="col-lg-6 col-12 p-1">
         <h4>{% translate "Your favourite days to make a to-do list" %}</h4>
-        <img class="img-fluid" src="data:image/png;base64,{{ todo_weekday_plot|safe }}" loading="lazy"/>
+        <div class="position-relative">
+          <img class="img-fluid" src="data:image/png;base64,{{ todo_weekday_plot|safe }}" loading="lazy"/>
+          <div class="graph-overlay">
+          </div>
+        </div>
       </div>
       {% endif %}
 
       {% if shop_weekday_plot %}
       <div class="col-lg-6 col-12 p-1">
         <h4>{% translate "Your favourite days to make a shopping list" %}</h4>
-        <img class="img-fluid" src="data:image/png;base64,{{ shop_weekday_plot|safe }}" loading="lazy"/>
+        <div class="position-relative">
+          <img class="img-fluid" src="data:image/png;base64,{{ shop_weekday_plot|safe }}" loading="lazy"/>
+          <div class="graph-overlay">
+          </div>
+        </div>
       </div>
       {% endif %}
 
