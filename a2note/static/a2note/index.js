@@ -30,13 +30,13 @@ function filterLists(radio) {
 
     document.querySelectorAll(".list-thumbnail").forEach((thumbnail, i) => {
       if (val == "ALL") {
-        thumbnail.classList.remove("hidden");
+        thumbnail.parentElement.classList.remove("hidden");
       } else {
         let type = thumbnail.dataset.type;
         if (type == val) {
-          thumbnail.classList.remove("hidden");
+          thumbnail.parentElement.classList.remove("hidden");
         } else {
-          thumbnail.classList.add("hidden");
+          thumbnail.parentElement.classList.add("hidden");
         }
       }
     });

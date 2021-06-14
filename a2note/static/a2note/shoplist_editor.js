@@ -38,9 +38,11 @@ function getListItems() {
   itemList.forEach((item, i) => {
     let name = item.querySelector(".taskTextArea").innerText;
     let category = item.parentElement.dataset.category;
+    let quantity = item.querySelector(".itemQuantity").value;
     let status = item.dataset.status;
     listItems[name] = {
       "category": category,
+      "quantity": quantity,
       "status": status
   }
   });
@@ -78,7 +80,11 @@ function saveShoplistToDB() {
 function loadShoplist(){
 
   Object.keys(items).forEach((item, i) => {
-    addItem(items[item]["category"], item, items[item]["status"], true);
+    let quantity = 1
+    if (items[item].hasOwnProperty("quantity")) {
+      quantity = items[item]["quantity"];
+    }
+    addItem(items[item]["category"], item, quantity, items[item]["status"], true);
   });
 
 }

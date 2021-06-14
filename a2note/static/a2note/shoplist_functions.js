@@ -43,7 +43,7 @@ function retrieveAllProducts() {
   request.send();
 }
 
-function addItem(category=null, text=null, itemStatus=null, loadedFromStorage=false) {
+function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFromStorage=false) {
   //Adds a new element in the shopping list
   if (category == null) {
     let catSelect = document.querySelector("#categorySelect");
@@ -80,7 +80,7 @@ function addItem(category=null, text=null, itemStatus=null, loadedFromStorage=fa
   //Creation of new list item
   // ### ITEM ###
   let newItem = document.createElement("div");
-  newItem.setAttribute("class", "element singleItem card rounded-3");
+  newItem.setAttribute("class", "element singleItem card rounded-3 d-flex");
 
   //Item status
   if (itemStatus == null) {
@@ -151,14 +151,31 @@ function addItem(category=null, text=null, itemStatus=null, loadedFromStorage=fa
 
   // ### ITEM BODY ###
   let itemBody = document.createElement("div");
-  itemBody.setAttribute("class", "card-body");
+  itemBody.setAttribute("class", "card-body row");
 
   let itemText = document.createElement("p");
-  itemText.setAttribute("class", "taskTextArea card-text");
+  itemText.setAttribute("class", "taskTextArea card-text col-9 d-inline");
   itemText.innerText = text;
   itemBody.appendChild(itemText);
   newItem.appendChild(itemBody);
 
+  //Quantity div
+  let quantDiv = document.createElement("div");
+  quantDiv.setAttribute("class", "col-3 d-inline");
+  let quantInp = document.createElement("input");
+  quantInp.setAttribute("type", "number");
+  quantInp.setAttribute("class", "itemQuantity");
+  quantInp.value = quantity;
+  quantInp.min = "1";
+  quantInp.max = "200";
+
+  //Event listener on number change
+  quantInp.addEventListener('change', function(){
+    saveShoplist();
+  });
+
+  quantDiv.appendChild(quantInp);
+  itemBody.appendChild(quantDiv);
 
   //Animaiton when adding item
   newItem.addEventListener('animationend', function(){
