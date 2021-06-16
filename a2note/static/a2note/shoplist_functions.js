@@ -164,14 +164,14 @@ function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFr
   quantDiv.setAttribute("class", "col-3 d-inline");
   let quantInp = document.createElement("input");
   quantInp.setAttribute("type", "number");
-  quantInp.setAttribute("class", "itemQuantity");
+  quantInp.setAttribute("class", "itemQuantity rounded rounded-pill p-1 shadow-sm");
   quantInp.value = quantity;
   quantInp.min = "1";
   quantInp.max = "200";
 
   //Event listener on number change
   quantInp.addEventListener('change', function(){
-    saveShoplist();
+    enableSave();
   });
 
   quantDiv.appendChild(quantInp);
@@ -188,7 +188,7 @@ function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFr
   if (!loadedFromStorage) {
     //Save updated list
     //The function saveShoplist() contains a call to the correct saving function
-    saveShoplist();
+    enableSave();
 
     //Notification toast
     notify(`<strong>${text}</strong> ` + gettext("added"));
@@ -213,7 +213,7 @@ function deleteItem(item) {
     item.remove();
     //Save updated list
     //The function saveShoplist() contains a call to the correct saving function
-    saveShoplist();
+    enableSave();
   });
 
   //Adding class for deletion animation
@@ -230,41 +230,7 @@ function completeItem(item){
   }
   //Save updated list
   //The function saveShoplist() contains a call to the correct saving function
-  saveShoplist();
-}
-
-function notify(text) {
-  //Deletion of pre-existing toasts
-  let toastList = document.querySelectorAll(".toast");
-  toastList.forEach((toast, i) => {
-    toast.remove();
-  });
-
-  let divAlign = document.createElement("div");
-  divAlign.setAttribute("class", "position-fixed bottom-0 end-0 p-3");
-  divAlign.style = "z-index:5;color:black;";
-
-  let toast = document.createElement("div");
-  toast.setAttribute("class", "toast fade show toast-animated");
-  toast.setAttribute("role", "alert");
-  toast.setAttribute("aria-live", "assertive");
-  toast.setAttribute("aria-atomic", "true");
-  toast.setAttribute("data-bs-animation", "true");
-  toast.setAttribute("data-autohide", "true");
-  toast.setAttribute("data-bs-delay", "2000");
-
-  let body = document.createElement("div");
-  body.setAttribute("class", "toast-body");
-  body.innerHTML = text;
-
-  toast.appendChild(body);
-  divAlign.appendChild(toast);
-  document.querySelector("#main-container").appendChild(divAlign);
-
-  toast.addEventListener('animationend', () => {
-    toast.classList.remove("show");
-    toast.classList.add("hide");
-  })
+  enableSave();
 }
 
 //W3Schools.com autocomplete solution adapted to my JSON object

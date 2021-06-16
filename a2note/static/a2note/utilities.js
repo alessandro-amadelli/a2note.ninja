@@ -50,7 +50,7 @@ function toggleTheme(selection=""){
 
     //buttons
     document.querySelectorAll(".btn").forEach((button, i) => {
-      if (!button.classList.contains("btn-danger")) {
+      if (button.classList.contains("btn-dark") || button.classList.contains("btn-light")) {
         button.classList.remove("btn-light");
         button.classList.add("btn-dark");
       }
@@ -82,7 +82,7 @@ function toggleTheme(selection=""){
 
     //buttons
     document.querySelectorAll(".btn").forEach((button, i) => {
-      if (!button.classList.contains("btn-danger")) {
+      if (button.classList.contains("btn-dark") || button.classList.contains("btn-light")) {
         button.classList.remove("btn-dark");
         button.classList.add("btn-light");
       }
@@ -149,4 +149,38 @@ function removeLoading(){
   document.querySelectorAll(".loading-overlay").forEach((item, i) => {
     item.remove();
   });
+}
+
+function notify(text) {
+  //Deletion of pre-existing toasts
+  let toastList = document.querySelectorAll(".toast");
+  toastList.forEach((toast, i) => {
+    toast.remove();
+  });
+
+  let divAlign = document.createElement("div");
+  divAlign.setAttribute("class", "position-fixed bottom-0 end-0 p-3");
+  divAlign.style = "z-index:5;color:black;";
+
+  let toast = document.createElement("div");
+  toast.setAttribute("class", "toast fade show toast-animated");
+  toast.setAttribute("role", "alert");
+  toast.setAttribute("aria-live", "assertive");
+  toast.setAttribute("aria-atomic", "true");
+  toast.setAttribute("data-bs-animation", "true");
+  toast.setAttribute("data-autohide", "true");
+  toast.setAttribute("data-bs-delay", "2000");
+
+  let body = document.createElement("div");
+  body.setAttribute("class", "toast-body");
+  body.innerHTML = text;
+
+  toast.appendChild(body);
+  divAlign.appendChild(toast);
+  document.querySelector("body").appendChild(divAlign);
+
+  toast.addEventListener('animationend', () => {
+    toast.classList.remove("show");
+    toast.classList.add("hide");
+  })
 }

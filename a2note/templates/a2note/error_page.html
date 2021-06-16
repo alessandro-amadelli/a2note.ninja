@@ -1,0 +1,15 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+  a2note.ninja
+{% endblock %}
+
+{% block body %}
+  <script>
+    document.querySelector(".logo").src = "{% static 'a2note/ninja_logo_error.png' %}";
+  </script>
+{% endblock %}

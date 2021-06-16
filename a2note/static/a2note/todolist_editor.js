@@ -20,11 +20,29 @@ document.addEventListener('DOMContentLoaded', function(){
 
     initializeBtnDelete();
 
+    //Button to save the to-do list
+    document.querySelector("#btnSaveList").onclick = () => {
+      btnSaveClick();
+    }
+
 });
+
+function btnSaveClick() {
+  let btnSave = document.querySelector("#btnSaveList");
+  btnSave.disabled = true;
+  btnSave.classList.add("hidden");
+  saveTodolist();
+}
 
 function saveTodolist() {
   showLoading();
   saveTodolistToDB();
+}
+
+function enableSave() {
+  let btnSave = document.querySelector("#btnSaveList");
+  btnSaveList.disabled = false;
+  btnSaveList.classList.remove("hidden");
 }
 
 function getListTasks() {
@@ -56,6 +74,7 @@ function saveTodolistToDB() {
   request.onload = () => {
     const response = JSON.parse(request.responseText);
     removeLoading();
+    notify(gettext("List saved"));
   };
   const data = new FormData();
   element_id = document.querySelector("#elementID").innerText;

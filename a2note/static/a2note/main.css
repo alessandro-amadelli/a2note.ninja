@@ -278,7 +278,7 @@ body a {
   animation-delay: 1.5s;
 }
 
-#logo-dark, #logo-light {
+.logo {
   width: 60px;
   height: 60px;
   margin: 0;

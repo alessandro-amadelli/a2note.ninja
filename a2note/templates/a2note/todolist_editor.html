@@ -40,9 +40,17 @@
 
     {% endif %}
 
-    <h3 class="intro-1">To-do list editor</h3>
+    <div class="row m-1 p-1">
+      <div class="col-9">
+        <h3 class="intro-1"><span class="material-icons-outlined">checklist_rtl</span> To-do list EDITOR</h3>
+      </div>
+      <div class="col-3">
+        <button class="btn btn-success hidden" id="btnSaveList" disabled><span class="material-icons-outlined">save</span> {% translate "Save changes" %}</button>
+      </div>
+    </div>
+
     {% if element_id %}
-      <h4><span class="material-icons-outlined">checklist_rtl</span> <span id="elementID">{{ element_id }}</span></h4>
+    <span id="elementID" class="hidden">{{ element_id }}</span>
     {% endif %}
 
     <div class="row">

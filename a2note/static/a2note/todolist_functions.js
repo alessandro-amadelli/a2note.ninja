@@ -160,7 +160,7 @@ function addTask(text=null, creationTime=null, taskStatus=null, loadedFromStorag
 
   if (!loadedFromStorage) {
     //Save updated list to localStorage
-    saveTodolist();
+    enableSave();
   }
 }
 
@@ -177,7 +177,7 @@ function deleteTask(task) {
     updateStats();
 
     //Save updated list to localStorage
-    saveTodolist();
+    enableSave();
   });
 
   //Adding class for deletion animation
@@ -196,7 +196,7 @@ function completeTask(task){
   displayTasks();
 
   //Save updated list to localStorage
-  saveTodolist();
+  enableSave();
 }
 
 function displayTasks(){
@@ -220,7 +220,7 @@ function moveTaskUp(task){
     task.classList.add("movedTask");
   }
   //Save updated list to localStorage
-  saveTodolist();
+  enableSave();
 }
 
 function moveTaskDown(task){
@@ -237,7 +237,7 @@ function moveTaskDown(task){
     }
 
     //Save updated list to localStorage
-    saveTodolist();
+    enableSave();
   }
 }
 

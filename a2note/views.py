@@ -24,6 +24,16 @@ from datetime import datetime
 
 from a2note.plot_maker import make_donut, make_bar
 
+def error_view(request, message=""):
+
+    context = {}
+    context["message"] = {
+    "class": "alert alert-danger alert-dismissible",
+    "text": message
+    }
+
+    return render(request, "a2note/error_page.html", context)
+
 def index(request):
     if request.user.is_authenticated:
         #Get user information
@@ -271,7 +281,8 @@ def new_todolist_view(request):
         }
     }
 
-    return render(request, "a2note/todolist.html", context)
+    # return render(request, "a2note/todolist.html", context)
+    return list_editor(request, element_id)
 
 
 def shoplist(request):
@@ -301,7 +312,6 @@ def new_shoplist_view(request):
         }
     }
 
-    #return render(request, "a2note/shoplist.html", context)
     return list_editor(request, element_id)
 
 
@@ -340,7 +350,7 @@ def list_editor(request, listUID):
 
     if not access_granted:
         #Render an error page with a message
-        pass
+        return error_view(request, _("Sorry, you cannot edit this list."))
 
     context = item
 
@@ -407,12 +417,20 @@ def save_list_view(request):
     if username == list_data['author']:
         access_granted, edit_granted = True, True
     else:
-        if "shared" in list_data:
-            if list_data["shared"] == "True":
-                access_granted = True
+        #If the user is not the author of the list, the shared and edit_enabled values
+        # are taken from the database
+        shared = list_data["shared"]
+        edit_enabled = list_data["edit_enabled"]
+
+        if list_data["shared"] == "True":
+            access_granted = True
+
         if "edit_enabled" in list_data:
             if list_data["edit_enabled"] == "True" and access_granted:
                 edit_granted = True
+
+    if not edit_granted:
+        return error_view(request, _("You do not have edit privilege on this list."))
 
     #List data
     item = {

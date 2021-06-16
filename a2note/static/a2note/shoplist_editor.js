@@ -22,13 +22,65 @@ document.addEventListener('DOMContentLoaded', function(){
 
   loadShoplist();
 
+  //Button to delete list
   initializeBtnDelete();
+
+  //Event listener for privacy setting switch
+  try {
+    document.querySelector("#listPrivacySwitch").addEventListener('change', function(){
+      document.querySelector("#editEnableSwitch").disabled = !this.checked;
+      if (!this.checked) {
+        document.querySelector("#editEnableSwitch").checked = false;
+      }
+    });
+
+    //Button to save list settings
+    document.querySelector("#btnSaveSettings").onclick = () => {
+      saveShoplist(reload=true); //Saving and reloading the page
+    };
+
+    //Copy to clipboard function
+    let urlText = document.querySelector("#urlText");
+    urlText.value = window.location.href;
+
+    document.querySelector("#btnCopyClipboard").addEventListener("click", function() {
+      urlText.classList.remove("hidden");
+      urlText.select();
+      urlText.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      urlText.classList.add("hidden");
+      notify("Link copied");
+    });
+
+  } catch {}
+
+  //Button to save the shopping list
+  document.querySelector("#btnSaveList").onclick = () => {
+    btnSaveClick();
+  }
+
+  // window.onbeforeunload = function() {
+  //   return "";
+  // }
 
 });
 
-function saveShoplist() {
+function btnSaveClick() {
+  let btnSave = document.querySelector("#btnSaveList");
+  btnSave.disabled = true;
+  btnSave.classList.add("hidden");
+  saveShoplist();
+}
+
+function enableSave() {
+  let btnSave = document.querySelector("#btnSaveList");
+  btnSaveList.disabled = false;
+  btnSaveList.classList.remove("hidden");
+}
+
+function saveShoplist(reload=false) {
   showLoading();
-  saveShoplistToDB();
+  saveShoplistToDB(reload);
 }
 
 function getListItems() {
@@ -48,10 +100,9 @@ function getListItems() {
   });
 
   return JSON.stringify(listItems);
-
 }
 
-function saveShoplistToDB() {
+function saveShoplistToDB(reload) {
   var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
   const request = new XMLHttpRequest();
   const url = `/save_list_view/`;
@@ -59,7 +110,12 @@ function saveShoplistToDB() {
   request.setRequestHeader('X-CSRFToken', csrftoken);
   request.onload = () => {
     const response = JSON.parse(request.responseText);
-    removeLoading();
+    if (reload) {
+      location.reload();
+    } else {
+      removeLoading();
+    }
+    notify(gettext("List saved"));
   };
   const data = new FormData();
   element_id = document.querySelector("#elementID").innerText;
@@ -68,11 +124,23 @@ function saveShoplistToDB() {
   } else {
     element_type = "TODOLIST";
   }
+  shared = "False";
+  edit_enabled = "False";
+
+  try {
+    if (document.querySelector("#listPrivacySwitch").checked) {
+      shared = "True";
+      if (document.querySelector("#editEnableSwitch").checked) {
+        edit_enabled = "True";
+      }
+    }
+  } catch {}
+
   data.append("element_id", element_id);
   data.append("element_type", element_type);
   data.append("items", getListItems());
-  data.append("shared", "False");
-  data.append("edit_enabled", "False");
+  data.append("shared", shared);
+  data.append("edit_enabled", edit_enabled);
 
   request.send(data);
 }
