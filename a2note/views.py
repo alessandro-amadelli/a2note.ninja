@@ -24,6 +24,9 @@ from datetime import datetime
 
 from a2note.plot_maker import make_donut, make_bar
 
+#Caching
+from django.core.cache import cache
+
 def error_view(request, message=""):
 
     context = {}
@@ -41,7 +44,11 @@ def index(request):
 
         total, todolists_ctr, shoplists_ctr = 0,0,0
         #Get all lists created by the current user
-        created_lists = select_lists_by_author(user.username)
+        cache_key = user.username + "_LISTS"
+        created_lists = cache.get(cache_key)
+        if not created_lists:
+            created_lists = select_lists_by_author(user.username)
+            cache.set(cache_key, created_lists)
 
         lists = []
 
@@ -168,7 +175,11 @@ def my_account_view(request):
     user = request.user
 
     #Get all lists created by the current user
-    created_lists = select_lists_by_author(user.username)
+    cache_key = user.username + "_LISTS"
+    created_lists = cache.get(cache_key)
+    if not created_lists:
+        created_lists = select_lists_by_author(user.username)
+        cache.set(cache_key, created_lists)
 
     shop_num, todo_num = 0,0
     for l in created_lists:
@@ -193,7 +204,11 @@ def dashboard_view(request):
     user = request.user
 
     #Get all lists created by the current user
-    created_lists = select_lists_by_author(user.username)
+    #Get all lists created by the current user
+    cache_key = user.username + "_LISTS"
+    created_lists = cache.get(cache_key)
+    if not created_lists:
+        created_lists = select_lists_by_author(user.username)
 
     total_tasks, total_items = 0,0
     total_done, total_todo = 0,0
@@ -286,7 +301,9 @@ def new_todolist_view(request):
 
 
 def shoplist(request):
-
+    """
+    Creation of a shopping list for an unauthenticated user
+    """
     return render(request, "a2note/shoplist.html")
 
 @login_required
@@ -313,7 +330,6 @@ def new_shoplist_view(request):
     }
 
     return list_editor(request, element_id)
-
 
 def list_editor(request, listUID):
     #Choose the correct type of list
@@ -365,7 +381,11 @@ def product_list_view(request):
     This view returns data about all the product in the database to make the auto fill
     function work
     """
-    product_list = select_elements_by_type('PRODUCT')
+    #Checking if the products are already present in the cache
+    product_list = cache.get("PRODUCTS")
+    if not product_list:
+        product_list = select_elements_by_type('PRODUCT')
+        cache.set("PRODUCTS", product_list, 60 * 60 * 24) #Value is cached for 24h
 
     response = {}
     for p in product_list:
@@ -445,6 +465,10 @@ def save_list_view(request):
 
     insert_item(item)
 
+    #delete cached lists for the list author
+    cache_key = list_data["author"] + "_LISTS"
+    cache.delete(cache_key)
+
     response = {
         'STATUS': 'OK'
     }
@@ -472,6 +496,10 @@ def delete_list(request):
         return JsonResponse(response)
 
     delete_item(element_type, element_id)
+
+    #delete cached lists for the list author
+    cache_key = old_list["author"] + "_LISTS"
+    cache.delete(cache_key)
 
     response = {"RESULT": "OK"}
     return JsonResponse(response)
