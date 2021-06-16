@@ -28,6 +28,10 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 function btnSaveClick() {
+  //Remove stop if user tries to leave the page (all the content is saved so it is not necessary)
+  window.onbeforeunload = function() {
+  }
+
   let btnSave = document.querySelector("#btnSaveList");
   btnSave.disabled = true;
   btnSave.classList.add("hidden");
@@ -43,6 +47,11 @@ function enableSave() {
   let btnSave = document.querySelector("#btnSaveList");
   btnSaveList.disabled = false;
   btnSaveList.classList.remove("hidden");
+  //Enable stop if user tries to leave the page (there are unsaved changes)
+  window.onbeforeunload = function() {
+    return "";
+  }
+  
 }
 
 function getListTasks() {

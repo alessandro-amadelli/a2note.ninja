@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     //Button to save list settings
     document.querySelector("#btnSaveSettings").onclick = () => {
-      saveShoplist(reload=true); //Saving and reloading the page
+      btnSaveClick(reload=true); //Saving and reloading the page
     };
 
     //Copy to clipboard function
@@ -58,24 +58,29 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelector("#btnSaveList").onclick = () => {
     btnSaveClick();
   }
-
-  // window.onbeforeunload = function() {
-  //   return "";
-  // }
-
 });
 
-function btnSaveClick() {
+function btnSaveClick(reload=false) {
+  //Remove stop if user tries to leave the page (all the content is saved so it is not necessary)
+  window.onbeforeunload = function() {
+  }
+
   let btnSave = document.querySelector("#btnSaveList");
   btnSave.disabled = true;
   btnSave.classList.add("hidden");
-  saveShoplist();
+  saveShoplist(reload);
+
 }
 
 function enableSave() {
   let btnSave = document.querySelector("#btnSaveList");
   btnSaveList.disabled = false;
   btnSaveList.classList.remove("hidden");
+
+  //Enable stop if user tries to leave the page (there are unsaved changes)
+  window.onbeforeunload = function() {
+    return "";
+  }
 }
 
 function saveShoplist(reload=false) {
