@@ -15,15 +15,23 @@ document.addEventListener('DOMContentLoaded', function(){
     displayTasks();
   });
 
-    loadTodolist();
-    updateStats();
+  loadTodolist();
+  updateStats();
 
-    initializeBtnDelete();
+  initializeBtnDelete();
 
-    //Button to save the to-do list
-    document.querySelector("#btnSaveList").onclick = () => {
-      btnSaveClick();
+  //Button to save the to-do list
+  document.querySelector("#btnSaveList").onclick = () => {
+    btnSaveClick();
+  }
+
+  let inpListTitle = document.querySelector("#inpListTitle");
+  var oldTitle = inpListTitle.value;
+  inpListTitle.addEventListener('keyup', () => {
+    if (inpListTitle.value != oldTitle) {
+      enableSave();
     }
+  });
 
 });
 
@@ -36,6 +44,7 @@ function btnSaveClick() {
   btnSave.disabled = true;
   btnSave.classList.add("hidden");
   saveTodolist();
+  oldTitle = document.querySelector("#inpListTitle").value;
 }
 
 function saveTodolist() {
@@ -51,7 +60,7 @@ function enableSave() {
   window.onbeforeunload = function() {
     return "";
   }
-  
+
 }
 
 function getListTasks() {
@@ -86,6 +95,7 @@ function saveTodolistToDB() {
     notify(gettext("List saved"));
   };
   const data = new FormData();
+  title = document.querySelector("#inpListTitle").value;
   element_id = document.querySelector("#elementID").innerText;
   if (element_id.substring(0,2) == "SL") {
     element_type = "SHOPLIST";
@@ -94,6 +104,7 @@ function saveTodolistToDB() {
   }
   data.append("element_id", element_id);
   data.append("element_type", element_type);
+  data.append("title", title);
   data.append("items", getListTasks());
   data.append("shared", "False");
   data.append("edit_enabled", "False");

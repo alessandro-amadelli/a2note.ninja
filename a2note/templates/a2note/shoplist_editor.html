@@ -12,9 +12,14 @@
   {% csrf_token %}
 
   <div id="main-container" class="container my-container p-5">
+    <div class="row m-1 p-1 d-flex">
+      <h3 class="intro-1 col"><span class="material-icons-outlined">shopping_cart</span> List EDITOR</h3>
+      <div class="col-lg-3 col-4">
+        <button class="btn btn-success hidden" id="btnSaveList" disabled><span class="material-icons-outlined">save</span> {% translate "Save" %}</button>
+      </div>
+    </div>
 
     {% if user.username == author %}
-
     <table class="table align-middle">
       <tr>
         <th class="text-center">
@@ -127,16 +132,11 @@
         </div>
       </div>
     </div>
-
-
     {% endif %}
+
     <div class="row m-1 p-1">
-      <div class="col-9">
-        <h3 class="intro-1"><span class="material-icons-outlined">shopping_cart</span> Shopping list EDITOR</h3>
-      </div>
-      <div class="col-3">
-        <button class="btn btn-success hidden" id="btnSaveList" disabled><span class="material-icons-outlined">save</span> {% translate "Save changes" %}</button>
-      </div>
+      <label for="inpListTitle" class="col-lg-1 col-2 d-inline">{% translate 'Title' %}</label>
+      <input type="text" id="inpListTitle" class="col-lg-11 col-10 rounded-3 mb-3 p-1 d-inline" placeholder="{% translate 'List title...' %}" maxlength="30" autocomplete="off" value="{{ title }}"/>
     </div>
 
     {% if element_id %}

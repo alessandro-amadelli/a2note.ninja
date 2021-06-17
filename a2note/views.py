@@ -55,9 +55,16 @@ def index(request):
         for l in created_lists:
             length = len(l["items"])
             creation_date = datetime.strptime(l["creation_timestamp"], "%Y-%m-%d h.%H:%M:%S.%f")
+            #List title
+            if "title" in l:
+                title = l["title"]
+            else:
+                #title legacy for old lists without titles
+                title = l["element_type"] + "_" + l["element_id"]
             list_obj = {
-                "element_id": l["element_id"],
                 "element_type": l["element_type"],
+                "element_id": l["element_id"],
+                "title": title,
                 "creation_timestamp": creation_date.strftime("%Y-%m-%d h.%H:%M:%S"),
                 "length": length
             }
@@ -410,10 +417,14 @@ def save_list_view(request):
 
     element_id = request.POST["element_id"]
     element_type = request.POST["element_type"]
+    title = request.POST["title"]
     items = request.POST["items"]
     items = json.loads(items)
     shared = request.POST["shared"]
     edit_enabled = request.POST["edit_enabled"]
+
+    if title == "":
+        title = element_type + "_" + element_id
 
     response = {}
 
@@ -456,6 +467,7 @@ def save_list_view(request):
     item = {
         'element_type': element_type,
         'element_id': element_id,
+        'title': title,
         'author': author,
         'items': items,
         'shared': shared,

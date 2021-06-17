@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   });
 
+  //Creates the sections of the shopping list in the correct order
   createSections();
 
   //Get all products from the database
@@ -54,6 +55,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
   } catch {}
 
+  let inpListTitle = document.querySelector("#inpListTitle");
+  var oldTitle = inpListTitle.value;
+  inpListTitle.addEventListener('keyup', () => {
+    if (inpListTitle.value != oldTitle) {
+      enableSave();
+    }
+  });
+
   //Button to save the shopping list
   document.querySelector("#btnSaveList").onclick = () => {
     btnSaveClick();
@@ -69,7 +78,7 @@ function btnSaveClick(reload=false) {
   btnSave.disabled = true;
   btnSave.classList.add("hidden");
   saveShoplist(reload);
-
+  oldTitle = document.querySelector("#inpListTitle").value;
 }
 
 function enableSave() {
@@ -123,6 +132,8 @@ function saveShoplistToDB(reload) {
     notify(gettext("List saved"));
   };
   const data = new FormData();
+  title = document.querySelector("#inpListTitle").value;
+
   element_id = document.querySelector("#elementID").innerText;
   if (element_id.substring(0,2) == "SL") {
     element_type = "SHOPLIST";
@@ -143,6 +154,7 @@ function saveShoplistToDB(reload) {
 
   data.append("element_id", element_id);
   data.append("element_type", element_type);
+  data.append("title", title);
   data.append("items", getListItems());
   data.append("shared", shared);
   data.append("edit_enabled", edit_enabled);

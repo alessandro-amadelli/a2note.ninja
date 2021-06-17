@@ -31,22 +31,23 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-6 p-1">
+    <div class="row m-1 p-1 d-flex">
+
+      <div class="col-6">
         <a href="{% url 'new_todolist_view' %}" class="text-reset text-decoration-none">
           <div class="card newList-card rounded">
             <div class="card-body">
-              <h5 class="flex-text card-title">To-do list <span class="material-icons-outlined">edit</span></h5>
+              <p class="card-title fs-5">To-do list <span class="material-icons-outlined">edit</span></p>
             </div>
           </div>
         </a>
       </div>
 
-      <div class="col-6 p-1">
+      <div class="col-6">
         <a href="{% url 'new_shoplist_view' %}" class="text-reset text-decoration-none">
           <div class="card newList-card rounded">
             <div class="card-body">
-              <h5 class="flex-text card-title">Shopping list <span class="material-icons-outlined">edit</span></h5>
+              <p class="card-title fs-5">Shopping list <span class="material-icons-outlined">edit</span></p>
             </div>
           </div>
         </a>
@@ -75,9 +76,9 @@
     </div>
 
 
-    <div class="row thumbnail-div rounded">
+    <div class="row thumbnail-div rounded d-flex">
       {% for list in lists %}
-      <div class="col-lg-3 col-12 p-1">
+      <div class="col-lg-4 col-12 p-1">
         <div class="card list-thumbnail rounded shadow-sm" data-type="{{ list.element_type }}">
           <h5 class="card-header">
             {% if list.element_type == 'SHOPLIST' %}
@@ -85,7 +86,12 @@
             {% else %}
             <span class="material-icons-outlined">checklist_rtl</span>
             {% endif %}
-            {{ list.element_id }}</h5>
+            {% if list.title %}
+              {{ list.title }}
+            {% else %}
+              {{ list.element_type }}_{{ list.element_id }}
+            {% endif %}
+          </h5>
           <div class="card-body">
             <p class="card-text"><span class="material-icons-outlined">event</span> {{ list.creation_timestamp }}</p>
             <p class="card-text">{% translate 'Items' %}: {{ list.length }}</p>
@@ -98,7 +104,6 @@
       <p><span class="material-icons-outlined">sentiment_dissatisfied</span> {% translate "Oh no! It's all sad and empty here...go make some lists." %}</p>
       {% endfor %}
     </div>
-
 
     {% else %}
     <!-- User not authenticated -->

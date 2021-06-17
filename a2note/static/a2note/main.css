@@ -301,8 +301,7 @@ body a {
 }
 
 .newList-card {
-  min-width: 10rem;
-  height: auto;
+  width: 100%;
   background-color: var(--element-background);
 }
 
