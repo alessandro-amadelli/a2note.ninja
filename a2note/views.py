@@ -277,8 +277,16 @@ def dashboard_view(request):
 
 
 def todolist(request):
-
+    """
+    Creation of a to-do list for an unauthenticated user
+    """
     return render(request, "a2note/todolist.html")
+
+def shoplist(request):
+    """
+    Creation of a shopping list for an unauthenticated user
+    """
+    return render(request, "a2note/shoplist.html")
 
 @login_required
 def new_todolist_view(request):
@@ -306,12 +314,6 @@ def new_todolist_view(request):
     # return render(request, "a2note/todolist.html", context)
     return list_editor(request, element_id)
 
-
-def shoplist(request):
-    """
-    Creation of a shopping list for an unauthenticated user
-    """
-    return render(request, "a2note/shoplist.html")
 
 @login_required
 def new_shoplist_view(request):
@@ -351,7 +353,7 @@ def list_editor(request, listUID):
         item = item[0]
     else:
         #Return error page with message
-        pass
+        return error_view(request, _("Ooops! That's awkward..."))
 
     access_granted = False
 
@@ -381,7 +383,6 @@ def list_editor(request, listUID):
         return render(request, "a2note/shoplist_editor.html", context)
     else:
         return render(request, "a2note/todolist_editor.html", context)
-
 
 def product_list_view(request):
     """

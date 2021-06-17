@@ -30,7 +30,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = os.environ['A2NOTE_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['A2NOTE_DEBUG_SETTING']
+DEBUG = os.environ['A2NOTE_DEBUG_SETTING'] == "True"
 
 ALLOWED_HOSTS = [
     'localhost',
