@@ -351,13 +351,17 @@ def list_editor(request, listUID):
     else:
         list_type = "TODOLIST"
 
-    #Select from table the list to access data
-    item = select_element_by_id(listUID, list_type)
-    if len(item) > 0:
-        item = item[0]
-    else:
-        #Return error page with message
-        return error_view(request, _("Ooops! That's awkward..."))
+    cache_key = list_type + listUID
+    item = cache.get(cache_key)
+    if not item:
+        #Select from table the list to access data
+        item = select_element_by_id(listUID, list_type)
+        if len(item) > 0:
+            item = item[0]
+        else:
+            #Return error page with message
+            return error_view(request, _("Ooops! That's awkward..."))
+        cache.set(cache_key, item)
 
     access_granted = False
 
@@ -484,7 +488,9 @@ def save_list_view(request):
 
     #delete cached lists for the list author
     cache_key = list_data["author"] + "_LISTS"
+    cache_key2 = element_type + element_id
     cache.delete(cache_key)
+    cache.delete(cache_key2)
 
     response = {
         'STATUS': 'OK'
@@ -516,7 +522,9 @@ def delete_list(request):
 
     #delete cached lists for the list author
     cache_key = old_list["author"] + "_LISTS"
+    cache_key2 = element_type + element_id
     cache.delete(cache_key)
+    cache.delete(cache_key2)
 
     response = {"RESULT": "OK"}
     return JsonResponse(response)

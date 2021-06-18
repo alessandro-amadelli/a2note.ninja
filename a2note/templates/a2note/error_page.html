@@ -10,6 +10,9 @@
 
 {% block body %}
   <script>
-    document.querySelector(".logo").src = "{% static 'a2note/ninja_logo_error.png' %}";
+    document.querySelectorAll(".logo").forEach((logo, i) => {
+      logo.src = "{% static 'a2note/ninja_logo_error.png' %}";
+    });
+      
   </script>
 {% endblock %}
