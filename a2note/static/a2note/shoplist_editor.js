@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function(){
   //Button to delete list
   initializeBtnDelete();
 
+  initializeShareBtns();
+
   //Event listener for privacy setting switch
   try {
     document.querySelector("#listPrivacySwitch").addEventListener('change', function(){
@@ -68,6 +70,18 @@ document.addEventListener('DOMContentLoaded', function(){
     btnSaveClick();
   }
 });
+
+function initializeShareBtns() {
+  let text = gettext("Hi! Check out this cool list I created on a2note.ninja...")
+
+  let btnWhatsapp = document.querySelector("#btnWhatsapp");
+  btnWhatsapp.href = "https://api.whatsapp.com/send?text=" + text + window.location.href;
+
+  let btnTelegram = document.querySelector("#btnTelegram");
+  btnTelegram.href = "https://telegram.me/share/url?url=" + window.location.href + "&text=" + text;
+  //<a href="tg://msg_url?url=https://valid.url&amp;text=text">Telegram</a>
+
+}
 
 function btnSaveClick(reload=false) {
   //Remove stop if user tries to leave the page (all the content is saved so it is not necessary)
