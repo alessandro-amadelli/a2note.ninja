@@ -55,6 +55,7 @@ def index(request):
         for l in created_lists:
             length = len(l["items"])
             creation_date = datetime.strptime(l["creation_timestamp"], "%Y-%m-%d h.%H:%M:%S.%f")
+            last_modified = datetime.strptime(l["last_modified"], "%Y-%m-%d h.%H:%M:%S.%f")
             #List title
             if "title" in l:
                 title = l["title"]
@@ -66,6 +67,7 @@ def index(request):
                 "element_id": l["element_id"],
                 "title": title,
                 "creation_timestamp": creation_date.strftime("%Y-%m-%d h.%H:%M:%S"),
+                "last_modified": last_modified.strftime("%Y-%m-%d h.%H:%M:%S"),
                 "length": length
             }
             lists.append(list_obj)
@@ -76,7 +78,7 @@ def index(request):
             else:
                 pass
 
-        lists = sorted(lists, key=lambda k: k['creation_timestamp'], reverse=True)
+        lists = sorted(lists, key=lambda k: k['last_modified'], reverse=True)
 
         total = len(lists)
 

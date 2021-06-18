@@ -59,17 +59,19 @@
 
     <h4>{% translate "Your lists" %} ( {{ total }} )</h4>
 
-    <div class="m-1 p-1">
-    <span class="material-icons-outlined">filter_alt</span>
-      <div class="form-check form-check-inline">
+    <div class="row m-1 p-1">
+      <div class="col-md-3 col-12">
+        <span class="material-icons-outlined">filter_alt</span>
+      </div>
+      <div class="col-md-3 col-12">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="TODOLIST">
         <label class="form-check-label" for="inlineRadio1">To-do lists</label>
       </div>
-      <div class="form-check form-check-inline">
+      <div class="col-md-3 col-12">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="SHOPLIST">
         <label class="form-check-label" for="inlineRadio2">Shopping lists</label>
       </div>
-      <div class="form-check form-check-inline">
+      <div class="col-md-3 col-12">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="ALL" checked>
         <label class="form-check-label" for="inlineRadio3">{% translate 'All' %}</label>
       </div>
@@ -94,6 +96,7 @@
           </h5>
           <div class="card-body">
             <p class="card-text"><span class="material-icons-outlined">event</span> {{ list.creation_timestamp }}</p>
+            <p class="card-text"><span class="material-icons-outlined">history</span> {{ list.last_modified }}</p>
             <p class="card-text">{% translate 'Items' %}: {{ list.length }}</p>
             <p class="card-text"><a class="text-reset text-decoration-none" href="{% url 'list_editor' list.element_id %}"><span class="material-icons-outlined">edit</span></a></p>
           </div>

@@ -97,9 +97,12 @@ def insert_item(item):
       _if the element_id is empty or not present (eg: for shopping lists or to-do lists)
        it assigns a new element_id
     """
+    #Timestamp of creation
     if "creation_timestamp" not in item:
         timestamp = datetime.now().strftime("%Y-%m-%d h.%H:%M:%S.%f")
         item["creation_timestamp"] = timestamp
+
+    item["last_modified"] = datetime.now().strftime("%Y-%m-%d h.%H:%M:%S.%f")
 
     element_id = ""
     if "element_id" in item:
