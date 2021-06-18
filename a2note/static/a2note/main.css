@@ -11,8 +11,10 @@
   --plot-overlay-background: rgba(0,0,0,0.25);
   --progress-background: #fff;
   --shadow-color: #000;
+  --shoplist-thumb-background: rgba(221, 226, 16, 0.73);
   --task-background: rgba(255,255,255,0.1);
   --text-color: #fff;
+  --todolist-thumb-background: rgba(45, 70, 179, 0.59);
 
   /** shoplist sections */
   --fruit-background: rgba(242, 148, 7, 0.8);
@@ -40,8 +42,10 @@
   --plot-overlay-background: rgba(255,255,255,0.0);
   --progress-background: #000;
   --shadow-color: #000;
+  --shoplist-thumb-background: rgba(221, 226, 16, 0.73);
   --task-background: rgba(247, 247, 247, 0.9);
   --text-color: #000;
+  --todolist-thumb-background: rgba(45, 70, 179, 0.59);
 
   /** shoplist sections */
   --fruit-background: rgba(242, 148, 7, 0.8);
@@ -305,13 +309,26 @@ body a {
   background-color: var(--element-background);
 }
 
+.newList-card[data-type="TODOLIST"] {
+  border: solid medium var(--todolist-thumb-background);
+  /* background-color: var(--todolist-thumb-background); */
+}
+
+.newList-card[data-type="SHOPLIST"] {
+  border: solid medium var(--shoplist-thumb-background);
+}
+
 .thumbnail-div {
   overflow-y: auto;
   background-color: var(--task-background);
 }
 
-.list-thumbnail {
-  background-color: var(--element-background);
+.list-thumbnail[data-type="TODOLIST"] {
+  background-color: var(--todolist-thumb-background);
+}
+
+.list-thumbnail[data-type="SHOPLIST"] {
+  background-color: var(--shoplist-thumb-background);
 }
 
 input {

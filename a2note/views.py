@@ -76,6 +76,8 @@ def index(request):
             else:
                 pass
 
+        lists = sorted(lists, key=lambda k: k['creation_timestamp'], reverse=True)
+
         total = len(lists)
 
         context = {
@@ -256,7 +258,7 @@ def dashboard_view(request):
 
     if todolists_ctr > 0 or shoplists_ctr > 0:
         type_donut_plot = make_donut(values=[todolists_ctr, shoplists_ctr], labels=["To-do lists", "Shopping lists"],
-        center_text=len(created_lists))
+        center_text=len(created_lists), colors=["blue", 'rgb(221, 226, 16)'])
         context["type_donut_plot"] = type_donut_plot
 
     if total_done > 0 or total_todo > 0:
