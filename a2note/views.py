@@ -249,7 +249,8 @@ def dashboard_view(request):
         else:
             pass
 
-    context = {"total": len(created_lists),
+    context = {
+        "total": len(created_lists),
         "todolists_total": todolists_ctr,
         "shoplists_total": shoplists_ctr,
         "total_tasks": total_tasks,
@@ -268,11 +269,13 @@ def dashboard_view(request):
         context["task_donut_plot"] = task_donut_plot
 
     if todolists_ctr > 0:
-        todo_weekday_plot = make_bar(values=todolists_per_weekday, labels=[gettext("Mon"),gettext("Tue"),gettext("Wed"),gettext("Thu"),gettext("Fri"),gettext("Sat"),gettext("Sun")])
+        todo_weekday_plot = make_bar(values=todolists_per_weekday, labels=[gettext("Mon"),gettext("Tue"),gettext("Wed"),gettext("Thu"),gettext("Fri"),gettext("Sat"),gettext("Sun")],
+        colors=["blue" for i in range(7)])
         context["todo_weekday_plot"] = todo_weekday_plot
 
     if shoplists_ctr > 0:
-        shop_weekday_plot = make_bar(values=shoplists_per_weekday, labels=[gettext("Mon"),gettext("Tue"),gettext("Wed"),gettext("Thu"),gettext("Fri"),gettext("Sat"),gettext("Sun")])
+        shop_weekday_plot = make_bar(values=shoplists_per_weekday, labels=[gettext("Mon"),gettext("Tue"),gettext("Wed"),gettext("Thu"),gettext("Fri"),gettext("Sat"),gettext("Sun")],
+        colors=["rgb(221, 226, 16)" for i in range(7)])
         context["shop_weekday_plot"] = shop_weekday_plot
 
     context["total"] = len(created_lists)
@@ -294,6 +297,10 @@ def shoplist(request):
 
 @login_required
 def new_todolist_view(request):
+    """
+    Page used for the creation of a new to-do list.
+    It saves the newly created list in the database.
+    """
     #User data
     user = request.user
 
@@ -321,6 +328,10 @@ def new_todolist_view(request):
 
 @login_required
 def new_shoplist_view(request):
+    """
+    Page used for the creation of a new shopping list
+    It saves the newly created list in the database.
+    """
     #User data
     user = request.user
 
@@ -345,6 +356,12 @@ def new_shoplist_view(request):
     return list_editor(request, element_id)
 
 def list_editor(request, listUID):
+    """
+    This is the list editor.
+    Here a user (if it has privileges) can edit a list by adding items or
+    deleting them.
+    Only the list author can change the privacy settings for the list or delete the list.
+    """
     #Choose the correct type of list
     if listUID[:2] == "SL":
         list_type = "SHOPLIST"
@@ -363,7 +380,7 @@ def list_editor(request, listUID):
             return error_view(request, _("Ooops! That's awkward..."))
         cache.set(cache_key, item)
 
-    access_granted = False
+    view_granted, edit_granted = False, False
 
     #CHECK if user can access the current list
     if request.user.is_authenticated:
@@ -374,16 +391,21 @@ def list_editor(request, listUID):
 
     # CONDITION 1 - The user is the author of the current list
     if username == item["author"]:
-        access_granted = True
+        view_granted = True
+        edit_granted = True
     else:
         # CONDITION 2 - The user is not the author, but the list is shared
         if "shared" in item:
-            if item["shared"] == "True":
-                access_granted = True
+            view_granted = item["shared"] == "True"
+        if "edit_enabled" in item:
+            edit_granted = item["edit_enabled"] == "True"
 
-    if not access_granted:
-        #Render an error page with a message
-        return error_view(request, _("Sorry, you cannot edit this list."))
+    if not edit_granted:
+        if view_granted:
+            return list_viewer(request, item["element_id"])
+        else:
+            #Render an error page with a message
+            return error_view(request, _("This is not the list you were looking for..."))
 
     context = item
 
@@ -391,6 +413,55 @@ def list_editor(request, listUID):
         return render(request, "a2note/shoplist_editor.html", context)
     else:
         return render(request, "a2note/todolist_editor.html", context)
+
+def list_viewer(request, listUID):
+    """
+    This is the list viewer.
+    This page presents the lists and all of it's content (if the user has privilege to see it).
+    No modification can be made or saved to the list itself.
+    """
+    if listUID[:2] == "SL":
+        element_type = "SHOPLIST"
+    else:
+        element_type = "TODOLIST"
+
+    cache_key = element_type + listUID
+    item = cache.get(cache_key)
+    if not item:
+        #Select from table the list to access data
+        item = select_element_by_id(listUID, element_type)
+        if len(item) > 0:
+            item = item[0]
+        else:
+            #Return error page with message
+            return error_view(request, _("Ooops! That's awkward..."))
+        cache.set(cache_key, item)
+
+    #CHECK if the user can see the list
+    view_granted = False
+    if request.user.is_authenticated:
+        user = request.user
+        username = user.username
+    else:
+        username = ""
+
+    if username == item["author"]:
+        view_granted = True
+    else:
+        if "shared" in item:
+            view_granted = item["shared"] == "True"
+
+    if not view_granted:
+        #Render an error page with a message
+        return error_view(request, _("Sorry, nothing to see here..."))
+
+    context = item
+
+    if element_type == "SHOPLIST":
+        return render(request, "a2note/shoplist_viewer.html", context)
+    else:
+        return render(request, "a2note/todolist_viewer.html", context)
+
 
 def product_list_view(request):
     """

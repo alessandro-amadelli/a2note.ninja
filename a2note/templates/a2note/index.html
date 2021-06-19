@@ -98,7 +98,8 @@
             <p class="card-text"><span class="material-icons-outlined">event</span> {{ list.creation_timestamp }}</p>
             <p class="card-text"><span class="material-icons-outlined">history</span> {{ list.last_modified }}</p>
             <p class="card-text">{% translate 'Items' %}: {{ list.length }}</p>
-            <p class="card-text"><a class="text-reset text-decoration-none" href="{% url 'list_editor' list.element_id %}"><span class="material-icons-outlined">edit</span></a></p>
+            <p class="card-text d-inline"><a class="text-reset text-decoration-none" href="{% url 'list_editor' list.element_id %}"><span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit list' %}">edit</span></a></p>
+            <p class="card-text d-inline"><a class="text-reset text-decoration-none" href="{% url 'list_viewer' list.element_id %}"><span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'View list' %}">pageview</span></a></p>
           </div>
         </div>
       </div>

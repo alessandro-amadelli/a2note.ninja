@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-18 17:09+0200\n"
+"POT-Creation-Date: 2021-06-19 14:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,33 +56,42 @@ msgstr ""
 msgid "Your lists"
 msgstr "Le tue liste"
 
-#: .\a2note\templates\a2note\index.html:74
+#: .\a2note\templates\a2note\index.html:76
 #: .\a2note\templates\a2note\todolist.html:45
 #: .\a2note\templates\a2note\todolist_editor.html:66
+#: .\a2note\templates\a2note\todolist_viewer.html:27
 msgid "All"
 msgstr "Tutto"
 
-#: .\a2note\templates\a2note\index.html:97
+#: .\a2note\templates\a2note\index.html:100
 msgid "Items"
 msgstr "Elementi"
 
-#: .\a2note\templates\a2note\index.html:104
+#: .\a2note\templates\a2note\index.html:101
+msgid "Edit list"
+msgstr "Modifica lista"
+
+#: .\a2note\templates\a2note\index.html:102
+msgid "View list"
+msgstr "Visualizza lista"
+
+#: .\a2note\templates\a2note\index.html:108
 msgid "Oh no! It's all sad and empty here...go make some lists."
 msgstr "Oh no! E' tutto triste e vuoto qui...vai a creare qualche lista."
 
-#: .\a2note\templates\a2note\index.html:111
+#: .\a2note\templates\a2note\index.html:115
 msgid "Welcome to a<sub>2</sub>note.ninja!"
 msgstr "Benvenuto su a<sub>2</sub>note.ninja!"
 
-#: .\a2note\templates\a2note\index.html:118
+#: .\a2note\templates\a2note\index.html:122
 msgid "Without an account"
 msgstr "Senza un account"
 
-#: .\a2note\templates\a2note\index.html:122
+#: .\a2note\templates\a2note\index.html:126
 msgid "You can use a<sub>2</sub>note.ninja whithout the need to register."
 msgstr "Puoi usare a<sub>2</sub>note.ninja senza il bisogno di registrarti."
 
-#: .\a2note\templates\a2note\index.html:126
+#: .\a2note\templates\a2note\index.html:130
 msgid ""
 "Save up to <strong>1 to-do list</strong> and <strong>1 shopping list</"
 "strong>."
@@ -90,7 +99,7 @@ msgstr ""
 "Salva fino a <strong>1 to-do list</strong> e <strong>1 shopping list</"
 "strong>."
 
-#: .\a2note\templates\a2note\index.html:130
+#: .\a2note\templates\a2note\index.html:134
 msgid ""
 "Everything is saved locally on your browser so you can modify and consult "
 "your lists any time you want."
@@ -98,19 +107,19 @@ msgstr ""
 "Viene tutto salvato in locale sul tuo browser in modo che tu possa "
 "modificare e consultare le tue liste ogni volta che vuoi."
 
-#: .\a2note\templates\a2note\index.html:137
+#: .\a2note\templates\a2note\index.html:141
 msgid "With a free account (coming soon)"
 msgstr "Con un account gratuito (in arrivo)"
 
-#: .\a2note\templates\a2note\index.html:141
+#: .\a2note\templates\a2note\index.html:145
 msgid "Register a free account and unlock new ninja techniques!"
 msgstr "Registra un account gratuito e sblocca nuove tecniche ninja!"
 
-#: .\a2note\templates\a2note\index.html:145
+#: .\a2note\templates\a2note\index.html:149
 msgid "Create multiple To-do lists and shopping lists."
 msgstr "Crea più to-do list e shopping list."
 
-#: .\a2note\templates\a2note\index.html:149
+#: .\a2note\templates\a2note\index.html:153
 msgid ""
 "Everything will be saved in the cloud so you can access it across multiple "
 "devices."
@@ -118,11 +127,11 @@ msgstr ""
 "Viene tutto salvato sul cloud, in modo che tu possa accedervi da più "
 "dispositivi."
 
-#: .\a2note\templates\a2note\index.html:153
+#: .\a2note\templates\a2note\index.html:157
 msgid "Also:"
 msgstr "Inoltre:"
 
-#: .\a2note\templates\a2note\index.html:157
+#: .\a2note\templates\a2note\index.html:161
 msgid ""
 "Share your <strong>To-do lists</strong> and <strong>shopping lists</strong> "
 "like a ninja!<br>\n"
@@ -219,6 +228,7 @@ msgstr "Prodotti nelle shopping list"
 #: .\a2note\templates\a2note\my_dashboard.html:48
 #: .\a2note\templates\a2note\todolist.html:54
 #: .\a2note\templates\a2note\todolist_editor.html:75
+#: .\a2note\templates\a2note\todolist_viewer.html:36
 msgid "Total"
 msgstr "Totale"
 
@@ -366,56 +376,67 @@ msgstr "Categorie"
 
 #: .\a2note\templates\a2note\shoplist.html:49
 #: .\a2note\templates\a2note\shoplist_editor.html:155
+#: .\a2note\templates\a2note\shoplist_viewer.html:25
 msgid "Fruit"
 msgstr "Frutta"
 
 #: .\a2note\templates\a2note\shoplist.html:50
 #: .\a2note\templates\a2note\shoplist_editor.html:156
+#: .\a2note\templates\a2note\shoplist_viewer.html:26
 msgid "Vegetables"
 msgstr "Verdura"
 
 #: .\a2note\templates\a2note\shoplist.html:51
 #: .\a2note\templates\a2note\shoplist_editor.html:157
+#: .\a2note\templates\a2note\shoplist_viewer.html:27
 msgid "Dairy products"
 msgstr "Latticini"
 
 #: .\a2note\templates\a2note\shoplist.html:52
 #: .\a2note\templates\a2note\shoplist_editor.html:158
+#: .\a2note\templates\a2note\shoplist_viewer.html:28
 msgid "Legumes"
 msgstr "Legumi"
 
 #: .\a2note\templates\a2note\shoplist.html:53
 #: .\a2note\templates\a2note\shoplist_editor.html:159
+#: .\a2note\templates\a2note\shoplist_viewer.html:29
 msgid "Seasoning"
 msgstr "Condimenti"
 
 #: .\a2note\templates\a2note\shoplist.html:54
 #: .\a2note\templates\a2note\shoplist_editor.html:160
+#: .\a2note\templates\a2note\shoplist_viewer.html:30
 msgid "Beverages"
 msgstr "Bevande"
 
 #: .\a2note\templates\a2note\shoplist.html:55
 #: .\a2note\templates\a2note\shoplist_editor.html:161
+#: .\a2note\templates\a2note\shoplist_viewer.html:31
 msgid "Alcohol"
 msgstr "Alcolici"
 
 #: .\a2note\templates\a2note\shoplist.html:56
 #: .\a2note\templates\a2note\shoplist_editor.html:162
+#: .\a2note\templates\a2note\shoplist_viewer.html:32
 msgid "Hygiene"
 msgstr "Igiene"
 
 #: .\a2note\templates\a2note\shoplist.html:57
 #: .\a2note\templates\a2note\shoplist_editor.html:163
+#: .\a2note\templates\a2note\shoplist_viewer.html:33
 msgid "Supplies"
 msgstr "Forniture"
 
 #: .\a2note\templates\a2note\shoplist.html:58
 #: .\a2note\templates\a2note\shoplist_editor.html:164
+#: .\a2note\templates\a2note\shoplist_viewer.html:34
 msgid "Cleaning"
 msgstr "Pulizia"
 
 #: .\a2note\templates\a2note\shoplist.html:59
 #: .\a2note\templates\a2note\shoplist_editor.html:165
+#: .\a2note\templates\a2note\shoplist_viewer.html:35
 msgid "Other"
 msgstr "Altro"
 
@@ -480,8 +501,8 @@ msgid "Yes, go ahed!"
 msgstr "Sì, procedi!"
 
 #: .\a2note\templates\a2note\shoplist_editor.html:65
-msgid "Impostazioni lista"
-msgstr "Eliminazione lista"
+msgid "List settings"
+msgstr "Impostazioni lista"
 
 #: .\a2note\templates\a2note\shoplist_editor.html:69
 msgid "Privacy"
@@ -528,8 +549,8 @@ msgid ""
 "Anyone with the link can edit the list, this includes adding and deleting "
 "items."
 msgstr ""
-"Chiunque abbia il link può modificare la lista, questo include aggiunta ed eliminazione "
-"di elementi."
+"Chiunque abbia il link può modificare la lista, questo include aggiunta ed "
+"eliminazione di elementi."
 
 #: .\a2note\templates\a2note\shoplist_editor.html:91
 msgid "Edit disabled"
@@ -565,12 +586,14 @@ msgid ""
 "you'd like to share the list please go to 'Settings' and make the list "
 "public."
 msgstr ""
-"Alcune funzionalità sono disabilitate perchè la privacy della lista è impostata su privata. Se "
-"desideri condividere la lista per favore recati su 'Impostazioni' a rendi la lista "
-"pubblica."
+"Alcune funzionalità sono disabilitate perchè la privacy della lista è "
+"impostata su privata. Se desideri condividere la lista per favore recati su "
+"'Impostazioni' a rendi la lista pubblica."
 
 #: .\a2note\templates\a2note\shoplist_editor.html:140
+#: .\a2note\templates\a2note\shoplist_viewer.html:18
 #: .\a2note\templates\a2note\todolist_editor.html:51
+#: .\a2note\templates\a2note\todolist_viewer.html:19
 msgid "Title"
 msgstr "Titolo"
 
@@ -590,30 +613,35 @@ msgstr "Inserisci task..."
 
 #: .\a2note\templates\a2note\todolist.html:43
 #: .\a2note\templates\a2note\todolist_editor.html:64
+#: .\a2note\templates\a2note\todolist_viewer.html:25
 msgid "Filter tasks"
 msgstr "Filtra i task"
 
 #: .\a2note\templates\a2note\todolist.html:46
 #: .\a2note\templates\a2note\todolist_editor.html:67
+#: .\a2note\templates\a2note\todolist_viewer.html:28
 msgid "To-do"
 msgstr "Da fare"
 
 #: .\a2note\templates\a2note\todolist.html:47
 #: .\a2note\templates\a2note\todolist_editor.html:68
+#: .\a2note\templates\a2note\todolist_viewer.html:29
 msgid "Completed"
 msgstr "Completati"
 
 #: .\a2note\templates\a2note\todolist.html:57
 #: .\a2note\templates\a2note\todolist_editor.html:78
+#: .\a2note\templates\a2note\todolist_viewer.html:39
 msgid "Pending"
 msgstr "Da fare"
 
 #: .\a2note\templates\a2note\todolist.html:60
-#: .\a2note\templates\a2note\todolist_editor.html:81 .\a2note\views.py:265
+#: .\a2note\templates\a2note\todolist_editor.html:81
+#: .\a2note\templates\a2note\todolist_viewer.html:42 .\a2note\views.py:268
 msgid "Done"
 msgstr "Completati"
 
-#: .\a2note\views.py:126
+#: .\a2note\views.py:128
 msgid ""
 "Oh no! The ninja name you chose seems to be already taken...don't worry! "
 "Just choose a different one : )"
@@ -621,7 +649,7 @@ msgstr ""
 "Oh no! Il nome ninja che hai scelto sembra sia già stato preso...non "
 "preoccuparti! Basta che tu ne scelga uno diverso : )"
 
-#: .\a2note\views.py:139
+#: .\a2note\views.py:141
 msgid ""
 "Ooops...the email address you inserted is already associated with another "
 "ninja..."
@@ -629,59 +657,63 @@ msgstr ""
 "Ooops...l'indirizzo email che hai inserito è già associato ad un altro "
 "ninja..."
 
-#: .\a2note\views.py:151
+#: .\a2note\views.py:153
 msgid "The two password you inserted do not correspond..."
 msgstr "Le due password che hai inserito non corrispondono..."
 
-#: .\a2note\views.py:265
+#: .\a2note\views.py:268
 msgid "To do"
 msgstr "Da fare"
 
-#: .\a2note\views.py:269 .\a2note\views.py:273
+#: .\a2note\views.py:272 .\a2note\views.py:277
 msgid "Mon"
 msgstr "Lun"
 
-#: .\a2note\views.py:269 .\a2note\views.py:273
+#: .\a2note\views.py:272 .\a2note\views.py:277
 msgid "Tue"
 msgstr "Mar"
 
-#: .\a2note\views.py:269 .\a2note\views.py:273
+#: .\a2note\views.py:272 .\a2note\views.py:277
 msgid "Wed"
 msgstr "Mer"
 
-#: .\a2note\views.py:269 .\a2note\views.py:273
+#: .\a2note\views.py:272 .\a2note\views.py:277
 msgid "Thu"
 msgstr "Gio"
 
-#: .\a2note\views.py:269 .\a2note\views.py:273
+#: .\a2note\views.py:272 .\a2note\views.py:277
 msgid "Fri"
 msgstr "Ven"
 
-#: .\a2note\views.py:269 .\a2note\views.py:273
+#: .\a2note\views.py:272 .\a2note\views.py:277
 msgid "Sat"
 msgstr "Sab"
 
-#: .\a2note\views.py:269 .\a2note\views.py:273
+#: .\a2note\views.py:272 .\a2note\views.py:277
 msgid "Sun"
 msgstr "Dom"
 
-#: .\a2note\views.py:312
+#: .\a2note\views.py:321
 msgid "New to-do list created"
 msgstr "Nuova to-do list creata"
 
-#: .\a2note\views.py:339
+#: .\a2note\views.py:352
 msgid "New shopping list created"
 msgstr "Nuova shopping list creata"
 
-#: .\a2note\views.py:358
+#: .\a2note\views.py:380 .\a2note\views.py:437
 msgid "Ooops! That's awkward..."
 msgstr "Ooops! E' imbarazzante..."
 
-#: .\a2note\views.py:380
-msgid "Sorry, you cannot edit this list."
-msgstr "Mi spiace, non puoi modificare questa lista."
+#: .\a2note\views.py:408
+msgid "This is not the list you were looking for..."
+msgstr "Questa non è la lista che stavi cercando..."
 
-#: .\a2note\views.py:467
+#: .\a2note\views.py:456
+msgid "Sorry, nothing to see here..."
+msgstr "Mi dispiace, non c'è nulla da vedere..."
+
+#: .\a2note\views.py:544
 msgid "You do not have edit privilege on this list."
 msgstr "Non hai privilegi di modifica su questa lista."
 

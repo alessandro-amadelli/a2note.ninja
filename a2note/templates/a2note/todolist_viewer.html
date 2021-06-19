@@ -1,0 +1,63 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+  ninja to-do list
+{% endblock %}
+
+{% block body %}
+  {% csrf_token %}
+
+  <div class="container my-container p-5">
+
+    <h3 class="intro-1 col"><span class="material-icons-outlined">checklist_rtl</span> List VIEWER</h3>
+
+    <div class="row m-1 p-1">
+      <label for="inpListTitle" class="col-lg-1 col-2 d-inline">{% translate 'Title' %}</label>
+      <input type="text" class="col-lg-11 col-10 rounded-3 mb-3 p-1 d-inline" maxlength="30" autocomplete="off" value="{{ title }}" readonly/>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <label for="taskViewSelect" class="d-inline">{% translate 'Filter tasks' %}</label>
+        <select id="taskViewSelect" class="form-select form-select-sm d-inline" aria-label="View tasks">
+          <option value="All" selected>{% translate 'All' %}</option>
+          <option value="ToDo">{% translate 'To-do' %}</option>
+          <option value="Done">{% translate 'Completed' %}</option>
+        </select>
+      </div>
+
+      <div id="statDiv" class="hidden w-100 m-1 mb-2 p-1">
+        <div class="row">
+          <div class="col text-center">
+            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Total' %}">rule</span> <span id="statTotal">0</span>
+          </div>
+          <div class="col text-center">
+            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Pending' %}">pending</span> <span id="statTodo">0</span>
+          </div>
+          <div class="col text-center">
+            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Done' %}">task_alt</span> <span id="statDone">0</span>
+          </div>
+        </div>
+        <div class="progress w-100 rounded-pill">
+          <div id="taskProgress" class="progress-bar progress-bar-primary rounded-pill" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Passing list items to the javascript -->
+    <script>
+      var tasks = {{ items|safe }};
+    </script>
+    <script src="{% static 'a2note/todolist_functions.js' %}"></script>
+    <script src="{% static 'a2note/todolist_viewer.js' %}"></script>
+
+    <div id="taskList" class="row"></div>
+
+  </div>
+
+{% endblock %}
