@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-19 14:49+0200\n"
+"POT-Creation-Date: 2021-06-19 15:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -637,11 +637,23 @@ msgstr "Da fare"
 
 #: .\a2note\templates\a2note\todolist.html:60
 #: .\a2note\templates\a2note\todolist_editor.html:81
-#: .\a2note\templates\a2note\todolist_viewer.html:42 .\a2note\views.py:268
+#: .\a2note\templates\a2note\todolist_viewer.html:42 .\a2note\views.py:275
 msgid "Done"
 msgstr "Completati"
 
-#: .\a2note\views.py:128
+#: .\a2note\views.py:39
+msgid ""
+"Possible reasons for this error: <br><ul><li>The list is not shared so only "
+"the author can see it</li><li>The list encountered its demise and it's not "
+"with us anymore</li><li>The entire website exploded</li></ul><br>Ok, maybe "
+"not the last option..."
+msgstr ""
+"Possibili motivi per questo errore: <br><ul><li>La lista non è condivisa, quindi solo "
+"l'autore può visualizzarla</li><li>La lista ha incontrato la sua triste fine e non è "
+"più tra noi</li><li>L'intero sito web è esploco</li></ul><br>Ok, forse "
+"non l'ultima opzione..."
+
+#: .\a2note\views.py:135
 msgid ""
 "Oh no! The ninja name you chose seems to be already taken...don't worry! "
 "Just choose a different one : )"
@@ -649,7 +661,7 @@ msgstr ""
 "Oh no! Il nome ninja che hai scelto sembra sia già stato preso...non "
 "preoccuparti! Basta che tu ne scelga uno diverso : )"
 
-#: .\a2note\views.py:141
+#: .\a2note\views.py:148
 msgid ""
 "Ooops...the email address you inserted is already associated with another "
 "ninja..."
@@ -657,63 +669,63 @@ msgstr ""
 "Ooops...l'indirizzo email che hai inserito è già associato ad un altro "
 "ninja..."
 
-#: .\a2note\views.py:153
+#: .\a2note\views.py:160
 msgid "The two password you inserted do not correspond..."
 msgstr "Le due password che hai inserito non corrispondono..."
 
-#: .\a2note\views.py:268
+#: .\a2note\views.py:275
 msgid "To do"
 msgstr "Da fare"
 
-#: .\a2note\views.py:272 .\a2note\views.py:277
+#: .\a2note\views.py:279 .\a2note\views.py:284
 msgid "Mon"
 msgstr "Lun"
 
-#: .\a2note\views.py:272 .\a2note\views.py:277
+#: .\a2note\views.py:279 .\a2note\views.py:284
 msgid "Tue"
 msgstr "Mar"
 
-#: .\a2note\views.py:272 .\a2note\views.py:277
+#: .\a2note\views.py:279 .\a2note\views.py:284
 msgid "Wed"
 msgstr "Mer"
 
-#: .\a2note\views.py:272 .\a2note\views.py:277
+#: .\a2note\views.py:279 .\a2note\views.py:284
 msgid "Thu"
 msgstr "Gio"
 
-#: .\a2note\views.py:272 .\a2note\views.py:277
+#: .\a2note\views.py:279 .\a2note\views.py:284
 msgid "Fri"
 msgstr "Ven"
 
-#: .\a2note\views.py:272 .\a2note\views.py:277
+#: .\a2note\views.py:279 .\a2note\views.py:284
 msgid "Sat"
 msgstr "Sab"
 
-#: .\a2note\views.py:272 .\a2note\views.py:277
+#: .\a2note\views.py:279 .\a2note\views.py:284
 msgid "Sun"
 msgstr "Dom"
 
-#: .\a2note\views.py:321
+#: .\a2note\views.py:328
 msgid "New to-do list created"
 msgstr "Nuova to-do list creata"
 
-#: .\a2note\views.py:352
+#: .\a2note\views.py:359
 msgid "New shopping list created"
 msgstr "Nuova shopping list creata"
 
-#: .\a2note\views.py:380 .\a2note\views.py:437
+#: .\a2note\views.py:387 .\a2note\views.py:444
 msgid "Ooops! That's awkward..."
 msgstr "Ooops! E' imbarazzante..."
 
-#: .\a2note\views.py:408
+#: .\a2note\views.py:415
 msgid "This is not the list you were looking for..."
 msgstr "Questa non è la lista che stavi cercando..."
 
-#: .\a2note\views.py:456
+#: .\a2note\views.py:463
 msgid "Sorry, nothing to see here..."
 msgstr "Mi dispiace, non c'è nulla da vedere..."
 
-#: .\a2note\views.py:544
+#: .\a2note\views.py:553
 msgid "You do not have edit privilege on this list."
 msgstr "Non hai privilegi di modifica su questa lista."
 

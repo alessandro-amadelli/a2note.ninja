@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', function(){
   //Button to delete list
   initializeBtnDelete();
 
-  initializeShareBtns();
+  try {
+    initializeShareBtns();
+  } catch {}
 
   //Event listener for privacy setting switch
   try {

@@ -13,6 +13,9 @@
     document.querySelectorAll(".logo").forEach((logo, i) => {
       logo.src = "{% static 'a2note/ninja_logo_error.png' %}";
     });
-      
+
   </script>
+
+  {{ pageMessage|safe }}
+
 {% endblock %}

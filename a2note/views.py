@@ -27,13 +27,20 @@ from a2note.plot_maker import make_donut, make_bar
 #Caching
 from django.core.cache import cache
 
-def error_view(request, message=""):
+def error_view(request, message="", pagemessage=""):
 
     context = {}
     context["message"] = {
     "class": "alert alert-danger alert-dismissible",
     "text": message
     }
+
+    if pagemessage == "":
+        context["pageMessage"] = _("Possible reasons for this error: <br><ul>" \
+        "<li>The list is not shared so only the author can see it</li>" \
+        "<li>The list encountered its demise and it's not with us anymore</li>" \
+        "<li>The entire website exploded</li></ul><br>" \
+        "Ok, maybe not the last option...")
 
     return render(request, "a2note/error_page.html", context)
 
@@ -541,7 +548,10 @@ def save_list_view(request):
                 edit_granted = True
 
     if not edit_granted:
-        return error_view(request, _("You do not have edit privilege on this list."))
+        return {
+            "RESULT": "ERROR",
+            "DESCRIPTION": _("You do not have edit privilege on this list.")
+        }
 
     #List data
     item = {
