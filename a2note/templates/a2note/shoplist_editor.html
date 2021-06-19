@@ -19,6 +19,19 @@
       </div>
     </div>
 
+    <p class="intro-1">
+      {% if shared == "True" %}
+        <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Public' %}">public</span>
+        {% if edit_enabled == "True" %}
+          <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit enabled' %}">edit</span>
+        {% else %}
+          <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit disabled' %}">edit_off</span>
+        {% endif %}
+      {% else %}
+        <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Private' %}">lock</span>
+      {% endif %}
+    </p>
+
     {% if user.username == author %}
     <table class="table align-middle">
       <tr>

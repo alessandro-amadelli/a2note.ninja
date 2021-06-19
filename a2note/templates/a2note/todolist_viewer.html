@@ -15,6 +15,19 @@
 
     <h3 class="intro-1 col"><span class="material-icons-outlined">checklist_rtl</span> List VIEWER</h3>
 
+    <p class="intro-1">
+      {% if shared == "True" %}
+        <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Public' %}">public</span>
+        {% if edit_enabled == "True" %}
+          <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit enabled' %}">edit</span>
+        {% else %}
+          <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit disabled' %}">edit_off</span>
+        {% endif %}
+      {% else %}
+        <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Private' %}">lock</span>
+      {% endif %}
+    </p>
+
     <div class="row m-1 p-1">
       <label for="inpListTitle" class="col-lg-1 col-2 d-inline">{% translate 'Title' %}</label>
       <input type="text" class="col-lg-11 col-10 rounded-3 mb-3 p-1 d-inline" maxlength="30" autocomplete="off" value="{{ title }}" readonly/>

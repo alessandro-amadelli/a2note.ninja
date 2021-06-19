@@ -33,9 +33,57 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   });
 
+  try {
+    initializeShareBtns();
+  } catch {}
+
+  //Event listener for privacy setting switch
+  try {
+    document.querySelector("#listPrivacySwitch").addEventListener('change', function(){
+      document.querySelector("#editEnableSwitch").disabled = !this.checked;
+      if (!this.checked) {
+        document.querySelector("#editEnableSwitch").checked = false;
+      }
+    });
+
+    //Button to save list settings
+    document.querySelector("#btnSaveSettings").onclick = () => {
+      btnSaveClick(reload=true); //Saving and reloading the page
+    };
+
+    //Copy to clipboard function
+    let urlText = document.querySelector("#urlText");
+    urlText.value = window.location.href;
+
+    document.querySelector("#btnCopyClipboard").addEventListener("click", function() {
+      urlText.classList.remove("hidden");
+      urlText.select();
+      urlText.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      urlText.classList.add("hidden");
+      notify("Link copied");
+    });
+
+  } catch {}
+
 });
 
-function btnSaveClick() {
+function initializeShareBtns() {
+  let text = gettext("Hi! Check out this cool list I created on a2note.ninja...")
+
+  let btnWhatsapp = document.querySelector("#btnWhatsapp");
+  btnWhatsapp.href = "https://api.whatsapp.com/send?text=" + text + window.location.href;
+
+  let btnTelegram = document.querySelector("#btnTelegram");
+  btnTelegram.href = "https://telegram.me/share/url?url=" + window.location.href + "&text=" + text;
+  //<a href="tg://msg_url?url=https://valid.url&amp;text=text">Telegram</a>
+
+  let bntEmail = document.querySelector("#btnEmail");
+  btnEmail.href = "mailto:?subject='Shopping list'&body=" + text + window.location.href;
+
+}
+
+function btnSaveClick(reload=false) {
   //Remove stop if user tries to leave the page (all the content is saved so it is not necessary)
   window.onbeforeunload = function() {
   }
@@ -43,13 +91,13 @@ function btnSaveClick() {
   let btnSave = document.querySelector("#btnSaveList");
   btnSave.disabled = true;
   btnSave.classList.add("hidden");
-  saveTodolist();
+  saveTodolist(reload);
   oldTitle = document.querySelector("#inpListTitle").value;
 }
 
-function saveTodolist() {
+function saveTodolist(reload=false) {
   showLoading();
-  saveTodolistToDB();
+  saveTodolistToDB(reload);
 }
 
 function enableSave() {
@@ -60,7 +108,6 @@ function enableSave() {
   window.onbeforeunload = function() {
     return "";
   }
-
 }
 
 function getListTasks() {
@@ -83,7 +130,7 @@ function getListTasks() {
 
 }
 
-function saveTodolistToDB() {
+function saveTodolistToDB(reload=false) {
   var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
   const request = new XMLHttpRequest();
   const url = `/save_list_view/`;
@@ -91,8 +138,12 @@ function saveTodolistToDB() {
   request.setRequestHeader('X-CSRFToken', csrftoken);
   request.onload = () => {
     const response = JSON.parse(request.responseText);
-    removeLoading();
-    notify(gettext("List saved"));
+    if (!reload) {
+      removeLoading();
+      notify(gettext("List saved"));
+    } else {
+      location.reload();
+    }
   };
   const data = new FormData();
   title = document.querySelector("#inpListTitle").value;
@@ -102,12 +153,24 @@ function saveTodolistToDB() {
   } else {
     element_type = "TODOLIST";
   }
+
+  shared = "False";
+  edit_enabled = "False";
+  try {
+    if (document.querySelector("#listPrivacySwitch").checked) {
+      shared = "True";
+      if (document.querySelector("#editEnableSwitch").checked) {
+        edit_enabled = "True";
+      }
+    }
+  } catch {}
+
   data.append("element_id", element_id);
   data.append("element_type", element_type);
   data.append("title", title);
   data.append("items", getListTasks());
-  data.append("shared", "False");
-  data.append("edit_enabled", "False");
+  data.append("shared", shared);
+  data.append("edit_enabled", edit_enabled);
 
   request.send(data);
 }
