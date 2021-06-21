@@ -517,9 +517,9 @@ option {
 
 .doneTask {
   background-color: var(--donetask-background);
-  -webkit-box-shadow: 2px 1px 3px;
-  -moz-box-shadow:    2px 1px 3px;
-  box-shadow:         2px 1px 3px;
+  -webkit-box-shadow: 2px 1px 3px var(--shadow-color);
+  -moz-box-shadow:    2px 1px 3px var(--shadow-color);
+  box-shadow:         2px 1px 3px var(--shadow-color);
 }
 
 .doneTask .taskTextArea {
