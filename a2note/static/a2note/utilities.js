@@ -7,7 +7,33 @@ document.addEventListener('DOMContentLoaded', function(){
   //Loading of current theme saved on localStorage
   loadTheme();
 
+  //Back to top button
+  let btnTop = document.querySelector("#btnBackTop");
+  if (btnTop) {
+    window.onscroll = () => {
+      scrollFunc();
+    }
+    btnTop.onclick = () => {
+      backToTop();
+    }
+  }
+
 });
+
+function scrollFunc() {
+  let btnTop = document.querySelector("#btnBackTop");
+  if (
+    document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    btnTop.style.display = "block";
+  } else {
+    btnTop.style.display = "none";
+  }
+}
+
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
 
 function loadTheme(){
 
