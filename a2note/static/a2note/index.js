@@ -7,7 +7,27 @@ document.addEventListener('DOMContentLoaded', function(){
 
   initializeRadioBtn();
 
+  //list dletion
+  initializeModalDeleteBtn();
+  initializeDeleteListTriggers();
 });
+
+function initializeModalDeleteBtn() {
+  document.querySelector("#btnDeleteList").onclick = function() {
+    let element_id = document.querySelector("#modalElementId").innerText;
+    deleteList(element_id);
+  }
+}
+
+function initializeDeleteListTriggers() {
+  document.querySelectorAll(".deleteTrigger").forEach((trig, i) => {
+    trig.addEventListener("click", function(){
+      let element_id = this.parentElement.parentElement.dataset.id;
+      document.querySelector("#modalElementId").innerText = element_id;
+    });
+  });
+
+}
 
 function showInfo(item) {
   item.querySelector(".info-text").classList.toggle("hidden");
@@ -21,7 +41,6 @@ function initializeRadioBtn(){
       filterLists(this);
     }
   });
-
 }
 
 function filterLists(radio) {
@@ -40,8 +59,30 @@ function filterLists(radio) {
         }
       }
     });
-
-
-
   }
+}
+
+function deleteList(element_id) {
+  var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  const request = new XMLHttpRequest();
+  const url = `/delete_list/`;
+  request.open('POST', url);
+  request.setRequestHeader('X-CSRFToken', csrftoken);
+  request.onload = () => {
+    const response = JSON.parse(request.responseText);
+    if (response["RESULT"] == "OK"){
+      window.location.href = `/`;
+    }
+    removeLoading();
+  };
+  const data = new FormData();
+  if (element_id.substring(0,2) == "SL") {
+    element_type = "SHOPLIST";
+  } else {
+    element_type = "TODOLIST";
+  }
+  data.append("element_id", element_id);
+  data.append("element_type", element_type);
+
+  request.send(data);
 }

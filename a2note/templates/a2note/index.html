@@ -12,8 +12,32 @@
   <div class="container my-container p-5">
     {% if user.is_authenticated %}
     <script src="{% static 'a2note/index.js' %}"></script>
+    {% csrf_token %}
 
     <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
+
+    <!-- Modal for list deletion-->
+    <div class="modal fade" id="modalDeleteList" tabindex="-1" aria-labelledby="modalDeleteListLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="hidden" id="modalElementId"></div>
+            <h3 class="modal-title" id="modalDeleteListLabel"><span class="material-icons-outlined">delete_forever</span> {% translate "List deletion" %}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h4><span class="material-icons-outlined">report_problem</span> {% translate "Warning"%}</h4>
+            <p>{% translate "You are about to delete this list and all of its content." %}<br>
+            {% translate "This list will do <a href='https://en.wikipedia.org/wiki/Seppuku' target='_blank' rel='noopener noreferrer'>seppuku</a> for the shame of failing you!" %}</p>
+            <p><strong>{% translate "This action is irreversible, do you wish to continue?" %}</strong></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate "Nah...nevermind" %}</button>
+            <button type="button" class="btn btn-danger" id="btnDeleteList">{% translate "Yes, go ahed!" %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <h2 class="intro-0">{% translate 'Hi' %} {{ user.username }},</h2>
     <h2 class="intro-1">{% translate "it's good to see you again!" %}</h2>
@@ -83,7 +107,7 @@
     <div class="row thumbnail-div rounded d-flex">
       {% for list in lists %}
       <div class="col-lg-4 col-12 p-1">
-        <div class="card list-thumbnail rounded shadow-sm" data-type="{{ list.element_type }}">
+        <div class="card list-thumbnail rounded shadow-sm" data-type="{{ list.element_type }}" data-id="{{ list.element_id }}">
           <h5 class="card-header">
             {% if list.element_type == 'SHOPLIST' %}
             <span class="material-icons-outlined">shopping_cart</span>
@@ -95,16 +119,20 @@
             {% else %}
               {{ list.element_type }}_{{ list.element_id }}
             {% endif %}
+            <!-- Trigger delete modal -->
+            <p class="card-text d-inline text-danger deleteTrigger float-end" style="cursor:pointer;"><span class="material-icons-outlined text-end" data-bs-toggle="modal" data-bs-target="#modalDeleteList">delete</span></p>
           </h5>
           <div class="card-body">
             <p class="card-text"><span class="material-icons-outlined">event</span> {{ list.creation_timestamp }}</p>
             <p class="card-text"><span class="material-icons-outlined">history</span> {{ list.last_modified }}</p>
             <p class="card-text">{% translate 'Items' %}: {{ list.length }}</p>
+            <hr>
             <p class="card-text d-inline"><a class="text-reset text-decoration-none" href="{% url 'list_editor' list.element_id %}"><span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit list' %}">edit</span></a></p>
             <p class="card-text d-inline"><a class="text-reset text-decoration-none" href="{% url 'list_viewer' list.element_id %}"><span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'View list' %}">pageview</span></a></p>
           </div>
         </div>
       </div>
+
       <br>
       {% empty %}
       <p><span class="material-icons-outlined">sentiment_dissatisfied</span> {% translate "Oh no! It's all sad and empty here...go make some lists." %}</p>
