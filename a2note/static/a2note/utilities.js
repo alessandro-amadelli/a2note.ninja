@@ -210,3 +210,24 @@ function notify(text) {
     toast.classList.add("hide");
   })
 }
+
+function showPageMessage(msgClass, msgText) {
+
+  let newDiv = document.createElement("div");
+  newDiv.setAttribute("class", msgClass + " fade show");
+  newDiv.setAttribute("role", "alert");
+
+  let closeBtn = document.createElement("div");
+  closeBtn.setAttribute("type", "button");
+  closeBtn.setAttribute("class", "btn-close");
+  closeBtn.setAttribute("aria-label", "Close");
+  closeBtn.setAttribute("data-bs-dismiss", "alert");
+  newDiv.appendChild(closeBtn);
+
+  let newSpan = document.createElement("span");
+  newDiv.appendChild(newSpan);
+  newSpan.innerHTML = msgText;
+
+
+  document.body.querySelector(".container").prepend(newDiv);
+}

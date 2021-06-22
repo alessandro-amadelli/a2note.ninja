@@ -11,6 +11,7 @@ urlpatterns = [
     path("login/", auth_views.LoginView.as_view(template_name='a2note/login.html'), name="login_view"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("my_account/", views.my_account_view, name="my_account_view"),
+    path("psw_change_view/", views.psw_change_view, name="psw_change_view"),
     path("my_dashboard/", views.dashboard_view, name="dashboard_view"),
     path("todolist/", views.todolist, name="todolist_view"),
     path("new_todolist/", views.new_todolist_view, name="new_todolist_view"),

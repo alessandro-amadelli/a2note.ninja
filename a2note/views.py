@@ -9,7 +9,7 @@ from django.http import JsonResponse
 
 from django.contrib.auth.models import User
 from a2note.models import AdditionalInfo
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 
 #translation
@@ -215,6 +215,56 @@ def my_account_view(request):
 
     return render(request, "a2note/my_account.html", context)
 
+@login_required
+def psw_change_view(request):
+    user = request.user
+
+    old_psw = request.POST["psw_old"]
+    new_psw1 = request.POST["psw_new1"]
+    new_psw2 = request.POST["psw_new2"]
+
+    response = {}
+
+    if old_psw.strip() == "" or new_psw1.strip() == "" or new_psw2.strip() == "":
+        response["message"] = {
+        "class": "alert alert-danger alert-dismissible",
+        "text": _("Please, enter all fields")
+        }
+        response["RESULT"] = "ERROR"
+        return JsonResponse(response)
+
+    # CHECK 1
+    if new_psw1 != new_psw2:
+        response["message"] = {
+        "class": "alert alert-danger alert-dismissible",
+        "text": _("Sorry, the passwords you entered do not match...")
+        }
+        response["RESULT"] = "ERROR"
+        return JsonResponse(response)
+
+    # CHECK 2
+    user_obj = User.objects.get(username=user.username)
+    if not user_obj.check_password(old_psw):
+        response["message"] = {
+        "class": "alert alert-danger alert-dismissible",
+        "text": _("Old password is incorrect...")
+        }
+        response["RESULT"] = "ERROR"
+        return JsonResponse(response)
+
+    # All checks cleared...updateing user's password
+    user_obj.set_password(new_psw1)
+    user_obj.save()
+
+    #Updating session hash to keep user logged in after password change
+    update_session_auth_hash(request, user_obj)
+
+    response["message"] = {
+    "class": "alert alert-success alert-dismissible",
+    "text": _("Password changed successfully")
+    }
+    response["RESULT"] = "OK"
+    return JsonResponse(response)
 
 @login_required
 def dashboard_view(request):
