@@ -50,24 +50,26 @@
     </div>
 
     <h3>{% translate 'Account information' %}</h3>
-    <table class="table table-dark">
-      <tr>
-        <th><span class="material-icons-outlined">account_circle</span> Username</th>
-        <td>{{ user.username }}</td>
-      </tr>
-      <tr>
-        <th><span class="material-icons-outlined">email</span> email</th>
-        <td>{{ user.email }}</td>
-      </tr>
-      <tr>
-        <th><span class="material-icons-outlined">event_available</span> {% translate 'Registration' %}</th>
-        <td>{{ user.date_joined }}</td>
-      </tr>
-      <tr>
-        <th><span class="material-icons-outlined">lock</span> Password</th>
-        <td> ***** <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modalPswChange">{% translate "Change" %}</button></td>
-      </tr>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-dark">
+        <tr>
+          <th><span class="material-icons-outlined">account_circle</span> Username</th>
+          <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+          <th><span class="material-icons-outlined">email</span> email</th>
+          <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+          <th><span class="material-icons-outlined">event_available</span> {% translate 'Registration' %}</th>
+          <td>{{ user.date_joined }}</td>
+        </tr>
+        <tr>
+          <th><span class="material-icons-outlined">lock</span> Password</th>
+          <td> ***** <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modalPswChange">{% translate "Change" %}</button></td>
+        </tr>
+      </table>
+    </div>
 
     <br>
 
