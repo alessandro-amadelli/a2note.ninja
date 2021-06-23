@@ -111,19 +111,18 @@ def insert_item(item):
     if element_id == "":
         while(element_id == ""):
             new_UID = generate_UID()
-            # print("new_UID", new_UID)
 
             if select_element_by_id(new_UID) == []:
                 element_id = new_UID
 
         if item["element_type"] == "TODOLIST":
-            item["element_id"] = "TL#" + element_id
+            item["element_id"] = "TL_" + element_id
             item["items"] = {}
         elif item["element_type"] == "SHOPLIST":
-            item["element_id"] = "SL#" + element_id
+            item["element_id"] = "SL_" + element_id
             item["items"] = {}
         else:
-            item["element_id"] = "A2#" + element_id
+            item["element_id"] = "A2_" + element_id
 
     table.put_item(Item=item)
     return item
