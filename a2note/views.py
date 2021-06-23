@@ -424,7 +424,7 @@ def new_shoplist_view(request):
     }
 
     # Clear cached lists for the user
-    cache_key = new_todolist["author"] + "_LISTS"
+    cache_key = new_shoplist["author"] + "_LISTS"
     cache.delete(cache_key)
 
     return list_editor(request, element_id)
