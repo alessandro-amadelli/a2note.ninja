@@ -22,8 +22,6 @@ from a2note.dynamoDB_ops import *
 import json
 from datetime import datetime
 
-from a2note.plot_maker import make_donut, make_bar
-
 #Caching
 from django.core.cache import cache
 
@@ -316,24 +314,35 @@ def dashboard_view(request):
         "total_items": total_items
         }
 
+    #Passing plots data to the webpage to build chart.js plots
+
     if todolists_ctr > 0 or shoplists_ctr > 0:
-        type_donut_plot = make_donut(values=[todolists_ctr, shoplists_ctr], labels=["To-do lists", "Shopping lists"],
-        center_text=len(created_lists), colors=["blue", 'rgb(221, 226, 16)'])
-        context["type_donut_plot"] = type_donut_plot
+        context["type_donut_plot"] = {
+        "values": [todolists_ctr, shoplists_ctr],
+        "labels": ["To-do lists", "Shopping lists"],
+        "colors": ["blue", 'rgb(221, 226, 16)']
+        }
 
     if total_done > 0 or total_todo > 0:
-        task_donut_plot = make_donut(values=[total_done, total_todo], labels=[gettext("Done"), gettext("To do")], colors=["green", "grey"])
-        context["task_donut_plot"] = task_donut_plot
+        context["task_donut_plot"] = {
+        "values": [total_done, total_todo],
+        "labels": [gettext("Done"), gettext("To do")],
+        "colors": ["green", "grey"]
+        }
 
     if todolists_ctr > 0:
-        todo_weekday_plot = make_bar(values=todolists_per_weekday, labels=[gettext("Mon"),gettext("Tue"),gettext("Wed"),gettext("Thu"),gettext("Fri"),gettext("Sat"),gettext("Sun")],
-        colors=["blue" for i in range(7)])
-        context["todo_weekday_plot"] = todo_weekday_plot
+        context["todo_weekday_plot"] = {
+        "values": todolists_per_weekday,
+        "labels": [gettext("Mon"),gettext("Tue"),gettext("Wed"),gettext("Thu"),gettext("Fri"),gettext("Sat"),gettext("Sun")],
+        "colors": ["blue" for i in range(7)]
+        }
 
     if shoplists_ctr > 0:
-        shop_weekday_plot = make_bar(values=shoplists_per_weekday, labels=[gettext("Mon"),gettext("Tue"),gettext("Wed"),gettext("Thu"),gettext("Fri"),gettext("Sat"),gettext("Sun")],
-        colors=["rgb(221, 226, 16)" for i in range(7)])
-        context["shop_weekday_plot"] = shop_weekday_plot
+        context["shop_weekday_plot"] = {
+        "values": shoplists_per_weekday,
+        "labels": [gettext("Mon"),gettext("Tue"),gettext("Wed"),gettext("Thu"),gettext("Fri"),gettext("Sat"),gettext("Sun")],
+        "colors": ["rgb(221, 226, 16)" for i in range(7)]
+        }
 
     context["total"] = len(created_lists)
 
@@ -379,6 +388,10 @@ def new_todolist_view(request):
         }
     }
 
+    # Clear cached lists for the user
+    cache_key = new_todolist["author"] + "_LISTS"
+    cache.delete(cache_key)
+
     # return render(request, "a2note/todolist.html", context)
     return list_editor(request, element_id)
 
@@ -409,6 +422,10 @@ def new_shoplist_view(request):
             "text": _("New shopping list created")
         }
     }
+
+    # Clear cached lists for the user
+    cache_key = new_todolist["author"] + "_LISTS"
+    cache.delete(cache_key)
 
     return list_editor(request, element_id)
 
