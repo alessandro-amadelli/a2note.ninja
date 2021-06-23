@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', function(){
   //list dletion
   initializeModalDeleteBtn();
   initializeDeleteListTriggers();
+
+  //Initialize lists creation
+  document.querySelectorAll(".newList-card").forEach((item, i) => {
+    item.addEventListener('click', function() {
+      showLoading();
+      createList(this.dataset.type);
+    });
+  });
+
 });
 
 function initializeModalDeleteBtn() {
@@ -82,6 +91,23 @@ function deleteList(element_id) {
     element_type = "TODOLIST";
   }
   data.append("element_id", element_id);
+  data.append("element_type", element_type);
+
+  request.send(data);
+}
+
+function createList(element_type){
+  var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  const request = new XMLHttpRequest();
+  const url = `/create_list_view/`;
+  request.open('POST', url);
+  request.setRequestHeader('X-CSRFToken', csrftoken);
+  request.onload = () => {
+    const response = JSON.parse(request.responseText);
+    window.location.href = '/list_editor/' + response["element_id"];
+  };
+  const data = new FormData();
+
   data.append("element_type", element_type);
 
   request.send(data);

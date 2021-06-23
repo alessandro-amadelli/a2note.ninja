@@ -137,6 +137,7 @@ function getListItems() {
 
 function saveShoplistToDB(reload) {
   var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  let element_id = document.querySelector("#elementID").innerText;
   const request = new XMLHttpRequest();
   const url = `/save_list_view/`;
   request.open('POST', url);
@@ -153,7 +154,6 @@ function saveShoplistToDB(reload) {
   const data = new FormData();
   title = document.querySelector("#inpListTitle").value;
 
-  element_id = document.querySelector("#elementID").innerText;
   if (element_id.substring(0,2) == "SL") {
     element_type = "SHOPLIST";
   } else {

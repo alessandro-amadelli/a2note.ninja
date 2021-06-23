@@ -317,6 +317,7 @@ body a {
 .newList-card {
   width: 100%;
   background-color: var(--element-background);
+  cursor: pointer;
 }
 
 .newList-card[data-type="TODOLIST"] {

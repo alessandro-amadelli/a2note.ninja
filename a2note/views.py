@@ -361,73 +361,36 @@ def shoplist(request):
     """
     return render(request, "a2note/shoplist.html")
 
-@login_required
-def new_todolist_view(request):
-    """
-    Page used for the creation of a new to-do list.
-    It saves the newly created list in the database.
-    """
-    #User data
-    user = request.user
-
-    #Creation of the new shopping list with essential data
-    item = {
-    "element_type": "TODOLIST",
-    "author": user.username
-    }
-
-    new_todolist = insert_item(item)
-
-    #Return of the newly created shopping list's id to the page and a creation message
-    element_id = new_todolist["element_id"]
-    context = {
-    "element_id": element_id,
-    "message": {
-            "class": "alert alert-success alert-dismissible",
-            "text": _("New to-do list created")
-        }
-    }
-
-    # Clear cached lists for the user
-    cache_key = new_todolist["author"] + "_LISTS"
-    cache.delete(cache_key)
-
-    # return render(request, "a2note/todolist.html", context)
-    return list_editor(request, element_id)
-
 
 @login_required
-def new_shoplist_view(request):
+def create_list_view(request):
     """
-    Page used for the creation of a new shopping list
-    It saves the newly created list in the database.
+    Creates a new list
     """
-    #User data
-    user = request.user
+    element_type = request.POST["element_type"]
 
-    #Creation of the new shopping list with essential data
+    if element_type not in ("TODOLIST", "SHOPLIST"):
+        pass
+
     item = {
-    "element_type": "SHOPLIST",
-    "author": user.username
+    "element_type": element_type,
+    "author": request.user.username,
+    "shared": "False",
+    "edit_enabled": "False",
+    "title": "",
+    "items": {}
     }
 
-    new_shoplist = insert_item(item)
+    new_list = insert_item(item)
 
-    #Return of the newly created shopping list's id to the page and a creation message
-    element_id = new_shoplist["element_id"]
-    context = {
-    "element_id": element_id,
-    "message": {
-            "class": "alert alert-success alert-dismissible",
-            "text": _("New shopping list created")
-        }
-    }
+    response = {"element_id": new_list["element_id"]}
 
     # Clear cached lists for the user
-    cache_key = new_shoplist["author"] + "_LISTS"
+    cache_key = new_list["author"] + "_LISTS"
     cache.delete(cache_key)
 
-    return list_editor(request, element_id)
+    return JsonResponse(response)
+
 
 def list_editor(request, listUID):
     """
