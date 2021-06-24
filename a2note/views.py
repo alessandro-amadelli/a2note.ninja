@@ -127,6 +127,8 @@ def send_otp(request):
     cache_key = f"{username}_{email}"
     cache.set(cache_key, otp, 60*5)
 
+    print(otp)
+
     email_subj = "a2note.ninja - Registration OTP"
 
     email_content = _("Hi") + f" <strong>{username}!</strong><br>"
@@ -235,8 +237,11 @@ def register_success(request):
 
     #...user registration TO-DO
     new_user = User.objects.create_user(username=username, email=email, password=psw0)
-    additional_info = AdditionalInfo(user=new_user, consent_ip=ip_address)
-    additional_info.save()
+    try:
+        additional_info = AdditionalInfo(user=new_user, consent_ip=ip_address)
+        additional_info.save()
+    except:
+        pass
 
     #Last check and auto login of the new user
     user = authenticate(username=username, password=psw0)
