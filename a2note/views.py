@@ -12,15 +12,19 @@ from a2note.models import AdditionalInfo
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 
+from django.core.validators import validate_email
+
 #translation
 from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import activate, get_language
 
 from a2note.dynamoDB_ops import *
+from a2note.mailer import send_email
 
 import json
 from datetime import datetime
+import random
 
 #Caching
 from django.core.cache import cache
@@ -98,9 +102,54 @@ def index(request):
 
     return render(request, "a2note/index.html")
 
+def generate_OTP():
+    LENGTH = 6
+    digits = '0123456789'
+
+    return "".join([random.choice(digits) for i in range(LENGTH)])
+
+def send_otp(request):
+    username = request.POST["username"]
+    email = request.POST["email"]
+
+    response = {}
+
+    try:
+        validate_email(email)
+    except:
+        response = {
+        "RESULT": "ERROR",
+        "DESCRIPTION": _("Email address is invalid...please check")
+        }
+        return JsonResponse(response)
+
+    otp = generate_OTP()
+    cache_key = f"{username}_{email}"
+    cache.set(cache_key, otp, 60*5)
+
+    email_subj = "a2note.ninja - Registration OTP"
+
+    email_content = _("Hi") + f" <strong>{username}!</strong><br>"
+    email_content += _("Here's your code to complete your registration on a2note.ninja") + "<br>"
+    email_content += f"<strong style='font-size:3rem;'>{otp}</strong><br><br>"
+    email_content += "a2note.ninja"
+
+    try:
+        send_email(email, email_subj, email_content)
+    except:
+        response = {
+        "RESULT": "ERROR",
+        "DESCRIPTION": _("Something went wrong...try again later.")
+        }
+        return JsonResponse(response)
+
+    response = {
+    "RESULT": "OK"
+    }
+    return JsonResponse(response)
+
 def register(request):
     return render(request, "a2note/register.html")
-
 
 def register_success(request):
     #Initializing defaults
@@ -112,6 +161,7 @@ def register_success(request):
     email = request.POST.get("email")
     psw0 = request.POST.get("password0")
     psw1 = request.POST.get("password1")
+    otp_user = request.POST.get("OTPNum")
 
     context["username"] = username
     context["email"] = email
@@ -157,6 +207,21 @@ def register_success(request):
             "class": "alert alert-danger alert-dismissible",
             "text": _("The two password you inserted do not correspond...")
             }
+
+    #CHECK 4
+    #Check if OTP is correct
+    if not failed:
+        cache_key = f"{username}_{email}"
+        correct_otp = cache.get(cache_key)
+        if otp_user != correct_otp:
+            failed = True
+            context["message"] = {
+            "class": "alert alert-danger alert-dismissible",
+            "text": _("Sorry, OTP is incorrect...")
+            }
+        else:
+            cache_key = f"{username}_{email}"
+            cache.delete(cache_key)
 
     if failed:
         return render(request, "a2note/register.html", context)

@@ -303,6 +303,16 @@ body a {
   animation-delay: 2s;
 }
 
+.otpInput {
+  width: 3rem;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  border-radius: 0;
+  border-bottom: solid thin;
+  color: var(--text-color);
+  text-align: center;
+}
+
 #btnBackTop {
   position: fixed;
   bottom: 2rem;

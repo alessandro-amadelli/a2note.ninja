@@ -10,6 +10,7 @@
 
 {% block body %}
   <div class="container my-container p-5">
+    <script src="{% static 'a2note/register.js' %}"></script>
     <br>
     <h1 class="intro-0" align="center">{% translate 'a<sub>2</sub>note.ninja Registration' %}</h1>
     <br>
@@ -57,7 +58,20 @@
           {% translate 'I understand and I wish to proceed.' %}
         </label>
       </div>
-      <button type="submit" class="btn btn-primary mb-2">{% translate 'Sign up' %}</button>
+      <div class="form-group hidden" id="otpGroup">
+        <label for="OTPDigit-1">{% translate 'Insert the code we sent to your email' %}</label>
+        <br>
+        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-1" name="OTPDigit-1" placeholder="-" maxlength="1" required>
+        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-2" name="OTPDigit-2" placeholder="-" maxlength="1" required>
+        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-3" name="OTPDigit-3" placeholder="-" maxlength="1" required>
+        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-4" name="OTPDigit-4" placeholder="-" maxlength="1" required>
+        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-5" name="OTPDigit-5" placeholder="-" maxlength="1" required>
+        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-6" name="OTPDigit-6" placeholder="-" maxlength="1" required>
+        <input type="text" class="hidden" id="OTPNum" name="OTPNum" readonly>
+      </div>
+      <br>
+
+      <button type="button" class="btn btn-primary mb-2" id="btnRegister">{% translate 'Sign up' %}</button>
     </form>
 
 
