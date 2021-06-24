@@ -26,6 +26,8 @@ import json
 from datetime import datetime
 import random
 
+import socket
+
 #Caching
 from django.core.cache import cache
 
@@ -126,8 +128,6 @@ def send_otp(request):
     otp = generate_OTP()
     cache_key = f"{username}_{email}"
     cache.set(cache_key, otp, 60*5)
-
-    print(otp)
 
     email_subj = "a2note.ninja - Registration OTP"
 
@@ -231,7 +231,7 @@ def register_success(request):
     #Getting IP address of the user to register the consent
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
-        ip_address = x_forwarded_for.split(',')[-1]
+        ip_address = x_forwarded_for.split(',')[-1].strip()
     else:
         ip_address = request.META.get('REMOTE_ADDR')
 
