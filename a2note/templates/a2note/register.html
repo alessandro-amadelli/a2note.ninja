@@ -20,19 +20,19 @@
       {% csrf_token %}
       <div class="form-group">
         <label for="ninjaName">ninja-name</label>
-        <input type="text" class="form-control" id="ninjaName" name="ninjaName" placeholder="{% translate 'Choose your username...' %}" value="{{ username }}" required>
+        <input type="text" class="form-control formInput" id="ninjaName" name="ninjaName" placeholder="{% translate 'Choose your username...' %}" value="{{ username }}" required>
       </div>
       <div class="form-group">
         <label for="email">email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="{% translate 'Enter email address...' %}" value="{{ email }}" required>
+        <input type="email" class="form-control formInput" id="email" name="email" placeholder="{% translate 'Enter email address...' %}" value="{{ email }}" required>
       </div>
       <div class="form-group">
         <label for="password0">password</label>
-        <input type="password" class="form-control" id="password0" name="password0" placeholder="{% translate 'Choose a password...' %}" required>
+        <input type="password" class="form-control formInput" id="password0" name="password0" placeholder="{% translate 'Choose a password...' %}" required>
       </div>
       <div class="form-group">
         <label for="password1">{% translate 'repeat password' %}</label>
-        <input type="password" class="form-control" id="password1" name="password1" placeholder="{% translate 'Repeat password...' %}" required>
+        <input type="password" class="form-control formInput" id="password1" name="password1" placeholder="{% translate 'Repeat password...' %}" required>
       </div>
 
       <div class="form-group">
@@ -53,13 +53,13 @@
 
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="consentCheck" name="consentCheck" value="consent" required/>
+        <input class="form-check-input formInput" type="checkbox" id="consentCheck" name="consentCheck" value="consent" required/>
         <label class="form-check-label" for="consentCheck">
           {% translate 'I understand and I wish to proceed.' %}
         </label>
       </div>
       <div class="form-group hidden" id="otpGroup">
-        <label for="OTPDigit-1">{% translate 'Insert the code we sent to your email' %}</label>
+        <label for="OTPDigit-1">{% translate 'Enter the code we sent to your email' %}</label>
         <br>
         <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-1" name="OTPDigit-1" placeholder="-" maxlength="1" required>
         <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-2" name="OTPDigit-2" placeholder="-" maxlength="1" required>
@@ -71,7 +71,7 @@
       </div>
       <br>
 
-      <button type="button" class="btn btn-primary mb-2" id="btnRegister">{% translate 'Sign up' %}</button>
+      <button type="button" class="btn btn-primary mb-2 hidden" id="btnRegister">{% translate 'Sign up' %}</button>
     </form>
 
 

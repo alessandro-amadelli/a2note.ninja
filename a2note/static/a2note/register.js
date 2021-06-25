@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+  //Event listeners to render register button visible
+  document.querySelectorAll(".formInput").forEach((inp, i) => {
+    inp.addEventListener('change', function() {
+      showBtnRegister();
+    })
+  });
+
   document.querySelector("#btnRegister").onclick = () => {
     btnRegisterClicked();
   }
@@ -11,6 +18,28 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 });
+
+function showBtnRegister() {
+  let visible = true;
+  let formInps = document.querySelectorAll(".formInput").forEach((inp, i) => {
+    if (inp.id == "consentCheck"){
+      if (!inp.checked){
+        visible = false
+      }
+    } else {
+      if (inp.value.trim() == ""){
+        visible = false;
+      }
+    }
+  });
+
+  if (visible) {
+    document.querySelector("#btnRegister").classList.remove("hidden");
+  } else {
+    document.querySelector("#btnRegister").classList.add("hidden");
+  }
+
+}
 
 function otpWritten(inp, key) {
   let completeOTP = "";

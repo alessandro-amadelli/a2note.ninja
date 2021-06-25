@@ -132,7 +132,7 @@ def send_otp(request):
     email_subj = "a2note.ninja - Registration OTP"
 
     email_content = _("Hi") + f" <strong>{username}!</strong><br>"
-    email_content += _("Here's your code to complete your registration on a2note.ninja") + "<br>"
+    email_content += _("Here's the code to complete your registration on a2note.ninja") + "<br>"
     email_content += f"<strong style='font-size:3rem;'>{otp}</strong><br><br>"
     email_content += "a2note.ninja"
 
@@ -207,7 +207,7 @@ def register_success(request):
             failed = True
             context["message"] = {
             "class": "alert alert-danger alert-dismissible",
-            "text": _("The two password you inserted do not correspond...")
+            "text": _("The two password you entered do not match...")
             }
 
     #CHECK 4
