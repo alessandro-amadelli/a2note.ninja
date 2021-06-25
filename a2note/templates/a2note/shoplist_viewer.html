@@ -29,8 +29,10 @@
     </p>
 
     <div class="row m-1 p-1">
-      <label for="inpListTitle" class="col-lg-1 col-2 d-inline">{% translate 'Title' %}</label>
-      <input type="text" class="col-lg-11 col-10 rounded-3 mb-3 p-1 d-inline" maxlength="30" autocomplete="off" value="{{ title }}" readonly/>
+      <div class="input-group">
+        <span class=" col-lg-2 col-3 mb-3 p-1" id="titleDescription">{% translate 'Title' %}</span>
+        <input type="text" class="col-lg-10 col-9 rounded-3 mb-3 p-1" aria-describedby="titleDescription"  placeholder="{% translate 'List title...' %}" maxlength="30" autocomplete="off" value="{{ title }}" readonly>
+      </div>
     </div>
 
     <div class="row">

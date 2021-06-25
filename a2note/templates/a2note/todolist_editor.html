@@ -35,20 +35,22 @@
     </p>
 
     {% if user.username == author %}
-    <table class="table align-middle">
-      <tr>
-        <th class="text-center">
-          <!-- Button trigger delete modal -->
-          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteList">{% translate 'Delete' %}<span class="material-icons-outlined">delete</span></button>
-        </th>
-        <th class="text-center">
-          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modalListSettings">{% translate 'Settings' %}<span class="material-icons-outlined">settings</span></button>
-        </th>
-        <th class="text-center">
-          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modalShareList">{% translate 'Share' %}<span class="material-icons-outlined">share</span></button>
-        </th>
-      </tr>
-    </table>
+    <div class="row">
+      <table class="table align-middle col">
+        <tr>
+          <th class="text-center">
+            <!-- Button trigger delete modal -->
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteList">{% translate 'Delete' %}<span class="material-icons-outlined">delete</span></button>
+          </th>
+          <th class="text-center">
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modalListSettings">{% translate 'Settings' %}<span class="material-icons-outlined">settings</span></button>
+          </th>
+          <th class="text-center">
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modalShareList">{% translate 'Share' %}<span class="material-icons-outlined">share</span></button>
+          </th>
+        </tr>
+      </table>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="modalDeleteList" tabindex="-1" aria-labelledby="modalDeleteListLabel" aria-hidden="true">
@@ -152,8 +154,10 @@
     {% endif %}
 
     <div class="row m-1 p-1">
-      <label for="inpListTitle" class="col-lg-1 col-2 d-inline">{% translate 'Title' %}</label>
-      <input type="text" id="inpListTitle" class="col-lg-11 col-10 rounded-3 mb-3 p-1 d-inline" placeholder="{% translate 'List title...' %}" maxlength="30" autocomplete="off" value="{{ title }}"/>
+      <div class="input-group">
+        <span class=" col-lg-2 col-3 mb-3 p-1" id="titleDescription">{% translate 'Title' %}</span>
+        <input type="text" class="col-lg-10 col-9 rounded-3 mb-3 p-1" id="inpListTitle" aria-describedby="titleDescription"  placeholder="{% translate 'List title...' %}" maxlength="30" autocomplete="off" value="{{ title }}">
+      </div>
     </div>
 
     {% if element_id %}

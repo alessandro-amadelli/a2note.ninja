@@ -1,5 +1,5 @@
 """
-All the views rendered by a2note_ninja
+All the views rendered by a2note.ninja
 
 Author: Ama
 """
