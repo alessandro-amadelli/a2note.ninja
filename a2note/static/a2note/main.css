@@ -433,6 +433,7 @@ option {
   box-shadow:         4px 3px 3px var(--shadow-color);
   transition: transform .2s;
   transition: box-shadow .2s;
+  overflow-x: hidden;
 }
 
 .element div {
@@ -547,6 +548,10 @@ option {
 
 .singleItem {
   min-height: 4rem;
+}
+
+.itemQuantity {
+  width: 3.5rem;
 }
 
 .section {
