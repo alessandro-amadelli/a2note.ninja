@@ -27,14 +27,9 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 
-function saveShoplist(){
-  saveShoplistToLocalStorage();
-}
-
 function saveShoplistToLocalStorage(){
   //Generate a JSON object representing the Shopping list and save it to the local storage
   //This function will overwrite an existing list if already present
-
   let jsonList = {};
   document.querySelectorAll(".section").forEach((section) => {
     let elementList = section.querySelectorAll(".element");
@@ -44,7 +39,9 @@ function saveShoplistToLocalStorage(){
       elementList.forEach((element, e) => {
         let elemStatus = element.dataset.status;
         let elemContent = element.querySelector(".taskTextArea").innerText;
-        let elemData = {"itemContent": elemContent, "itemStatus": elemStatus};
+        let quantity = element.querySelector(".itemQuantity").value;
+        let elemData = {"itemContent": elemContent, "itemStatus": elemStatus,
+      "quantity": quantity};
         jsonList[secName][e] = elemData;
       });
     }
@@ -65,8 +62,12 @@ function loadShoplistFromLocalStorage() {
 
   Object.keys(localShoplist).forEach((section) => {
     Object.keys(localShoplist[section]).forEach((element) => {
-      //addItem(category, text, status, loadedFromStorage)
-      addItem(section, localShoplist[section][element].itemContent, localShoplist[section][element].itemStatus, true);
+      //addItem(category, text, quantity, status, loadedFromStorage)
+      let quantity = localShoplist[section][element].quantity;
+      if (!quantity) {
+        quantity = 1;
+      }
+      addItem(section, localShoplist[section][element].itemContent, quantity, localShoplist[section][element].itemStatus, true);
     });
   });
 

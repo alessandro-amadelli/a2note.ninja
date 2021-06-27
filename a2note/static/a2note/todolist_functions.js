@@ -160,7 +160,9 @@ function addTask(text=null, creationTime=null, taskStatus=null, loadedFromStorag
 
   if (!loadedFromStorage) {
     //Save updated list to localStorage
-    enableSave();
+    try {
+      enableSave();
+    } catch {saveTodoToLocalStorage();}
   }
 }
 
@@ -177,7 +179,9 @@ function deleteTask(task) {
     updateStats();
 
     //Save updated list to localStorage
-    enableSave();
+    try {
+      enableSave();
+    } catch {saveTodoToLocalStorage();}
   });
 
   //Adding class for deletion animation
@@ -196,7 +200,9 @@ function completeTask(task){
   displayTasks();
 
   //Save updated list to localStorage
-  enableSave();
+  try {
+    enableSave();
+  } catch {saveTodoToLocalStorage();}
 }
 
 function displayTasks(){
@@ -220,7 +226,9 @@ function moveTaskUp(task){
     task.classList.add("movedTask");
   }
   //Save updated list to localStorage
-  enableSave();
+  try {
+    enableSave();
+  } catch {saveTodoToLocalStorage();}
 }
 
 function moveTaskDown(task){
@@ -237,7 +245,9 @@ function moveTaskDown(task){
     }
 
     //Save updated list to localStorage
-    enableSave();
+    try {
+      enableSave();
+    } catch {saveTodoToLocalStorage();}
   }
 }
 

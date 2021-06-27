@@ -171,7 +171,9 @@ function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFr
 
   //Event listener on number change
   quantInp.addEventListener('change', function(){
-    enableSave();
+    try{
+        enableSave();
+      } catch {saveShoplistToLocalStorage();}
   });
 
   quantDiv.appendChild(quantInp);
@@ -188,7 +190,9 @@ function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFr
   if (!loadedFromStorage) {
     //Save updated list
     //The function saveShoplist() contains a call to the correct saving function
-    enableSave();
+    try{
+        enableSave();
+      } catch {saveShoplistToLocalStorage();}
 
     //Notification toast
     notify(`<strong>${text}</strong> ` + gettext("added"));
@@ -213,7 +217,9 @@ function deleteItem(item) {
     item.remove();
     //Save updated list
     //The function saveShoplist() contains a call to the correct saving function
-    enableSave();
+    try{
+        enableSave();
+      } catch {saveShoplistToLocalStorage();}
   });
 
   //Adding class for deletion animation
@@ -228,9 +234,13 @@ function completeItem(item){
   } else {
     item.dataset.status = "ToDo";
   }
-  //Save updated list
-  //The function saveShoplist() contains a call to the correct saving function
-  enableSave();
+  //Try to enable the save button for the shopping list
+  //If it fails then the user is using the site without an account
+  try{
+    enableSave();
+  } catch {
+    saveShoplistToLocalStorage();
+  }
 }
 
 //W3Schools.com autocomplete solution adapted to my JSON object
