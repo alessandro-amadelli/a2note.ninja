@@ -327,7 +327,7 @@ body a {
 }
 
 .list-thumbnail {
-  background-color: var(--element-background);
+  background-color: var(--input-background);
 }
 
 .list-thumbnail:hover {
