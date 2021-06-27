@@ -347,3 +347,29 @@ document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
 }
+
+function updateProgressBar(){
+  //Updates shoplist progressbar
+  let progressContainer = document.querySelector(".footer-container");
+  let progressbar = document.querySelector("#shopProgress");
+
+  let totalItems = 0;
+  let itemsBought = 0;
+
+  //Items statistics
+  document.querySelectorAll(".element").forEach((element, i) => {
+    if (element.dataset.status == "Done") {
+      itemsBought += parseInt(element.querySelector(".itemQuantity").value);
+    }
+    totalItems += parseInt(element.querySelector(".itemQuantity").value);
+  });
+
+  let progrPerc = (itemsBought * 100) / totalItems;
+
+  progressbar.style.width = `${progrPerc}%`;
+  if (progrPerc > 0) {
+    progressContainer.classList.remove("hidden");
+  } else {
+    progressContainer.classList.add("hidden");
+  }
+}

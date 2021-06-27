@@ -5,9 +5,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
   loadShoplist();
 
+  updateProgressBar();
 });
 
-function enableSave(){}
+function enableSave(){
+  updateProgressBar();
+}
 
 function saveShoplist(reload=false) {}
 

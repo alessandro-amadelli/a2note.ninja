@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function(){
   retrieveAllProducts();
 
   loadShoplist();
-
+  updateProgressBar();
   //Button to delete list
   initializeBtnDelete();
 
@@ -109,6 +109,9 @@ function enableSave() {
   window.onbeforeunload = function() {
     return "";
   }
+
+  //Since a change has been made, update the progress
+  updateProgressBar();
 }
 
 function saveShoplist(reload=false) {

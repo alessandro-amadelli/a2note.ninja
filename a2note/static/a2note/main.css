@@ -414,10 +414,10 @@ option {
 
 .progress-bar {
   margin: 0;
-  animation-name: progressbarAnimation;
+  /* animation-name: progressbarAnimation;
   animation-duration: 4s;
   animation-direction: normal;
-  animation-iteration-count: infinite;
+  animation-iteration-count: infinite; */
 }
 
 .element {
@@ -679,4 +679,12 @@ option {
 
 .hidden {
   display: none;
+}
+
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background-color: var(--element-background);
+  min-width: 100%;
 }
