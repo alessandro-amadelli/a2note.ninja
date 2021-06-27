@@ -317,5 +317,8 @@ function updateStats() {
 
     //Rendering the main div visible
     statDiv.classList.remove("hidden");
+
+    //Rendering the progressbar visible
+    document.querySelector(".footer-container").classList.remove("hidden");
   }
 }

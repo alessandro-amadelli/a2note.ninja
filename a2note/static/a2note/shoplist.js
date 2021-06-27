@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   //Get all products from the database
   retrieveAllProducts();
+  updateProgressBar();
 
 });
 
@@ -48,6 +49,7 @@ function saveShoplistToLocalStorage(){
   });
 
   localStorage.setItem("localNinjaShoplist", JSON.stringify(jsonList));
+  updateProgressBar();
 }
 
 function loadShoplistFromLocalStorage() {

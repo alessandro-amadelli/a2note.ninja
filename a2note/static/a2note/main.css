@@ -414,6 +414,7 @@ option {
 
 .progress-bar {
   margin: 0;
+  background-color: var(--border-color);
   /* animation-name: progressbarAnimation;
   animation-duration: 4s;
   animation-direction: normal;
