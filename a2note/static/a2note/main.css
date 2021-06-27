@@ -5,14 +5,15 @@
   --background-color: rgb(26, 26, 26);
   --body-background-color: #000;
   --border-color: #0275d8;
-  --donetask-background: rgba(0, 0, 0, 0.4);
+  --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(0,0,0,0.9);
+  --input-background: rgba(255,255,255,0.1);
   --link-color: rgb(27, 174, 237);
   --plot-overlay-background: rgba(0,0,0,0.25);
   --progress-background: #fff;
   --shadow-color: #000;
   --shoplist-thumb-background: rgba(238, 216, 15, 0.7);
-  --task-background: rgba(255,255,255,0.1);
+  --task-background: rgba(0,0,0,0.9);
   --text-color: #fff;
   --todolist-thumb-background: rgba(45, 70, 179, 0.6);
 
@@ -38,6 +39,7 @@
   --border-color: rgb(70, 70, 70);
   --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(247, 247, 247, 0.9);
+  --input-background: rgba(247, 247, 247, 0.9);
   --link-color: rgb(3, 40, 200);
   --plot-overlay-background: rgba(255,255,255,0.0);
   --progress-background: #000;
@@ -164,25 +166,6 @@
     opacity: 0;
     position: relative;
     right: 50%;
-  }
-}
-
-@keyframes progressbarAnimation {
-  0% {
-    background-color: var(--border-color);
-    opacity: 1;
-  }
-  20% {
-    background-color: var(--border-color);
-    opacity: 0.3;
-  }
-  40% {
-    background-color: var(--border-color);
-    opacity: 1;
-  }
-  100% {
-    background-color: var(--border-color);
-    opacity: 1;
   }
 }
 
@@ -363,7 +346,7 @@ body a {
 input {
   color: inherit;
   border-color: transparent;
-  background-color: var(--task-background);
+  background-color: var(--input-background);
 }
 
 input[type="text"]:focus {
@@ -389,7 +372,7 @@ input[type="text"]:focus {
 }
 
 #taskViewSelect, #categorySelect {
-  background-color: var(--task-background);
+  background-color: var(--input-background);
   max-width: 40%;
   color: inherit;
 }
@@ -415,10 +398,6 @@ option {
 .progress-bar {
   margin: 0;
   background-color: var(--border-color);
-  /* animation-name: progressbarAnimation;
-  animation-duration: 4s;
-  animation-direction: normal;
-  animation-iteration-count: infinite; */
 }
 
 .element {
