@@ -6,6 +6,7 @@ from django.views.i18n import JavaScriptCatalog
 
 urlpatterns = [
     path("", views.index, name="index_view"),
+    path("about_us/", views.about_us, name="about_us"),
     path("register/", views.register, name="register_view"),
     path("send_otp/", views.send_otp, name="send_otp"),
     path("register_success/", views.register_success, name="register_success"),

@@ -534,6 +534,7 @@ option {
 
 .section {
   min-height: auto;
+  position: relative;
 }
 
 .section-title {
@@ -545,44 +546,209 @@ option {
   background-color: var(--fruit-background);
 }
 
+.fruit-section::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/fruits.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
+}
+
 .vegetable-section {
   background-color: var(--vegetable-background);
+}
+
+.vegetable-section::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/vegetables.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.3;
 }
 
 .dairy-section {
   background-color: var(--dairy-background);
 }
 
+.dairy-section::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/cheese.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.3;
+}
+
 .legume-section {
   background-color: var(--legume-background);
+}
+
+.legume-section::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/legumes.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.3;
 }
 
 .seasoning-section {
   background-color: var(--seasoning-background);
 }
 
+.seasoning-section::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/olive-oil.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.3;
+}
+
 .beverage-section {
   background-color: var(--beverage-background);
+}
+
+.beverage-section::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/beverage.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.3;
 }
 
 .alcohol-section {
   background-color: var(--alcohol-background);
 }
 
+.alcohol-section::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/wine.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.3;
+}
+
 .hygiene-section {
   background-color: var(--hygiene-background);
+}
+
+.hygiene-section::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/soap.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.3;
 }
 
 .supply-section {
   background-color: var(--supplies-background);
 }
 
+.supply-section::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/supplies.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.3;
+}
+
 .cleaning-section {
   background-color: var(--cleaning-background);
 }
 
+.cleaning-section::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/cleaning.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.3;
+}
+
 .other-section {
   background-color: var(--other-background);
+}
+
+.other-section::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/grocery.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.3;
 }
 
 .toast-animated {
@@ -665,4 +831,29 @@ option {
   z-index: 1;
   background-color: var(--element-background);
   min-width: 100%;
+}
+
+#developerInfoDiv {
+  position: relative;
+  display: flex;
+}
+
+#developerInfoDiv {
+  position: relative;
+  background-color: var(--body-background-color);
+}
+
+#developerInfoDiv::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/coding.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.3;
 }

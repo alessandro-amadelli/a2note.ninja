@@ -23,6 +23,11 @@
             <span class="material-icons-outlined">data_usage</span> {% translate 'My dashboard' %}
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.resolver_match.url_name == 'about_us' %} active{% endif %}" href="{% url 'about_us' %}">
+            <span class="material-icons-outlined">info</span> About
+          </a>
+        </li>
       </ul>
       <div class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -35,7 +40,6 @@
               <li><a class="dropdown-item" href="{% url 'logout' %}"><span class="material-icons-outlined">logout</span> Logout</a></li>
             </ul>
           </li>
-        </ul>
       {% else %}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -53,6 +57,11 @@
             <span class="material-icons-outlined">shopping_cart</span> Shopping list
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.resolver_match.url_name == 'about_us' %} active{% endif %}" href="{% url 'about_us' %}">
+            <span class="material-icons-outlined">info</span> About
+          </a>
+        </li>
       </ul>
       <div class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -62,8 +71,8 @@
           <li class="nav-item">
             <a class="nav-link{% if request.resolver_match.url_name == 'register_view' %} active{% endif %}" aria-current="page" href="{% url 'register_view' %}">{% translate 'Register' %}</a>
           </li>
-        </ul>
       {% endif %}
+      </ul>
 
         <div id="darkModeSelector" aria-label="dark mode toggle" class="rounded-circle shadow-md">
           <span class="material-icons-outlined">light_mode</span>

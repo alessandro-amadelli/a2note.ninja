@@ -104,6 +104,10 @@ def index(request):
 
     return render(request, "a2note/index.html")
 
+def about_us(request):
+
+    return render(request, "a2note/about_us.html")
+
 def generate_OTP():
     LENGTH = 6
     digits = '0123456789'

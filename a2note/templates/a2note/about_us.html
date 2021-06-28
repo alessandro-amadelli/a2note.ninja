@@ -1,0 +1,81 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+  About a2note.ninja
+{% endblock %}
+
+{% block body %}
+  <div class="container my-container p-5">
+    <h1 class="intro-0">{% translate 'a2note.ninja' %}</h1>
+    <h3 class="intro-1">{% translate "a simple way to make lists" %}</h3>
+
+    <hr>
+
+    <div class="row intro-2">
+      <div class="col">
+        <p>{% translate "With a2note.ninja you can create and manage to-do lists and shopping lists." %}</p>
+      </div>
+      <div class="w-100"></div>
+      <div class="col-md-6 col-12">
+        <h4>To-do lists</h4>
+        <p>
+          {% translate "To-do lists are a great way to put your commitments and important things pen to paper. That way you can see your progress." %}
+        </p>
+        <p>
+          {% translate "Writing down your commitments and objectives is a very good motivator and allows you to check the progress." %}
+          <br>
+          {% translate "Also, marking a task as 'Done' gives a thrill of satisfaction." %}
+        </p>
+        <p>
+          <span class="fst-italic">
+            {% translate "Disclaimer: we don't guarantee that you feel an actual 'thrill of satisfaction' each time. That could be personal and we do not hold ourselves responsible for lack of satisfaction." %}
+          </span>
+        </p>
+      </div>
+      <div class="col-md-6 col-12">
+        <h4>Shopping lists</h4>
+        <p>
+          {% translate "With a shopping list it's easy to remember everything you have to buy. You can see progress as you put items in the cart and everything falls into its own category." %}
+        </p>
+        <p>
+          {% translate "Following a written shopping lists improves the quality of your shopping and helps you buy everything you need." %}
+        </p>
+        <p>
+          {% translate "a2note.ninja automatically sorts the products it recognizes, moving each one to the correct category to facilitate your purchases." %}
+        </p>
+        <p>
+          {% translate "We also put a progress bar so you can see your...well progress and know when you can go home and chill." %}
+        </p>
+      </div>
+    </div>
+
+    <hr>
+  </div>
+
+    <div class="container intro-0" id="developerInfoDiv">
+      <div class="row position-relative">
+      <h4>{% translate "Who's behind this great website?" %}</h4>
+      <div class="col-12">
+        <h5>
+          {% translate "Well, first of all thanks for the appreciation. I'm touched!" %}
+        </h5>
+      </div>
+      <div class="col-12">
+        <p>{% translate "Hi!<br> I'm Alessandro, the developer behind this little project. Nice to meet you." %}</p>
+        <p>{% translate "I know...it's not perfect but I'm always learning, trying to improve and add something new." %}</p>
+        <p>{% translate "I hope that you find a2note.ninja enjoyable and helpful and I sincerely thank you for being part of it." %}
+        </p>
+        <p>{% translate "PS: Hope you'll stick around to see the news!" %}</p>
+      </div>
+    </div>
+    </div>
+
+
+
+
+
+{% endblock %}
