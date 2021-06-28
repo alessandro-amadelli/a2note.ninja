@@ -61,12 +61,12 @@
       <div class="form-group hidden" id="otpGroup">
         <label for="OTPDigit-1">{% translate 'Enter the code we sent to your email' %}</label>
         <br>
-        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-1" name="OTPDigit-1" placeholder="-" maxlength="1" required>
-        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-2" name="OTPDigit-2" placeholder="-" maxlength="1" required>
-        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-3" name="OTPDigit-3" placeholder="-" maxlength="1" required>
-        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-4" name="OTPDigit-4" placeholder="-" maxlength="1" required>
-        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-5" name="OTPDigit-5" placeholder="-" maxlength="1" required>
-        <input type="text" class="form-control otpInput d-inline m-1" id="OTPDigit-6" name="OTPDigit-6" placeholder="-" maxlength="1" required>
+        <input type="number" class="form-control otpInput d-inline m-1" id="OTPDigit-1" name="OTPDigit-1" placeholder="-" min="0" max="9" required>
+        <input type="number" class="form-control otpInput d-inline m-1" id="OTPDigit-2" name="OTPDigit-2" placeholder="-" min="0" max="9" required>
+        <input type="number" class="form-control otpInput d-inline m-1" id="OTPDigit-3" name="OTPDigit-3" placeholder="-" min="0" max="9" required>
+        <input type="number" class="form-control otpInput d-inline m-1" id="OTPDigit-4" name="OTPDigit-4" placeholder="-" min="0" max="9" required>
+        <input type="number" class="form-control otpInput d-inline m-1" id="OTPDigit-5" name="OTPDigit-5" placeholder="-" min="0" max="9" required>
+        <input type="number" class="form-control otpInput d-inline m-1" id="OTPDigit-6" name="OTPDigit-6" placeholder="-" min="0" max="9" required>
         <input type="text" class="hidden" id="OTPNum" name="OTPNum" readonly>
       </div>
       <br>
