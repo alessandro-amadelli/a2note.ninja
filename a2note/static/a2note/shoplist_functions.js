@@ -64,6 +64,24 @@ function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFr
     inp.value = "";
   }
 
+  let alreadyPresent = false;
+  //Check if item is already present
+  document.querySelectorAll(".element").forEach((element, i) => {
+    if (element.querySelector(".taskTextArea").innerText.toLowerCase() == text.toLowerCase()) {
+      element.querySelector(".itemQuantity").value = (parseInt(element.querySelector(".itemQuantity").value) + 1).toString();
+      alreadyPresent = true;
+      return false;
+    }
+  });
+
+  if (alreadyPresent) {
+    try{
+        enableSave();
+      } catch {saveShoplistToLocalStorage();}
+    notify(`<strong>${text}</strong> + 1`);
+    return false;
+  }
+
   //Adding section class to main container to make it the right size now that at least one
   //category section is added
   let mainContainer = document.querySelector("#main-container");

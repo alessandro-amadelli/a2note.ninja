@@ -4,13 +4,12 @@
   --autocomplete-background: rgb(26, 26, 26);
   --background-color: rgb(26, 26, 26);
   --body-background-color: #000;
-  --border-color: #0275d8;
   --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(0,0,0,0.9);
   --input-background: rgba(255,255,255,0.1);
   --link-color: rgb(27, 174, 237);
   --plot-overlay-background: rgba(0,0,0,0.25);
-  --progress-background: #fff;
+  --progressbar-background: rgb(56, 58, 59);
   --shadow-color: #000;
   --shoplist-thumb-background: rgba(238, 216, 15, 0.7);
   --task-background: rgba(0,0,0,0.9);
@@ -36,13 +35,12 @@
   --autocomplete-background: rgba(20, 130, 232, 0.98);
   --background-color: rgba(20, 130, 232, 0.75);
   --body-background-color: #f7f7f7;
-  --border-color: rgb(70, 70, 70);
   --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(247, 247, 247, 0.9);
   --input-background: rgba(247, 247, 247, 0.9);
   --link-color: rgb(3, 40, 200);
   --plot-overlay-background: rgba(255,255,255,0.0);
-  --progress-background: #000;
+  --progressbar-background: rgb(15, 15, 15);
   --shadow-color: #000;
   --shoplist-thumb-background: rgba(238, 216, 15, 0.8);
   --task-background: rgba(247, 247, 247, 0.9);
@@ -397,7 +395,7 @@ option {
 
 .progress-bar {
   margin: 0;
-  background-color: var(--border-color);
+  background-color: var(--progressbar-background);
 }
 
 .element {
