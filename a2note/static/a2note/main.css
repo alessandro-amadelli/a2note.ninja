@@ -296,11 +296,11 @@ body a {
 
 #btnBackTop {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 3rem;
+  right: .5rem;
   z-index: 99;
-  height: 3rem;
-  width: 3rem;
+  height: 2.5rem;
+  width: 2.5rem;
   opacity: .4;
   display: none;
 }
