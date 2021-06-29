@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-  <div class="container my-container p-5">
+  <div class="container my-container p-3">
     <h1 class="intro-0">{% translate 'a2note.ninja' %}</h1>
     <h3 class="intro-1">{% translate "a simple way to make lists" %}</h3>
 
@@ -20,7 +20,7 @@
         <p>{% translate "With a2note.ninja you can create and manage to-do lists and shopping lists." %}</p>
       </div>
       <div class="w-100"></div>
-      <div class="col-md-6 col-12">
+      <div class="col-md-6 col-12" id="aboutTodoDiv">
         <h4>To-do lists</h4>
         <p>
           {% translate "To-do lists are a great way to put your commitments and important things pen to paper. That way you can see your progress." %}
@@ -36,7 +36,7 @@
           </span>
         </p>
       </div>
-      <div class="col-md-6 col-12">
+      <div class="col-md-6 col-12" id="aboutShopDiv">
         <h4>Shopping lists</h4>
         <p>
           {% translate "With a shopping list it's easy to remember everything you have to buy. You can see progress as you put items in the cart and everything falls into its own category." %}
@@ -52,14 +52,13 @@
         </p>
       </div>
     </div>
-
     <hr>
   </div>
 
     <div class="container intro-0" id="developerInfoDiv">
       <div class="row position-relative">
-      <h4>{% translate "Who's behind this great website?" %}</h4>
       <div class="col-12">
+        <h4>{% translate "Who's behind this great website?" %}</h4>
         <h5>
           {% translate "Well, first of all thanks for the appreciation. I'm touched!" %}
         </h5>
@@ -73,9 +72,6 @@
       </div>
     </div>
     </div>
-
-
-
 
 
 {% endblock %}

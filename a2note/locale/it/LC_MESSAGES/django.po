@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 18:13+0200\n"
+"POT-Creation-Date: 2021-06-29 12:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,12 @@ msgstr "a2note.ninja"
 #: .\a2note\templates\a2note\index.html:142
 msgid "a simple way to make lists"
 msgstr "un modo semplice di creare liste"
+
+#: .\a2note\templates\a2note\about_us.html:20
+msgid ""
+"With a2note.ninja you can create and manage to-do lists and shopping lists."
+msgstr ""
+"Con a2note.ninja puoi creare e gestire to-do list e shopping list."
 
 #: .\a2note\templates\a2note\about_us.html:26
 #: .\a2note\templates\a2note\index.html:55
@@ -46,7 +52,8 @@ msgstr ""
 
 #: .\a2note\templates\a2note\about_us.html:31
 msgid "Also, marking a task as 'Done' gives a thrill of satisfaction."
-msgstr "Inoltre, segnare un task come 'Completato' da un brivido di soddisfazione."
+msgstr ""
+"Inoltre, segnare un task come 'Completato' da un brivido di soddisfazione."
 
 #: .\a2note\templates\a2note\about_us.html:35
 msgid ""
@@ -54,9 +61,9 @@ msgid ""
 "satisfaction' each time. That could be personal and we do not hold ourselves "
 "responsible for lack of satisfaction."
 msgstr ""
-"Disclaimer: non garantiamo che tu senta un reale 'brivido di "
-"soddisfazione' ogni volta. Quello può essere soggettivo e non ci riteniamo responsabili "
-"per mancanza di soddisfazione."
+"Disclaimer: non garantiamo che tu senta un reale 'brivido di soddisfazione' "
+"ogni volta. Quello può essere soggettivo e non ci riteniamo responsabili per "
+"mancanza di soddisfazione."
 
 #: .\a2note\templates\a2note\about_us.html:42
 #: .\a2note\templates\a2note\index.html:56
@@ -90,25 +97,26 @@ msgid ""
 "We also put a progress bar so you can see your...well progress and know when "
 "you can go home and chill."
 msgstr ""
-"Abbiamo anche aggiunto una barra di avanzamento così puoi vedere il tuo...beh, avanzamento e sapere quando "
-"potrai tornare a casa a rilassarti."
+"Abbiamo anche aggiunto una barra di avanzamento così puoi vedere il tuo..."
+"beh, avanzamento e sapere quando potrai tornare a casa a rilassarti."
 
 #: .\a2note\templates\a2note\about_us.html:61
 msgid "Who's behind this great website?"
 msgstr "Chi c'è dietro questo stupendo sito?"
 
-#: .\a2note\templates\a2note\about_us.html:64
+#: .\a2note\templates\a2note\about_us.html:63
 msgid "Well, first of all thanks for the appreciation. I'm touched!"
 msgstr "Beh, prima di tutto grazie dell'apprezzamento. Sono commosso!"
 
-#: .\a2note\templates\a2note\about_us.html:68
+#: .\a2note\templates\a2note\about_us.html:67
 msgid ""
 "Hi!<br> I'm Alessandro, the developer behind this little project. Nice to "
 "meet you."
-msgstr "Ciao!<br> Sono Alessandro, lo sviluppatore dietro questo piccolo progetto. Piacere di "
-"conoscerti."
+msgstr ""
+"Ciao!<br> Sono Alessandro, lo sviluppatore dietro questo piccolo progetto. "
+"Piacere di conoscerti."
 
-#: .\a2note\templates\a2note\about_us.html:69
+#: .\a2note\templates\a2note\about_us.html:68
 msgid ""
 "I know...it's not perfect but I'm always learning, trying to improve and add "
 "something new."
@@ -116,7 +124,7 @@ msgstr ""
 "Lo so...non è perfetto ma non smetto di imparare, provare a migliorare e "
 "aggiungere qualcosa di nuovo."
 
-#: .\a2note\templates\a2note\about_us.html:70
+#: .\a2note\templates\a2note\about_us.html:69
 msgid ""
 "I hope that you find a2note.ninja enjoyable and helpful and I sincerely "
 "thank you for being part of it."
@@ -124,7 +132,7 @@ msgstr ""
 "Spero che tu trovi a2note.ninja piacevole e utile e ti ringrazio "
 "sinceramente per farne parte."
 
-#: .\a2note\templates\a2note\about_us.html:72
+#: .\a2note\templates\a2note\about_us.html:71
 msgid "PS: Hope you'll stick around to see the news!"
 msgstr "PS: Spero che tu rimanga con noi per vedere le novità!"
 

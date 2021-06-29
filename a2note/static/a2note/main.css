@@ -398,6 +398,25 @@ option {
   background-color: var(--progressbar-background);
 }
 
+#taskList {
+  position: relative;
+}
+
+#taskList::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/checklist.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: contain;
+  background-repeat: repeat-y;
+  background-position: center center;
+  opacity: 0.2;
+}
+
 .element {
   margin-top: 3px;
   margin-bottom: 3px;
@@ -847,13 +866,47 @@ option {
   min-width: 100%;
 }
 
-#developerInfoDiv {
+#aboutTodoDiv {
   position: relative;
-  display: flex;
+}
+
+#aboutTodoDiv::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/checklist.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
+}
+
+#aboutShopDiv {
+  position:relative;
+}
+
+#aboutShopDiv::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/shoppinglist.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
 }
 
 #developerInfoDiv {
   position: relative;
+  display: flex;
   background-color: var(--body-background-color);
 }
 
