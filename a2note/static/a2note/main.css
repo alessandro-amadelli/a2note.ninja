@@ -411,7 +411,7 @@ option {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background-size: contain;
+  background-size: 100%;
   background-repeat: repeat-y;
   background-position: center center;
   opacity: 0.2;
@@ -906,7 +906,6 @@ option {
 
 #developerInfoDiv {
   position: relative;
-  display: flex;
   background-color: var(--body-background-color);
 }
 
