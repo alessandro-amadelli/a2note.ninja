@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-29 12:18+0200\n"
+"POT-Creation-Date: 2021-06-30 21:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,15 +100,15 @@ msgstr ""
 "Abbiamo anche aggiunto una barra di avanzamento così puoi vedere il tuo..."
 "beh, avanzamento e sapere quando potrai tornare a casa a rilassarti."
 
-#: .\a2note\templates\a2note\about_us.html:61
+#: .\a2note\templates\a2note\about_us.html:58
 msgid "Who's behind this great website?"
 msgstr "Chi c'è dietro questo stupendo sito?"
 
-#: .\a2note\templates\a2note\about_us.html:63
+#: .\a2note\templates\a2note\about_us.html:60
 msgid "Well, first of all thanks for the appreciation. I'm touched!"
 msgstr "Beh, prima di tutto grazie dell'apprezzamento. Sono commosso!"
 
-#: .\a2note\templates\a2note\about_us.html:67
+#: .\a2note\templates\a2note\about_us.html:64
 msgid ""
 "Hi!<br> I'm Alessandro, the developer behind this little project. Nice to "
 "meet you."
@@ -116,7 +116,7 @@ msgstr ""
 "Ciao!<br> Sono Alessandro, lo sviluppatore dietro questo piccolo progetto. "
 "Piacere di conoscerti."
 
-#: .\a2note\templates\a2note\about_us.html:68
+#: .\a2note\templates\a2note\about_us.html:65
 msgid ""
 "I know...it's not perfect but I'm always learning, trying to improve and add "
 "something new."
@@ -124,7 +124,7 @@ msgstr ""
 "Lo so...non è perfetto ma non smetto di imparare, provare a migliorare e "
 "aggiungere qualcosa di nuovo."
 
-#: .\a2note\templates\a2note\about_us.html:69
+#: .\a2note\templates\a2note\about_us.html:66
 msgid ""
 "I hope that you find a2note.ninja enjoyable and helpful and I sincerely "
 "thank you for being part of it."
@@ -132,7 +132,7 @@ msgstr ""
 "Spero che tu trovi a2note.ninja piacevole e utile e ti ringrazio "
 "sinceramente per farne parte."
 
-#: .\a2note\templates\a2note\about_us.html:71
+#: .\a2note\templates\a2note\about_us.html:68
 msgid "PS: Hope you'll stick around to see the news!"
 msgstr "PS: Spero che tu rimanga con noi per vedere le novità!"
 
@@ -560,77 +560,77 @@ msgid "You are not logged in, your shopping list is saved locally."
 msgstr "Non hai eseguito il log in, la tua shopping list è salvata in locale."
 
 #: .\a2note\templates\a2note\shoplist.html:42
-#: .\a2note\templates\a2note\shoplist_editor.html:167
+#: .\a2note\templates\a2note\shoplist_editor.html:183
 msgid "Insert item..."
 msgstr "Inserisci elemento..."
 
 #: .\a2note\templates\a2note\shoplist.html:47
-#: .\a2note\templates\a2note\shoplist_editor.html:172
+#: .\a2note\templates\a2note\shoplist_editor.html:188
 msgid "Category"
 msgstr "Categorie"
 
 #: .\a2note\templates\a2note\shoplist.html:49
-#: .\a2note\templates\a2note\shoplist_editor.html:174
+#: .\a2note\templates\a2note\shoplist_editor.html:190
 #: .\a2note\templates\a2note\shoplist_viewer.html:41
 msgid "Fruit"
 msgstr "Frutta"
 
 #: .\a2note\templates\a2note\shoplist.html:50
-#: .\a2note\templates\a2note\shoplist_editor.html:175
+#: .\a2note\templates\a2note\shoplist_editor.html:191
 #: .\a2note\templates\a2note\shoplist_viewer.html:42
 msgid "Vegetables"
 msgstr "Verdura"
 
 #: .\a2note\templates\a2note\shoplist.html:51
-#: .\a2note\templates\a2note\shoplist_editor.html:176
+#: .\a2note\templates\a2note\shoplist_editor.html:192
 #: .\a2note\templates\a2note\shoplist_viewer.html:43
 msgid "Dairy products"
 msgstr "Latticini"
 
 #: .\a2note\templates\a2note\shoplist.html:52
-#: .\a2note\templates\a2note\shoplist_editor.html:177
+#: .\a2note\templates\a2note\shoplist_editor.html:193
 #: .\a2note\templates\a2note\shoplist_viewer.html:44
 msgid "Legumes"
 msgstr "Legumi"
 
 #: .\a2note\templates\a2note\shoplist.html:53
-#: .\a2note\templates\a2note\shoplist_editor.html:178
+#: .\a2note\templates\a2note\shoplist_editor.html:194
 #: .\a2note\templates\a2note\shoplist_viewer.html:45
 msgid "Seasoning"
 msgstr "Condimenti"
 
 #: .\a2note\templates\a2note\shoplist.html:54
-#: .\a2note\templates\a2note\shoplist_editor.html:179
+#: .\a2note\templates\a2note\shoplist_editor.html:195
 #: .\a2note\templates\a2note\shoplist_viewer.html:46
 msgid "Beverages"
 msgstr "Bevande"
 
 #: .\a2note\templates\a2note\shoplist.html:55
-#: .\a2note\templates\a2note\shoplist_editor.html:180
+#: .\a2note\templates\a2note\shoplist_editor.html:196
 #: .\a2note\templates\a2note\shoplist_viewer.html:47
 msgid "Alcohol"
 msgstr "Alcolici"
 
 #: .\a2note\templates\a2note\shoplist.html:56
-#: .\a2note\templates\a2note\shoplist_editor.html:181
+#: .\a2note\templates\a2note\shoplist_editor.html:197
 #: .\a2note\templates\a2note\shoplist_viewer.html:48
 msgid "Hygiene"
 msgstr "Igiene"
 
 #: .\a2note\templates\a2note\shoplist.html:57
-#: .\a2note\templates\a2note\shoplist_editor.html:182
+#: .\a2note\templates\a2note\shoplist_editor.html:198
 #: .\a2note\templates\a2note\shoplist_viewer.html:49
 msgid "Supplies"
 msgstr "Forniture"
 
 #: .\a2note\templates\a2note\shoplist.html:58
-#: .\a2note\templates\a2note\shoplist_editor.html:183
+#: .\a2note\templates\a2note\shoplist_editor.html:199
 #: .\a2note\templates\a2note\shoplist_viewer.html:50
 msgid "Cleaning"
 msgstr "Pulizia"
 
 #: .\a2note\templates\a2note\shoplist.html:59
-#: .\a2note\templates\a2note\shoplist_editor.html:184
+#: .\a2note\templates\a2note\shoplist_editor.html:200
 #: .\a2note\templates\a2note\shoplist_viewer.html:51
 msgid "Other"
 msgstr "Altro"
@@ -771,14 +771,18 @@ msgstr ""
 "impostata su privata. Se desideri condividere la lista per favore recati su "
 "'Impostazioni' a rendi la lista pubblica."
 
-#: .\a2note\templates\a2note\shoplist_editor.html:158
+#: .\a2note\templates\a2note\shoplist_editor.html:160
+msgid "Items rundown"
+msgstr "Riepilogo elementi"
+
+#: .\a2note\templates\a2note\shoplist_editor.html:174
 #: .\a2note\templates\a2note\shoplist_viewer.html:33
 #: .\a2note\templates\a2note\todolist_editor.html:158
 #: .\a2note\templates\a2note\todolist_viewer.html:34
 msgid "Title"
 msgstr "Titolo"
 
-#: .\a2note\templates\a2note\shoplist_editor.html:159
+#: .\a2note\templates\a2note\shoplist_editor.html:175
 #: .\a2note\templates\a2note\shoplist_viewer.html:34
 #: .\a2note\templates\a2note\todolist_editor.html:159
 #: .\a2note\templates\a2note\todolist_viewer.html:35

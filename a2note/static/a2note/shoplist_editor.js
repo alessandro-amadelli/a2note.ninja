@@ -71,7 +71,44 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelector("#btnSaveList").onclick = () => {
     btnSaveClick();
   }
+
+  //Initialize button to show modalRundown
+  document.querySelector("#btnShowRundown").onclick = () => {
+    showModalRundown();
+  }
 });
+
+function showModalRundown() {
+  let modal = document.querySelector("#modalRundown");
+  let myMod = new bootstrap.Modal(modal, {show: false});
+
+  let modBody = modal.querySelector(".modal-body");
+  let itemList = document.querySelectorAll(".singleItem");
+  let intemCount = document.querySelector("#modalRundownTot");
+  intemCount.innerText = `(${itemList.length})`;
+  modBody.childNodes.forEach((p, i) => {
+    p.remove();
+  });
+
+  myMod.show();
+
+  itemList.forEach((item, i) => {
+    let name = item.querySelector(".taskTextArea").innerText;
+    let quant = item.querySelector(".itemQuantity").value;
+    let status = item.dataset.status;
+
+    let newP = document.createElement("P");
+    newP.innerText = `${name} (x${quant})`;
+    newP.style.borderBottom = "solid thin";
+    if (status == "Done") {
+      newP.style.textDecoration = "line-through";
+    }
+    modBody.appendChild(newP);
+
+  });
+
+
+}
 
 function initializeShareBtns() {
   let text = gettext("Hi! Check out this cool list I created on a2note.ninja...")

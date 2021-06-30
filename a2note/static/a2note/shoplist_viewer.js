@@ -22,7 +22,11 @@ function loadShoplist(){
     }
     addItemViewOnly(items[item]["category"], item, quantity, items[item]["status"]);
   });
-
+  
+  //Initialize button to show modalRundown
+  document.querySelector("#btnShowRundown").onclick = () => {
+    showModalRundown();
+  }
 }
 
 function addItemViewOnly(category=null, text=null, quantity=1, itemStatus=null) {

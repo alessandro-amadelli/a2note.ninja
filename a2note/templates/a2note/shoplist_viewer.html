@@ -15,6 +15,22 @@
     <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
     <h3 class="intro-1 col"><span class="material-icons-outlined">shopping_cart</span> List VIEWER</h3>
 
+    <!-- Modal for items rundown -->
+    <div class="modal fade" id="modalRundown" tabindex="-1" aria-labelledby="modalRundownLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalRundownLabel"><span class="material-icons-outlined">list_alt</span> {% translate "Items rundown" %} <span id="modalRundownTot"></span></h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <p class="intro-1">
       {% if shared == "True" %}
         <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Public' %}">public</span>
@@ -50,6 +66,10 @@
           <option value="cleaning" data-icon="cleaning_services">{% translate 'Cleaning' %}</option>
           <option value="other" data-icon="inventory" selected>{% translate 'Other' %}</option>
         </select>
+      </div>
+      <div class="w-100"></div>
+      <div class="col-12 mt-2 mb-0">
+        <span class="material-icons-outlined" id="btnShowRundown">list_alt</span>
       </div>
     </div>
   </div>
