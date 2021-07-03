@@ -24,10 +24,15 @@ document.addEventListener('DOMContentLoaded', function(){
   //Get all products from the database
   retrieveAllProducts();
   updateProgressBar();
-  
+
   //Initialize button to show modalRundown
   document.querySelector("#btnShowRundown").onclick = () => {
     showModalRundown();
+  }
+
+  //Initialize button to show modalRundown
+  document.querySelector("#btnShowStats").onclick = () => {
+    showModalBarChart();
   }
 });
 

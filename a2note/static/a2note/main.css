@@ -549,8 +549,16 @@ option {
   filter: var(--filter-value);
 }
 
-#btnShowRundown {
+#btnShowRundown, #btnShowStats {
   cursor: pointer;
+}
+
+.entrance-animated {
+  animation-name: taskAnimation;
+  animation-duration: .4s;
+  animation-direction: reverse;
+  animation-play-state: running;
+  animation-iteration-count: 1;
 }
 
 .singleItem {

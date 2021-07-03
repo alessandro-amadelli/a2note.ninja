@@ -21,6 +21,7 @@ function showModalRundown() {
 
     let newP = document.createElement("P");
     newP.innerText = `${name} (x${quant})`;
+    newP.setAttribute("class", "entrance-animated");
     newP.style.borderBottom = "solid thin";
     if (status == "Done") {
       newP.style.textDecoration = "line-through";
@@ -28,6 +29,79 @@ function showModalRundown() {
     modBody.appendChild(newP);
 
   });
+}
+
+var shoplistBarChart = null;
+
+function showModalBarChart() {
+  let modal = document.querySelector("#modalBarChart");
+  let myMod = new bootstrap.Modal(modal, {show: false});
+
+  let modBody = modal.querySelector(".modal-body");
+  let itemList = document.querySelectorAll(".singleItem");
+  let totalItems = itemList.length;
+
+  myMod.show();
+
+  let dataJson = {};
+  itemList.forEach((item, i) => {
+    let category = item.parentElement.dataset.category;
+    let quant = item.querySelector(".itemQuantity").value;
+    let color = window.getComputedStyle(item.parentElement)["backgroundColor"];
+    let status = item.dataset.status;
+
+    if (dataJson.hasOwnProperty(category)){
+      dataJson[category]["total"] += parseInt(quant);
+    } else {
+      dataJson[category] = {"total": parseInt(quant),
+    "color": color};
+    }
+  });
+
+  //Chart
+  let labels = [];
+  let colors = [];
+  let values = [];
+
+  Object.keys(dataJson).forEach((key, i) => {
+    labels.push(key);
+    colors.push(dataJson[key]["color"]);
+    values.push(dataJson[key]["total"]);
+  });
+
+
+  let data = {
+    labels: labels,
+    datasets: [{
+      label: 'Stats',
+      backgroundColor: colors,
+      borderColor: colors,
+      data: values,
+    }],
+  };
+
+  let config = {
+    type: 'bar',
+    data,
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
+  };
+
+  //Destroy previously created graph
+  if (shoplistBarChart) {
+    shoplistBarChart.destroy();
+  }
+
+  shoplistBarChart = new Chart(
+    document.querySelector('#shoplistBarChart'),
+    config
+  );
+
 }
 
 

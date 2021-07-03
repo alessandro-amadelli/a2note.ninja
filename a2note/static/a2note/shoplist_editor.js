@@ -76,6 +76,12 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelector("#btnShowRundown").onclick = () => {
     showModalRundown();
   }
+
+  //Initialize button to show modalRundown
+  document.querySelector("#btnShowStats").onclick = () => {
+    showModalBarChart();
+  }
+
 });
 
 function initializeShareBtns() {

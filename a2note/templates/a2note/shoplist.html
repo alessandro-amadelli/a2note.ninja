@@ -29,6 +29,24 @@
       </div>
     </div>
 
+    <!-- Modal for bar chart and statistics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <div class="modal fade" id="modalBarChart" tabindex="-1" aria-labelledby="modalBarChartLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalBarChartLabel"><span class="material-icons-outlined">bar_chart</span> {% translate "Statistics" %} <span id="modalBarChartTot"></span></h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <canvas class="position-relative" id="shoplistBarChart"></canvas>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
     {% if user.is_authenticated %}
     <script>
       var is_authenticated = true;
@@ -78,6 +96,7 @@
       <div class="w-100"></div>
       <div class="col-12 mt-2 mb-0">
         <span class="material-icons-outlined" id="btnShowRundown">list_alt</span>
+        <span class="material-icons-outlined" id="btnShowStats">bar_chart</span>
       </div>
     </div>
   </div>
