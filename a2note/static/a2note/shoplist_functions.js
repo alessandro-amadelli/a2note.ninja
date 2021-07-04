@@ -45,7 +45,8 @@ function showModalBarChart() {
 
   let dataJson = {};
   itemList.forEach((item, i) => {
-    let category = item.parentElement.dataset.category;
+    // let category = item.parentElement.dataset.category;
+    let category = item.parentElement.querySelector(".section-title").querySelector("span").innerText;
     let quant = item.querySelector(".itemQuantity").value;
     let color = window.getComputedStyle(item.parentElement)["backgroundColor"];
     let status = item.dataset.status;
@@ -104,7 +105,6 @@ function showModalBarChart() {
 
 }
 
-
 function createSections() {
   //Creation of all the sections in the correct order by taking them from the dropdown select
   let catSelect = document.querySelector("#categorySelect");
@@ -118,7 +118,7 @@ function createSections() {
 
     let sectionTitle = document.createElement("div");
     sectionTitle.setAttribute("class", "section-title w-100 p-1 rounded-3");
-    sectionTitle.innerHTML = `<span class="d-inline">${secTitle} <i class="material-icons-outlined d-inline">${secIcon}</i></span>`;
+    sectionTitle.innerHTML = `<span class="d-inline">${secTitle}</span> <i class="material-icons-outlined d-inline">${secIcon}</i>`;
 
     targetSection.appendChild(sectionTitle);
 
@@ -148,13 +148,18 @@ function retrieveAllProducts() {
   request.send();
 }
 
+function checkCategory(itemName) {
+  //Close autocomplete items if still open
+  document.querySelectorAll(".autocomplete-items").forEach((item, i) => {
+    item.parentElement.removeChild(item);
+  });
+
+
+  document.querySelector("#categorySelect").value = PRODUCTLIST[itemName.charAt(0).toUpperCase() + itemName.slice(1)];
+}
+
 function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFromStorage=false) {
   //Adds a new element in the shopping list
-  if (category == null) {
-    let catSelect = document.querySelector("#categorySelect");
-    category = catSelect.value;
-  }
-
   if (text == null) {
     let inp = document.querySelector("#itemText");
     text = inp.value;
@@ -167,6 +172,17 @@ function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFr
     }
     //Clear the original input text
     inp.value = "";
+  }
+
+  if (category == null) {
+    let catSelect = document.querySelector("#categorySelect");
+
+    //Additional check to decide category if the user doesn't select element from the autocomplete menu
+    if (catSelect.value == "other") {
+      checkCategory(text);
+    }
+
+    category = catSelect.value;
   }
 
   let alreadyPresent = false;
@@ -403,7 +419,8 @@ function autocomplete(inp, arr) {
               valueToInsert = this.getElementsByTagName("input")[0].value;
               inp.value = valueToInsert;
 
-              document.querySelector("#categorySelect").value = arr[valueToInsert];
+              //Set the category select with the correct category
+              checkCategory(valueToInsert);
 
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
