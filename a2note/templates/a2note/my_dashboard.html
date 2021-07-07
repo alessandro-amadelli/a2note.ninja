@@ -94,7 +94,10 @@
           );
         }
 
-        makeTypeDonutPlot();
+        setTimeout(() => {
+          makeTypeDonutPlot();
+        }, 150);
+
 
         </script>
 
@@ -134,7 +137,9 @@
           );
         }
 
-        makeTaskDonutPlot();
+        setTimeout(() => {
+          makeTaskDonutPlot();
+        }, 350);
 
         </script>
       </div>
@@ -156,6 +161,7 @@
                 backgroundColor: todo_weekday_plot["colors"],
                 borderColor: todo_weekday_plot["colors"],
                 data: todo_weekday_plot["values"],
+                barPercentage: 0.7,
               }],
             };
 
@@ -177,7 +183,9 @@
             );
           }
 
-          makeTodoWeekdayPlot();
+          setTimeout(() => {
+            makeTodoWeekdayPlot();
+          }, 550);
 
           </script>
       </div>
@@ -200,6 +208,7 @@
                   backgroundColor: shop_weekday_plot["colors"],
                   borderColor: shop_weekday_plot["colors"],
                   data: shop_weekday_plot["values"],
+                  barPercentage: 0.7,
                 }],
 
               };
@@ -221,7 +230,9 @@
                 config
               );
             }
-            makeShopWeekdayPlot();
+            setTimeout(() => {
+              makeShopWeekdayPlot();
+            }, 750);
 
             </script>
         </div>

@@ -43,6 +43,8 @@ function showModalBarChart() {
 
   myMod.show();
 
+
+
   let dataJson = {};
   itemList.forEach((item, i) => {
     // let category = item.parentElement.dataset.category;
@@ -74,10 +76,11 @@ function showModalBarChart() {
   let data = {
     labels: labels,
     datasets: [{
-      label: 'Stats',
+      label: '#',
       backgroundColor: colors,
       borderColor: colors,
       data: values,
+      barPercentage: 1.0,
     }],
   };
 
@@ -85,6 +88,7 @@ function showModalBarChart() {
     type: 'bar',
     data,
     options: {
+      indexAxis: 'y',
       plugins: {
         legend: {
           display: false
@@ -98,10 +102,15 @@ function showModalBarChart() {
     shoplistBarChart.destroy();
   }
 
-  shoplistBarChart = new Chart(
-    document.querySelector('#shoplistBarChart'),
-    config
-  );
+  //Small delay added to generate the new graph so the user can see the graph animation
+  setTimeout(() => {
+    shoplistBarChart = new Chart(
+      document.querySelector('#shoplistBarChart'),
+      config
+    );
+  }, 300);
+
+
 
 }
 
