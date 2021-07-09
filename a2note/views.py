@@ -401,7 +401,7 @@ def dashboard_view(request):
         context["task_donut_plot"] = {
         "values": [total_done, total_todo],
         "labels": [gettext("Done"), gettext("To do")],
-        "colors": ["green", "grey"]
+        "colors": ["rgb(12, 205, 37)", "grey"]
         }
 
     if todolists_ctr > 0:

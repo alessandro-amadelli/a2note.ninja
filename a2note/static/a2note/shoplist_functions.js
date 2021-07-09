@@ -110,8 +110,6 @@ function showModalBarChart() {
     );
   }, 300);
 
-
-
 }
 
 function createSections() {

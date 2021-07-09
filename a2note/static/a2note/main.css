@@ -220,6 +220,10 @@ body a {
   color: var(--link-color);
 }
 
+a.active {
+  border-bottom: thin solid var(--text-color);
+}
+
 .my-container {
   background-color: var(--background-color);
   transition: background-color 2.5s ease;
