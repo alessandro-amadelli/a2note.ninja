@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-10 14:12+0200\n"
+"POT-Creation-Date: 2021-07-10 14:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,8 +148,8 @@ msgid ""
 "Create your shopping lists or to-do lists and save them in the cloud. Share "
 "your lists with whomever you want."
 msgstr ""
-"Crea le tue liste della spesa o to-do list e salvale sul cloud. Condividi "
-"le tue liste con chiunque vuoi."
+"Crea le tue liste della spesa o to-do list e salvale sul cloud. Condividi le "
+"tue liste con chiunque vuoi."
 
 #: .\a2note\templates\a2note\index.html:21
 #: .\a2note\templates\a2note\shoplist_editor.html:20
@@ -319,8 +319,8 @@ msgid ""
 "Login to your account to see, delete, modify the lists you created or to "
 "create new ones."
 msgstr ""
-"Entra nel tuo account per vedere, eliminare, modificare le liste che hai creato o per "
-"crearne di nuove."
+"Entra nel tuo account per vedere, eliminare, modificare le liste che hai "
+"creato o per crearne di nuove."
 
 #: .\a2note\templates\a2note\login.html:19
 msgid "a<sub>2</sub>note.ninja Login"
@@ -493,19 +493,28 @@ msgstr "I giorni che preferisci per creare shopping list"
 msgid "You haven't created any list...yet"
 msgstr "Non hai creato alcuna lista...per ora"
 
-#: .\a2note\templates\a2note\navbar.html:18
+#: .\a2note\templates\a2note\navbar.html:8
+#: .\a2note\templates\a2note\navbar.html:9
+msgid ""
+"a2note.ninja logo. A stylized ninja face is shown, in wich only the eyes are "
+"visible."
+msgstr ""
+"Logo di a2note.ninja. Viene mostrata una faccia stilizzata di un ninja, in cui solo gli occhi "
+"sono visibili."
+
+#: .\a2note\templates\a2note\navbar.html:19
 msgid "My lists"
 msgstr "Le mie liste"
 
-#: .\a2note\templates\a2note\navbar.html:23
+#: .\a2note\templates\a2note\navbar.html:24
 msgid "My dashboard"
 msgstr "La mia dashboard"
 
-#: .\a2note\templates\a2note\navbar.html:39
+#: .\a2note\templates\a2note\navbar.html:40
 msgid "My account"
 msgstr "Il mio account"
 
-#: .\a2note\templates\a2note\navbar.html:72
+#: .\a2note\templates\a2note\navbar.html:73
 msgid "Register"
 msgstr "Registrati"
 
@@ -514,8 +523,8 @@ msgid ""
 "Create a free account on a2note.ninja to be able to save and share your "
 "shopping lists and to-do lists."
 msgstr ""
-"Crea un account gratuito su a2note.ninja per essere in grado di salvere e condividere le tue "
-"liste della spesa e to-do list."
+"Crea un account gratuito su a2note.ninja per essere in grado di salvere e "
+"condividere le tue liste della spesa e to-do list."
 
 #: .\a2note\templates\a2note\register.html:24
 msgid "a<sub>2</sub>note.ninja Registration"
@@ -608,7 +617,8 @@ msgstr "Registrati"
 #: .\a2note\templates\a2note\shoplist.html:12
 #: .\a2note\templates\a2note\shoplist_editor.html:12
 msgid "Here you can edit this shopping list and save new changes."
-msgstr "Qui puoi creare modificare questa lista della spesa e salvare le modifiche."
+msgstr ""
+"Qui puoi creare modificare questa lista della spesa e salvare le modifiche."
 
 #: .\a2note\templates\a2note\shoplist.html:25
 #: .\a2note\templates\a2note\shoplist_editor.html:166
@@ -848,7 +858,8 @@ msgstr "Titolo della lista..."
 
 #: .\a2note\templates\a2note\shoplist_viewer.html:12
 msgid "Here you can view the shopping list. Changes cannot be saved."
-msgstr "Qui puoi visualizzare la lista della spesa. Le modifiche non vengono salvate."
+msgstr ""
+"Qui puoi visualizzare la lista della spesa. Le modifiche non vengono salvate."
 
 #: .\a2note\templates\a2note\todolist.html:12
 #: .\a2note\templates\a2note\todolist_editor.html:12
