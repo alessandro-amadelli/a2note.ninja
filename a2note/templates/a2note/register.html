@@ -11,6 +11,10 @@
 {% block body %}
   <div class="container my-container p-5">
     <script src="{% static 'a2note/register.js' %}"></script>
+
+    <!-- Script for password strength calculation  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
+
     <br>
     <h1 class="intro-0" align="center">{% translate 'a<sub>2</sub>note.ninja Registration' %}</h1>
     <br>
@@ -27,7 +31,7 @@
         <input type="email" class="form-control formInput" id="email" name="email" placeholder="{% translate 'Enter email address...' %}" value="{{ email }}" required>
       </div>
       <div class="form-group">
-        <label for="password0">password</label>
+        <label for="password0">password <span id="pswStrengthSpan"><span class="material-icons" style="font-size:1.6rem;">sick</span></span></label>
         <input type="password" class="form-control formInput" id="password0" name="password0" placeholder="{% translate 'Choose a password...' %}" required>
       </div>
       <div class="form-group">

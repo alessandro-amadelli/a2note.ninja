@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
     })
   });
 
+  document.querySelector("#password0").addEventListener('input', function(){
+    let val = this.value;
+    let result = zxcvbn(val);
+    updatePswScore(result);
+    showBtnRegister();
+  })
+
   document.querySelector("#btnRegister").onclick = () => {
     btnRegisterClicked();
   }
@@ -18,6 +25,25 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 });
+
+function updatePswScore(result) {
+  let score = result["score"];
+  console.log(score);
+  let icon = "";
+  if (score == 0) {
+    icon = `<span class="material-icons" style="font-size:1.6rem;color:red;">sick</span>`;
+  } else if (score == 1) {
+    icon = `<span class="material-icons" style="font-size:1.6rem;color:orange;">sentiment_dissatisfied</span>`;
+  } else if (score == 2) {
+    icon = `<span class="material-icons-outlined" style="font-size:1.6rem;color:yellow;">sentiment_neutral</span>`;
+  } else if (score == 3) {
+    icon = `<span class="material-icons" style="font-size:1.6rem;color:cyan;">sentiment_satisfied</span>`;
+  } else if (score == 4) {
+    icon = `<span class="material-icons" style="font-size:1.6rem;color:green;">sentiment_very_satisfied</span>`;
+  }
+
+  document.querySelector("#pswStrengthSpan").innerHTML = icon;
+}
 
 function showBtnRegister() {
   let visible = true;
