@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function updatePswScore(result) {
   let score = result["score"];
-  console.log(score);
   let icon = "";
   if (score == 0) {
     icon = `<span class="material-icons" style="font-size:1.6rem;color:red;">sick</span>`;
