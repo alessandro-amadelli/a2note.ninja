@@ -8,6 +8,11 @@
   ninja editor
 {% endblock %}
 
+{% block description %}
+  <meta name="description" content="{% translate 'Here you can edit this shopping list and save new changes.' %}" />
+{% endblock %}
+
+
 {% block body %}
   {% csrf_token %}
 

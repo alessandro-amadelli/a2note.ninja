@@ -8,6 +8,11 @@
   a2note.ninja
 {% endblock %}
 
+{% block description %}
+  <meta name="description" content="{% translate 'a2note.ninja error page. Something went wrong...' %}" />
+{% endblock %}
+
+
 {% block body %}
   <script>
     document.querySelectorAll(".logo").forEach((logo, i) => {

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelector("#password0").addEventListener('input', function(){
     let val = this.value;
-    let result = zxcvbn(val);
+    let result = zxcvbn(val); //Dropbox JavaScript library for possword strength score
     updatePswScore(result);
     showBtnRegister();
   })

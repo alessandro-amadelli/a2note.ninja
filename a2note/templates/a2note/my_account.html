@@ -8,6 +8,11 @@
   ninja account
 {% endblock %}
 
+{% block description %}
+  <meta name="description" content="{% translate 'Your a2note.ninja account information. Here you can also change your password.' %}" />
+{% endblock %}
+
+
 {% block body %}
   <div class="container my-container p-5">
     <script src="{% static 'a2note/my_account.js' %}"></script>

@@ -8,6 +8,10 @@
   a2note.ninja
 {% endblock %}
 
+{% block description %}
+  <meta name="description" content="{% translate 'Create your shopping lists or to-do lists and save them in the cloud. Share your lists with whomever you want.' %}" />
+{% endblock %}
+
 {% block body %}
   <div class="container my-container p-5">
     {% if user.is_authenticated %}
