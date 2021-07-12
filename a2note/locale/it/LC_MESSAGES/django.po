@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-10 17:49+0200\n"
+"POT-Creation-Date: 2021-07-12 15:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,6 +143,97 @@ msgstr ""
 msgid "PS: Hope you'll stick around to see the news!"
 msgstr "PS: Spero che tu rimanga con noi per vedere le novità!"
 
+#: .\a2note\templates\a2note\bulletin.html:12
+msgid "Your personal bulletin board."
+msgstr "La tua bacheca personale."
+
+#: .\a2note\templates\a2note\bulletin.html:16
+msgid ""
+"Here you have your personal bulletin board in which you can put a personal "
+"note or something to remember."
+msgstr ""
+"Qui trovi la tua bacheca personale nella quale puoi inserire una nota "
+"personale o qualcosa da ricordare."
+
+#: .\a2note\templates\a2note\bulletin.html:24
+msgid "Your bulletin board"
+msgstr "La tua bacheca personale"
+
+#: .\a2note\templates\a2note\bulletin.html:28
+msgid "Here you can write something you have to remember."
+msgstr "Qui puoi scrivere qualcosa che devi ricordare."
+
+#: .\a2note\templates\a2note\bulletin.html:36
+msgid "Edit bulletin board"
+msgstr "Modifica bacheca."
+
+#: .\a2note\templates\a2note\bulletin.html:41
+msgid "Write your text here..."
+msgstr "Scrivi il testo qui..."
+
+#: .\a2note\templates\a2note\bulletin.html:46
+#: .\a2note\templates\a2note\my_account.html:54
+#: .\a2note\templates\a2note\shoplist_editor.html:129
+#: .\a2note\templates\a2note\todolist_editor.html:128
+msgid "Cancel"
+msgstr "Annulla"
+
+#: .\a2note\templates\a2note\bulletin.html:47
+#: .\a2note\templates\a2note\my_account.html:55
+#: .\a2note\templates\a2note\shoplist_editor.html:29
+#: .\a2note\templates\a2note\shoplist_editor.html:130
+#: .\a2note\templates\a2note\todolist_editor.html:28
+#: .\a2note\templates\a2note\todolist_editor.html:129
+msgid "Save"
+msgstr "Salva"
+
+#: .\a2note\templates\a2note\bulletin.html:65
+msgid "Select theme"
+msgstr "Seleziona tema"
+
+#: .\a2note\templates\a2note\bulletin.html:67
+msgid "Default"
+msgstr "Predefinito"
+
+#: .\a2note\templates\a2note\bulletin.html:68
+msgid "Mountain"
+msgstr "Montagna"
+
+#: .\a2note\templates\a2note\bulletin.html:69
+msgid "Forest"
+msgstr "Foresta"
+
+#: .\a2note\templates\a2note\bulletin.html:70
+msgid "Bamboo"
+msgstr "Bamboo"
+
+#: .\a2note\templates\a2note\bulletin.html:71
+msgid "Lake"
+msgstr "Lago"
+
+#: .\a2note\templates\a2note\bulletin.html:72
+msgid "City"
+msgstr "Città"
+
+#: .\a2note\templates\a2note\bulletin.html:73
+msgid "Technology"
+msgstr "Tecnologia"
+
+#: .\a2note\templates\a2note\bulletin.html:74
+msgid "Desert"
+msgstr "Deserto"
+
+#: .\a2note\templates\a2note\bulletin.html:82
+msgid "There is nothing to see here..."
+msgstr "Non c'è nulla da vedere qui..."
+
+#: .\a2note\templates\a2note\bulletin.html:83
+msgid ""
+"Maybe you have nothing to remember...or you just forgot to write it here."
+msgstr ""
+"Forse non hai niente da ricordarti...o ti sei semplicemente dimenticato di "
+"scriverlo qui."
+
 #: .\a2note\templates\a2note\error_page.html:12
 msgid "a2note.ninja error page. Something went wrong..."
 msgstr "pagina di errore di a2note.ninja. Qualcosa è andato storto..."
@@ -160,6 +251,7 @@ msgstr ""
 "tue liste con chiunque vuoi."
 
 #: .\a2note\templates\a2note\index.html:25
+#: .\a2note\templates\a2note\my_dashboard.html:22
 #: .\a2note\templates\a2note\shoplist_editor.html:24
 #: .\a2note\templates\a2note\shoplist_viewer.html:24
 #: .\a2note\templates\a2note\todolist_editor.html:23
@@ -322,6 +414,14 @@ msgstr ""
 "            Puoi condividere con chiunque, anche con chi non ha un account "
 "su a<sub>2</sub>note.ninja<br>"
 
+#: .\a2note\templates\a2note\index.html:201
+msgid ""
+"You have a bulletin board where you can write a personal note or something "
+"to remember."
+msgstr ""
+"Hai una bacheca dove puoi scrivere una nota personale o qualcosa "
+"che devi ricordare."
+
 #: .\a2note\templates\a2note\login.html:12
 msgid "Login to your account."
 msgstr "Accedi al tuo account"
@@ -393,20 +493,6 @@ msgstr "Nuova password"
 msgid "Repeat new password"
 msgstr "Ripeti nuova password"
 
-#: .\a2note\templates\a2note\my_account.html:54
-#: .\a2note\templates\a2note\shoplist_editor.html:129
-#: .\a2note\templates\a2note\todolist_editor.html:128
-msgid "Cancel"
-msgstr "Annulla"
-
-#: .\a2note\templates\a2note\my_account.html:55
-#: .\a2note\templates\a2note\shoplist_editor.html:29
-#: .\a2note\templates\a2note\shoplist_editor.html:130
-#: .\a2note\templates\a2note\todolist_editor.html:28
-#: .\a2note\templates\a2note\todolist_editor.html:129
-msgid "Save"
-msgstr "Salva"
-
 #: .\a2note\templates\a2note\my_account.html:61
 msgid "Account information"
 msgstr "Informazioni account"
@@ -439,7 +525,7 @@ msgstr ""
 "Qui trovi la tua dashboard personale. Puoi vedere numeri e statistiche sulla "
 "tua attività su a2note.ninja."
 
-#: .\a2note\templates\a2note\my_dashboard.html:22
+#: .\a2note\templates\a2note\my_dashboard.html:23
 msgid "Your personal dashboard"
 msgstr "La tua dashboard personale"
 
@@ -530,11 +616,15 @@ msgstr "Le mie liste"
 msgid "My dashboard"
 msgstr "La mia dashboard"
 
-#: .\a2note\templates\a2note\navbar.html:40
+#: .\a2note\templates\a2note\navbar.html:29
+msgid "My bulletin board"
+msgstr "La mia bacheca"
+
+#: .\a2note\templates\a2note\navbar.html:45
 msgid "My account"
 msgstr "Il mio account"
 
-#: .\a2note\templates\a2note\navbar.html:73
+#: .\a2note\templates\a2note\navbar.html:78
 msgid "Register"
 msgstr "Registrati"
 
@@ -646,7 +736,8 @@ msgstr "Modifica la tua lista della spesa."
 #: .\a2note\templates\a2note\shoplist.html:16
 #: .\a2note\templates\a2note\shoplist_editor.html:16
 msgid "Here you can edit this shopping list and save new changes."
-msgstr "Qui puoi creare modificare questa lista della spesa e salvare le modifiche."
+msgstr ""
+"Qui puoi creare modificare questa lista della spesa e salvare le modifiche."
 
 #: .\a2note\templates\a2note\shoplist.html:29
 #: .\a2note\templates\a2note\shoplist_editor.html:170
@@ -890,7 +981,8 @@ msgstr "Visualizza la lista della spesa"
 
 #: .\a2note\templates\a2note\shoplist_viewer.html:16
 msgid "Here you can view the shopping list. Changes cannot be saved."
-msgstr "Qui puoi visualizzare la lista della spesa. Le modifiche non vengono salvate."
+msgstr ""
+"Qui puoi visualizzare la lista della spesa. Le modifiche non vengono salvate."
 
 #: .\a2note\templates\a2note\todolist.html:12
 #: .\a2note\templates\a2note\todolist_editor.html:12
@@ -1045,19 +1137,19 @@ msgstr "Sab"
 msgid "Sun"
 msgstr "Dom"
 
-#: .\a2note\views.py:491 .\a2note\views.py:548
+#: .\a2note\views.py:553 .\a2note\views.py:610
 msgid "Ooops! That's awkward..."
 msgstr "Ooops! E' imbarazzante..."
 
-#: .\a2note\views.py:519
+#: .\a2note\views.py:581
 msgid "This is not the list you were looking for..."
 msgstr "Questa non è la lista che stavi cercando..."
 
-#: .\a2note\views.py:567
+#: .\a2note\views.py:629
 msgid "Sorry, nothing to see here..."
 msgstr "Mi dispiace, non c'è nulla da vedere..."
 
-#: .\a2note\views.py:657
+#: .\a2note\views.py:719
 msgid "You do not have edit privilege on this list."
 msgstr "Non hai privilegi di modifica su questa lista."
 

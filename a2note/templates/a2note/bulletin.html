@@ -1,0 +1,90 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+  ninja bulletin board
+{% endblock %}
+
+{% block SEOTitle %}
+  <meta name="title" content="a2note.ninja - {% translate 'Your personal bulletin board.' %}" />
+{% endblock %}
+
+{% block description %}
+  <meta name="description" content="{% translate 'Here you have your personal bulletin board in which you can put a personal note or something to remember.' %}" />
+{% endblock %}
+
+{% block body %}
+  <script src="{% static 'a2note/bulletin.js' %}"></script>
+  {% csrf_token %}
+
+  <div class="container my-container p-5">
+    <h1 class="intro-0 d-inline">{% translate 'Your bulletin board' %}</h1>
+    <div class="col hidden">
+      <button class="btn btn-success" id="btnSaveBulletin">Save</button>
+    </div>
+    <h4 class="intro-0">{% translate "Here you can write something you have to remember." %}</h4>
+
+    <!-- Modal for bulletin board edit -->
+    <div class="modal fade" id="modalBulletin" tabindex="-1" aria-labelledby="modalBulletinLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="hidden" id="modalElementId"></div>
+            <h3 class="modal-title" id="modalBulletinLabel"><span class="material-icons-outlined">edit</span> {% translate "Edit bulletin board" %}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="{% translate 'Write your text here...' %}" id="modalTextarea" style="height:8rem;" rows="4"></textarea>
+              <label for="modalTextarea">Bulletin text</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate "Cancel" %}</button>
+            <button type="button" class="btn btn-light" id="btnModalSave" data-bs-dismiss="modal">{% translate "Save" %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row bulletin-div p-3 {% if bulletin_content %}{% else %}hidden{% endif %}">
+      <div class="col-12">
+        <span class="material-icons-outlined" id="btnEditBulletin" style="cursor:pointer;">edit</span>
+        <span class="material-icons-outlined" id="btnDeleteBulletin" style="cursor:pointer">delete_forever</span>
+      </div>
+      <div class="col-12 bulletin-not-empty p-0" data-class="{{ bulletin_class }}">
+        <div class="w-100 m-0 p-2" id="bulletinContentDiv">
+          {{ bulletin_content }}
+        </div>
+      </div>
+
+      <div class="col-12 position-relative">
+        <label for="bulletinThemeSelect">{% translate "Select theme" %}</label>
+        <select id="bulletinThemeSelect" aria-label="Theme">
+          <option value="default">{% translate "Default" %}</option>
+          <option value="mountain">{% translate "Mountain" %}</option>
+          <option value="forest">{% translate "Forest" %}</option>
+          <option value="bamboo">{% translate "Bamboo" %}</option>
+          <option value="lake">{% translate "Lake" %}</option>
+          <option value="city">{% translate "City" %}</option>
+          <option value="technology">{% translate "Technology" %}</option>
+          <option value="desert">{% translate "Desert" %}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row bulletin-empty-div {% if bulletin_content %}hidden{% else %}{% endif %}">
+      <div class="col-12 text-center bulletin-empty">
+        <span class="material-icons-outlined icon" id="btnEditBulletinEmpty">add_circle_outline</span>
+        <p>{% translate "There is nothing to see here..." %}</p>
+        <p>{% translate "Maybe you have nothing to remember...or you just forgot to write it here." %}</p>
+      </div>
+    </div>
+
+
+
+  </div>
+{% endblock %}

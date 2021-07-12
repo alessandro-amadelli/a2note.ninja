@@ -422,6 +422,68 @@ def dashboard_view(request):
 
     return render(request, "a2note/my_dashboard.html", context)
 
+@login_required
+def bulletin_view(request):
+    #User data
+    user = request.user
+    username = user.username
+
+    context = {}
+
+    bulletin_id = f"{username}_BULLETIN"
+    bulletin_board = cache.get(bulletin_id)
+
+    if bulletin_board:
+        context["bulletin_content"] = bulletin_board["bulletin_content"]
+        context["bulletin_class"] = bulletin_board["bulletin_class"]
+    else:
+        bulletin_board = select_element_by_id(bulletin_id, "BULLETIN")
+        if len(bulletin_board) > 0:
+            bulletin_board = bulletin_board[0]
+            context["bulletin_content"] = bulletin_board["bulletin_content"]
+            context["bulletin_class"] = bulletin_board["bulletin_class"]
+
+            cache.set(bulletin_id, bulletin_board)
+
+
+    return render(request, "a2note/bulletin.html", context)
+
+@login_required
+def save_bulletin_view(request):
+    """
+    This view saves data about the user bulletin board in the DB
+    """
+    #User data
+    user = request.user
+    username = user.username
+
+    #Bulletin data
+    bulletin_content = request.POST["bulletin_content"]
+    bulletin_class = request.POST["bulletin_class"]
+    element_type = "BULLETIN"
+    element_id = f"{username}_BULLETIN"
+
+    bulletin_content = bulletin_content.strip()
+
+    #List data
+    item = {
+        'element_type': element_type,
+        'element_id': element_id,
+        'bulletin_content': bulletin_content,
+        'bulletin_class': bulletin_class
+    }
+
+    insert_item(item)
+
+    item = cache.set(element_id, item)
+    print(f"|{bulletin_content}|")
+
+    response = {"RESULT": "OK",
+                "bulletin_content": bulletin_content,
+                "bulletin_class": bulletin_class
+                }
+
+    return JsonResponse(response)
 
 def todolist(request):
     """

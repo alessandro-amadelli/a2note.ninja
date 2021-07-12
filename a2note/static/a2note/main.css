@@ -4,6 +4,7 @@
   --autocomplete-background: rgb(26, 26, 26);
   --background-color: rgb(26, 26, 26);
   --body-background-color: #000;
+  --bulletin-background: rgba(26, 26, 26, .8);
   --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(0,0,0,0.9);
   --filter-value: invert();
@@ -36,6 +37,7 @@
   --autocomplete-background: rgba(20, 130, 232, 0.98);
   --background-color: rgba(20, 130, 232, 0.75);
   --body-background-color: #f7f7f7;
+  --bulletin-background: rgba(0, 0, 0, .4);
   --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(247, 247, 247, 0.9);
   --filter-value: none;
@@ -363,6 +365,16 @@ input[type="text"]:focus {
   background-color: var(--element-background);
 }
 
+.modal textarea {
+  color: inherit;
+  background-color: var(--input-background);
+}
+
+.modal textarea:focus {
+  color: inherit;
+  background-color: var(--input-background);
+}
+
 #btnAddTask, #btnAddItem {
   transition: background-color 1.5s;
 }
@@ -375,7 +387,7 @@ input[type="text"]:focus {
   animation-play-state: running;
 }
 
-#taskViewSelect, #categorySelect {
+#taskViewSelect, #categorySelect, #bulletinThemeSelect {
   background-color: var(--input-background);
   max-width: 40%;
   color: inherit;
@@ -886,6 +898,141 @@ option {
   z-index: 1;
   background-color: var(--element-background);
   min-width: 100%;
+}
+
+.bulletin-empty-div .icon {
+  font-size: 6rem;
+  cursor: pointer;
+  opacity: .7;
+  transition: opacity 1s ease;
+}
+
+.bulletin-div .icon:hover {
+  opacity: 1;
+}
+
+.bulletin-not-empty {
+  position: relative;
+  height: 18rem;
+  white-space: pre-line;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background-color: var(--bulletin-background);
+}
+
+.bulletin-not-empty[data-class="default"] {
+  background-color: var(--element-background);
+}
+
+.bulletin-not-empty[data-class="mountain"]::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/mountain.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
+}
+
+.bulletin-not-empty[data-class="forest"]::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/forest.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
+}
+
+.bulletin-not-empty[data-class="bamboo"]::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/bamboo.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
+}
+
+.bulletin-not-empty[data-class="lake"]::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/lake.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
+}
+
+.bulletin-not-empty[data-class="city"]::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/city.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
+}
+
+.bulletin-not-empty[data-class="technology"]::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/technology.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
+}
+
+.bulletin-not-empty[data-class="desert"]::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/desert.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
+}
+
+#bulletinContentDiv {
+  position: absolute;
+  height: 100%;
+  overflow-y: auto;
 }
 
 #aboutTodoDiv {
