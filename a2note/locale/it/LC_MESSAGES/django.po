@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-12 15:30+0200\n"
+"POT-Creation-Date: 2021-07-12 18:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -208,26 +208,34 @@ msgid "Bamboo"
 msgstr "Bamboo"
 
 #: .\a2note\templates\a2note\bulletin.html:71
+msgid "Japan"
+msgstr "Giappone"
+
+#: .\a2note\templates\a2note\bulletin.html:72
 msgid "Lake"
 msgstr "Lago"
 
-#: .\a2note\templates\a2note\bulletin.html:72
+#: .\a2note\templates\a2note\bulletin.html:73
+msgid "Under water"
+msgstr "Sott'acqua"
+
+#: .\a2note\templates\a2note\bulletin.html:74
 msgid "City"
 msgstr "Città"
 
-#: .\a2note\templates\a2note\bulletin.html:73
+#: .\a2note\templates\a2note\bulletin.html:75
 msgid "Technology"
 msgstr "Tecnologia"
 
-#: .\a2note\templates\a2note\bulletin.html:74
+#: .\a2note\templates\a2note\bulletin.html:76
 msgid "Desert"
 msgstr "Deserto"
 
-#: .\a2note\templates\a2note\bulletin.html:82
+#: .\a2note\templates\a2note\bulletin.html:84
 msgid "There is nothing to see here..."
 msgstr "Non c'è nulla da vedere qui..."
 
-#: .\a2note\templates\a2note\bulletin.html:83
+#: .\a2note\templates\a2note\bulletin.html:85
 msgid ""
 "Maybe you have nothing to remember...or you just forgot to write it here."
 msgstr ""
@@ -419,8 +427,8 @@ msgid ""
 "You have a bulletin board where you can write a personal note or something "
 "to remember."
 msgstr ""
-"Hai una bacheca dove puoi scrivere una nota personale o qualcosa "
-"che devi ricordare."
+"Hai una bacheca dove puoi scrivere una nota personale o qualcosa che devi "
+"ricordare."
 
 #: .\a2note\templates\a2note\login.html:12
 msgid "Login to your account."

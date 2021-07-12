@@ -969,10 +969,40 @@ option {
   opacity: 0.2;
 }
 
+.bulletin-not-empty[data-class="japan"]::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/japan.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
+}
+
 .bulletin-not-empty[data-class="lake"]::before {
   content: "";
   box-sizing: border-box;
   background-image: url("/static/a2note/lake.jpg");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.2;
+}
+
+.bulletin-not-empty[data-class="underwater"]::before {
+  content: "";
+  box-sizing: border-box;
+  background-image: url("/static/a2note/fish.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
