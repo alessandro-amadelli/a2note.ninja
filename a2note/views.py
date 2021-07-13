@@ -476,7 +476,6 @@ def save_bulletin_view(request):
     insert_item(item)
 
     item = cache.set(element_id, item)
-    print(f"|{bulletin_content}|")
 
     response = {"RESULT": "OK",
                 "bulletin_content": bulletin_content,

@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
   //Delete button
   document.querySelector("#btnDeleteBulletin").onclick = () => {
     updateBulletin("","default");
+    document.querySelector("#bulletinThemeSelect").value = "default";
     showBulletinDiv();
     enableBtnSave();
   }
@@ -57,8 +58,8 @@ function showBulletinModal() {
 }
 
 function updateBulletin(newText, newClass) {
-  updateBulletinText(newText);
   updateBulletinClass(newClass);
+  updateBulletinText(newText);
 }
 
 function updateBulletinText(newText) {
@@ -68,6 +69,9 @@ function updateBulletinText(newText) {
 
 function updateBulletinClass(newClass) {
   //Updating bulletin content
+  if (newClass == "") {
+    newClass = "default";
+  }
   document.querySelector(".bulletin-not-empty").dataset.class = newClass;
 }
 
@@ -92,6 +96,12 @@ function enableBtnSave(){
   btnSaveBulletin.parentElement.classList.remove("hidden");
 
   btnSaveBulletin.disabled = false;
+
+  //Require confirmation if user tries to leave the page (there are unsaved changes)
+  window.onbeforeunload = function() {
+    return "";
+  }
+
 }
 
 function disableBtnSave(){
@@ -101,6 +111,10 @@ function disableBtnSave(){
   btnSaveBulletin.parentElement.classList.add("hidden");
 
   btnSaveBulletin.disabled = true;
+
+  //Remove the need of confirmation if user tries to leave the page (all the content is saved so it is not necessary)
+  window.onbeforeunload = function() {
+  }
 }
 
 function saveBulletinToDB() {
