@@ -4,7 +4,7 @@
   --autocomplete-background: rgb(26, 26, 26);
   --background-color: rgb(26, 26, 26);
   --body-background-color: #000;
-  --bulletin-background: rgba(26, 26, 26, .8);
+  --bulletin-background: rgba(255, 255, 255, .0);
   --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(0,0,0,0.9);
   --filter-value: invert();
@@ -37,7 +37,7 @@
   --autocomplete-background: rgba(20, 130, 232, 0.98);
   --background-color: rgba(20, 130, 232, 0.75);
   --body-background-color: #f7f7f7;
-  --bulletin-background: rgba(0, 0, 0, .4);
+  --bulletin-background: rgba(255, 255, 255, .0);
   --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(247, 247, 247, 0.9);
   --filter-value: none;
@@ -423,7 +423,7 @@ option {
 #taskList::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/checklist.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/checklist.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -616,7 +616,7 @@ option {
 .fruit-section::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/fruits.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/fruits.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -635,7 +635,7 @@ option {
 .vegetable-section::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/vegetables.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/vegetables.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -654,7 +654,7 @@ option {
 .dairy-section::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/cheese.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/cheese.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -673,7 +673,7 @@ option {
 .legume-section::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/legumes.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/legumes.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -692,7 +692,7 @@ option {
 .seasoning-section::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/olive-oil.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/olive-oil.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -711,7 +711,7 @@ option {
 .beverage-section::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/beverage.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/beverage.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -730,7 +730,7 @@ option {
 .alcohol-section::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/wine.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/wine.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -749,7 +749,7 @@ option {
 .hygiene-section::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/soap.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/soap.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -768,7 +768,7 @@ option {
 .supply-section::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/supplies.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/supplies.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -787,7 +787,7 @@ option {
 .cleaning-section::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/cleaning.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/cleaning.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -806,7 +806,7 @@ option {
 .other-section::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/grocery.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/grocery.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -927,7 +927,7 @@ option {
 .bulletin-not-empty[data-class="mountain"]::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/mountain.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/mountain.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -936,13 +936,13 @@ option {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .bulletin-not-empty[data-class="forest"]::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/forest.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/forest.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -951,13 +951,13 @@ option {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .bulletin-not-empty[data-class="bamboo"]::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/bamboo.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/bamboo.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -966,13 +966,13 @@ option {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .bulletin-not-empty[data-class="japan"]::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/japan.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/japan.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -981,13 +981,13 @@ option {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .bulletin-not-empty[data-class="lake"]::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/lake.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/lake.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -996,13 +996,13 @@ option {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .bulletin-not-empty[data-class="underwater"]::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/fish.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/fish.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -1011,13 +1011,13 @@ option {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .bulletin-not-empty[data-class="city"]::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/city.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/city.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -1026,13 +1026,13 @@ option {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .bulletin-not-empty[data-class="technology"]::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/technology.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/technology.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -1041,13 +1041,13 @@ option {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .bulletin-not-empty[data-class="desert"]::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/desert.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/desert.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -1056,7 +1056,7 @@ option {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 #bulletinContentDiv {
@@ -1072,7 +1072,7 @@ option {
 #aboutTodoDiv::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/checklist.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/checklist.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -1091,7 +1091,7 @@ option {
 #aboutShopDiv::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/shoppinglist.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/shoppinglist.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
@@ -1111,7 +1111,7 @@ option {
 #developerInfoDiv::before {
   content: "";
   box-sizing: border-box;
-  background-image: url("/static/a2note/coding.jpg");
+  background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/coding.jpg");
   position: absolute;
   top: 0px;
   right: 0px;
