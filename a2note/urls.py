@@ -4,6 +4,8 @@ from . import views
 from django.contrib.auth import views as auth_views
 from django.views.i18n import JavaScriptCatalog
 
+from django.views.generic import TemplateView
+
 urlpatterns = [
     path("", views.index, name="index_view"),
     path("about_us/", views.about_us, name="about_us"),
@@ -25,8 +27,7 @@ urlpatterns = [
     path("save_list_view/", views.save_list_view, name="save_list_view"),
     path("delete_list/", views.delete_list, name="delete_list"),
     path("product_list_view/", views.product_list_view, name="product_list_view"),
+    path("offline/", views.offline, name="offline"),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
+    path('sw.js', (TemplateView.as_view(template_name="sw.js", content_type='application/javascript', )), name='sw.js'),
 ]
-
-# path("new_todolist/", views.new_todolist_view, name="new_todolist_view"),
-# path("new_shoplist/", views.new_shoplist_view, name="new_shoplist_view"),

@@ -161,8 +161,12 @@ function checkCategory(itemName) {
     item.parentElement.removeChild(item);
   });
 
-
-  document.querySelector("#categorySelect").value = PRODUCTLIST[itemName.charAt(0).toUpperCase() + itemName.slice(1)];
+  new_category = PRODUCTLIST[itemName.charAt(0).toUpperCase() + itemName.slice(1)];
+  if (new_category) {
+    document.querySelector("#categorySelect").value = new_category;
+  } else {
+    document.querySelector("#categorySelect").value = "other";
+  }
 }
 
 function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFromStorage=false) {

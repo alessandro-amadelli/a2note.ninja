@@ -1,0 +1,30 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+  ninja.offline
+{% endblock %}
+
+{% block SEOTitle %}
+  <meta name="title" content="a2note.ninja - {% translate 'It seems you are offline...' %}" />
+{% endblock %}
+
+{% block description %}
+  <meta name="description" content="{% translate 'The current page is shown because you are offline or the page loading has failed.' %}" />
+{% endblock %}
+
+{% block body %}
+<div class="container my-container p-5">
+  <div class="row">
+    <div class="col-12">
+      <p>{% translate "It seems you are offline..." %}</p>
+    </div>
+    <div class="col-lg-6 col-12">
+      <img class="img-fluid rounded" alt="{% translate 'An image of a not so impressed cat explaining to you that you are offline.' %}" src="{% static 'a2note/offline_cat.jpg' %}">
+    </div>
+  </div>
+</div>
+{% endblock %}

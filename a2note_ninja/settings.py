@@ -126,6 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 #LOGIN/LOGOUT
 LOGIN_URL = 'login_view'
 LOGIN_REDIRECT_URL = 'index_view'
+LOGIN_REDIRECT_VIEW = 'index_view'
 LOGOUT_REDIRECT_URL = 'index_view'
 
 

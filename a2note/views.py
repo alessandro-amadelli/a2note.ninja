@@ -774,3 +774,6 @@ def delete_list(request):
 
     response = {"RESULT": "OK"}
     return JsonResponse(response)
+
+def offline(request):
+    return render(request, "a2note/offline.html")
