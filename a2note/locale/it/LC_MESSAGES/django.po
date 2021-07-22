@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-22 14:59+0200\n"
+"POT-Creation-Date: 2021-07-22 15:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -652,14 +652,13 @@ msgid ""
 "The current page is shown because you are offline or the page loading has "
 "failed."
 msgstr ""
-"La pagina corrente viene mostrata perchè sei offline oppure il caricamento della pagina è "
-"fallito."
+"La pagina corrente viene mostrata perchè sei offline oppure il caricamento "
+"della pagina è fallito."
 
 #: .\a2note\templates\a2note\offline.html:26
 msgid ""
 "An image of a not so impressed cat explaining to you that you are offline."
-msgstr ""
-"Un'immagine di un gatto un po' secccato che ti spiega che sei offline."
+msgstr "Un'immagine di un gatto un po' secccato che ti spiega che sei offline."
 
 #: .\a2note\templates\a2note\open_shared.html:12
 msgid "Open a shared list."
@@ -674,14 +673,24 @@ msgid "Insert the list code to open a shared list."
 msgstr ""
 
 #: .\a2note\templates\a2note\open_shared.html:28
-#, fuzzy
-#| msgid "Insert item..."
 msgid "Insert list code"
-msgstr "Inserisci elemento..."
+msgstr "Inserisci codice lista..."
 
 #: .\a2note\templates\a2note\open_shared.html:35
 msgid "Open"
-msgstr ""
+msgstr "Apri"
+
+#: .\a2note\templates\a2note\open_shared.html:41
+msgid "PS: The list code is the last part of the link of the shared list."
+msgstr "PS: Il codice lista è l'ultima parte del link della lista condivisa."
+
+#: .\a2note\templates\a2note\open_shared.html:42
+msgid "eg.: Someone shares the following link:"
+msgstr "es.: Qualcuno condivide il seguente link:"
+
+#: .\a2note\templates\a2note\open_shared.html:43
+msgid "so the list code to insert is"
+msgstr "quindi il codice lista da inserire è"
 
 #: .\a2note\templates\a2note\register.html:12
 msgid "Register and create an account for free."

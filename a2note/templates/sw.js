@@ -20,6 +20,7 @@ const staticAssets = [
   '/static/a2note/todolist.js',
   '/static/a2note/utilities.js',
   '/about_us/',
+  '/open_shared/',
   '/my_dashboard/',
   '/bulletin_board/',
   '/my_account/',
