@@ -104,6 +104,10 @@ def index(request):
 
     return render(request, "a2note/index.html")
 
+def open_shared(request):
+
+    return render(request, "a2note/open_shared.html")
+
 def about_us(request):
 
     return render(request, "a2note/about_us.html")

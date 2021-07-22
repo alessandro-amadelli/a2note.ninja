@@ -20,6 +20,11 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link{% if request.resolver_match.url_name == 'open_shared' %} active{% endif %}" aria-current="page" href="{% url 'open_shared' %}">
+            <span class="material-icons-outlined">share</span> {% translate 'Open shared list'%}
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'dashboard_view' %} active{% endif %}" href="{% url 'dashboard_view' %}">
             <span class="material-icons-outlined">data_usage</span> {% translate 'My dashboard' %}
           </a>
@@ -51,6 +56,11 @@
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'index_view' %} active{% endif %}" aria-current="page" href="{% url 'index_view' %}">
             <span class="material-icons-outlined">home</span> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.resolver_match.url_name == 'open_shared' %} active{% endif %}" aria-current="page" href="{% url 'open_shared' %}">
+            <span class="material-icons-outlined">share</span> {% translate 'Open shared list'%}
           </a>
         </li>
         <li class="nav-item">

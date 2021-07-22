@@ -1,0 +1,43 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+  open shared list
+{% endblock %}
+
+{% block SEOTitle %}
+  <meta name="title" content="a2note.ninja - {% translate 'Open a shared list.' %}" />
+{% endblock %}
+
+{% block description %}
+  <meta name="description" content="{% translate 'Insert the shared list code to open a list shared by someone else.' %}" />
+{% endblock %}
+
+{% block body %}
+
+  <div class="container my-container p-5">
+    <script src="{% static 'a2note/open_shared.js' %}"></script>
+
+    <h2 class="intro-0">{% translate 'Open shared list' %}</h2>
+    <h4 class="intro-2">{% translate "Insert the list code to open a shared list." %}</h4>
+
+    <div class="row m-1 p-1 d-flex">
+      <label for="listCode">{% translate "Insert list code" %}</label>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="url-addon">https://a2note.ninja/list_editor/</span>
+        <input type="text" class="form-control" id="listCode" aria-describedby="url-addon" maxlength="10">
+      </div>
+      <div class="w-100"></div>
+      <div class="col">
+        <button class="btn btn-light" id="btnOpenList"><span class="material-icons-outlined">send</span> {% translate "Open" %}</button>
+      </div>
+    </div>
+
+
+
+  </div>
+
+{% endblock %}

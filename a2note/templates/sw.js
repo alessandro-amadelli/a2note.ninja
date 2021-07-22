@@ -1,4 +1,4 @@
-const CURRENT_CACHE = 'a2note-ninja-cache-v.1.2';
+const CURRENT_CACHE = 'a2note-ninja-cache-v.1.4';
 const staticAssets = [
   '/static/a2note/android-chrome-144x144.png',
   '/static/a2note/apple-touch-icon.png',

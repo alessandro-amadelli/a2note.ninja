@@ -8,6 +8,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path("", views.index, name="index_view"),
+    path("open_shared/", views.open_shared, name="open_shared"),
     path("about_us/", views.about_us, name="about_us"),
     path("register/", views.register, name="register_view"),
     path("send_otp/", views.send_otp, name="send_otp"),
