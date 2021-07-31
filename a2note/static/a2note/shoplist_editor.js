@@ -92,7 +92,6 @@ function initializeShareBtns() {
 
   let btnTelegram = document.querySelector("#btnTelegram");
   btnTelegram.href = "https://telegram.me/share/url?url=" + window.location.href + "&text=" + text;
-  //<a href="tg://msg_url?url=https://valid.url&amp;text=text">Telegram</a>
 
   let bntEmail = document.querySelector("#btnEmail");
   btnEmail.href = "mailto:?subject='Shopping list'&body=" + text + window.location.href;

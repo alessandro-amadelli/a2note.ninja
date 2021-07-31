@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-22 15:16+0200\n"
+"POT-Creation-Date: 2021-07-31 09:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -662,15 +662,17 @@ msgstr "Un'immagine di un gatto un po' secccato che ti spiega che sei offline."
 
 #: .\a2note\templates\a2note\open_shared.html:12
 msgid "Open a shared list."
-msgstr ""
+msgstr "Apri una lista condivisa"
 
 #: .\a2note\templates\a2note\open_shared.html:16
 msgid "Insert the shared list code to open a list shared by someone else."
 msgstr ""
+"Inserisci il codice della lista condivisa per aprire una lista condivisa da "
+"qualcun altro."
 
 #: .\a2note\templates\a2note\open_shared.html:25
 msgid "Insert the list code to open a shared list."
-msgstr ""
+msgstr "Inserisci il codice lista per aprire una lista condivisa."
 
 #: .\a2note\templates\a2note\open_shared.html:28
 msgid "Insert list code"
@@ -684,13 +686,13 @@ msgstr "Apri"
 msgid "PS: The list code is the last part of the link of the shared list."
 msgstr "PS: Il codice lista è l'ultima parte del link della lista condivisa."
 
-#: .\a2note\templates\a2note\open_shared.html:42
+#: .\a2note\templates\a2note\open_shared.html:47
 msgid "eg.: Someone shares the following link:"
 msgstr "es.: Qualcuno condivide il seguente link:"
 
-#: .\a2note\templates\a2note\open_shared.html:43
-msgid "so the list code to insert is"
-msgstr "quindi il codice lista da inserire è"
+#: .\a2note\templates\a2note\open_shared.html:49
+msgid "In this case the list code to insert is"
+msgstr "In questo caso il codice lista da inserire è"
 
 #: .\a2note\templates\a2note\register.html:12
 msgid "Register and create an account for free."
@@ -1008,6 +1010,11 @@ msgstr "Abilita modifica"
 #: .\a2note\templates\a2note\todolist_editor.html:140
 msgid "List sharing"
 msgstr "Condivisione lista"
+
+#: .\a2note\templates\a2note\shoplist_editor.html:145
+#: .\a2note\templates\a2note\todolist_editor.html:144
+msgid "List code"
+msgstr "Codice lista"
 
 #: .\a2note\templates\a2note\shoplist_editor.html:146
 #: .\a2note\templates\a2note\todolist_editor.html:145

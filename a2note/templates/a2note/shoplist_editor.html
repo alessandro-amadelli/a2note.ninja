@@ -142,7 +142,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <br>
+            <p>{% translate "List code" %}: {{ element_id }}</p>
             <button type="button" class="btn btn-light m-2" id="btnCopyClipboard" data-bs-dismiss="modal"><span class="material-icons-outlined">content_paste</span> {% translate "Copy to clipboard" %}</button>
             <br>
             <a type="button" class="btn btn-light m-2 {% if shared == 'False' %} disabled {% endif %}" id="btnWhatsapp" href="" data-action="share/whatsapp/share" target="_blank"><span class="material-icons-outlined">chat</span> Whatsapp </a>
