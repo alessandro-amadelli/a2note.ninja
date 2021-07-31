@@ -1066,6 +1066,7 @@ option {
 }
 
 .example-div {
+  overflow-x: auto;
   background-color: var(--element-background);
 }
 

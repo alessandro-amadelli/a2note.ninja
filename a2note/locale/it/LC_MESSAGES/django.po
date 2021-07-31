@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 09:36+0200\n"
+"POT-Creation-Date: 2021-07-31 09:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -687,10 +687,14 @@ msgid "PS: The list code is the last part of the link of the shared list."
 msgstr "PS: Il codice lista è l'ultima parte del link della lista condivisa."
 
 #: .\a2note\templates\a2note\open_shared.html:47
-msgid "eg.: Someone shares the following link:"
-msgstr "es.: Qualcuno condivide il seguente link:"
+msgid "Example"
+msgstr "Esempio"
 
-#: .\a2note\templates\a2note\open_shared.html:49
+#: .\a2note\templates\a2note\open_shared.html:48
+msgid "Someone shares the following link:"
+msgstr "Qualcuno condivide il seguente link:"
+
+#: .\a2note\templates\a2note\open_shared.html:50
 msgid "In this case the list code to insert is"
 msgstr "In questo caso il codice lista da inserire è"
 
