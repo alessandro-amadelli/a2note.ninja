@@ -35,6 +35,11 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link{% if request.resolver_match.url_name == 'list_history' %} active{% endif %}" href="{% url 'list_history' %}">
+            <span class="material-icons-outlined">history</span> {% translate 'Recent lists' %}
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'about_us' %} active{% endif %}" href="{% url 'about_us' %}">
             <span class="material-icons-outlined">info</span> About
           </a>

@@ -530,6 +530,71 @@ def create_list_view(request):
 
     return JsonResponse(response)
 
+def update_history(username, element_id, author, title):
+    cache_key = f"{username}_HISTORY"
+    hist_key = f"HS_{username}"
+
+    old_hist = cache.get(cache_key)
+    if not old_hist:
+        old_hist = select_element_by_id(hist_key, "HISTORY")
+        if len(old_hist) > 0:
+            old_hist = old_hist[0]
+            old_hist = old_hist["content"]
+
+    #For loop to:
+    #  -Check if element is already present in history (and in case update timestamp of last open)
+    #  -Check if the list is still present in the list's author cache
+    found = False
+    i = 0
+    new_hist = []
+    for e in old_hist:
+        #If element is already present in history
+        if old_hist[i]['element_id'] == element_id:
+            old_hist[i]['title'] = title
+            old_hist[i]['last_opened'] = datetime.now().strftime("%Y-%m-%d h.%H:%M:%S")
+            found = True
+        author_list_cache = old_hist[i]['author'] + "_LISTS"
+        author_list = cache.get(author_list_cache)
+
+        #If still present in the author's cache, then it is written in the new_hist
+        if author_list:
+            id_list = [k['element_id'] for k in author_list]
+            if old_hist[i]['element_id'] in id_list:
+                new_hist.append(e)
+        else:
+            new_hist.append(e)
+        i += 1
+
+    #If it is a new entry, then append
+    if not found:
+        #New history entry
+        visited_list = {
+        "element_id": element_id,
+        "title": title,
+        "author": author,
+        "last_opened": datetime.now().strftime("%Y-%m-%d h.%H:%M:%S")
+        }
+        #If list already has 20 elements, then the last one is removed prior adding the new one
+        if len(new_hist) > 19:
+            new_hist.pop(-1)
+        new_hist.append(visited_list)
+
+    #Reorder list based on last access
+    new_hist = sorted(new_hist, key=lambda k: k['last_opened'], reverse=True)
+
+    #Updating cache value for the user history
+    cache.set(cache_key, new_hist)
+
+    #Check if the database is recently updated
+    already_updated = cache.get(cache_key + "_UPDATED")
+    if not already_updated:
+        new_item = {
+            "element_id": hist_key,
+            "element_type": "HISTORY",
+            "content": old_hist
+        }
+        insert_item(new_item)
+        cache.set(cache_key + "_UPDATED", True, 2) #Cache key with TTL=2s to avoid consecutive updates on DB
 
 def list_editor(request, listUID):
     """
@@ -585,6 +650,9 @@ def list_editor(request, listUID):
 
     context = item
 
+    if username != "":
+        update_history(username, listUID, item["author"], item["title"])
+
     if list_type == "SHOPLIST":
         return render(request, "a2note/shoplist_editor.html", context)
     else:
@@ -633,11 +701,13 @@ def list_viewer(request, listUID):
 
     context = item
 
+    if username != "":
+        update_history(username, listUID, item["author"], item["title"])
+
     if element_type == "SHOPLIST":
         return render(request, "a2note/shoplist_viewer.html", context)
     else:
         return render(request, "a2note/todolist_viewer.html", context)
-
 
 def product_list_view(request):
     """
@@ -747,6 +817,46 @@ def save_list_view(request):
     }
 
     return JsonResponse(response)
+
+@login_required
+def list_history_view(request):
+    """
+    The function retrieves the user's history data, insert them in the context
+    and pass them to the template.
+    History DB structure: history is a list with the following structure
+    [
+        {
+            element_id: UID of the visited list,
+            title: title of the visited list,
+            author: list author,
+            last_opened: last time the list was opened by the user (timestamp)
+        },
+        ...
+    ]
+    """
+
+    user = request.user
+    username = user.username
+
+    cache_key = f"{username}_HISTORY"
+    list_history = cache.get(cache_key)
+    if not list_history:
+        #Select user's history data from DB
+        list_history = select_element_by_id(f"HS_{username}", "HISTORY")
+        if len(list_history) > 0:
+            list_history = list_history[0]
+            list_history = list_history["content"]
+            # list_history = sorted(item, key=lambda k: k['last_opened'], reverse=True)
+        else:
+            list_history = ""
+        cache.set(cache_key, list_history)
+
+    context = {}
+
+    if list_history != "":
+        context["list_history"] = list_history
+
+    return render(request, 'a2note/history.html', context)
 
 @login_required
 def delete_list(request):

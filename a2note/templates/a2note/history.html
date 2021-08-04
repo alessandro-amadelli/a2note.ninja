@@ -1,0 +1,59 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+  About a2note.ninja
+{% endblock %}
+
+{% block SEOTitle %}
+  <meta name="title" content="a2note.ninja - {% translate 'List history.' %}" />
+{% endblock %}
+
+{% block description %}
+  <meta name="description" content="{% translate 'See the lists you recently opened and keep them at hand.' %}" />
+{% endblock %}
+
+
+{% block body %}
+  <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
+  <div class="container my-container p-3">
+    <h1 class="intro-0">{% translate 'List history' %}</h1>
+    <h3 class="intro-1">{% translate "Record of the last 20 lists you opened." %}</h3>
+    <hr>
+
+    {% if list_history %}
+    <div class="table-responsive">
+      <table class="table table-dark" style="overflow-x:auto;">
+        <tr>
+          <th style="white-space:nowrap;width:1%">#</th>
+          <th style="white-space:nowrap;width:1%">{% translate "List code" %}</th>
+          <th style="white-space:nowrap;width:1%">{% translate "Title" %}</th>
+          <th style="white-space:nowrap;width:1%">{% translate "Author" %}</th>
+          <th style="white-space:nowrap;width:1%">{% translate "Last open" %}</th>
+        </tr>
+        {% for list in list_history %}
+        <tr>
+          <th style="white-space:nowrap;width:1%">{{ forloop.counter }}</th>
+          <th style="white-space:nowrap;width:1%"><a href="{% url 'list_editor' listUID=list.element_id %}">{{ list.element_id }}</a></th>
+          <td style="white-space:nowrap;width:1%">{{ list.title }}</td>
+          <td style="white-space:nowrap;width:1%">{{ list.author }}</td>
+          <td style="white-space:nowrap;width:1%">{{ list.last_opened }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% else %}
+    <div class="row">
+      <div class="col">
+        <p><span class="material-icons-outlined">support_agent</span> {% translate "No recent data to show." %}</p>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+
+
+{% endblock %}

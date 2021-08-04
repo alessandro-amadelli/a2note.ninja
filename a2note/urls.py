@@ -28,6 +28,7 @@ urlpatterns = [
     path("save_list_view/", views.save_list_view, name="save_list_view"),
     path("delete_list/", views.delete_list, name="delete_list"),
     path("product_list_view/", views.product_list_view, name="product_list_view"),
+    path("list_history/", views.list_history_view, name="list_history"),
     path("offline/", views.offline, name="offline"),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
     path('sw.js', (TemplateView.as_view(template_name="sw.js", content_type='application/javascript', )), name='sw.js'),

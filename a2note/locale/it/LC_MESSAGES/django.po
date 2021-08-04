@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 09:56+0200\n"
+"POT-Creation-Date: 2021-08-04 15:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -246,6 +246,56 @@ msgstr ""
 msgid "a2note.ninja error page. Something went wrong..."
 msgstr "pagina di errore di a2note.ninja. Qualcosa è andato storto..."
 
+#: .\a2note\templates\a2note\history.html:12
+msgid "List history."
+msgstr "Cronologia liste."
+
+#: .\a2note\templates\a2note\history.html:16
+msgid "See the lists you recently opened and keep them at hand."
+msgstr "Vedi le liste recentemente aperte e tinele a portata di mano."
+
+#: .\a2note\templates\a2note\history.html:21
+#: .\a2note\templates\a2note\index.html:25
+#: .\a2note\templates\a2note\my_dashboard.html:22
+#: .\a2note\templates\a2note\shoplist_editor.html:24
+#: .\a2note\templates\a2note\shoplist_viewer.html:24
+#: .\a2note\templates\a2note\todolist_editor.html:23
+#: .\a2note\templates\a2note\todolist_viewer.html:23
+msgid "Back to top"
+msgstr "Torna in cima"
+
+#: .\a2note\templates\a2note\history.html:23
+msgid "List history"
+msgstr "Cronologia liste"
+
+#: .\a2note\templates\a2note\history.html:24
+msgid "Record of the last 20 lists you opened."
+msgstr "Le ultime 20 liste che hai aperto."
+
+#: .\a2note\templates\a2note\history.html:32
+#: .\a2note\templates\a2note\shoplist_editor.html:145
+#: .\a2note\templates\a2note\todolist_editor.html:144
+msgid "List code"
+msgstr "Codice lista"
+
+#: .\a2note\templates\a2note\history.html:33
+#: .\a2note\templates\a2note\shoplist_editor.html:201
+#: .\a2note\templates\a2note\todolist_editor.html:166
+msgid "Title"
+msgstr "Titolo"
+
+#: .\a2note\templates\a2note\history.html:34
+msgid "Author"
+msgstr "Autore"
+
+#: .\a2note\templates\a2note\history.html:35
+msgid "Last open"
+msgstr "Ultima apertura"
+
+#: .\a2note\templates\a2note\history.html:51
+msgid "No recent data to show."
+msgstr "Nessun dato recente da mostrare."
+
 #: .\a2note\templates\a2note\index.html:12
 msgid "Create your shopping lists and to-do lists."
 msgstr "Crea le tue liste della spesa e to-do list."
@@ -257,15 +307,6 @@ msgid ""
 msgstr ""
 "Crea le tue liste della spesa o to-do list e salvale sul cloud. Condividi le "
 "tue liste con chiunque vuoi."
-
-#: .\a2note\templates\a2note\index.html:25
-#: .\a2note\templates\a2note\my_dashboard.html:22
-#: .\a2note\templates\a2note\shoplist_editor.html:24
-#: .\a2note\templates\a2note\shoplist_viewer.html:24
-#: .\a2note\templates\a2note\todolist_editor.html:23
-#: .\a2note\templates\a2note\todolist_viewer.html:23
-msgid "Back to top"
-msgstr "Torna in cima"
 
 #: .\a2note\templates\a2note\index.html:33
 #: .\a2note\templates\a2note\shoplist_editor.html:69
@@ -621,7 +662,7 @@ msgid "My lists"
 msgstr "Le mie liste"
 
 #: .\a2note\templates\a2note\navbar.html:24
-#: .\a2note\templates\a2note\navbar.html:63
+#: .\a2note\templates\a2note\navbar.html:68
 #: .\a2note\templates\a2note\open_shared.html:24
 msgid "Open shared list"
 msgstr "Apri lista condivisa"
@@ -634,11 +675,15 @@ msgstr "La mia dashboard"
 msgid "My bulletin board"
 msgstr "La mia bacheca"
 
-#: .\a2note\templates\a2note\navbar.html:50
+#: .\a2note\templates\a2note\navbar.html:39
+msgid "Recent lists"
+msgstr "Liste recenti"
+
+#: .\a2note\templates\a2note\navbar.html:55
 msgid "My account"
 msgstr "Il mio account"
 
-#: .\a2note\templates\a2note\navbar.html:88
+#: .\a2note\templates\a2note\navbar.html:93
 msgid "Register"
 msgstr "Registrati"
 
@@ -1015,11 +1060,6 @@ msgstr "Abilita modifica"
 msgid "List sharing"
 msgstr "Condivisione lista"
 
-#: .\a2note\templates\a2note\shoplist_editor.html:145
-#: .\a2note\templates\a2note\todolist_editor.html:144
-msgid "List code"
-msgstr "Codice lista"
-
 #: .\a2note\templates\a2note\shoplist_editor.html:146
 #: .\a2note\templates\a2note\todolist_editor.html:145
 msgid "Copy to clipboard"
@@ -1035,11 +1075,6 @@ msgstr ""
 "Alcune funzionalità sono disabilitate perchè la privacy della lista è "
 "impostata su privata. Se desideri condividere la lista per favore recati su "
 "'Impostazioni' a rendi la lista pubblica."
-
-#: .\a2note\templates\a2note\shoplist_editor.html:201
-#: .\a2note\templates\a2note\todolist_editor.html:166
-msgid "Title"
-msgstr "Titolo"
 
 #: .\a2note\templates\a2note\shoplist_editor.html:202
 #: .\a2note\templates\a2note\todolist_editor.html:167
@@ -1208,19 +1243,19 @@ msgstr "Sab"
 msgid "Sun"
 msgstr "Dom"
 
-#: .\a2note\views.py:556 .\a2note\views.py:613
+#: .\a2note\views.py:621 .\a2note\views.py:681
 msgid "Ooops! That's awkward..."
 msgstr "Ooops! E' imbarazzante..."
 
-#: .\a2note\views.py:584
+#: .\a2note\views.py:649
 msgid "This is not the list you were looking for..."
 msgstr "Questa non è la lista che stavi cercando..."
 
-#: .\a2note\views.py:632
+#: .\a2note\views.py:700
 msgid "Sorry, nothing to see here..."
 msgstr "Mi dispiace, non c'è nulla da vedere..."
 
-#: .\a2note\views.py:722
+#: .\a2note\views.py:792
 msgid "You do not have edit privilege on this list."
 msgstr "Non hai privilegi di modifica su questa lista."
 
