@@ -84,6 +84,21 @@ document.addEventListener('DOMContentLoaded', function(){
 
 });
 
+MODIFICATIONS = {"add": {}, "mod":{}, "del":{}};
+
+function updateModification(operation, name, content){
+  //operations: add, mod, del
+  MODIFICATIONS[operation][name] = content;
+
+  //Removing conflicting operations
+  if (operation == "add") {
+    delete MODIFICATIONS["del"][name];
+  } else if (operation == "del") {
+    delete MODIFICATIONS["add"][name];
+    delete MODIFICATIONS["mod"][name];
+  }
+}
+
 function initializeShareBtns() {
   let text = gettext("Hi! Check out this cool list I created on a2note.ninja...")
 
@@ -187,7 +202,8 @@ function saveShoplistToDB(reload) {
   data.append("element_id", element_id);
   data.append("element_type", element_type);
   data.append("title", title);
-  data.append("items", getListItems());
+  // data.append("items", getListItems());
+  data.append("modifications", JSON.stringify(MODIFICATIONS));
   data.append("shared", shared);
   data.append("edit_enabled", edit_enabled);
 

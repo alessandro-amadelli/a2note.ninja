@@ -169,7 +169,7 @@ function checkCategory(itemName) {
   }
 }
 
-function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFromStorage=false) {
+function addItem(category=null, text=null, quantity="1", itemStatus=null, loadedFromStorage=false) {
   //Adds a new element in the shopping list
   if (text == null) {
     let inp = document.querySelector("#itemText");
@@ -235,6 +235,7 @@ function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFr
   //Item status
   if (itemStatus == null) {
     newItem.dataset.status = "ToDo";
+    itemStatus = "ToDo";
   } else {
     newItem.dataset.status = itemStatus;
     if (itemStatus == "Done") {
@@ -321,6 +322,12 @@ function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFr
 
   //Event listener on number change
   quantInp.addEventListener('change', function(){
+    try {
+      updateModification("mod", text, {"category": category, "quantity": this.value, "status": this.parentElement.parentElement.parentElement.dataset.status});
+    } catch(e) {
+      console.log(e.message);
+    }
+
     try{
         enableSave();
       } catch {saveShoplistToLocalStorage();}
@@ -340,6 +347,12 @@ function addItem(category=null, text=null, quantity=1, itemStatus=null, loadedFr
   if (!loadedFromStorage) {
     //Save updated list
     //The function saveShoplist() contains a call to the correct saving function
+    try {
+      updateModification("add", text, {"category": category, "quantity": quantity, "status": itemStatus});
+    } catch(e) {
+      console.log(e.message);
+    }
+
     try{
         enableSave();
       } catch {saveShoplistToLocalStorage();}
@@ -367,6 +380,13 @@ function deleteItem(item) {
     item.remove();
     //Save updated list
     //The function saveShoplist() contains a call to the correct saving function
+    try {
+      let text = item.querySelector(".taskTextArea").innerText;
+      updateModification("del", text, {});
+    } catch(e) {
+      console.log(e.message);
+    }
+
     try{
         enableSave();
       } catch {saveShoplistToLocalStorage();}
@@ -386,6 +406,16 @@ function completeItem(item){
   }
   //Try to enable the save button for the shopping list
   //If it fails then the user is using the site without an account
+  try {
+    let text = item.querySelector(".taskTextArea").innerText;
+    let category = item.parentElement.dataset.category;
+    let quantity = item.querySelector(".itemQuantity").value;
+    let itemStatus = item.dataset.status;
+    updateModification("mod", text, {"category": category, "quantity": quantity, "status": itemStatus});
+  } catch(e) {
+    console.log(e.message);
+  }
+
   try{
     enableSave();
   } catch {

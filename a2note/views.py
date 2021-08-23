@@ -744,8 +744,14 @@ def save_list_view(request):
     element_id = request.POST["element_id"]
     element_type = request.POST["element_type"]
     title = request.POST["title"]
-    items = request.POST["items"]
-    items = json.loads(items)
+
+    if element_type == "SHOPLIST":
+        modifications = request.POST["modifications"]
+        modifications = json.loads(modifications)
+    else:
+        items = request.POST["items"]
+        items = json.loads(items)
+
     shared = request.POST["shared"]
     edit_enabled = request.POST["edit_enabled"]
 
@@ -754,15 +760,17 @@ def save_list_view(request):
 
     response = {}
 
-    list_data = select_element_by_id(element_id, element_type)
-    if len(list_data) > 0:
-        list_data = list_data[0]
-    else:
-        response = {
-            "STATUS": "ERROR",
-            "DESCRIPTION": "Non existent list"
-        }
-        return JsonResponse(response)
+    list_data = cache.get(element_type + element_id)
+    if not list_data:
+        list_data = select_element_by_id(element_id, element_type)
+        if len(list_data) > 0:
+            list_data = list_data[0]
+        else:
+            response = {
+                "STATUS": "ERROR",
+                "DESCRIPTION": "Non existent list"
+            }
+            return JsonResponse(response)
 
     author = list_data["author"]
 
@@ -791,6 +799,18 @@ def save_list_view(request):
             "RESULT": "ERROR",
             "DESCRIPTION": _("You do not have edit privilege on this list.")
         }
+
+    if element_type == "SHOPLIST":
+        #Applying modification to the items variable
+        items = list_data["items"]
+        for a in modifications["add"].keys():
+            items[a] = modifications["add"][a]
+
+        for m in modifications["mod"].keys():
+            items[m] = modifications["mod"][m]
+
+        for d in modifications["del"].keys():
+            items.pop(d, None)
 
     #List data
     item = {
