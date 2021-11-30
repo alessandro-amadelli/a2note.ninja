@@ -17,6 +17,7 @@ function checkForm(){
   if (psw_old.trim() == "" || psw_new1.trim() == "" || psw_new2.trim() == "") {
     showPageMessage("alert alert-danger alert-dismissible", gettext("Please, enter all fields"));
     removeLoading();
+    scroll(0,0);
     return false;
   }
   changePsw();
@@ -42,6 +43,7 @@ function changePsw() {
     psw_new1_inp.value = "";
     psw_new2_inp.value = "";
     removeLoading();
+    scroll(0,0);
   };
   const data = new FormData();
 

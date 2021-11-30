@@ -6,3 +6,4 @@ product_list.json
 a2note/dynamoDB_manage.py
 a2note/dynamoDB_create_table.py
 a2note/plot_maker.py
+translation_commands.txt

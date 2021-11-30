@@ -262,6 +262,8 @@ def register_success(request):
 def login_view(request):
     return render(request, "a2note/login.html")
 
+def forgot_password_view(request):
+    return render(request, "a2note/reset_password.html")
 
 @login_required
 def my_account_view(request):
@@ -328,7 +330,7 @@ def psw_change_view(request):
         response["RESULT"] = "ERROR"
         return JsonResponse(response)
 
-    # All checks cleared...updateing user's password
+    # All checks cleared...updating user's password
     user_obj.set_password(new_psw1)
     user_obj.save()
 
@@ -907,6 +909,120 @@ def delete_list(request):
     cache.delete(cache_key2)
 
     response = {"RESULT": "OK"}
+    return JsonResponse(response)
+
+def send_reset_email(email_address, username, otp):
+    email_subj = "a2note.ninja - Password reset OTP"
+
+    email_content = _("Hi") + f" <strong>{username}!</strong><br>"
+    email_content += _("Here's the code to confirm the password reset for your a2note.ninja account.") + "<br>"
+    email_content += f"<strong style='font-size:3rem;'>{otp}</strong><br><br>"
+    email_content += "a2note.ninja"
+
+    try:
+        send_email(email_address, email_subj, email_content)
+    except:
+        response = {
+        "RESULT": "ERROR",
+        "DESCRIPTION": _("Something went wrong...try again later.")
+        }
+        return JsonResponse(response)
+
+    response = {
+    "RESULT": "OK"
+    }
+    return JsonResponse(response)
+
+def send_reset_otp(request):
+    """
+    Receives user's request to send the otp for the password reset.
+    The function checks if the email is associated with an existing user and:
+      _If the email exists -> sends to the email an OTP to confirm the password reset.
+      _If the email is nonexistent, no OTP is sent.
+    For security reasons the function's response doesn't change between the 2 above mentioned cases.
+    """
+    email_address = request.POST.get("email_address")
+
+    is_legit = True
+
+    #Check if the email is valid
+    try:
+        validate_email(email_address)
+    except:
+        is_legit = False
+
+    #Check if the email is associated with an existing user
+    try:
+        user = User.objects.get(email=email_address)
+        username = user.username
+    except User.DoesNotExist:
+        is_legit = False
+
+    #OTP is generated, saved in cache and sent via email
+    if is_legit:
+        otp = generate_OTP()
+        cache_key = f"reset_OTP_{email_address}"
+        cache.set(cache_key, otp, 60*5) #expires in 5 minutes
+
+        #OTP is sent via email
+        try:
+            send_reset_email(email_address, username, otp)
+        except:
+            pass
+
+    #In any case, the same response is sent back to the client
+    response = {"RESULT": "OK"}
+    return JsonResponse(response)
+
+def reset_user_password(request):
+    """
+    Receives user's request for password reset and proceeds to check if the opt is correct.
+    If the OTP is correct, then the password is reset.
+    """
+    email_address = request.POST.get("email_address")
+    new_password = request.POST.get("new_password")
+    otp = request.POST.get("otp")
+
+    is_success = True
+
+    #Check if the password is at least 8 characters long
+    is_success = (len(new_password) >= 8)
+
+    #Check if the email is valid
+    if is_success:
+        try:
+            validate_email(email_address)
+        except:
+            is_success = False
+
+    #Check if the OTP is generated, still valid and if it corresponds
+    if is_success:
+        cached_otp = cache.get(f"reset_OTP_{email_address}")
+        if cached_otp:
+            if otp != cached_otp:
+                is_success = False
+        else:
+            is_success = False
+
+    #Check if the user's email is correct and retrieve username
+    if is_success:
+        try:
+            user = User.objects.get(email=email_address)
+            username = user.username
+        except User.DoesNotExist:
+            is_success = False
+
+    #Reset user's password
+    if is_success:
+        user.set_password(new_password)
+        user.save()
+
+        #Updating session hash to keep user logged in after password change
+        login(request, user)
+        response = {"RESULT": "OK"}
+        return JsonResponse(response)
+
+    response = {"RESULT": "ERROR"}
     return JsonResponse(response)
 
 def offline(request):

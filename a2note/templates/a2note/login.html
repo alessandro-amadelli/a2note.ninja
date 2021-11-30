@@ -43,6 +43,9 @@
           <td><i class="material-icons-outlined">lock</i> </td>
           <td>{{ form.password }}</td>
         </tr>
+        <tr>
+          <td colspan="2"><a href="{% url 'forgot_password_view' %}">{% translate "Forgot password?" %}</a></td>
+        </tr>
       </table>
 
       <input type="submit" value="Login" class="btn btn-light">

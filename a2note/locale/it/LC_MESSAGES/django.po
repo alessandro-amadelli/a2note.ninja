@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-04 15:51+0200\n"
+"POT-Creation-Date: 2021-11-30 23:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -357,6 +357,7 @@ msgid "Yes, go ahed!"
 msgstr "Sì, procedi!"
 
 #: .\a2note\templates\a2note\index.html:50 .\a2note\views.py:142
+#: .\a2note\views.py:917
 msgid "Hi"
 msgstr "Ciao"
 
@@ -497,11 +498,15 @@ msgstr ""
 "Il tuo nome ninja e/o la tua password non sono corretti. Per favore "
 "riprova..."
 
-#: .\a2note\templates\a2note\login.html:51
+#: .\a2note\templates\a2note\login.html:47
+msgid "Forgot password?"
+msgstr "Password dimenticata?"
+
+#: .\a2note\templates\a2note\login.html:54
 msgid "Don't have an account yet? No problem, just"
 msgstr "Non hai ancora un account? Nessun problema,"
 
-#: .\a2note\templates\a2note\login.html:51
+#: .\a2note\templates\a2note\login.html:54
 msgid "register</a> for free."
 msgstr "registrati</a> gratuitamente."
 
@@ -843,6 +848,60 @@ msgstr "Inserisci il codice che abbiamo inviato alla tua email"
 msgid "Sign up"
 msgstr "Registrati"
 
+#: .\a2note\templates\a2note\reset_password.html:12
+msgid "Reset your account password."
+msgstr "Resetta la password del tuo account."
+
+#: .\a2note\templates\a2note\reset_password.html:16
+msgid "If you forgot your password, reset it here."
+msgstr "Se hai dimenticato la tua password, resettala qui."
+
+#: .\a2note\templates\a2note\reset_password.html:25
+msgid "Password reset"
+msgstr "Reset della password"
+
+#: .\a2note\templates\a2note\reset_password.html:28
+msgid "Even a ninja is allowed to forget something...don't worry!"
+msgstr "Anche a un ninja è permesso dimenticare qualcosa...non preoccuparti!"
+
+#: .\a2note\templates\a2note\reset_password.html:34
+msgid "Enter the email address associated with your account."
+msgstr "Inserisci l'indirizzo email associato al tuo account."
+
+#: .\a2note\templates\a2note\reset_password.html:41
+#: .\a2note\templates\a2note\reset_password.html:72
+msgid "Confirm"
+msgstr "Conferma"
+
+#: .\a2note\templates\a2note\reset_password.html:45
+msgid "If the email is correct, you should receive an OTP."
+msgstr "Se l'email è corretta, dovresti ricevere un OTP."
+
+#: .\a2note\templates\a2note\reset_password.html:46
+msgid "Please use the OTP in the form below to confirm your identity."
+msgstr ""
+"Per favore, usa l'OTP nel form sottostante per confermare la tua identità."
+
+#: .\a2note\templates\a2note\reset_password.html:53
+msgid "Set the new password for the account"
+msgstr "Imposta la nuova password per l'account"
+
+#: .\a2note\templates\a2note\reset_password.html:57
+msgid "Choose a new password..."
+msgstr "Scegli una nuova password..."
+
+#: .\a2note\templates\a2note\reset_password.html:61
+msgid "Repeat new password..."
+msgstr "Ripeti nuova password..."
+
+#: .\a2note\templates\a2note\reset_password.html:64
+msgid "Insert the OTP received via email"
+msgstr "Inserisci l'OTP ricevuto via email"
+
+#: .\a2note\templates\a2note\reset_password.html:68
+msgid "OTP received via email"
+msgstr "OTP ricevuto via email"
+
 #: .\a2note\templates\a2note\shoplist.html:12
 #: .\a2note\templates\a2note\shoplist_editor.html:12
 msgid "Edit your shopping list."
@@ -1135,7 +1194,7 @@ msgstr "Da fare"
 
 #: .\a2note\templates\a2note\todolist.html:68
 #: .\a2note\templates\a2note\todolist_editor.html:197
-#: .\a2note\templates\a2note\todolist_viewer.html:61 .\a2note\views.py:407
+#: .\a2note\templates\a2note\todolist_viewer.html:61 .\a2note\views.py:409
 msgid "Done"
 msgstr "Completati"
 
@@ -1167,7 +1226,7 @@ msgstr "L'indirizzo email non è valido...per favore controlla"
 msgid "Here's the code to complete your registration on a2note.ninja"
 msgstr "Ecco il codice per completare la tua registrazione su a2note.ninja"
 
-#: .\a2note\views.py:152
+#: .\a2note\views.py:152 .\a2note\views.py:927
 msgid "Something went wrong...try again later."
 msgstr "Qualcosa è andato storto...riprova più tardi."
 
@@ -1195,69 +1254,76 @@ msgstr "Le due password che hai inserito non corrispondono..."
 msgid "Sorry, OTP is incorrect..."
 msgstr "Mi spiace, l'OTP non è corretto..."
 
-#: .\a2note\views.py:307
+#: .\a2note\views.py:309
 msgid "Please, enter all fields"
 msgstr "Per favore, riempi tutti i campi"
 
-#: .\a2note\views.py:316
+#: .\a2note\views.py:318
 msgid "Sorry, the passwords you entered do not match..."
 msgstr "Le due password che hai inserito non corrispondono..."
 
-#: .\a2note\views.py:326
+#: .\a2note\views.py:328
 msgid "Old password is incorrect..."
 msgstr "La vecchia password è incorretta..."
 
-#: .\a2note\views.py:340
+#: .\a2note\views.py:342
 msgid "Password changed successfully"
 msgstr "Password modificata con successo"
 
-#: .\a2note\views.py:407
+#: .\a2note\views.py:409
 msgid "To do"
 msgstr "Da fare"
 
-#: .\a2note\views.py:414 .\a2note\views.py:421
+#: .\a2note\views.py:416 .\a2note\views.py:423
 msgid "Mon"
 msgstr "Lun"
 
-#: .\a2note\views.py:414 .\a2note\views.py:421
+#: .\a2note\views.py:416 .\a2note\views.py:423
 msgid "Tue"
 msgstr "Mar"
 
-#: .\a2note\views.py:414 .\a2note\views.py:421
+#: .\a2note\views.py:416 .\a2note\views.py:423
 msgid "Wed"
 msgstr "Mer"
 
-#: .\a2note\views.py:414 .\a2note\views.py:421
+#: .\a2note\views.py:416 .\a2note\views.py:423
 msgid "Thu"
 msgstr "Gio"
 
-#: .\a2note\views.py:414 .\a2note\views.py:421
+#: .\a2note\views.py:416 .\a2note\views.py:423
 msgid "Fri"
 msgstr "Ven"
 
-#: .\a2note\views.py:414 .\a2note\views.py:421
+#: .\a2note\views.py:416 .\a2note\views.py:423
 msgid "Sat"
 msgstr "Sab"
 
-#: .\a2note\views.py:414 .\a2note\views.py:421
+#: .\a2note\views.py:416 .\a2note\views.py:423
 msgid "Sun"
 msgstr "Dom"
 
-#: .\a2note\views.py:621 .\a2note\views.py:681
+#: .\a2note\views.py:623 .\a2note\views.py:683
 msgid "Ooops! That's awkward..."
 msgstr "Ooops! E' imbarazzante..."
 
-#: .\a2note\views.py:649
+#: .\a2note\views.py:651
 msgid "This is not the list you were looking for..."
 msgstr "Questa non è la lista che stavi cercando..."
 
-#: .\a2note\views.py:700
+#: .\a2note\views.py:702
 msgid "Sorry, nothing to see here..."
 msgstr "Mi dispiace, non c'è nulla da vedere..."
 
-#: .\a2note\views.py:792
+#: .\a2note\views.py:802
 msgid "You do not have edit privilege on this list."
 msgstr "Non hai privilegi di modifica su questa lista."
+
+#: .\a2note\views.py:918
+msgid ""
+"Here's the code to confirm the password reset for your a2note.ninja account."
+msgstr ""
+"Ecco il codice per confermare il reset della password per il tuo account "
+"a2note.ninja."
 
 #: .\a2note_ninja\settings.py:139
 msgid "English"

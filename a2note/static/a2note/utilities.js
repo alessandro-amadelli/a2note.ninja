@@ -212,7 +212,6 @@ function notify(text) {
 }
 
 function showPageMessage(msgClass, msgText) {
-
   let newDiv = document.createElement("div");
   newDiv.setAttribute("class", msgClass + " fade show");
   newDiv.setAttribute("role", "alert");
