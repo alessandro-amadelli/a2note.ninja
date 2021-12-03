@@ -922,7 +922,6 @@ def send_reset_email(email_address, username, otp):
     try:
         send_email(email_address, email_subj, email_content)
     except Exception as e:
-        # print(e)
         response = {
         "RESULT": "ERROR",
         "DESCRIPTION": _("Something went wrong...try again later.")
