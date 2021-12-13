@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-30 23:47+0100\n"
+"POT-Creation-Date: 2021-12-13 14:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,14 +172,14 @@ msgid "Write your text here..."
 msgstr "Scrivi il testo qui..."
 
 #: .\a2note\templates\a2note\bulletin.html:46
-#: .\a2note\templates\a2note\my_account.html:54
+#: .\a2note\templates\a2note\my_account.html:56
 #: .\a2note\templates\a2note\shoplist_editor.html:129
 #: .\a2note\templates\a2note\todolist_editor.html:128
 msgid "Cancel"
 msgstr "Annulla"
 
 #: .\a2note\templates\a2note\bulletin.html:47
-#: .\a2note\templates\a2note\my_account.html:55
+#: .\a2note\templates\a2note\my_account.html:57
 #: .\a2note\templates\a2note\shoplist_editor.html:29
 #: .\a2note\templates\a2note\shoplist_editor.html:130
 #: .\a2note\templates\a2note\todolist_editor.html:28
@@ -256,6 +256,7 @@ msgstr "Vedi le liste recentemente aperte e tinele a portata di mano."
 
 #: .\a2note\templates\a2note\history.html:21
 #: .\a2note\templates\a2note\index.html:25
+#: .\a2note\templates\a2note\my_account.html:25
 #: .\a2note\templates\a2note\my_dashboard.html:22
 #: .\a2note\templates\a2note\shoplist_editor.html:24
 #: .\a2note\templates\a2note\shoplist_viewer.html:24
@@ -356,8 +357,8 @@ msgstr "Nah...non importa"
 msgid "Yes, go ahed!"
 msgstr "Sì, procedi!"
 
-#: .\a2note\templates\a2note\index.html:50 .\a2note\views.py:142
-#: .\a2note\views.py:917
+#: .\a2note\templates\a2note\index.html:50 .\a2note\views.py:200
+#: .\a2note\views.py:1140
 msgid "Hi"
 msgstr "Ciao"
 
@@ -522,50 +523,54 @@ msgstr ""
 "Informazioni sul tuo account a2ntoe.ninja. Qui puoi anche cambiare la tua "
 "password."
 
-#: .\a2note\templates\a2note\my_account.html:25
+#: .\a2note\templates\a2note\my_account.html:27
 msgid "Your ninja account"
 msgstr "Il tuo account ninja"
 
-#: .\a2note\templates\a2note\my_account.html:26
+#: .\a2note\templates\a2note\my_account.html:28
 msgid "In this page you can see all your information"
 msgstr "In questa pagina puoi vedere tutte le tue informazioni"
 
-#: .\a2note\templates\a2note\my_account.html:34
+#: .\a2note\templates\a2note\my_account.html:36
 msgid "Password change"
 msgstr "Cambio password"
 
-#: .\a2note\templates\a2note\my_account.html:41
+#: .\a2note\templates\a2note\my_account.html:43
 msgid "Old password"
 msgstr "Vecchia password"
 
-#: .\a2note\templates\a2note\my_account.html:45
-#: .\a2note\templates\a2note\my_account.html:49
+#: .\a2note\templates\a2note\my_account.html:47
+#: .\a2note\templates\a2note\my_account.html:51
 msgid "New password"
 msgstr "Nuova password"
 
-#: .\a2note\templates\a2note\my_account.html:49
+#: .\a2note\templates\a2note\my_account.html:51
 msgid "Repeat new password"
 msgstr "Ripeti nuova password"
 
-#: .\a2note\templates\a2note\my_account.html:61
+#: .\a2note\templates\a2note\my_account.html:63
 msgid "Account information"
 msgstr "Informazioni account"
 
-#: .\a2note\templates\a2note\my_account.html:73
+#: .\a2note\templates\a2note\my_account.html:75
 msgid "Registration"
 msgstr "Registrazione"
 
-#: .\a2note\templates\a2note\my_account.html:78
+#: .\a2note\templates\a2note\my_account.html:80
 msgid "Change"
 msgstr "Cambia"
 
-#: .\a2note\templates\a2note\my_account.html:85
+#: .\a2note\templates\a2note\my_account.html:87
 msgid "Your activity"
 msgstr "La tua attività"
 
-#: .\a2note\templates\a2note\my_account.html:88
+#: .\a2note\templates\a2note\my_account.html:90
 msgid "Last login"
 msgstr "Ultimo login"
+
+#: .\a2note\templates\a2note\my_account.html:104
+msgid "Your medal table"
+msgstr "Il tuo medagliere"
 
 #: .\a2note\templates\a2note\my_dashboard.html:12
 msgid "Your personal dashboard."
@@ -1194,7 +1199,7 @@ msgstr "Da fare"
 
 #: .\a2note\templates\a2note\todolist.html:68
 #: .\a2note\templates\a2note\todolist_editor.html:197
-#: .\a2note\templates\a2note\todolist_viewer.html:61 .\a2note\views.py:409
+#: .\a2note\templates\a2note\todolist_viewer.html:61 .\a2note\views.py:601
 msgid "Done"
 msgstr "Completati"
 
@@ -1206,7 +1211,7 @@ msgstr "Visualizza la to-do list."
 msgid "Here you can view the to-do list. Changes cannot be saved."
 msgstr "Qui puoi visualizzare la to-do list. Le modifiche non vengono salvate."
 
-#: .\a2note\views.py:43
+#: .\a2note\views.py:96
 msgid ""
 "Possible reasons for this error: <br><ul><li>The list is not shared so only "
 "the author can see it</li><li>The list encountered its demise and it's not "
@@ -1218,19 +1223,19 @@ msgstr ""
 "triste fine e non è più tra noi</li><li>L'intero sito web è esploso</li></"
 "ul><br>Ok, forse non l'ultima opzione..."
 
-#: .\a2note\views.py:132
+#: .\a2note\views.py:190
 msgid "Email address is invalid...please check"
 msgstr "L'indirizzo email non è valido...per favore controlla"
 
-#: .\a2note\views.py:143
+#: .\a2note\views.py:201
 msgid "Here's the code to complete your registration on a2note.ninja"
 msgstr "Ecco il codice per completare la tua registrazione su a2note.ninja"
 
-#: .\a2note\views.py:152 .\a2note\views.py:927
+#: .\a2note\views.py:210 .\a2note\views.py:1150
 msgid "Something went wrong...try again later."
 msgstr "Qualcosa è andato storto...riprova più tardi."
 
-#: .\a2note\views.py:193
+#: .\a2note\views.py:251
 msgid ""
 "Oh no! The ninja name you chose seems to be already taken...don't worry! "
 "Just choose a different one : )"
@@ -1238,7 +1243,7 @@ msgstr ""
 "Oh no! Il nome ninja che hai scelto sembra sia già stato preso...non "
 "preoccuparti! Basta che tu ne scelga uno diverso : )"
 
-#: .\a2note\views.py:206
+#: .\a2note\views.py:264
 msgid ""
 "Ooops...the email address you inserted is already associated with another "
 "ninja..."
@@ -1246,79 +1251,79 @@ msgstr ""
 "Ooops...l'indirizzo email che hai inserito è già associato ad un altro "
 "ninja..."
 
-#: .\a2note\views.py:218
+#: .\a2note\views.py:276
 msgid "The two password you entered do not match..."
 msgstr "Le due password che hai inserito non corrispondono..."
 
-#: .\a2note\views.py:230
+#: .\a2note\views.py:288
 msgid "Sorry, OTP is incorrect..."
 msgstr "Mi spiace, l'OTP non è corretto..."
 
-#: .\a2note\views.py:309
+#: .\a2note\views.py:497
 msgid "Please, enter all fields"
 msgstr "Per favore, riempi tutti i campi"
 
-#: .\a2note\views.py:318
+#: .\a2note\views.py:506
 msgid "Sorry, the passwords you entered do not match..."
 msgstr "Le due password che hai inserito non corrispondono..."
 
-#: .\a2note\views.py:328
+#: .\a2note\views.py:516
 msgid "Old password is incorrect..."
 msgstr "La vecchia password è incorretta..."
 
-#: .\a2note\views.py:342
+#: .\a2note\views.py:534
 msgid "Password changed successfully"
 msgstr "Password modificata con successo"
 
-#: .\a2note\views.py:409
+#: .\a2note\views.py:601
 msgid "To do"
 msgstr "Da fare"
 
-#: .\a2note\views.py:416 .\a2note\views.py:423
+#: .\a2note\views.py:608 .\a2note\views.py:615
 msgid "Mon"
 msgstr "Lun"
 
-#: .\a2note\views.py:416 .\a2note\views.py:423
+#: .\a2note\views.py:608 .\a2note\views.py:615
 msgid "Tue"
 msgstr "Mar"
 
-#: .\a2note\views.py:416 .\a2note\views.py:423
+#: .\a2note\views.py:608 .\a2note\views.py:615
 msgid "Wed"
 msgstr "Mer"
 
-#: .\a2note\views.py:416 .\a2note\views.py:423
+#: .\a2note\views.py:608 .\a2note\views.py:615
 msgid "Thu"
 msgstr "Gio"
 
-#: .\a2note\views.py:416 .\a2note\views.py:423
+#: .\a2note\views.py:608 .\a2note\views.py:615
 msgid "Fri"
 msgstr "Ven"
 
-#: .\a2note\views.py:416 .\a2note\views.py:423
+#: .\a2note\views.py:608 .\a2note\views.py:615
 msgid "Sat"
 msgstr "Sab"
 
-#: .\a2note\views.py:416 .\a2note\views.py:423
+#: .\a2note\views.py:608 .\a2note\views.py:615
 msgid "Sun"
 msgstr "Dom"
 
-#: .\a2note\views.py:623 .\a2note\views.py:683
+#: .\a2note\views.py:839 .\a2note\views.py:899
 msgid "Ooops! That's awkward..."
 msgstr "Ooops! E' imbarazzante..."
 
-#: .\a2note\views.py:651
+#: .\a2note\views.py:867
 msgid "This is not the list you were looking for..."
 msgstr "Questa non è la lista che stavi cercando..."
 
-#: .\a2note\views.py:702
+#: .\a2note\views.py:918
 msgid "Sorry, nothing to see here..."
 msgstr "Mi dispiace, non c'è nulla da vedere..."
 
-#: .\a2note\views.py:802
+#: .\a2note\views.py:1021
 msgid "You do not have edit privilege on this list."
 msgstr "Non hai privilegi di modifica su questa lista."
 
-#: .\a2note\views.py:918
+#: .\a2note\views.py:1141
 msgid ""
 "Here's the code to confirm the password reset for your a2note.ninja account."
 msgstr ""

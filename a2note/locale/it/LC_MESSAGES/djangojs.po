@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-30 23:43+0100\n"
+"POT-Creation-Date: 2021-12-13 17:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\a2note\static\a2note\my_account.js:18
+#: .\a2note\static\a2note\my_account.js:25
+msgid "Newbie"
+msgstr "Novizio"
+
+#: .\a2note\static\a2note\my_account.js:30
+msgid "Student"
+msgstr "Allievo"
+
+#: .\a2note\static\a2note\my_account.js:37
+msgid "Senpai"
+msgstr "Senpai"
+
+#: .\a2note\static\a2note\my_account.js:44
+msgid "Ninja helper"
+msgstr "Ninja aiutante"
+
+#: .\a2note\static\a2note\my_account.js:49
+msgid "Ninja of the lists"
+msgstr "Ninja delle liste"
+
+#: .\a2note\static\a2note\my_account.js:52
+msgid "Ninja master"
+msgstr "Maestro ninja"
+
+#: .\a2note\static\a2note\my_account.js:55
+msgid "Legend"
+msgstr "Leggenda"
+
+#: .\a2note\static\a2note\my_account.js:85
 msgid "Please, enter all fields"
 msgstr "Per favore, riempi tutti i campi"
 
@@ -48,50 +76,50 @@ msgstr "Lista salvata"
 msgid "added"
 msgstr "aggiunto"
 
-#: .\a2note\static\a2note\utilities.js:133
+#: .\a2note\static\a2note\utilities.js:134
 msgid "Throwing some ninja stars..."
 msgstr "Sto lanciando qualche stelletta ninja..."
 
-#: .\a2note\static\a2note\utilities.js:134
+#: .\a2note\static\a2note\utilities.js:135
 msgid "Browsing my interesting recipe book..."
 msgstr "Sto sfogliando il mio interessante libro di ricette..."
 
-#: .\a2note\static\a2note\utilities.js:135
+#: .\a2note\static\a2note\utilities.js:136
 msgid "Using my ninja techniques..."
 msgstr "Sto usando le mie tecniche ninja..."
 
-#: .\a2note\static\a2note\utilities.js:136
+#: .\a2note\static\a2note\utilities.js:137
 msgid "Polishing my katana..."
 msgstr "Sto lucidando la mia katana..."
 
-#: .\a2note\static\a2note\utilities.js:137
+#: .\a2note\static\a2note\utilities.js:138
 msgid "Lunch break...be right back!"
 msgstr "Pausa pranzo...torno subito!"
 
-#: .\a2note\static\a2note\utilities.js:138
+#: .\a2note\static\a2note\utilities.js:139
 msgid "Breaking some boards..."
 msgstr "Sto spezzando qualche tavola..."
 
-#: .\a2note\static\a2note\utilities.js:139
+#: .\a2note\static\a2note\utilities.js:140
 msgid "Practicing with nunchacks..."
 msgstr "Sto facendo pratica coi nunchaco..."
 
-#: .\a2note\static\a2note\utilities.js:140
+#: .\a2note\static\a2note\utilities.js:141
 msgid "Throwing some kunais..."
 msgstr "Sto lanciando qualche kunai..."
 
-#: .\a2note\static\a2note\utilities.js:141
+#: .\a2note\static\a2note\utilities.js:142
 msgid "Hiding somewhere in the shadows..."
 msgstr "Mi sto nacondendo da qualche parte nell'ombra"
 
-#: .\a2note\static\a2note\utilities.js:142
+#: .\a2note\static\a2note\utilities.js:143
 msgid "Doing laundry..."
 msgstr "Sto facendo la lavatrice..."
 
-#: .\a2note\static\a2note\utilities.js:143
+#: .\a2note\static\a2note\utilities.js:144
 msgid "Meditating, please wait..."
 msgstr "Sto meditanto, attendi per favore..."
 
-#: .\a2note\static\a2note\utilities.js:144
+#: .\a2note\static\a2note\utilities.js:145
 msgid "Doing some top-secret thing...be right back!"
 msgstr "Sto facendo qualcosa di top-secret...torno subito!"

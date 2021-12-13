@@ -22,6 +22,8 @@
     <script src="{% static 'a2note/my_account.js' %}"></script>
     {% csrf_token %}
 
+    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
+
     <h1 class="intro-0">{% translate 'Your ninja account' %}</h1>
     <h4>{% translate 'In this page you can see all your information' %}</h4>
     <br>
@@ -96,7 +98,28 @@
         <th><span class="material-icons-outlined">shopping_cart</span> Shopping list</th>
         <td> {{ shopping_lists }} </td>
       </tr>
+      <tr>
+        <th><span class="material-icons-outlined">military_tech</span> Rank</th>
+        <td id="tdRank">{{ fulfilled_achievements }}</td>
+      </tr>
     </table>
+    
+    <!-- Achievements -->
+    <h3>{% translate 'Your medal table' %} ({{ fulfilled_achievements }}/{{ total_achievements }}) <span class="material-icons-outlined">emoji_events</span></h3>
+    <div class="achievements_div row">
+      {% for achievement in achievement_list %}
+      <div class="col-7 col-sm-3 p-1">
+        <div class="card achievement-card {{ achievement.fulfilled }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ achievement.name }}</h5>
+            <p class="card-text text-center"><span class="material-icons-outlined" style="font-size:3rem;">star_border</span></p>
+            <p class="card-text">{{ achievement.description }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
 
   </div>
 {% endblock %}

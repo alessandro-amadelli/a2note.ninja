@@ -4,10 +4,77 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector("#btnChangePsw").onclick = () => {
     showLoading();
     checkForm();
-
   }
 
+  calculateRank();
+
 });
+
+function calculateRank(){
+  let tdRank = document.querySelector("#tdRank");
+  let fulfilledAchievements = tdRank.innerText;
+  if (fulfilledAchievements == "") {
+    fulfilledAchievements = "0";
+  }
+  fulfilledAchievements = parseInt(fulfilledAchievements);
+
+  let rank = "";
+  switch (fulfilledAchievements) {
+    case 1:
+    case 2:
+      rank = gettext("Newbie");
+      break;
+    case 3:
+    case 4:
+    case 5:
+      rank = gettext("Student");
+      break;
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+      rank = gettext("Senpai");
+      break;
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+      rank = gettext("Ninja helper");
+      break;
+    case 16:
+    case 17:
+    case 18:
+      rank = gettext("Ninja of the lists");
+      break;
+    case 19:
+      rank = gettext("Ninja master");
+      break;
+    case 20:
+      rank = gettext("Legend");
+      break;
+  }
+
+  let stars = "";
+  full_stars = Math.floor(fulfilledAchievements/2);
+  //Full stars to display
+  for (i=0;i < full_stars; i++) {
+    stars += "<span class='material-icons-outlined'>star</span>";
+  }
+  //Display an half-full star if the remainder of the number is odd
+  if (fulfilledAchievements % 2 != 0) {
+    stars += "<span class='material-icons-outlined'>star_half</span>";
+    full_stars ++; //Increment full_stars to correct the number of empty stars to display
+  }
+  //Display empty stars 
+  for (i=0;i < 10 - full_stars; i++) {
+    stars += "<span class='material-icons-outlined'>star_outline</span>"
+  }
+
+  tdRank.innerHTML = rank + "<br>" + stars;
+
+}
 
 function checkForm(){
   let psw_old = document.querySelector("#psw_old").value;

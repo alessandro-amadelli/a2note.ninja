@@ -1127,3 +1127,14 @@ option {
   background-position: center center;
   opacity: 0.3;
 }
+
+.achievement-card {
+  background-color: var(--donetask-background);
+  height: 15rem;
+  overflow-y: auto;
+}
+
+.fulfilled-achievement {
+  background-color: var(--element-background);
+  border: medium solid var(--text-color);
+}

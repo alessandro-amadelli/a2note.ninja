@@ -26,6 +26,10 @@ function initializeModalDeleteBtn() {
     let element_id = document.querySelector("#modalElementId").innerText;
     deleteList(element_id);
   }
+
+  document.querySelector("#btnNevermind").onclick = function() {
+    assignAchievement19();
+  }
 }
 
 function initializeDeleteListTriggers() {

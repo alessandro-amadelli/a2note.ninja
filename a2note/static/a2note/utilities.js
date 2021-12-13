@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   document.querySelector("#darkModeSelector").addEventListener('click', () => {
     toggleTheme();
+    assignAchievement6();
   });
 
   //Loading of current theme saved on localStorage
@@ -229,4 +230,30 @@ function showPageMessage(msgClass, msgText) {
 
 
   document.body.querySelector(".container").prepend(newDiv);
+}
+
+function assignAchievement6(){
+  //Assigns the achievement for theme toggling
+  const request = new XMLHttpRequest();
+  const url = `/theme_changed/`;
+  request.open('GET', url);
+
+  request.onload = () => {
+    const response = JSON.parse(request.responseText);
+  };
+
+  request.send();
+}
+
+function assignAchievement19(){
+  //Assigns the achievement for theme toggling
+  const request = new XMLHttpRequest();
+  const url = `/deletion_canceled/`;
+  request.open('GET', url);
+
+  request.onload = () => {
+    const response = JSON.parse(request.responseText);
+  };
+
+  request.send();
 }

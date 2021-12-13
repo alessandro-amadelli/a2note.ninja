@@ -31,6 +31,59 @@ import socket
 #Caching
 from django.core.cache import cache
 
+def get_fulfilled_achievements(username):
+    """
+    The function gets the user's medal table (achievement already fulfilled by the user) with
+    a cache-first logic.
+    """
+    #Retrieve the achievements already fulfilled by the user (cache-first)
+    cache_key = f"{username}_MEDAL_TABLE"
+    user_fulfilled = cache.get(cache_key)
+
+    if not user_fulfilled:
+        user_medal_table = select_element_by_id(f"{username}_medal_table", "MEDAL_TABLE")
+        if len(user_medal_table) > 0:
+            user_fulfilled = user_medal_table[0]["achievements"]
+        else:
+            user_fulfilled = []
+
+    return user_fulfilled
+
+def assign_achievements_to_user(username, achievements=[]):
+    """
+    The function receives a list containing achievement ids.
+    The function:
+        0: Gets the user's medal_table (already fulfilled achievements)
+        1: For each achievement in achievements
+            a: checks if the id is already present in the user's medal table
+            b: if not, append the achievement to the user's medal table
+        2: If a change was made -> update cache and database
+    """
+    if len(achievements) == 0:
+        return
+
+    user_fulfilled = get_fulfilled_achievements(username)
+    updated = False
+
+    for achievement_id in achievements:
+        if achievement_id not in user_fulfilled:
+            user_fulfilled.append(achievement_id)
+            updated = True
+
+    if updated:
+        #Remove possible duplicates
+        user_fulfilled = list(set(user_fulfilled))
+
+        #Update cache value and database record
+        cache_key = f"{username}_MEDAL_TABLE"
+        cache.set(cache_key, user_fulfilled)
+        item = {
+            "element_type": "MEDAL_TABLE",
+            "element_id": f"{username}_medal_table",
+            "achievements": user_fulfilled
+        }
+        insert_item(item)
+
 def error_view(request, message="", pagemessage=""):
 
     context = {}
@@ -45,6 +98,11 @@ def error_view(request, message="", pagemessage=""):
         "<li>The list encountered its demise and it's not with us anymore</li>" \
         "<li>The entire website exploded</li></ul><br>" \
         "Ok, maybe not the last option...")
+
+    #Checking if the user is authenticade to assign the achievement#8
+    if request.user.is_authenticated:
+        username = request.user.username
+        assign_achievements_to_user(username, ["achievement#8"])
 
     return render(request, "a2note/error_page.html", context)
 
@@ -258,19 +316,120 @@ def register_success(request):
 
     return redirect('index_view')
 
-
 def login_view(request):
     return render(request, "a2note/login.html")
 
 def forgot_password_view(request):
     return render(request, "a2note/reset_password.html")
 
+def check_fulfilled_achievements(achievement_list, username):
+    user_fulfilled = get_fulfilled_achievements(username)
+
+    if len(user_fulfilled) == len(achievement_list):
+        return user_fulfilled
+
+    #Checking fulfillment of other achievements
+
+    #Check achievement#1 'Hello, world' - Assigned by default bacause user is registered
+    if 'achievement#1' not in user_fulfilled:
+        user_fulfilled.append('achievement#1')
+
+    #achievement#2  -> see save_list_view()
+    #achievement#3  -> see create_list_view()
+    #achievement#4  -> see create_list_view()
+    #achievement#5  -> see dashboard_view()
+    #achievement#6  -> see theme_changed()
+    #achievement#7  -> see delete_list()
+    #achievement#8  -> see error_view()
+    #achievement#9  -> see dashboard_view()
+    #achievement#11 -> see save_bulletin_view()
+    #achievement#15 -> see psw_change_view()
+    #achievement#19 -> see deletion_canceled()
+
+    #Checking list related achievement completion
+    cache_key = username + "_LISTS"
+    created_lists = cache.get(cache_key)
+    if not created_lists:
+        created_lists = select_lists_by_author(username)
+        cache.set(cache_key, created_lists)
+
+    shop_num, todo_num = 0,0
+    task_num, done_task_num = 0,0
+    older_list_date = 0
+    today = datetime.now()
+    for l in created_lists:
+        if l["element_type"] == "SHOPLIST":
+            shop_num += 1
+            creation_date = datetime.strptime(l["creation_timestamp"], "%Y-%m-%d h.%H:%M:%S.%f")
+            if older_list_date == 0 or creation_date < older_list_date:
+                older_list_date = creation_date
+            item_num = 0
+            fruit_veg_num, alcohol_num, clean_hygiene_num = 0,0,0
+            for i in l["items"]:
+                item_quantity = int(l["items"][i]["quantity"])
+                item_num += item_quantity
+                if l["items"][i]["category"] in ("fruit", "vegetable"):
+                    fruit_veg_num += item_quantity
+                elif l["items"][i]["category"] == "alcohol":
+                    alcohol_num += item_quantity
+                elif l["items"][i]["category"] in ("cleaning", "hygiene"):
+                    clean_hygiene_num += item_quantity
+            #achievement#12 'Healthy'
+            if item_num > 10 and ((fruit_veg_num * 100) / item_quantity) > 70:
+                user_fulfilled.append("achievement#12")
+            #achievement#16 "Flammable"
+            if item_num > 10 and ((alcohol_num * 100) / item_quantity) > 70:
+                user_fulfilled.append("achievement#16")
+            #achievement#17 "Germ killer"
+            if item_num > 10 and ((clean_hygiene_num * 100) / item_quantity) > 70:
+                user_fulfilled.append("achievement#17")
+        elif l["element_type"] == "TODOLIST":
+            todo_num += 1
+            task_num += len(l["items"].keys())
+            for t in l["items"]:
+                if l["items"][t]["status"] == "Done":
+                    done_task_num += 1
+
+        #achievement#10 "Reliable"
+        if done_task_num >= 10:
+            user_fulfilled.append("achievement#10")
+
+        #achievement#13 "Milk is expired!"
+        from datetime import timedelta
+        target_date = (today - timedelta(weeks=24)).strftime("%Y%m%d")
+        if older_list_date.strftime("%Y%m%d") <= target_date:
+            user_fulfilled.append("achievement#13")
+
+        #achievemnt#14 'Happy birthday!!!'
+        if "achievement#14" not in user_fulfilled:
+            target_date = (today - timedelta(days=365)).strftime("%Y%m%d")
+            user = User.objects.get(username=username)
+            registration_date = user.date_joined
+            registration_date = registration_date.strftime("%Y%m%d")
+            if registration_date <= target_date:
+                user_fulfilled.append("achievement#14")
+
+        #achievement#18 "Task manager"
+        if task_num >= 100:
+            user_fulfilled.append("achievement#18")
+
+    #Removing possible duplicates before checking for the legendary achievement
+    user_fulfilled = list(set(user_fulfilled))
+
+    #achievement#20 'Legendary'
+    if len(user_fulfilled) == (len(achievement_list) - 1):
+        user_fulfilled.append("achievement#20")
+
+    assign_achievements_to_user(username, user_fulfilled)
+
+    return user_fulfilled
+
 @login_required
 def my_account_view(request):
     #Get user information
     user = request.user
 
-    #Get all lists created by the current user
+    #Get all lists created by the current user (cache-first)
     cache_key = user.username + "_LISTS"
     created_lists = cache.get(cache_key)
     if not created_lists:
@@ -286,9 +445,48 @@ def my_account_view(request):
         else:
             pass
 
+    #Get the list of all existing achievements (cache-first)
+    cache_key = "ACHIEVEMENT_LIST"
+    achievement_list = cache.get(cache_key)
+    if not achievement_list:
+        achievement_list = select_elements_by_type("ACHIEVEMENT")
+        cache.set(cache_key, achievement_list, 60 * 60 * 24) #TTL = 24h
+
+    #Checks if the user fulfilled other achievements (and gets fulfilled achievements list)
+    user_fulfilled = check_fulfilled_achievements([a['element_id'] for a in achievement_list], user.username)
+
+    #sort achievement list by achievement number
+    achievement_list_eng = sorted(achievement_list, key=lambda d: int(d["element_id"].split("#")[1]))
+
+    #For each achievement, update information
+    achievement_list = []
+    for achievement in achievement_list_eng:
+        ach_name = ""
+        if request.LANGUAGE_CODE == 'it':
+            if achievement["IT_name"] != "":
+                ach_name = achievement["IT_name"]
+            else:
+                ach_name = achievement["EN_name"]
+            ach_description = achievement["IT_description"]
+        else:
+            ach_name = achievement["EN_name"]
+            ach_description = achievement["EN_description"]
+        ach_name = "#" + achievement["element_id"].split("#")[1] + " " + ach_name
+
+        achievement_list.append({
+            "name": ach_name,
+            "description": ach_description
+        })
+
+        if achievement["element_id"] in user_fulfilled:
+            achievement["fulfilled"] = "fulfilled-achievement"
+
     context = {
         "shopping_lists": shop_num,
-        "todo_lists": todo_num
+        "todo_lists": todo_num,
+        "achievement_list": achievement_list,
+        "total_achievements": len(achievement_list),
+        "fulfilled_achievements": len(user_fulfilled)
     }
 
     return render(request, "a2note/my_account.html", context)
@@ -336,6 +534,10 @@ def psw_change_view(request):
 
     #Updating session hash to keep user logged in after password change
     update_session_auth_hash(request, user_obj)
+
+    #Assign achievement#15 to the user
+    username = user.username
+    assign_achievements_to_user(username, ["achievement#15"])
 
     response["message"] = {
     "class": "alert alert-success alert-dismissible",
@@ -426,6 +628,16 @@ def dashboard_view(request):
 
     context["total"] = len(created_lists)
 
+    username = user.username
+    #Assign the achievement#5 to the user for checking the dashboard
+    new_achievements = ["achievement#5"]
+
+    #Check and assign achievement#9
+    if sum([todolists_per_weekday[i] > 0 or shoplists_per_weekday[i] > 0 for i in range(len(shoplists_per_weekday))]) == 7:
+        new_achievements.append("achievement#9")
+
+    assign_achievements_to_user(username, new_achievements)
+
     return render(request, "a2note/my_dashboard.html", context)
 
 @login_required
@@ -488,6 +700,9 @@ def save_bulletin_view(request):
                 "bulletin_class": bulletin_class
                 }
 
+    #Assign achievement#11 to the user
+    assign_achievements_to_user(username, ["achievement#11"])
+
     return JsonResponse(response)
 
 def todolist(request):
@@ -510,9 +725,6 @@ def create_list_view(request):
     """
     element_type = request.POST["element_type"]
 
-    if element_type not in ("TODOLIST", "SHOPLIST"):
-        pass
-
     item = {
     "element_type": element_type,
     "author": request.user.username,
@@ -524,11 +736,25 @@ def create_list_view(request):
 
     new_list = insert_item(item)
 
+    #Check and assign achievemnts for first lists
+    new_achievements = []
+    #achievement#3 'Shopping rookie'
+    if element_type == "SHOPLIST":
+        new_achievements.append("achievement#3")
+    #achievement#4 'Task rookie'
+    if element_type == "TODOLIST":
+        new_achievements.append("achievement#4")
+
+    if len(new_achievements) > 0:
+        assign_achievements_to_user(request.user.username, new_achievements)
+
     response = {"element_id": new_list["element_id"]}
 
     # Clear cached lists for the user
     cache_key = new_list["author"] + "_LISTS"
     cache.delete(cache_key)
+
+
 
     return JsonResponse(response)
 
@@ -783,6 +1009,9 @@ def save_list_view(request):
     #Check access privilege
     if username == list_data['author']:
         access_granted, edit_granted = True, True
+        #assign achievement#2 'Connected' if the list is shared
+        if list_data["shared"] == "True":
+            assign_achievements_to_user(username, ["achievement#2"])
     else:
         #If the user is not the author of the list, the shared and edit_enabled values
         # are taken from the database
@@ -908,6 +1137,10 @@ def delete_list(request):
     cache.delete(cache_key)
     cache.delete(cache_key2)
 
+    #Assign to the user the achievement#7 for the list deletion
+    username = request.user.username
+    assign_achievements_to_user(username, ["achievement#7"])
+
     response = {"RESULT": "OK"}
     return JsonResponse(response)
 
@@ -1023,6 +1256,34 @@ def reset_user_password(request):
         return JsonResponse(response)
 
     response = {"RESULT": "ERROR"}
+    return JsonResponse(response)
+
+def theme_changed(request):
+    """
+    This view is created with the sole purpose of assigning the achievement
+    for theme toggling.
+    Yes, really...
+    """
+    if request.user.is_authenticated:
+        username = request.user.username
+        #Assigne achievement#6 for toggling the theme
+        assign_achievements_to_user(username, ["achievement#6"])
+
+    response = {"RESULT": "OK"}
+    return JsonResponse(response)
+
+def deletion_canceled(request):
+    """
+    This view is created with the sole purpose of assigning the achievement for
+    the merciful users.
+    (Go for delete a list and then "spare" the list's life)
+    """
+    if request.user.is_authenticated:
+        username = request.user.username
+        #Assign achievement#19 for canceling delete operation
+        assign_achievements_to_user(username, ["achievement#19"])
+
+    response = {"RESULT": "OK"}
     return JsonResponse(response)
 
 def offline(request):

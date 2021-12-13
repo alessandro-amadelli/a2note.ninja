@@ -189,6 +189,14 @@ function initializeBtnDelete(){
       deleteList();
     }
   }
+
+  let btnNever = document.querySelector("#btnNevermind");
+  if (btnNever) {
+    btnNever.onclick = () => {
+      assignAchievement19();
+    }
+  }
+
 }
 
 function deleteList() {
