@@ -473,13 +473,15 @@ def my_account_view(request):
             ach_description = achievement["EN_description"]
         ach_name = "#" + achievement["element_id"].split("#")[1] + " " + ach_name
 
+        fulfilled = ""
+        if achievement["element_id"] in user_fulfilled:
+            fulfilled = "fulfilled-achievement"
+
         achievement_list.append({
             "name": ach_name,
-            "description": ach_description
+            "description": ach_description,
+            "fulfilled": fulfilled
         })
-
-        if achievement["element_id"] in user_fulfilled:
-            achievement["fulfilled"] = "fulfilled-achievement"
 
     context = {
         "shopping_lists": shop_num,
