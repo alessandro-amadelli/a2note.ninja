@@ -6,7 +6,7 @@ def make_donut(title=None, values=[1,1], labels=None, colors=None, center_text=N
     """
     Generates a donut chart
     """
-    # Use `hole` to create a donut-like pie chart
+    # Use 'hole' to create a donut-like pie chart
     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.90, marker_colors=colors)])
 
     if center_text:
