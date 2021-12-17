@@ -81,9 +81,14 @@
     position: relative;
     left: -50%;
   }
-  100% {
+  75% {
+    position: relative;
     opacity: 1;
-    position: inherit;
+    left: 5%;
+  }
+  100% {
+    position: relative;
+    opacity: 1;
     left: 0%;
   }
 }
