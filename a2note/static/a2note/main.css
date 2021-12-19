@@ -10,6 +10,7 @@
   --filter-value: invert();
   --input-background: rgba(255,255,255,0.1);
   --link-color: rgb(27, 174, 237);
+  --nav-active-background: rgba(255, 255, 255, .1);
   --plot-overlay-background: rgba(0,0,0,0.25);
   --progressbar-background: rgb(56, 58, 59);
   --shadow-color: #000;
@@ -43,6 +44,7 @@
   --filter-value: none;
   --input-background: rgba(247, 247, 247, 0.9);
   --link-color: rgb(3, 40, 200);
+  --nav-active-background: rgba(0, 0, 0, .1);
   --plot-overlay-background: rgba(255,255,255,0.0);
   --progressbar-background: rgb(15, 15, 15);
   --shadow-color: #000;
@@ -232,6 +234,7 @@ body a {
 }
 
 a.active {
+  background-color: var(--nav-active-background);
   border-bottom: thin solid var(--text-color);
 }
 

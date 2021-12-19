@@ -22,7 +22,12 @@
   <div class="container my-container p-5">
     <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
 
-    <h3 class="intro-1 col"><span class="material-icons-outlined">checklist_rtl</span> List VIEWER</h3>
+    <!-- Info alert to tell the user it is in view mode. -->
+    <div class="alert alert-info fade show" role="alert">
+      <strong><span class="material-icons-outlined">info</span> {% translate "You are in view mode. Modifications won't be saved." %}</strong>
+    </div>
+
+    <h3 class="intro-0 col"><span class="material-icons-outlined">checklist_rtl</span> List VIEWER</h3>
 
     <p class="intro-1">
       {% if shared == "True" %}

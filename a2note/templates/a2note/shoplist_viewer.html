@@ -22,7 +22,13 @@
 
   <div id="main-container" class="container my-container p-5">
     <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
-    <h3 class="intro-1 col"><span class="material-icons-outlined">shopping_cart</span> List VIEWER</h3>
+
+    <!-- Info alert to tell the user it is in view mode. -->
+    <div class="alert alert-info fade show" role="alert">
+      <strong><span class="material-icons-outlined">info</span> {% translate "You are in view mode. Modifications won't be saved." %}</strong>
+    </div>
+
+    <h3 class="intro-0 col"><span class="material-icons-outlined">shopping_cart</span> List VIEWER</h3>
 
     <!-- Modal for items rundown -->
     <div class="modal fade" id="modalRundown" tabindex="-1" aria-labelledby="modalRundownLabel" aria-hidden="true">
@@ -91,6 +97,7 @@
       </div>
       <div class="w-100"></div>
       <div class="col-12 mt-2 mb-0">
+        <span>{% translate "Tools" %} </span>
         <span class="material-icons-outlined" id="btnShowRundown">list_alt</span>
         <span class="material-icons-outlined" id="btnShowStats">bar_chart</span>
       </div>

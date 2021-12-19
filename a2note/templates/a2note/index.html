@@ -66,19 +66,22 @@
     </div>
 
     <div class="row m-1 p-1 d-flex">
-
-      <div class="col-6">
-          <div class="card newList-card rounded rounded" data-type="TODOLIST">
+      <div class="col-12">
+        <h5><span class="material-icons-outlined">edit</span>{% translate "Create a new" %}</h5>
+      </div>
+      <div class="w-100"></div>
+      <div class="col-md-6 col-12 p-1">
+          <div class="card newList-card" data-type="TODOLIST">
             <div class="card-body">
-              <p class="card-title col-10 fs-5">To-do list <span class="material-icons-outlined">edit</span></p>
+              <p class="card-title col-10 fs-5">To-do list</p>
             </div>
           </div>
       </div>
 
-      <div class="col-6">
-          <div class="card newList-card rounded" data-type="SHOPLIST">
+      <div class="col-md-6 col-12 p-1">
+          <div class="card newList-card" data-type="SHOPLIST">
             <div class="card-body">
-              <p class="card-title fs-5">Shopping list <span class="material-icons-outlined">edit</span></p>
+              <p class="card-title fs-5">Shopping list</p>
             </div>
           </div>
       </div>
@@ -152,11 +155,11 @@
     <br>
     <div class="row">
 
-      <div class="col-lg-6 col-12">
+      <div class="col-lg-6 col-12 mb-2 mt-2">
         <div class="row">
-          <h3 class="intro-0">{% translate 'Without an account' %}</h3>
+          <h3 class="intro-1">{% translate 'Without an account' %}</h3>
         </div>
-        <div class="row intro-1">
+        <div class="row intro-2">
           <div class="col mb-3">
             {% translate 'You can use a<sub>2</sub>note.ninja whithout the need to register.' %}
           </div>
@@ -171,9 +174,9 @@
         </div>
       </div>
 
-      <div class="col-lg-6 col-12">
+      <div class="col-lg-6 col-12 md-2 mt-2">
         <div class="row">
-          <h3 class="intro-0">{% translate 'With a free account' %}</h3>
+          <h3 class="intro-1">{% translate 'With a free account' %}</h3>
         </div>
         <div class="row intro-2">
           <div class="col mb-3">
