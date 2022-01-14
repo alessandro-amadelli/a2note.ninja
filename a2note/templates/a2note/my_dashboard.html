@@ -71,7 +71,7 @@
     {% if total > 0 %}
     <div class="row">
       {% if type_donut_plot %}
-      <div class="col-lg-6 col-12 p-1">
+      <div class="col-lg-6 col-12 p-4">
         <h4>{% translate "Type of lists you make" %}</h4>
         <canvas class="position-relative" id="typeDonutPlot"></canvas>
         <script>
@@ -114,7 +114,7 @@
       {% endif %}
 
       {% if task_donut_plot %}
-      <div class="col-lg-6 col-12 p-1">
+      <div class="col-lg-6 col-12 p-4">
         <h4>{% translate "Your overall progress with the tasks" %}</h4>
         <canvas class="position-relative" id="taskDonutPlot"></canvas>
         <script>

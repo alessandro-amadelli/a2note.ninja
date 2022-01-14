@@ -34,6 +34,8 @@ urlpatterns = [
     path("delete_list/", views.delete_list, name="delete_list"),
     path("product_list_view/", views.product_list_view, name="product_list_view"),
     path("list_history/", views.list_history_view, name="list_history"),
+    path("admin_view/", views.admin_view, name="admin_view"),
+    path("admin_block_user/", views.admin_block_user, name="admin_block_user"),
     path("offline/", views.offline, name="offline"),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
     path('sw.js', (TemplateView.as_view(template_name="sw.js", content_type='application/javascript', )), name='sw.js'),

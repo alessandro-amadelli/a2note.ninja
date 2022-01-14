@@ -19,6 +19,7 @@
 {% block body %}
   <div class="container my-container p-5">
     {% if user.is_authenticated %}
+    <!-- User authenticated -->
     <script src="{% static 'a2note/index.js' %}"></script>
     {% csrf_token %}
 
@@ -70,7 +71,7 @@
         <h5><span class="material-icons-outlined">edit</span>{% translate "Create a new" %}</h5>
       </div>
       <div class="w-100"></div>
-      <div class="col-md-6 col-12 p-1">
+      <div class="col-md-6 col-12 p-3">
           <div class="card newList-card" data-type="TODOLIST">
             <div class="card-body">
               <p class="card-title col-10 fs-5">To-do list</p>
@@ -78,7 +79,7 @@
           </div>
       </div>
 
-      <div class="col-md-6 col-12 p-1">
+      <div class="col-md-6 col-12 p-3">
           <div class="card newList-card" data-type="SHOPLIST">
             <div class="card-body">
               <p class="card-title fs-5">Shopping list</p>

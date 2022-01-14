@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from a2note.models import AdditionalInfo
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 from django.core.validators import validate_email
 
@@ -1287,6 +1288,38 @@ def deletion_canceled(request):
 
     response = {"RESULT": "OK"}
     return JsonResponse(response)
+
+@staff_member_required
+def admin_view(request):
+    context = {}
+
+    user_list = User.objects.all().order_by("id")
+
+    context["user_list"] = user_list
+
+    return render(request, 'a2note/admin_page.html', context)
+
+@staff_member_required
+def admin_block_user(request):
+    #If current user is not superuser, does nothing
+    if not request.user.is_superuser:
+        response = {
+            "RESULT": "ERROR",
+            "DESCRIPTION": "Not authorized."
+        }
+        return JsonResponse(response)
+    
+    admin_action = request.POST.get("admin_action")
+    user_involved = request.POST.get("user_involved")
+
+    #Boolean value to indicate if the user is to block or activate
+    new_active_value = admin_action != "block_user"
+
+    User.objects.filter(username=user_involved).update(is_active=new_active_value)
+
+    response = {"RESULT": "OK"}
+    return JsonResponse(response)
+
 
 def offline(request):
     return render(request, "a2note/offline.html")
