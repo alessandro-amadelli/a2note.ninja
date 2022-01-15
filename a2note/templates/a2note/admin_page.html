@@ -18,8 +18,10 @@
     <h3 class="intro-1">{% translate "Authorized personnel only!" %}</h3>
     <hr>
 
+    <h5>Utenti registrati: {{ user_list|length }}</h5>
+
     <table class="table table-dark">
-      <tr>
+      <tr class="table-active">
         <th>id</th>
         <th>username</th>
         <th>active</th>
