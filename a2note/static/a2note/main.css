@@ -234,8 +234,10 @@ body a {
 }
 
 a.active {
-  background-color: var(--nav-active-background);
-  border-bottom: thin solid var(--text-color);
+  -moz-box-shadow: inset 0 3px 10px -5px var(--shadow-color);
+  -webkit-box-shadow: inset 0 3px 10px -5px var(--shadow-color);
+  box-shadow: inset 0 3px 10px -5px var(--shadow-color);
+  border-radius: 6px;
 }
 
 .my-container {
