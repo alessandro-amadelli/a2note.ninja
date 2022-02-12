@@ -327,18 +327,28 @@ a.active {
   display: none;
 }
 
+#info-toggle {
+  user-select: none;
+}
+
 .newList-card {
   width: 100%;
   background-color: var(--element-background);
   cursor: pointer;
 }
 
+.newList-card:hover {
+  opacity: .9;
+}
+
 .newList-card[data-type="TODOLIST"] {
-  background: linear-gradient(to left, var(--todolist-thumb-background) 10%, var(--element-background) 15%);
+  background-color: var(--todolist-thumb-background);
+  /* background: linear-gradient(to left, var(--todolist-thumb-background) 10%, var(--element-background) 15%); */
 }
 
 .newList-card[data-type="SHOPLIST"] {
-  background: linear-gradient(to left, var(--shoplist-thumb-background) 10%, var(--element-background) 15%);
+  background-color: var(--shoplist-thumb-background);
+  /* background: linear-gradient(to left, var(--shoplist-thumb-background) 10%, var(--element-background) 15%); */
 }
 
 .thumbnail-div {
@@ -356,11 +366,19 @@ a.active {
 }
 
 .list-thumbnail[data-type="TODOLIST"] .card-header {
-  background: linear-gradient(to right, var(--todolist-thumb-background) 15%, var(--element-background) 20%);
+  background-color: var(--todolist-thumb-background);
+  /* background: linear-gradient(to right, var(--todolist-thumb-background) 15%, var(--element-background) 20%); */
 }
 
 .list-thumbnail[data-type="SHOPLIST"] .card-header {
-  background: linear-gradient(to right, var(--shoplist-thumb-background) 15%, var(--element-background) 20%);
+  background-color: var(--shoplist-thumb-background);
+  /* background: linear-gradient(to right, var(--shoplist-thumb-background) 15%, var(--element-background) 20%); */
+}
+
+.deleteTrigger {
+  padding: 2px;
+  cursor: pointer;
+  user-select: none;
 }
 
 input {
