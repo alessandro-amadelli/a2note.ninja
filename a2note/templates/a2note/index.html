@@ -120,22 +120,22 @@
       {% for list in lists %}
       <div class="col-lg-4 col-12 p-1">
         <div class="card list-thumbnail rounded shadow-sm" data-type="{{ list.element_type }}" data-id="{{ list.element_id }}">
-          <h5 class="card-header">
+          <div class="card-header">
             {% if list.element_type == 'SHOPLIST' %}
             <span class="material-icons-outlined">shopping_cart</span>
             {% else %}
             <span class="material-icons-outlined">checklist_rtl</span>
             {% endif %}
             {% if list.title %}
-              {{ list.title }}
+              <span class="thumbnail-title">{{ list.title }}</span>
             {% else %}
-              {{ list.element_type }}_{{ list.element_id }}
+              <span class="thumbnail-title">{{ list.element_type }}_{{ list.element_id }}</span>
             {% endif %}
             <!-- Trigger delete modal -->
             <p class="card-text d-inline text-danger deleteTrigger float-end">
               <span class="material-icons-outlined text-end" data-bs-toggle="modal" data-bs-target="#modalDeleteList">delete</span>
             </p>
-          </h5>
+          </div>
           <div class="card-body">
             <p class="card-text"><span class="material-icons-outlined">event</span> {{ list.creation_timestamp }}</p>
             <p class="card-text"><span class="material-icons-outlined">history</span> {{ list.last_modified }}</p>

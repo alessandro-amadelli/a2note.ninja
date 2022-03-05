@@ -12,7 +12,7 @@
   --link-color: rgb(27, 174, 237);
   --nav-active-background: rgba(255, 255, 255, .1);
   --plot-overlay-background: rgba(0,0,0,0.25);
-  --progressbar-background: rgb(56, 58, 59);
+  --progressbar-background: rgb(20, 130, 232);
   --shadow-color: #000;
   --shoplist-thumb-background: rgba(238, 216, 15, 0.7);
   --task-background: rgba(0,0,0,0.9);
@@ -365,14 +365,16 @@ a.active {
   z-index: 1;
 }
 
+.list-thumbnail .card-header {
+  font-size: 1.2rem;
+}
+
 .list-thumbnail[data-type="TODOLIST"] .card-header {
   background-color: var(--todolist-thumb-background);
-  /* background: linear-gradient(to right, var(--todolist-thumb-background) 15%, var(--element-background) 20%); */
 }
 
 .list-thumbnail[data-type="SHOPLIST"] .card-header {
   background-color: var(--shoplist-thumb-background);
-  /* background: linear-gradient(to right, var(--shoplist-thumb-background) 15%, var(--element-background) 20%); */
 }
 
 .deleteTrigger {
@@ -439,6 +441,7 @@ option {
 }
 
 .progress {
+  border-top: solid thin var(--text-color);
   min-height: 20px;
   background-color: var(--task-background);
 }

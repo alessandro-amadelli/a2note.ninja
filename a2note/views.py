@@ -512,7 +512,7 @@ def psw_change_view(request):
         response["RESULT"] = "ERROR"
         return JsonResponse(response)
 
-    # CHECK 1
+    # CHECK 1 - The 2 new password entered must match
     if new_psw1 != new_psw2:
         response["message"] = {
         "class": "alert alert-danger alert-dismissible",
@@ -521,12 +521,21 @@ def psw_change_view(request):
         response["RESULT"] = "ERROR"
         return JsonResponse(response)
 
-    # CHECK 2
+    # CHECK 2 - The old password entered have to be correct
     user_obj = User.objects.get(username=user.username)
     if not user_obj.check_password(old_psw):
         response["message"] = {
         "class": "alert alert-danger alert-dismissible",
         "text": _("Old password is incorrect...")
+        }
+        response["RESULT"] = "ERROR"
+        return JsonResponse(response)
+    
+    # CHECK 3 - New password must be different from old password
+    if old_psw == new_psw1:
+        response["message"] = {
+        "class": "alert alert-danger alert-dismissible",
+        "text": _("New password cannot be the same as the old one...")
         }
         response["RESULT"] = "ERROR"
         return JsonResponse(response)
