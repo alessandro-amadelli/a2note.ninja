@@ -82,6 +82,13 @@ document.addEventListener('DOMContentLoaded', function(){
     showModalBarChart();
   }
 
+  //Initialize button to show modalAutoList
+  document.querySelector("#btnShowAutoList").onclick = () => {
+    showModalAutoList();
+  }
+
+  initializeModalAutoList();
+
 });
 
 MODIFICATIONS = {"add": {}, "mod":{}, "del":{}};
@@ -263,4 +270,75 @@ function deleteList() {
   data.append("element_type", element_type);
 
   request.send(data);
+}
+
+function initializeModalAutoList(){
+  let row = document.querySelector("#modalAutoListRow");
+
+  document.querySelector("#categorySelect").querySelectorAll("option").forEach(opt => {
+    let w100 = document.createElement("div")
+    w100.setAttribute("class", "w-100");
+
+    let sliderCol = document.createElement("div");
+    sliderCol.setAttribute("class", "col");
+    
+    let textDiv = document.createElement("div");
+    textDiv.setAttribute("class", "col");
+    textDiv.innerText = opt.innerText;
+    
+    let slider = document.createElement("input");
+    slider.setAttribute("class", "auto-list-slider");
+    slider.setAttribute("type", "range");
+    slider.setAttribute("min", "0");
+    slider.setAttribute("max", "100");
+    slider.dataset.category = opt.value;
+    
+    row.appendChild(textDiv);
+    sliderCol.appendChild(slider);
+    row.appendChild(sliderCol);
+    row.appendChild(w100);
+  });
+  document.querySelector("#btnConfirmAutoList").onclick = () => {
+    createAutoList();
+  }
+}
+
+function createAutoList() {
+  var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  const request = new XMLHttpRequest();
+  const url = `/random_list/`;
+  request.open('POST', url);
+  request.setRequestHeader('X-CSRFToken', csrftoken);
+  request.onload = () => {
+    const response = JSON.parse(request.responseText);
+    populateAutoList(response);
+    notify(gettext("List created"));
+  };
+  const data = new FormData();
+  //Desired length of the list
+  let listLength = parseInt(document.querySelector("#modalAutoListLength").value);
+
+  //Retrieving all the user's parameters
+  let params = {}
+  document.querySelectorAll(".auto-list-slider").forEach(slider => {
+    params[slider.dataset.category] = parseInt(slider.value);
+  });
+  params["list_length"] = listLength;
+
+  data.append("parameters", JSON.stringify(params));
+
+  request.send(data);
+}
+
+function populateAutoList(dict) {
+  //Delete old items
+  document.querySelectorAll(".singleItem").forEach(item => {
+    deleteItem(item);
+  });
+
+  //adding new items
+  Object.keys(dict).forEach(key => {
+    addItem(dict[key], key);
+  });
+
 }

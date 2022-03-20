@@ -343,12 +343,10 @@ a.active {
 
 .newList-card[data-type="TODOLIST"] {
   background-color: var(--todolist-thumb-background);
-  /* background: linear-gradient(to left, var(--todolist-thumb-background) 10%, var(--element-background) 15%); */
 }
 
 .newList-card[data-type="SHOPLIST"] {
   background-color: var(--shoplist-thumb-background);
-  /* background: linear-gradient(to left, var(--shoplist-thumb-background) 10%, var(--element-background) 15%); */
 }
 
 .thumbnail-div {
@@ -600,8 +598,14 @@ option {
   filter: var(--filter-value);
 }
 
-#btnShowRundown, #btnShowStats {
+#btnShowRundown, #btnShowStats, #btnShowAutoList {
   cursor: pointer;
+}
+
+.auto-list-slider {
+  cursor: pointer;
+  border-radius: 10px;
+  filter: invert();
 }
 
 .entrance-animated {

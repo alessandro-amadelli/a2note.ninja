@@ -196,6 +196,31 @@
       </div>
     </div>
 
+    <!-- Modal for automatic list generation -->
+    <div class="modal fade" id="modalAutoList" tabindex="-1" aria-labelledby="modalAutoListLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalAutoListLabel"><span class="material-icons-outlined">auto_fix_high</span> {% translate "Shoplist generator" %} <span id="modalAutoListTot"></span></h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>{% translate "You can create a shopping list automatically by customizing your preferences." %}</p>
+            <div class="row" id="modalAutoListRow">
+              <div class="col">{% translate "List lenght" %}</div>
+              <div class="col"><input type="number" id="modalAutoListLength" min="5" max="50" value="10"></div>
+              <div class="w-100"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <p><strong><span class="material-icons-outlined">report_problem</span> {% translate "If you proceed any existing items in the list will be deleted!" %}</strong></p>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate "Cancel" %}</button>
+            <button type="button" class="btn btn-light" id="btnConfirmAutoList" data-bs-dismiss="modal">{% translate "Create" %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="row m-1 p-1">
       <div class="input-group">
         <span class=" col-lg-2 col-3 mb-3 p-1" id="titleDescription">{% translate 'Title' %}</span>
@@ -232,9 +257,9 @@
         <span>{% translate "Tools" %} </span>
         <span class="material-icons-outlined" id="btnShowRundown">list_alt</span>
         <span class="material-icons-outlined" id="btnShowStats">bar_chart</span>
+        <span class="material-icons-outlined" id="btnShowAutoList">auto_fix_high</span>
       </div>
     </div>
-
   </div>
 
   <div class="container footer-container p-0 hidden">

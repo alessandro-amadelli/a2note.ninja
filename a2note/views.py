@@ -26,6 +26,7 @@ from a2note.mailer import send_email
 import json
 from datetime import datetime
 import random
+import numpy as np
 
 import socket
 
@@ -766,8 +767,6 @@ def create_list_view(request):
     cache_key = new_list["author"] + "_LISTS"
     cache.delete(cache_key)
 
-
-
     return JsonResponse(response)
 
 def update_history(username, element_id, author, title):
@@ -949,19 +948,88 @@ def list_viewer(request, listUID):
     else:
         return render(request, "a2note/todolist_viewer.html", context)
 
+def get_all_products():
+    #Checking if the products are already present in the cache
+    product_list = cache.get("PRODUCTS")
+    if not product_list:
+        product_list = select_elements_by_type('PRODUCT')
+        cache.set("PRODUCTS", product_list, 60 * 60 * 24) #Value is cached for 24h
+    
+    return product_list
+
+
 def product_list_view(request):
     """
     This view returns data about all the product in the database to make the auto fill
     function work
     """
     #Checking if the products are already present in the cache
-    product_list = cache.get("PRODUCTS")
-    if not product_list:
-        product_list = select_elements_by_type('PRODUCT')
-        cache.set("PRODUCTS", product_list, 60 * 60 * 24) #Value is cached for 24h
+    product_list = get_all_products()
 
     response = {}
     for p in product_list:
+        if  request.LANGUAGE_CODE == 'it':
+            name = p['IT_name']
+        else:
+            name = p['EN_name']
+        response[name] = p['element_category']
+
+    return JsonResponse(response)
+
+@login_required
+def random_list_view(request):
+    """
+    This view returns a random generated shopping-list by taking a dictionary containing parameters:
+      _list_length: the desired number of elements in the list
+      _categories: each one of the categories to be included in the list with it's weight (likelyhood to be included in the list)
+    """
+    #Dictionary containing the desired parameters
+    parameters = json.loads(request.POST["parameters"])
+    print(parameters)
+
+    #Obtaining list with all the products
+    product_list = get_all_products()
+
+    #Desired length of the list
+    try:
+        list_length = parameters['list_length']
+    except:
+        list_length = 10 #default value for list_length
+
+    
+    #print(product_list)
+
+    if len(parameters.keys()) < 2:
+        #Check if list_length exceeds the length of the data set
+        if list_length > len(product_list):
+            list_length = len(product_list)
+        #list with randomly selected products in case the user didn't specify any category
+        selected_list = np.random.choice(a=product_list, size=list_length, replace=False)
+    else:
+        #Parameters for the numpy function
+        a = [] #array with the elements to choose from
+        p = [] #array with the probability of each element
+
+        #Sum of the total weight for the categories in the parameters
+        total_sum = sum([parameters[k] for k in parameters.keys() if k != 'list_length'])
+
+        for c in [k for k in parameters.keys() if k != 'list_length']:
+            #Value for the probability of a specific product to be included in the list, based upon the category
+            probability = ((parameters[c] * 100) / total_sum) / 100
+            #All products belonging to the current category
+            cat_list = [e for e in product_list if e['element_category'] == c]
+            a = a + cat_list
+            for i in range(len(cat_list)):
+                p.append(probability/len(cat_list))
+        #Check if list_length exceeds the length of the data set
+        if list_length > len(a):
+            list_length = len(a)
+        #list with randomly selected products
+        selected_list = np.random.choice(a=a, size=list_length, replace=False, p=p)
+
+    response = {}
+
+    for p in selected_list:
         if  request.LANGUAGE_CODE == 'it':
             name = p['IT_name']
         else:

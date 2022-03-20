@@ -554,3 +554,11 @@ function updateProgressBar(){
     progressContainer.classList.add("hidden");
   }
 }
+
+
+function showModalAutoList() {
+  let modal = document.querySelector("#modalAutoList");
+  let myMod = new bootstrap.Modal(modal, {show: false});
+
+  myMod.show();
+}

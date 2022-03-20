@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-13 17:31+0100\n"
+"POT-Creation-Date: 2022-03-20 17:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,15 +62,19 @@ msgstr "Qualcosa è andato storto, per favore riprova..."
 msgid "The two passwords don't correspond."
 msgstr "Le due password non corrispondono."
 
-#: .\a2note\static\a2note\shoplist_editor.js:103
+#: .\a2note\static\a2note\shoplist_editor.js:110
 #: .\a2note\static\a2note\todolist_editor.js:72
 msgid "Hi! Check out this cool list I created on a2note.ninja..."
 msgstr "Ciao! Dai un'occhiata a questa lista che ho creato su a2note.ninja..."
 
-#: .\a2note\static\a2note\shoplist_editor.js:180
+#: .\a2note\static\a2note\shoplist_editor.js:187
 #: .\a2note\static\a2note\todolist_editor.js:143
 msgid "List saved"
 msgstr "Lista salvata"
+
+#: .\a2note\static\a2note\shoplist_editor.js:315
+msgid "List created"
+msgstr "Lista creata"
 
 #: .\a2note\static\a2note\shoplist_functions.js:361
 msgid "added"
