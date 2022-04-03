@@ -87,7 +87,6 @@ def assign_achievements_to_user(username, achievements=[]):
         insert_item(item)
 
 def error_view(request, message="", pagemessage=""):
-
     context = {}
     context["message"] = {
     "class": "alert alert-danger alert-dismissible",
@@ -165,11 +164,9 @@ def index(request):
     return render(request, "a2note/index.html")
 
 def open_shared(request):
-
     return render(request, "a2note/open_shared.html")
 
 def about_us(request):
-
     return render(request, "a2note/about_us.html")
 
 def generate_OTP():
@@ -195,7 +192,7 @@ def send_otp(request):
 
     otp = generate_OTP()
     cache_key = f"{username}_{email}"
-    cache.set(cache_key, otp, 60*5)
+    cache.set(cache_key, otp, 60*5) # 5 minutes duration
 
     email_subj = "a2note.ninja - Registration OTP"
 
@@ -983,28 +980,34 @@ def random_list_view(request):
       _list_length: the desired number of elements in the list
       _categories: each one of the categories to be included in the list with it's weight (likelyhood to be included in the list)
     """
+    if request.method == 'GET':
+        return redirect('index_view')
+
+    # Max length allowed for the auto-generated list
+    MAX_LIST_LENGTH = 50
+
     #Dictionary containing the desired parameters
     parameters = json.loads(request.POST["parameters"])
-    print(parameters)
 
     #Obtaining list with all the products
     product_list = get_all_products()
+    #filtering list with only the common products (is_common = 'Y')
+    product_list = [p for p in product_list if 'is_common' in p.keys() and p['is_common'] == 'Y']
 
     #Desired length of the list
     try:
         list_length = parameters['list_length']
+        if list_length > MAX_LIST_LENGTH:
+            list_length = MAX_LIST_LENGTH
     except:
         list_length = 10 #default value for list_length
-
     
-    #print(product_list)
-
     if len(parameters.keys()) < 2:
         #Check if list_length exceeds the length of the data set
         if list_length > len(product_list):
             list_length = len(product_list)
         #list with randomly selected products in case the user didn't specify any category
-        selected_list = np.random.choice(a=product_list, size=list_length, replace=False)
+        selected_list = np.random.choice(a=product_list, size=list_length)
     else:
         #Parameters for the numpy function
         a = [] #array with the elements to choose from
@@ -1025,7 +1028,7 @@ def random_list_view(request):
         if list_length > len(a):
             list_length = len(a)
         #list with randomly selected products
-        selected_list = np.random.choice(a=a, size=list_length, replace=False, p=p)
+        selected_list = np.random.choice(a=a, size=list_length, p=p)
 
     response = {}
 
@@ -1034,7 +1037,14 @@ def random_list_view(request):
             name = p['IT_name']
         else:
             name = p['EN_name']
-        response[name] = p['element_category']
+        # If product is already present, add 1 to the quantity
+        if name in response.keys():
+            response[name]['quantity'] = str(int(response[name]["quantity"]) + 1)
+        else:
+            response[name] = {
+                'element_category': p['element_category'],
+                'quantity': "1"
+            }
 
     return JsonResponse(response)
 
@@ -1195,6 +1205,9 @@ def delete_list(request):
     Deletion of a list
     Allowed only if the user is logged in and is the author of the list.
     """
+    if request.method == 'GET':
+        return redirect('index_view')
+
     element_type = request.POST.get("element_type")
     element_id = request.POST.get("element_id")
 
@@ -1396,7 +1409,6 @@ def admin_block_user(request):
 
     response = {"RESULT": "OK"}
     return JsonResponse(response)
-
 
 def offline(request):
     return render(request, "a2note/offline.html")

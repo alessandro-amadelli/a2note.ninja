@@ -338,7 +338,10 @@ function populateAutoList(dict) {
 
   //adding new items
   Object.keys(dict).forEach(key => {
-    addItem(dict[key], key);
+    let category =  dict[key]['element_category'];
+    let prodName = key;
+    let quantity = dict[key]['quantity'];
+    addItem(category, prodName, quantity);
   });
 
 }
