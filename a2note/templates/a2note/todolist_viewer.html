@@ -42,7 +42,7 @@
       {% endif %}
     </p>
 
-    <h1 class="text-center">{{ title }}</h1>
+    <h1 class="text-center">{{ list.title }}</h1>
 
     <div class="row">
       <div class="col-12">
@@ -73,7 +73,7 @@
 
     <!-- Passing list items to the javascript -->
     <script>
-      var tasks = {{ items|safe }};
+      var tasks = {{ list.items|safe }};
     </script>
     <script src="{% static 'a2note/todolist_functions.js' %}"></script>
     <script src="{% static 'a2note/todolist_viewer.js' %}"></script>

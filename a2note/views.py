@@ -884,12 +884,21 @@ def list_editor(request, listUID):
             #Render an error page with a message
             return error_view(request, _("This is not the list you were looking for..."))
 
-    context = item
+    context = {
+        "list": item
+    }
 
     if username != "":
         update_history(username, listUID, item["author"], item["title"])
 
     if list_type == "SHOPLIST":
+        categories = get_all_categories()
+        for cat in categories:
+            if  request.LANGUAGE_CODE == 'it':
+                cat["category_name"] = cat['IT_name']
+            else:
+                cat["category_name"] = cat['EN_name']
+        context["categories"] = categories
         return render(request, "a2note/shoplist_editor.html", context)
     else:
         return render(request, "a2note/todolist_editor.html", context)
@@ -935,12 +944,21 @@ def list_viewer(request, listUID):
         #Render an error page with a message
         return error_view(request, _("Sorry, nothing to see here..."))
 
-    context = item
+    context = {
+        "list": item
+    }
 
     if username != "":
         update_history(username, listUID, item["author"], item["title"])
 
     if element_type == "SHOPLIST":
+        categories = get_all_categories()
+        for cat in categories:
+            if  request.LANGUAGE_CODE == 'it':
+                cat["category_name"] = cat['IT_name']
+            else:
+                cat["category_name"] = cat['EN_name']
+        context["categories"] = categories
         return render(request, "a2note/shoplist_viewer.html", context)
     else:
         return render(request, "a2note/todolist_viewer.html", context)
@@ -951,9 +969,16 @@ def get_all_products():
     if not product_list:
         product_list = select_elements_by_type('PRODUCT')
         cache.set("PRODUCTS", product_list, 60 * 60 * 24) #Value is cached for 24h
-    
     return product_list
 
+def get_all_categories():
+    category_list = cache.get("CATEGORIES")
+    if not category_list:
+        category_list = select_elements_by_type("CATEGORY")
+        cache.set("CATEGORIES", category_list, 60 * 60 * 24) #Value is cached for 24h
+
+    #return categories ordered by category_position value
+    return sorted(category_list, key= lambda k:k['category_position'])
 
 def product_list_view(request):
     """
@@ -1175,7 +1200,6 @@ def list_history_view(request):
         ...
     ]
     """
-
     user = request.user
     username = user.username
 

@@ -207,7 +207,7 @@
 
     <!-- Passing list items to the javascript -->
     <script>
-      var tasks = {{ items|safe }};
+      var tasks = {{ list.items|safe }};
     </script>
     <script src="{% static 'a2note/todolist_functions.js' %}"></script>
     <script src="{% static 'a2note/todolist_editor.js' %}"></script>

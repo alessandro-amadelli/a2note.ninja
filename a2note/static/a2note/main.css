@@ -648,11 +648,12 @@ option {
   font-size: 1.5rem;
 }
 
-.fruit-section {
+/* Fruit section */
+.category_1-section {
   background-color: var(--fruit-background);
 }
 
-.fruit-section::before {
+.category_1-section::before {
   content: "";
   box-sizing: border-box;
   background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/fruits.jpg");
@@ -667,11 +668,12 @@ option {
   opacity: 0.2;
 }
 
-.vegetable-section {
+/* Vegetable section */
+.category_2-section {
   background-color: var(--vegetable-background);
 }
 
-.vegetable-section::before {
+.category_2-section::before {
   content: "";
   box-sizing: border-box;
   background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/vegetables.jpg");
@@ -686,11 +688,12 @@ option {
   opacity: 0.3;
 }
 
-.dairy-section {
+/* Dairy section */
+.category_3-section {
   background-color: var(--dairy-background);
 }
 
-.dairy-section::before {
+.category_3-section::before {
   content: "";
   box-sizing: border-box;
   background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/cheese.jpg");
@@ -705,11 +708,12 @@ option {
   opacity: 0.3;
 }
 
-.legume-section {
+/* Legume section */
+.category_4-section {
   background-color: var(--legume-background);
 }
 
-.legume-section::before {
+.category_4-section::before {
   content: "";
   box-sizing: border-box;
   background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/legumes.jpg");
@@ -724,11 +728,12 @@ option {
   opacity: 0.3;
 }
 
-.seasoning-section {
+/* seasoning section */
+.category_5-section {
   background-color: var(--seasoning-background);
 }
 
-.seasoning-section::before {
+.category_5-section::before {
   content: "";
   box-sizing: border-box;
   background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/olive-oil.jpg");
@@ -743,11 +748,12 @@ option {
   opacity: 0.3;
 }
 
-.beverage-section {
+/* beverage section */
+.category_6-section {
   background-color: var(--beverage-background);
 }
 
-.beverage-section::before {
+.category_6-section::before {
   content: "";
   box-sizing: border-box;
   background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/beverage.jpg");
@@ -762,11 +768,12 @@ option {
   opacity: 0.3;
 }
 
-.alcohol-section {
+/* alcohol section */
+.category_7-section {
   background-color: var(--alcohol-background);
 }
 
-.alcohol-section::before {
+.category_7-section::before {
   content: "";
   box-sizing: border-box;
   background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/wine.jpg");
@@ -781,11 +788,12 @@ option {
   opacity: 0.3;
 }
 
-.hygiene-section {
+/* hygiene section */
+.category_8-section {
   background-color: var(--hygiene-background);
 }
 
-.hygiene-section::before {
+.category_8-section::before {
   content: "";
   box-sizing: border-box;
   background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/soap.jpg");
@@ -800,11 +808,12 @@ option {
   opacity: 0.3;
 }
 
-.supply-section {
+/* supply section */
+.category_9-section {
   background-color: var(--supplies-background);
 }
 
-.supply-section::before {
+.category_9-section::before {
   content: "";
   box-sizing: border-box;
   background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/supplies.jpg");
@@ -819,11 +828,12 @@ option {
   opacity: 0.3;
 }
 
-.cleaning-section {
+/* cleaning section */
+.category_10-section {
   background-color: var(--cleaning-background);
 }
 
-.cleaning-section::before {
+.category_10-section::before {
   content: "";
   box-sizing: border-box;
   background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/cleaning.jpg");
@@ -838,11 +848,12 @@ option {
   opacity: 0.3;
 }
 
-.other-section {
+/* other section */
+.category_11-section {
   background-color: var(--other-background);
 }
 
-.other-section::before {
+.category_11-section::before {
   content: "";
   box-sizing: border-box;
   background-image: url("https://a2note-ninja-assets.s3.eu-central-1.amazonaws.com/img/grocery.jpg");

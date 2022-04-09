@@ -11,3 +11,4 @@ a2note/dynamoDB_load_achievements.py
 a2note/plot_maker.py
 translation_commands.txt
 a2note/load_common_products.py
+a2note/create_categories.py

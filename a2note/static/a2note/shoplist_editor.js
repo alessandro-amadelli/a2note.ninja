@@ -205,7 +205,6 @@ function saveShoplistToDB(reload) {
       }
     }
   } catch {}
-
   data.append("element_id", element_id);
   data.append("element_type", element_type);
   data.append("title", title);
