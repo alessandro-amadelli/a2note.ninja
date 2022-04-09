@@ -725,7 +725,15 @@ def shoplist(request):
     """
     Creation of a shopping list for an unauthenticated user
     """
-    return render(request, "a2note/shoplist.html")
+    categories = get_all_categories()
+    context = {}
+    for cat in categories:
+        if  request.LANGUAGE_CODE == 'it':
+            cat["category_name"] = cat['IT_name']
+        else:
+            cat["category_name"] = cat['EN_name']
+    context["categories"] = categories
+    return render(request, "a2note/shoplist.html", context)
 
 
 @login_required

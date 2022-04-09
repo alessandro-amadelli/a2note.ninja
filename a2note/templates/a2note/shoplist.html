@@ -88,17 +88,9 @@
       <div class="col-12">
         <label for="categorySelect" class="d-inline">{% translate 'Category' %}</label>
         <select id="categorySelect" class="form-select form-select-sm d-inline" aria-label="View tasks">
-          <option value="fruit"  data-icon="restaurant_menu">{% translate 'Fruit' %}</option>
-          <option value="vegetable" data-icon="restaurant_menu">{% translate 'Vegetables' %}</option>
-          <option value="dairy" data-icon="restaurant_menu">{% translate 'Dairy products' %}</option>
-          <option value="legume" data-icon="restaurant_menu">{% translate 'Legumes' %}</option>
-          <option value="seasoning" data-icon="lunch_dining">{% translate 'Seasoning' %}</option>
-          <option value="beverage" data-icon="emoji_food_beverage">{% translate 'Beverages' %}</option>
-          <option value="alcohol" data-icon="local_bar">{% translate 'Alcohol' %}</option>
-          <option value="hygiene" data-icon="clean_hands">{% translate 'Hygiene' %}</option>
-          <option value="supply" data-icon="kitchen">{% translate 'Supplies' %}</option>
-          <option value="cleaning" data-icon="cleaning_services">{% translate 'Cleaning' %}</option>
-          <option value="other" data-icon="inventory" selected>{% translate 'Other' %}</option>
+          {% for category in categories %}
+          <option value="{{ category.element_id }}" data-icon="{{ category.category_icon }}">{{ category.category_name }}</option>
+        {% endfor %}
         </select>
       </div>
       <div class="w-100"></div>

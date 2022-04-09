@@ -324,9 +324,7 @@ function addItem(category=null, text=null, quantity="1", itemStatus=null, loaded
   quantInp.addEventListener('change', function(){
     try {
       updateModification("mod", text, {"category": category, "quantity": this.value, "status": this.parentElement.parentElement.parentElement.dataset.status});
-    } catch(e) {
-      console.log(e.message);
-    }
+    } catch(e) {}
 
     try{
         enableSave();
