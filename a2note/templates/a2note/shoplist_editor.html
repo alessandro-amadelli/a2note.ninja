@@ -31,9 +31,9 @@
     </div>
 
     <p class="intro-1">
-      {% if shared == "True" %}
+      {% if list.shared == "True" %}
         <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Public' %}">public</span>
-        {% if edit_enabled == "True" %}
+        {% if list.edit_enabled == "True" %}
           <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit enabled' %}">edit</span>
         {% else %}
           <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit disabled' %}">edit_off</span>
@@ -43,7 +43,7 @@
       {% endif %}
     </p>
 
-    {% if user.username == author %}
+    {% if user.username == list.author %}
     <div class="row">
       <table class="table align-middle col">
         <tr>
@@ -94,7 +94,7 @@
           <div class="modal-body">
             <h4><span class="material-icons-outlined">policy</span> {% translate "Privacy"%}</h4>
             <p> {% translate "Your list privacy is currently: " %}
-              <strong>{% if shared == 'True' %} {% translate 'Public' %} <span class="material-icons-outlined">public</span></strong><br>
+              <strong>{% if list.shared == 'True' %} {% translate 'Public' %} <span class="material-icons-outlined">public</span></strong><br>
               {% translate 'Anyone with the link can view it.' %}
               {% else %}
               <strong>{% translate 'Private' %} <span class="material-icons-outlined">lock</span></strong> <br>
@@ -102,14 +102,14 @@
               {% endif %}
             </p>
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="listPrivacySwitch" {% if shared == 'True' %}checked{% endif %}>
+              <input class="form-check-input" type="checkbox" id="listPrivacySwitch" {% if list.shared == 'True' %}checked{% endif %}>
               <label class="form-check-label" for="listPrivacySwitch">{% translate "Public list" %}</label>
             </div>
             <hr>
             <h4><span class="material-icons-outlined">edit</span> {% translate "Edit"%}</h4>
             <p>
               {% translate "Your list edit policy is: " %}
-                {% if edit_enabled == 'True' %}
+                {% if list.edit_enabled == 'True' %}
                 <strong>{% translate 'Edit enabled' %} <span class="material-icons-outlined">edit</span></strong><br>
                 <span class="material-icons-outlined">report_problem</span>
                 {% translate 'Anyone with the link can edit the list, this includes adding and deleting items.' %}
@@ -121,7 +121,7 @@
                 {% translate "Only you can delete this list." %}
             </p>
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="editEnableSwitch" {% if shared == 'False' %}disabled{% else %}{% if edit_enabled == 'True' %}checked{% endif %}{% endif %}>
+              <input class="form-check-input" type="checkbox" id="editEnableSwitch" {% if list.shared == 'False' %}disabled{% else %}{% if list.edit_enabled == 'True' %}checked{% endif %}{% endif %}>
               <label class="form-check-label" for="editEnableSwitch">{% translate "Enable editing" %}</label>
             </div>
           </div>
@@ -145,12 +145,12 @@
             <p>{% translate "List code" %}: {{ list.element_id }}</p>
             <button type="button" class="btn btn-light m-2" id="btnCopyClipboard" data-bs-dismiss="modal"><span class="material-icons-outlined">content_paste</span> {% translate "Copy to clipboard" %}</button>
             <br>
-            <a type="button" class="btn btn-light m-2 {% if shared == 'False' %} disabled {% endif %}" id="btnWhatsapp" href="" data-action="share/whatsapp/share" target="_blank"><span class="material-icons-outlined">chat</span> Whatsapp </a>
+            <a type="button" class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnWhatsapp" href="" data-action="share/whatsapp/share" target="_blank"><span class="material-icons-outlined">chat</span> Whatsapp </a>
             <br>
-            <a type="button" class="btn btn-light m-2 {% if shared == 'False' %} disabled {% endif %}" id="btnTelegram" href="" target="_blank"><span class="material-icons-outlined">send</span> Telegram </a>
+            <a type="button" class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnTelegram" href="" target="_blank"><span class="material-icons-outlined">send</span> Telegram </a>
             <br>
-            <a class="btn btn-light m-2 {% if shared == 'False' %} disabled {% endif %}" id="btnEmail" href=""><span class="material-icons-outlined">email</span> email</a>
-            {% if shared == 'False' %}
+            <a class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnEmail" href=""><span class="material-icons-outlined">email</span> email</a>
+            {% if list.shared == 'False' %}
             <p>{% translate "Some functions are disabled because the list privacy is set to private. If you'd like to share the list please go to 'Settings' and make the list public." %}</p>
             {% endif %}
           </div>

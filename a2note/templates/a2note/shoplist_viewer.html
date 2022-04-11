@@ -65,9 +65,9 @@
     </div>
 
     <p class="intro-1">
-      {% if shared == "True" %}
+      {% if list.shared == "True" %}
         <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Public' %}">public</span>
-        {% if edit_enabled == "True" %}
+        {% if list.edit_enabled == "True" %}
           <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit enabled' %}">edit</span>
         {% else %}
           <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit disabled' %}">edit_off</span>
