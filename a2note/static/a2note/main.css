@@ -438,6 +438,15 @@ option {
   animation-iteration-count: 1;
 }
 
+.shoplist-panel {
+  background-color: var(--input-background);
+}
+
+.shoplist-panel button:hover {
+  transition: transform .6s;
+  transform: scale(1.2);
+}
+
 .progress {
   border-top: solid thin var(--text-color);
   min-height: 20px;

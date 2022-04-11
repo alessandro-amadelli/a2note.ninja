@@ -44,21 +44,16 @@
     </p>
 
     {% if user.username == list.author %}
-    <div class="row">
-      <table class="table align-middle col">
-        <tr>
-          <th class="text-center">
-            <!-- Button trigger delete modal -->
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteList">{% translate 'Delete' %}<span class="material-icons-outlined">delete</span></button>
-          </th>
-          <th class="text-center">
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modalListSettings">{% translate 'Settings' %}<span class="material-icons-outlined">settings</span></button>
-          </th>
-          <th class="text-center">
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modalShareList">{% translate 'Share' %}<span class="material-icons-outlined">share</span></button>
-          </th>
-        </tr>
-      </table>
+    <div class="row rounded-3 shoplist-panel">
+      <div class="col px-0">
+        <button type="button" class="btn btn-danger px-4" data-bs-toggle="modal" data-bs-target="#modalDeleteList"><span class="material-icons-outlined">delete</span></button>
+      </div>
+      <div class="col text-center">
+        <button type="button" class="btn btn-light px-4" data-bs-toggle="modal" data-bs-target="#modalListSettings"><span class="material-icons-outlined">settings</span></button>
+      </div>
+      <div class="col text-end px-0">
+        <button type="button" class="btn btn-light px-4" data-bs-toggle="modal" data-bs-target="#modalShareList"><span class="material-icons-outlined">share</span></button>
+      </div>
     </div>
 
     <!-- Modal for list deletion-->
