@@ -362,25 +362,25 @@ def check_fulfilled_achievements(achievement_list, username):
             creation_date = datetime.strptime(l["creation_timestamp"], "%Y-%m-%d h.%H:%M:%S.%f")
             if older_list_date == 0 or creation_date < older_list_date:
                 older_list_date = creation_date
-            item_num = 0
+            total_items = 0
             fruit_veg_num, alcohol_num, clean_hygiene_num = 0,0,0
             for i in l["items"]:
                 item_quantity = int(l["items"][i]["quantity"])
-                item_num += item_quantity
-                if l["items"][i]["category"] in ("fruit", "vegetable"):
+                total_items += item_quantity
+                if l["items"][i]["category"] in ("category_1", "category_2"):
                     fruit_veg_num += item_quantity
-                elif l["items"][i]["category"] == "alcohol":
+                elif l["items"][i]["category"] == "category_7":
                     alcohol_num += item_quantity
-                elif l["items"][i]["category"] in ("cleaning", "hygiene"):
+                elif l["items"][i]["category"] in ("category_10", "category_8"):
                     clean_hygiene_num += item_quantity
             #achievement#12 'Healthy'
-            if item_num > 10 and ((fruit_veg_num * 100) / item_quantity) > 70:
+            if total_items > 10 and ((fruit_veg_num * 100) / total_items) > 70:
                 user_fulfilled.append("achievement#12")
             #achievement#16 "Flammable"
-            if item_num > 10 and ((alcohol_num * 100) / item_quantity) > 70:
+            if total_items > 10 and ((alcohol_num * 100) / total_items) > 70:
                 user_fulfilled.append("achievement#16")
             #achievement#17 "Germ killer"
-            if item_num > 10 and ((clean_hygiene_num * 100) / item_quantity) > 70:
+            if total_items > 10 and ((clean_hygiene_num * 100) / total_items) > 70:
                 user_fulfilled.append("achievement#17")
         elif l["element_type"] == "TODOLIST":
             todo_num += 1
@@ -980,6 +980,22 @@ def get_all_products():
     return product_list
 
 def get_all_categories():
+    """
+    This function gets all the product categories from cache or from DB.
+    ## CATEGORIES ##
+    category_1  -> Fruit
+    category_2  -> Vegetables
+    category_3  -> Dairy products
+    category_4  -> Legumes
+    category_5  -> Seasonings
+    category_6  -> Beverages
+    category_7  -> Alcohol
+    category_8  -> Hygiene
+    category_9  -> Supplies
+    category_10 -> Cleaning
+    category_11 -> Other
+    ####
+    """
     category_list = cache.get("CATEGORIES")
     if not category_list:
         category_list = select_elements_by_type("CATEGORY")
