@@ -95,62 +95,6 @@
   }
 }
 
-@keyframes brokenNeonAnimation {
-  0% {
-   opacity:0.1;
-   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1);
- }
-
- 2% {
-   opacity:1;
-   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1);
- }
- 8% {
-   opacity:0.1;
-   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1);
- }
- 9% {
-   opacity:1;
-   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1);
- }
- 12% {
-   opacity:0.1;
-   text-shadow: 0px 0px rgba(242, 240, 22, 1);
- }
- 20% {
-   opacity:1;
-   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
- }
- 25% {
-   opacity:0.3;
-   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
- }
- 30% {
-   opacity:1;
-   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
- }
-
- 70% {
-   opacity:0.7;
-   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
- }
-
- 72% {
-   opacity:0.2;
-   text-shadow:0px 0px 29px rgba(242, 240, 22, 1)
- }
-
- 77% {
-   opacity:.9;
-   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
- }
- 100% {
-   opacity:.9;
-   text-shadow: 0px 0px 29px rgba(242, 240, 22, 1)
- }
-
-}
-
 @keyframes alertAnimation {
   0% {
     box-shadow: none;
@@ -206,6 +150,32 @@
     opacity: 1;
     position: relative;
     left: 0%;
+  }
+}
+
+@keyframes offlineAnimation {
+  0% {
+    left: -50rem;
+    opacity: 0;
+  }
+  100% {
+    left: .5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes backonlineAnimation {
+  0% {
+    left: -50rem;
+    opacity: 0;
+  }
+  25% {
+    left: .5rem;
+    opacity: 1;
+  }
+  100% {
+    left: .5rem;
+    opacity: 1;
   }
 }
 
@@ -297,15 +267,6 @@ a.active {
   animation-delay: 2s;
 }
 
-.under-constr {
-  animation-name: brokenNeonAnimation;
-  animation-duration: 3.5s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-  animation-delay: 2s;
-}
-
 .otpInput {
   width: 3rem;
   background-color: rgba(0,0,0,0);
@@ -325,6 +286,36 @@ a.active {
   width: 2.5rem;
   opacity: .4;
   display: none;
+}
+
+.offline-notification {
+  position: fixed;
+  bottom: .5rem;
+  left: .5rem;
+  z-index: 100;
+  font-size: 1.2rem;
+  background-color: hsla(0, 81%, 49%, 0.8);
+  animation-name: offlineAnimation;
+  animation-duration: .6s;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+  user-select: none;
+  font-weight: bold;
+}
+
+.backonline-notification {
+  position: fixed;
+  bottom: .5rem;
+  left: .5rem;
+  z-index: 100;
+  font-size: 1.2rem;
+  background-color: hsla(113, 87%, 49%, 0.8);
+  animation-name: backonlineAnimation;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+  user-select: none;
+  font-weight: bold;
 }
 
 #info-toggle {

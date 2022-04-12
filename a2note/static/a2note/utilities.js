@@ -19,7 +19,52 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
 
+  //Event listener: user back online
+  window.addEventListener('online', () => {
+    offlineNotification('online');
+    backOnlineNotification();
+  });
+
+  //Event listener: user goes offline
+  window.addEventListener('offline', () => {
+    offlineNotification('offline');
+  });
+
+  //Check on page load if user is online
+  if (!navigator.onLine) {
+    offlineNotification('offline');
+  }
+
 });
+
+function deleteOfflineNotif() {
+  document.querySelectorAll(".offline-notification").forEach( (item) => {
+    item.remove();
+  });
+}
+
+function offlineNotification(status) {
+  deleteOfflineNotif();
+  if (status == "offline") {
+    let notif = document.createElement("div");
+    notif.setAttribute("class", "offline-notification p-1 px-2 rounded-3");
+    notif.innerHTML = `<span class="material-icons-outlined">cloud_off</span> ` + gettext("Oops! It seems you are offline...");
+    
+    document.querySelector(".my-container").appendChild(notif);
+  }    
+}
+
+function backOnlineNotification() {
+  let notif = document.createElement("div");
+    notif.setAttribute("class", "backonline-notification p-1 px-2 rounded-3");
+    notif.innerHTML = `<span class="material-icons-outlined">cloud</span> ` + gettext("Wow! You are back online.");
+    
+    notif.addEventListener('animationend', () => {
+      notif.remove();
+    });
+
+    document.querySelector(".my-container").appendChild(notif);
+}
 
 function scrollFunc() {
   let btnTop = document.querySelector("#btnBackTop");
