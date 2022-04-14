@@ -35,7 +35,7 @@ function initializeModalDeleteBtn() {
 function initializeDeleteListTriggers() {
   document.querySelectorAll(".deleteTrigger").forEach((trig, i) => {
     trig.addEventListener("click", function(){
-      let element_id = this.parentElement.parentElement.dataset.id;
+      let element_id = this.parentElement.parentElement.parentElement.parentElement.dataset.id;
       document.querySelector("#modalElementId").innerText = element_id;
     });
   });

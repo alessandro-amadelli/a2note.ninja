@@ -366,6 +366,12 @@ a.active {
   background-color: var(--shoplist-thumb-background);
 }
 
+.card-header-text-col {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
 .deleteTrigger {
   padding: 2px;
   cursor: pointer;

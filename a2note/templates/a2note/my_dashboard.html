@@ -77,14 +77,14 @@
         <script>
 
         function makeTypeDonutPlot() {
-          let type_donut_plot = {{ type_donut_plot|safe }};
+          let typeDonutPlot = {{ type_donut_plot|safe }};
 
           let data = {
-            labels: type_donut_plot["labels"],
+            labels: typeDonutPlot["labels"],
             datasets: [{
               label: 'Tasks progress',
-              backgroundColor: type_donut_plot["colors"],
-              data: type_donut_plot["values"],
+              backgroundColor: typeDonutPlot["colors"],
+              data: typeDonutPlot["values"],
               hoverOffset: 4
             }],
           };
@@ -97,7 +97,7 @@
             }
           };
 
-          let type_donut_plot_chart = new Chart(
+          let typeDonutPlotChart = new Chart(
             document.querySelector('#typeDonutPlot'),
             config
           );
@@ -120,14 +120,14 @@
         <script>
 
         function makeTaskDonutPlot() {
-          let task_donut_plot = {{ task_donut_plot|safe }};
+          let taskDonutPlot = {{ task_donut_plot|safe }};
 
           let data = {
-            labels: task_donut_plot["labels"],
+            labels: taskDonutPlot["labels"],
             datasets: [{
               label: 'Tasks progress',
-              backgroundColor: task_donut_plot["colors"],
-              data: task_donut_plot["values"],
+              backgroundColor: taskDonutPlot["colors"],
+              data: taskDonutPlot["values"],
               hoverOffset: 4
             }],
           };
@@ -140,7 +140,7 @@
             }
           };
 
-          let task_donut_plot_chart = new Chart(
+          let taskDonutPlotChart = new Chart(
             document.querySelector('#taskDonutPlot'),
             config
           );
@@ -161,15 +161,15 @@
           <script>
 
           function makeTodoWeekdayPlot() {
-            let todo_weekday_plot = {{ todo_weekday_plot|safe }};
+            let todoWeekdayPlot = {{ todo_weekday_plot|safe }};
 
             let data = {
-              labels: todo_weekday_plot["labels"],
+              labels: todoWeekdayPlot["labels"],
               datasets: [{
                 label: 'To-do lists',
-                backgroundColor: todo_weekday_plot["colors"],
-                borderColor: todo_weekday_plot["colors"],
-                data: todo_weekday_plot["values"],
+                backgroundColor: todoWeekdayPlot["colors"],
+                borderColor: todoWeekdayPlot["colors"],
+                data: todoWeekdayPlot["values"],
                 barPercentage: 0.7,
               }],
             };
@@ -186,7 +186,7 @@
               }
             };
 
-            let todo_weekday_plot_chart = new Chart(
+            let todoWeekdayPlotChart = new Chart(
               document.querySelector('#todoPerWeekdayChart'),
               config
             );
@@ -208,18 +208,17 @@
             <script>
 
             function makeShopWeekdayPlot() {
-              let shop_weekday_plot = {{ shop_weekday_plot|safe }};
+              let shopWeekdayPlot = {{ shop_weekday_plot|safe }};
 
               const data = {
-                labels: shop_weekday_plot["labels"],
+                labels: shopWeekdayPlot["labels"],
                 datasets: [{
                   label: 'Shopping lists',
-                  backgroundColor: shop_weekday_plot["colors"],
-                  borderColor: shop_weekday_plot["colors"],
-                  data: shop_weekday_plot["values"],
+                  backgroundColor: shopWeekdayPlot["colors"],
+                  borderColor: shopWeekdayPlot["colors"],
+                  data: shopWeekdayPlot["values"],
                   barPercentage: 0.7,
                 }],
-
               };
 
               const config = {
@@ -234,7 +233,7 @@
                 }
               };
 
-              let shop_weekday_plot_chart = new Chart(
+              let shopWeekdayPlotChart = new Chart(
                 document.querySelector('#shopPerWeekdayChart'),
                 config
               );
