@@ -84,11 +84,24 @@ function showModalBarChart() {
     }],
   };
 
+  let delayed;
   let config = {
     type: 'bar',
     data,
     options: {
       indexAxis: 'y',
+      animation: {
+        onComplete: () => {
+          delayed = true;
+        },
+        delay: (context) => {
+          let delay = 0;
+          if (context.type === 'data' && context.mode === 'default' && !delayed) {
+            delay = context.dataIndex * 50 + context.datasetIndex * 100;
+          }
+          return delay;
+        },
+      },
       plugins: {
         legend: {
           display: false
@@ -165,7 +178,7 @@ function checkCategory(itemName) {
   if (new_category) {
     document.querySelector("#categorySelect").value = new_category;
   } else {
-    document.querySelector("#categorySelect").value = "other";
+    document.querySelector("#categorySelect").value = "category_11";
   }
 }
 
@@ -189,7 +202,7 @@ function addItem(category=null, text=null, quantity="1", itemStatus=null, loaded
     let catSelect = document.querySelector("#categorySelect");
 
     //Additional check to decide category if the user doesn't select element from the autocomplete menu
-    if (catSelect.value == "other") {
+    if (catSelect.value == "category_11") {
       checkCategory(text);
     }
 

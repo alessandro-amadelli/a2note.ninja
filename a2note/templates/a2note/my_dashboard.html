@@ -247,6 +247,52 @@
       </div>
       {% endif %}
 
+      {% if shop_categories_plot %}
+      <div class="col-12 p-1">
+        <h4>{% translate "Your shopping lists" %}</h4>
+        <div class="position-relative">
+          <canvas class="position-relative" id="shopCategoriesChart"></canvas>
+            <script>
+
+            function makeShopCategoriesPlot() {
+              let shopCategoriesPlot = {{ shop_categories_plot|safe }};
+
+              const data = {
+                labels: shopCategoriesPlot["labels"],
+                datasets: [{
+                  label: 'Shopping list categories',
+                  backgroundColor: shopCategoriesPlot["colors"],
+                  borderColor: shopCategoriesPlot["colors"],
+                  data: shopCategoriesPlot["values"],
+                }],
+              };
+
+              const config = {
+                type: 'radar',
+                data: data,
+                options: {
+                  elements: {
+                    line: {
+                      borderWidth: 3
+                    }
+                  }
+                }
+              };
+
+              let shopCategoriesChart = new Chart(
+                document.querySelector('#shopCategoriesChart'),
+                config
+              );
+            }
+            setTimeout(() => {
+              makeShopWeekdayPlot();
+            }, 750);
+
+            </script>
+        </div>
+      </div>
+      {% endif %}
+
     </div>
     {% else %}
     <p><span class="material-icons-outlined">not_interested</span> {% translate "You haven't created any list...yet" %}</p>

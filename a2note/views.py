@@ -560,8 +560,7 @@ def psw_change_view(request):
 def dashboard_view(request):
     #Get user information
     user = request.user
-
-    #Get all lists created by the current user
+    
     #Get all lists created by the current user
     cache_key = user.username + "_LISTS"
     created_lists = cache.get(cache_key)

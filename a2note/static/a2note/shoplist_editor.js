@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelector("#btnAddItem").onclick = () => {
     addItem();
     //Reset category selection to 'other'
-    document.querySelector("#categorySelect").value = 'other';
+    document.querySelector("#categorySelect").value = 'category_11';
   }
 
   document.querySelector("#itemText").addEventListener("keydown", function(e) {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if (e.keyCode == 13) {
       addItem();
       //Reset category selection to 'other'
-      document.querySelector("#categorySelect").value = 'other';
+      document.querySelector("#categorySelect").value = 'category_11';
     }
   });
 
