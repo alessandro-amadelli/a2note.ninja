@@ -248,8 +248,9 @@
       {% endif %}
 
       {% if shop_categories_plot %}
-      <div class="col-12 p-1">
-        <h4>{% translate "Your shopping lists" %}</h4>
+      <div class="w-100"></div>
+      <div class="col-lg-6 col-12 p-1">
+        <h4>{% translate "Your typical shopping" %}</h4>
         <div class="position-relative">
           <canvas class="position-relative" id="shopCategoriesChart"></canvas>
             <script>
@@ -260,10 +261,15 @@
               const data = {
                 labels: shopCategoriesPlot["labels"],
                 datasets: [{
-                  label: 'Shopping list categories',
-                  backgroundColor: shopCategoriesPlot["colors"],
-                  borderColor: shopCategoriesPlot["colors"],
+                  label: '',
+                  backgroundColor: "rgba(255,0,0,0.4)",
+                  borderColor: "rgb(255,0,0)",
+                  pointBackgroundColor: 'rgb(255,0,0)',
+                  pointBorderColor: 'rgb(255,0,0)',
+                  pointHoverBackgroundColor: 'rgb(255,0,0)',
+                  pointHoverBorderColor: 'rgb(255,0,0)',
                   data: shopCategoriesPlot["values"],
+                  fill: true,
                 }],
               };
 
@@ -275,6 +281,27 @@
                     line: {
                       borderWidth: 3
                     }
+                  },
+                  scales: {
+                    r: {
+                      ticks: {
+                        display: false,
+                        maxTicksLimit: 5,
+                      },
+                      pointLabels: {
+                        font: {
+                          size: 15
+                        }
+                      }
+                    },
+                  },
+                  plugins: {
+                    legend: {
+                      display: false
+                    },
+                    tooltip: {
+                      enabled: false
+                    }
                   }
                 }
               };
@@ -285,8 +312,8 @@
               );
             }
             setTimeout(() => {
-              makeShopWeekdayPlot();
-            }, 750);
+              makeShopCategoriesPlot();
+            }, 950);
 
             </script>
         </div>

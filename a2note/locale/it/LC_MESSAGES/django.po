@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 18:34+0200\n"
+"POT-Creation-Date: 2022-04-19 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgid "a2note.ninja"
 msgstr "a2note.ninja"
 
 #: .\a2note\templates\a2note\about_us.html:23
-#: .\a2note\templates\a2note\index.html:168
+#: .\a2note\templates\a2note\index.html:175
 msgid "a simple way to make lists"
 msgstr "un modo semplice di creare liste"
 
@@ -372,7 +372,7 @@ msgid "Yes, go ahed!"
 msgstr "Sì, procedi!"
 
 #: .\a2note\templates\a2note\index.html:51 .\a2note\views.py:199
-#: .\a2note\views.py:1291
+#: .\a2note\views.py:1323
 msgid "Hi"
 msgstr "Ciao"
 
@@ -403,35 +403,35 @@ msgstr "Le tue liste"
 msgid "All"
 msgstr "Tutto"
 
-#: .\a2note\templates\a2note\index.html:142
+#: .\a2note\templates\a2note\index.html:149
 msgid "Items"
 msgstr "Elementi"
 
-#: .\a2note\templates\a2note\index.html:146
+#: .\a2note\templates\a2note\index.html:153
 msgid "Edit list"
 msgstr "Modifica lista"
 
-#: .\a2note\templates\a2note\index.html:151
+#: .\a2note\templates\a2note\index.html:158
 msgid "View list"
 msgstr "Visualizza lista"
 
-#: .\a2note\templates\a2note\index.html:160
+#: .\a2note\templates\a2note\index.html:167
 msgid "Oh no! It's all sad and empty here...go make some lists."
 msgstr "Oh no! E' tutto triste e vuoto qui...vai a creare qualche lista."
 
-#: .\a2note\templates\a2note\index.html:167
+#: .\a2note\templates\a2note\index.html:174
 msgid "Welcome to a<sub>2</sub>note.ninja!"
 msgstr "Benvenuto su a<sub>2</sub>note.ninja!"
 
-#: .\a2note\templates\a2note\index.html:175
+#: .\a2note\templates\a2note\index.html:182
 msgid "Without an account"
 msgstr "Senza un account"
 
-#: .\a2note\templates\a2note\index.html:179
+#: .\a2note\templates\a2note\index.html:186
 msgid "You can use a<sub>2</sub>note.ninja whithout the need to register."
 msgstr "Puoi usare a<sub>2</sub>note.ninja senza il bisogno di registrarti."
 
-#: .\a2note\templates\a2note\index.html:183
+#: .\a2note\templates\a2note\index.html:190
 msgid ""
 "Save up to <strong>1 to-do list</strong> and <strong>1 shopping list</"
 "strong>."
@@ -439,7 +439,7 @@ msgstr ""
 "Salva fino a <strong>1 to-do list</strong> e <strong>1 shopping list</"
 "strong>."
 
-#: .\a2note\templates\a2note\index.html:187
+#: .\a2note\templates\a2note\index.html:194
 msgid ""
 "Everything is saved locally on your browser so you can modify and consult "
 "your lists any time you want."
@@ -447,19 +447,19 @@ msgstr ""
 "Viene tutto salvato in locale sul tuo browser in modo che tu possa "
 "modificare e consultare le tue liste ogni volta che vuoi."
 
-#: .\a2note\templates\a2note\index.html:194
+#: .\a2note\templates\a2note\index.html:201
 msgid "With a free account"
 msgstr "Con un account gratuito"
 
-#: .\a2note\templates\a2note\index.html:198
+#: .\a2note\templates\a2note\index.html:205
 msgid "Register a free account and unlock new ninja techniques!"
 msgstr "Registra un account gratuito e sblocca nuove tecniche ninja!"
 
-#: .\a2note\templates\a2note\index.html:202
+#: .\a2note\templates\a2note\index.html:209
 msgid "Create multiple To-do lists and shopping lists."
 msgstr "Crea più to-do list e shopping list."
 
-#: .\a2note\templates\a2note\index.html:206
+#: .\a2note\templates\a2note\index.html:213
 msgid ""
 "Everything will be saved in the cloud so you can access it across multiple "
 "devices."
@@ -467,11 +467,11 @@ msgstr ""
 "Viene tutto salvato sul cloud, in modo che tu possa accedervi da più "
 "dispositivi."
 
-#: .\a2note\templates\a2note\index.html:210
+#: .\a2note\templates\a2note\index.html:217
 msgid "Also:"
 msgstr "Inoltre:"
 
-#: .\a2note\templates\a2note\index.html:214
+#: .\a2note\templates\a2note\index.html:221
 msgid ""
 "Share your <strong>To-do lists</strong> and <strong>shopping lists</strong> "
 "like a ninja!<br>\n"
@@ -483,7 +483,7 @@ msgstr ""
 "            Puoi condividere con chiunque, anche con chi non ha un account "
 "su a<sub>2</sub>note.ninja<br>"
 
-#: .\a2note\templates\a2note\index.html:219
+#: .\a2note\templates\a2note\index.html:226
 msgid ""
 "You have a bulletin board where you can write a personal note or something "
 "to remember."
@@ -673,6 +673,10 @@ msgid "Your favourite days to make a shopping list"
 msgstr "I giorni che preferisci per creare shopping list"
 
 #: .\a2note\templates\a2note\my_dashboard.html:253
+msgid "Your typical shopping"
+msgstr "La tua spesa tipo"
+
+#: .\a2note\templates\a2note\my_dashboard.html:324
 msgid "You haven't created any list...yet"
 msgstr "Non hai creato alcuna lista...per ora"
 
@@ -1169,7 +1173,7 @@ msgstr "Da fare"
 
 #: .\a2note\templates\a2note\todolist.html:68
 #: .\a2note\templates\a2note\todolist_editor.html:192
-#: .\a2note\templates\a2note\todolist_viewer.html:66 .\a2note\views.py:621
+#: .\a2note\templates\a2note\todolist_viewer.html:66 .\a2note\views.py:631
 msgid "Done"
 msgstr "Completati"
 
@@ -1201,7 +1205,7 @@ msgstr "L'indirizzo email non è valido...per favore controlla"
 msgid "Here's the code to complete your registration on a2note.ninja"
 msgstr "Ecco il codice per completare la tua registrazione su a2note.ninja"
 
-#: .\a2note\views.py:209 .\a2note\views.py:1301
+#: .\a2note\views.py:209 .\a2note\views.py:1333
 msgid "Something went wrong...try again later."
 msgstr "Qualcosa è andato storto...riprova più tardi."
 
@@ -1249,55 +1253,55 @@ msgstr ""
 msgid "Password changed successfully"
 msgstr "Password modificata con successo"
 
-#: .\a2note\views.py:621
+#: .\a2note\views.py:631
 msgid "To do"
 msgstr "Da fare"
 
-#: .\a2note\views.py:628 .\a2note\views.py:635
+#: .\a2note\views.py:639 .\a2note\views.py:647
 msgid "Mon"
 msgstr "Lun"
 
-#: .\a2note\views.py:628 .\a2note\views.py:635
+#: .\a2note\views.py:639 .\a2note\views.py:647
 msgid "Tue"
 msgstr "Mar"
 
-#: .\a2note\views.py:628 .\a2note\views.py:635
+#: .\a2note\views.py:639 .\a2note\views.py:647
 msgid "Wed"
 msgstr "Mer"
 
-#: .\a2note\views.py:628 .\a2note\views.py:635
+#: .\a2note\views.py:639 .\a2note\views.py:647
 msgid "Thu"
 msgstr "Gio"
 
-#: .\a2note\views.py:628 .\a2note\views.py:635
+#: .\a2note\views.py:639 .\a2note\views.py:647
 msgid "Fri"
 msgstr "Ven"
 
-#: .\a2note\views.py:628 .\a2note\views.py:635
+#: .\a2note\views.py:639 .\a2note\views.py:647
 msgid "Sat"
 msgstr "Sab"
 
-#: .\a2note\views.py:628 .\a2note\views.py:635
+#: .\a2note\views.py:639 .\a2note\views.py:647
 msgid "Sun"
 msgstr "Dom"
 
-#: .\a2note\views.py:865 .\a2note\views.py:934
+#: .\a2note\views.py:897 .\a2note\views.py:966
 msgid "Ooops! That's awkward..."
 msgstr "Ooops! E' imbarazzante..."
 
-#: .\a2note\views.py:893
+#: .\a2note\views.py:925
 msgid "This is not the list you were looking for..."
 msgstr "Questa non è la lista che stavi cercando..."
 
-#: .\a2note\views.py:953
+#: .\a2note\views.py:985
 msgid "Sorry, nothing to see here..."
 msgstr "Mi dispiace, non c'è nulla da vedere..."
 
-#: .\a2note\views.py:1170
+#: .\a2note\views.py:1202
 msgid "You do not have edit privilege on this list."
 msgstr "Non hai privilegi di modifica su questa lista."
 
-#: .\a2note\views.py:1292
+#: .\a2note\views.py:1324
 msgid ""
 "Here's the code to confirm the password reset for your a2note.ninja account."
 msgstr ""

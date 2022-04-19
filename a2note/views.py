@@ -561,11 +561,12 @@ def dashboard_view(request):
     #Get user information
     user = request.user
     
-    #Get all lists created by the current user
+    #Get all lists created by the current user - cache first logic
     cache_key = user.username + "_LISTS"
     created_lists = cache.get(cache_key)
     if not created_lists:
         created_lists = select_lists_by_author(user.username)
+        cache.set(cache_key, created_lists)
 
     total_tasks, total_items = 0,0
     total_done, total_todo = 0,0
@@ -575,6 +576,9 @@ def dashboard_view(request):
     todolists_per_weekday = [0 for i in range(7)]
     shoplists_per_weekday = [0 for i in range(7)]
 
+    #Number of sholists items per category (for radar plot)
+    items_per_category = {}
+
     #For loop to get lists data and to make some "math" :)
     for l in created_lists:
         length = len(l["items"])
@@ -583,6 +587,12 @@ def dashboard_view(request):
             shoplists_ctr += 1
             total_items += length
             shoplists_per_weekday[creation_date.weekday()] += 1
+            #Data for radar plot
+            for it in l['items']:
+                if l['items'][it]['category'] in items_per_category.keys():
+                    items_per_category[l['items'][it]['category']] += int(l['items'][it]['quantity'])
+                else:
+                    items_per_category[l['items'][it]['category']] = int(l['items'][it]['quantity'])
         elif l["element_type"] == "TODOLIST":
             todolists_ctr += 1
             total_tasks += length
@@ -605,8 +615,8 @@ def dashboard_view(request):
         "total_items": total_items
         }
 
-    #Passing plots data to the webpage to build chart.js plots
-
+    #Passing plots data to the webpage to build plots with chart.js
+    # 1 - Donut plot: type of created lists
     if todolists_ctr > 0 or shoplists_ctr > 0:
         context["type_donut_plot"] = {
         "values": [todolists_ctr, shoplists_ctr],
@@ -614,6 +624,7 @@ def dashboard_view(request):
         "colors": ["blue", 'rgb(221, 226, 16)']
         }
 
+    # 2 - Donut plot: done vs pending tasks in to-do lists
     if total_done > 0 or total_todo > 0:
         context["task_donut_plot"] = {
         "values": [total_done, total_todo],
@@ -621,6 +632,7 @@ def dashboard_view(request):
         "colors": ["rgb(12, 205, 37)", "grey"]
         }
 
+    # 3 - Bar plot: to-do lists per weekday
     if todolists_ctr > 0:
         context["todo_weekday_plot"] = {
         "values": todolists_per_weekday,
@@ -628,6 +640,7 @@ def dashboard_view(request):
         "colors": ["blue" for i in range(7)]
         }
 
+    # 4 - Bar plot: shoplists per weekday
     if shoplists_ctr > 0:
         context["shop_weekday_plot"] = {
         "values": shoplists_per_weekday,
@@ -635,7 +648,27 @@ def dashboard_view(request):
         "colors": ["rgb(221, 226, 16)" for i in range(7)]
         }
 
-    context["total"] = len(created_lists)
+    # 5 - Radar plot: distribution of item categories in shopping lists
+    if shoplists_ctr > 0:
+        #labels and values
+        labels = sorted(items_per_category.keys())
+        values = [items_per_category[c] for c in labels]
+        #radar plot visible only if shoplist items fall on more than 2 categories
+        # (otherwise the plot 'sucks')
+        if len(labels) > 2:
+            #translate labels from category_N to the current language
+            categories = get_all_categories()
+            for cat in categories:
+                if cat['element_id'] in labels:
+                    if  request.LANGUAGE_CODE == 'it':
+                        labels[labels.index(cat['element_id'])] = cat['IT_name']
+                    else:
+                        labels[labels.index(cat['element_id'])] = cat['EN_name']
+
+            context["shop_categories_plot"] = {
+            "values": values,
+            "labels": labels
+            }
 
     username = user.username
     #Assign the achievement#5 to the user for checking the dashboard
