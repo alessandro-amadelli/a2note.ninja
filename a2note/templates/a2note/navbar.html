@@ -16,32 +16,32 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'index_view' %} active{% endif %}" aria-current="page" href="{% url 'index_view' %}">
-            <span class="material-icons-outlined">home</span> {% translate 'My lists'%}
+            <span class="material-icons-outlined">home</span> <span class="nav-text">{% translate 'My lists'%}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'open_shared' %} active{% endif %}" aria-current="page" href="{% url 'open_shared' %}">
-            <span class="material-icons-outlined">share</span> {% translate 'Open shared list'%}
+            <span class="material-icons-outlined">share</span> <span class="nav-text">{% translate 'Open shared list'%}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'dashboard_view' %} active{% endif %}" href="{% url 'dashboard_view' %}">
-            <span class="material-icons-outlined">data_usage</span> {% translate 'My dashboard' %}
+            <span class="material-icons-outlined">dashboard</span> <span class="nav-text">{% translate 'My dashboard' %}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'bulletin_view' %} active{% endif %}" href="{% url 'bulletin_view' %}">
-            <span class="material-icons-outlined">assignment</span> {% translate 'My bulletin board' %}
+            <span class="material-icons-outlined">assignment</span> <span class="nav-text">{% translate 'My bulletin board' %}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'list_history' %} active{% endif %}" href="{% url 'list_history' %}">
-            <span class="material-icons-outlined">history</span> {% translate 'Recent lists' %}
+            <span class="material-icons-outlined">history</span> <span class="nav-text">{% translate 'Recent lists' %}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'about_us' %} active{% endif %}" href="{% url 'about_us' %}">
-            <span class="material-icons-outlined">info</span> About
+            <span class="material-icons-outlined">info</span> <span class="nav-text">About</span>
           </a>
         </li>
       </ul>

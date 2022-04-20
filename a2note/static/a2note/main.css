@@ -199,6 +199,21 @@ nav {
   background-color: var(--body-background-color);
 }
 
+/* Navbar text visible only on hover (apply only if the navbar is expanded) */
+@media only screen and (min-width: 991px){
+  .nav-item  .nav-text {
+    display: none;
+  }
+  
+  .nav-item:hover .nav-text {
+    display: inline-block;
+  }
+  
+  a.active .nav-text {
+    display: inline-block;
+  }
+}
+
 body a {
   color: var(--link-color);
 }
