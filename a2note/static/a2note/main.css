@@ -203,14 +203,18 @@ nav {
 @media only screen and (min-width: 991px){
   .nav-item  .nav-text {
     display: none;
+    opacity: 0;
+    transition: 1s;
   }
   
   .nav-item:hover .nav-text {
     display: inline-block;
+    opacity: 1;
   }
   
   a.active .nav-text {
     display: inline-block;
+    opacity: 1;
   }
 }
 

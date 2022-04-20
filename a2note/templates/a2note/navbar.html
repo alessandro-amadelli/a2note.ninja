@@ -67,27 +67,27 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'index_view' %} active{% endif %}" aria-current="page" href="{% url 'index_view' %}">
-            <span class="material-icons-outlined">home</span> Home
+            <span class="material-icons-outlined">home</span> <span class="nav-text">Home</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'open_shared' %} active{% endif %}" aria-current="page" href="{% url 'open_shared' %}">
-            <span class="material-icons-outlined">share</span> {% translate 'Open shared list'%}
+            <span class="material-icons-outlined">share</span> <span class="nav-text">{% translate 'Open shared list'%}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'todolist_view' %} active{% endif %}" href="{% url 'todolist_view' %}">
-            <span class="material-icons-outlined">checklist_rtl</span> To-do list
+            <span class="material-icons-outlined">checklist_rtl</span> <span class="nav-text">To-do list</span> 
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'shoplist_view' %} active{% endif %}" href="{% url 'shoplist_view' %}">
-            <span class="material-icons-outlined">shopping_cart</span> Shopping list
+            <span class="material-icons-outlined">shopping_cart</span> <span class="nav-text">Shopping list</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'about_us' %} active{% endif %}" href="{% url 'about_us' %}">
-            <span class="material-icons-outlined">info</span> About
+            <span class="material-icons-outlined">info</span> <span class="nav-text">About</span> 
           </a>
         </li>
       </ul>
