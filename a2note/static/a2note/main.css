@@ -1197,3 +1197,11 @@ option {
   background-color: var(--element-background);
   border: medium solid var(--text-color);
 }
+
+.triggerUserInfo {
+  cursor: pointer;
+}
+
+.triggerUserInfo:hover {
+  opacity: .8;
+}

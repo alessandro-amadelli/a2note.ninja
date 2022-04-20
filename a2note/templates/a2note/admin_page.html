@@ -31,9 +31,18 @@
       {% for u in user_list %}
       <tr {% if not u.is_active %} class='text-danger'{% endif %}>
         <td>{{u.id}}</td>
-        <td>
-          {{u.username}}<br>
-          <small>{{u.last_login}}</small>
+        <td class="triggerUserInfo">
+          {{u.username}}
+          <table class="hidden border">
+            <tr>
+              <th class="p-1 tex-end">registration</th>
+              <td class="p-1">{{u.date_joined}}</td>
+            </tr>
+            <tr>
+              <th class="p-1 text-end">last login</th>
+              <td class="p-1">{{u.last_login}}</td>
+            </tr>
+          </table>
         </td>
         <td>
           <span class='material-icons-outlined'>
