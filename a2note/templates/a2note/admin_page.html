@@ -31,7 +31,10 @@
       {% for u in user_list %}
       <tr {% if not u.is_active %} class='text-danger'{% endif %}>
         <td>{{u.id}}</td>
-        <td>{{u.username}}</td>
+        <td>
+          {{u.username}}<br>
+          <small>{{u.last_login}}</small>
+        </td>
         <td>
           <span class='material-icons-outlined'>
             {% if u.is_active %}check{% else %}block{% endif %}
