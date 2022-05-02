@@ -702,8 +702,6 @@ def bulletin_view(request):
             #If bulletin board for the user doesn't exists in cache nor in database, then set to None 
             bulletin_board = None
 
-    print(bulletin_board)
-
     if bulletin_board:
         context = {
             "bulletin_content": bulletin_board["bulletin_content"],
@@ -729,6 +727,11 @@ def save_bulletin_view(request):
     element_id = f"{username}_BULLETIN"
 
     bulletin_content = bulletin_content.strip()
+
+    #Maximum allowed length
+    MAX_CONTENT_LENGTH = 1000
+    if len(bulletin_content) > MAX_CONTENT_LENGTH:
+        bulletin_content = bulletin_content[:MAX_CONTENT_LENGTH]
 
     #List data
     item = {

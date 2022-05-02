@@ -51,17 +51,16 @@
     </div>
 
     <div class="row bulletin-div p-3 {% if bulletin_content %}{% else %}hidden{% endif %}">
-      <div class="col-12">
+      <div class="col-12 m-0">
         <span class="material-icons-outlined" id="btnEditBulletin" style="cursor:pointer;">edit</span>
         <span class="material-icons-outlined" id="btnDeleteBulletin" style="cursor:pointer">delete_forever</span>
       </div>
-      <div class="col-12 bulletin-not-empty p-0 rounded-3" data-class="{{ bulletin_class }}">
-        <div class="w-100 m-0 p-2" id="bulletinContentDiv">
+      <div class="col-12 bulletin-not-empty m-0 p-0" data-class="{{ bulletin_class }}">
+        <div class="m-0 p-2" id="bulletinContentDiv">
           {{ bulletin_content }}
         </div>
       </div>
-
-      <div class="col-12 position-relative">
+      <div class="col-12">
         <label for="bulletinThemeSelect">{% translate "Select theme" %} <span class="material-icons-outlined">brush</span></label>
         <select id="bulletinThemeSelect" aria-label="Theme">
           <option value="default">{% translate "Default" %}</option>
