@@ -688,23 +688,28 @@ def bulletin_view(request):
     user = request.user
     username = user.username
 
-    context = {}
+    context = {} #Context to be passed on the view
 
+    #Retrieving bulletin board for the user with cache-first logic
     bulletin_id = f"{username}_BULLETIN"
     bulletin_board = cache.get(bulletin_id)
-
-    if bulletin_board:
-        context["bulletin_content"] = bulletin_board["bulletin_content"]
-        context["bulletin_class"] = bulletin_board["bulletin_class"]
-    else:
+    if not bulletin_board:
         bulletin_board = select_element_by_id(bulletin_id, "BULLETIN")
         if len(bulletin_board) > 0:
             bulletin_board = bulletin_board[0]
-            context["bulletin_content"] = bulletin_board["bulletin_content"]
-            context["bulletin_class"] = bulletin_board["bulletin_class"]
-
             cache.set(bulletin_id, bulletin_board)
+        else:
+            #If bulletin board for the user doesn't exists in cache nor in database, then set to None 
+            bulletin_board = None
 
+    print(bulletin_board)
+
+    if bulletin_board:
+        context = {
+            "bulletin_content": bulletin_board["bulletin_content"],
+            "bulletin_class": bulletin_board["bulletin_class"],
+            "last_modified": bulletin_board["last_modified"][:21]
+        }
 
     return render(request, "a2note/bulletin.html", context)
 

@@ -4,7 +4,7 @@
   --autocomplete-background: rgb(26, 26, 26);
   --background-color: rgb(26, 26, 26);
   --body-background-color: #000;
-  --bulletin-background: rgba(255, 255, 255, .0);
+  --bulletin-background: rgba(0, 0, 0, .2);
   --donetask-background: rgba(0, 0, 0, .1);
   --element-background: rgba(0, 0, 0, .9);
   --filter-value: invert();
@@ -38,7 +38,7 @@
   --autocomplete-background: rgba(20, 130, 232, 0.98);
   --background-color: rgba(20, 130, 232, 0.75);
   --body-background-color: #f7f7f7;
-  --bulletin-background: rgba(255, 255, 255, .0);
+  --bulletin-background: rgba(0, 0, 0, .5);
   --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(247, 247, 247, 0.9);
   --filter-value: none;
@@ -995,10 +995,12 @@ option {
   white-space: pre-line;
   font-size: 1.3rem;
   font-weight: bold;
+  color: #fff;
   background-color: var(--bulletin-background);
 }
 
 .bulletin-not-empty[data-class="default"] {
+  color: var(--text-color);
   background-color: var(--element-background);
 }
 

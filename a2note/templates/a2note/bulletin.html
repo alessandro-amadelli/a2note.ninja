@@ -55,7 +55,7 @@
         <span class="material-icons-outlined" id="btnEditBulletin" style="cursor:pointer;">edit</span>
         <span class="material-icons-outlined" id="btnDeleteBulletin" style="cursor:pointer">delete_forever</span>
       </div>
-      <div class="col-12 bulletin-not-empty p-0" data-class="{{ bulletin_class }}">
+      <div class="col-12 bulletin-not-empty p-0 rounded-3" data-class="{{ bulletin_class }}">
         <div class="w-100 m-0 p-2" id="bulletinContentDiv">
           {{ bulletin_content }}
         </div>
@@ -76,6 +76,7 @@
           <option value="desert">{% translate "Desert" %}</option>
         </select>
       </div>
+      <div class="col-12 m-2 p-1 fst-italic"><span class="material-icons-outlined">history</span> {{ last_modified }}</div>
     </div>
 
     <div class="row bulletin-empty-div {% if bulletin_content %}hidden{% else %}{% endif %}">
