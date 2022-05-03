@@ -62,7 +62,6 @@ function updateRemainingChars() {
   } else {
     counter.innerText = max - textArea.value.length;
   }
-
 }
 
 function showBulletinModal() {
