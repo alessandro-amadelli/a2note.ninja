@@ -21,11 +21,12 @@
   {% csrf_token %}
 
   <div class="container my-container p-5">
-    <h1 class="intro-0 d-inline">{% translate 'Your bulletin board' %}</h1>
-    <div class="col hidden">
-      <button class="btn btn-success" id="btnSaveBulletin">Save</button>
-    </div>
+    <h1 class="intro-0">{% translate 'Your bulletin board' %}</h1>
     <h4 class="intro-1">{% translate "Here you can write something you have to remember." %}</h4>
+
+    <div class="col hidden">
+      <button class="btn btn-success" id="btnSaveBulletin">{% translate "Save" %}</button>
+    </div>
 
     <!-- Modal for bulletin board edit -->
     <div class="modal fade" id="modalBulletin" tabindex="-1" aria-labelledby="modalBulletinLabel" aria-hidden="true">
@@ -38,8 +39,11 @@
           </div>
           <div class="modal-body">
             <div class="form-floating">
-              <textarea class="form-control" placeholder="{% translate 'Write your text here...' %}" id="modalTextarea" style="height:8rem;" rows="4"></textarea>
+              <textarea class="form-control" placeholder="{% translate 'Write your text here...' %}" id="modalTextarea" style="height:8rem;" rows="4" maxlength="1000"></textarea>
               <label for="modalTextarea">{% translate "Bulletin text" %}</label>
+            </div>
+            <div class="form-floating">
+              <p id="remainingCharsText" readonly="true">1000</p>
             </div>
           </div>
           <div class="modal-footer">

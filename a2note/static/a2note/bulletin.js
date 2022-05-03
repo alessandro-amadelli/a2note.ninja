@@ -44,7 +44,26 @@ document.addEventListener('DOMContentLoaded', function() {
     enableBtnSave();
   }
 
+  //Text area inside modal -> remaining characters counter
+  document.querySelector("#modalTextarea").addEventListener("keyup", function() {
+    updateRemainingChars();
+  });
+
 });
+
+function updateRemainingChars() {
+  let textArea = document.querySelector("#modalTextarea");
+  let counter = document.querySelector("#remainingCharsText");
+  let max = 1000;
+
+  if (textArea.value.length > max) {
+    counter.innerText = 0;
+    textArea.value = textArea.value.substring(0, max);
+  } else {
+    counter.innerText = max - textArea.value.length;
+  }
+
+}
 
 function showBulletinModal() {
   let modal = document.querySelector("#modalBulletin");
@@ -53,6 +72,8 @@ function showBulletinModal() {
   let textarea = modal.querySelector("#modalTextarea");
   let oldText = document.querySelector("#bulletinContentDiv").innerText;
   textarea.value = oldText;
+
+  updateRemainingChars();
 
   myMod.show();
 }
