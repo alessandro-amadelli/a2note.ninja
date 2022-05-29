@@ -200,9 +200,10 @@
 
     <div id="taskList" class="row"></div>
 
-    <!-- Passing list items to the javascript -->
+    <!-- Passing list items to the javascript in a secure way-->
+    {{ list.items|json_script:"tasks" }}
     <script>
-      var tasks = {{ list.items|safe }};
+      var tasks = JSON.parse(document.getElementById('tasks').textContent);
     </script>
     <script src="{% static 'a2note/todolist_functions.js' %}"></script>
     <script src="{% static 'a2note/todolist_editor.js' %}"></script>

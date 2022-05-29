@@ -103,9 +103,10 @@
     </div>
   </div>
 
-  <!-- Passing list items to the javascript -->
+  <!-- Passing list's items to the javascript in a secure way -->
+  {{ list.items|json_script:"items" }}
   <script>
-    var items = {{ list.items|safe }};
+    var items = JSON.parse(document.getElementById('items').textContent);
   </script>
   <script src="{% static 'a2note/shoplist_functions.js' %}"></script>
   <script src="{% static 'a2note/shoplist_viewer.js' %}"></script>

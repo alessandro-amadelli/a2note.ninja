@@ -208,7 +208,6 @@ function saveShoplistToDB(reload) {
   data.append("element_id", element_id);
   data.append("element_type", element_type);
   data.append("title", title);
-  // data.append("items", getListItems());
   data.append("modifications", JSON.stringify(MODIFICATIONS));
   data.append("shared", shared);
   data.append("edit_enabled", edit_enabled);
@@ -217,6 +216,8 @@ function saveShoplistToDB(reload) {
 }
 
 function loadShoplist(){
+  // var items = JSON.parse("{{ list.items|escapejs }}");
+
 
   Object.keys(items).forEach((item, i) => {
     let quantity = 1
