@@ -32,14 +32,34 @@
 
     <p class="intro-1">
       {% if list.shared == "True" %}
-        <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Public' %}">public</span>
+      <span class="p-1">
+        <span class="badge rounded-pill bg-primary">
+          <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Public' %}">public</span>
+          {% translate "Public" %}
+        </span>
+      </span>
         {% if list.edit_enabled == "True" %}
-          <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit enabled' %}">edit</span>
+        <span class="p-1">
+          <span class="badge rounded-pill bg-success">
+            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit enabled' %}">edit</span>
+            {% translate 'Edit enabled' %}
+          </span>
+        </span>
         {% else %}
-          <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit disabled' %}">edit_off</span>
+        <span class="p-1">
+          <span class="badge rounded-pill bg-danger">
+            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit disabled' %}">edit_off</span>
+            {% translate 'Edit disabled' %}
+          </span>
+        </span>
         {% endif %}
       {% else %}
-        <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Private' %}">lock</span>
+      <span class="p-1">
+          <span class="badge rounded-pill bg-secondary">
+            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Private' %}">lock</span>
+            {% translate "Private" %}
+        </span>
+      </span>
       {% endif %}
     </p>
 
@@ -202,8 +222,8 @@
           <div class="modal-body">
             <p>{% translate "You can create a shopping list automatically by customizing your preferences." %}</p>
             <div class="row" id="modalAutoListRow">
-              <div class="col">{% translate "List lenght" %}</div>
-              <div class="col"><input type="number" id="modalAutoListLength" min="5" max="50" value="10"></div>
+              <div class="col p-1">{% translate "List lenght" %}</div>
+              <div class="col p-1"><input type="number" id="modalAutoListLength" min="5" max="50" value="10"></div>
               <div class="w-100"></div>
             </div>
           </div>

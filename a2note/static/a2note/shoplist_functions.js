@@ -360,9 +360,7 @@ function addItem(category=null, text=null, quantity="1", itemStatus=null, loaded
     //The function saveShoplist() contains a call to the correct saving function
     try {
       updateModification("add", text, {"category": category, "quantity": quantity, "status": itemStatus});
-    } catch(e) {
-      console.log(e.message);
-    }
+    } catch(e) {}
 
     try{
         enableSave();
@@ -394,9 +392,7 @@ function deleteItem(item) {
     try {
       let text = item.querySelector(".taskTextArea").innerText;
       updateModification("del", text, {});
-    } catch(e) {
-      console.log(e.message);
-    }
+    } catch(e) {}
 
     try{
         enableSave();
@@ -423,9 +419,7 @@ function completeItem(item){
     let quantity = item.querySelector(".itemQuantity").value;
     let itemStatus = item.dataset.status;
     updateModification("mod", text, {"category": category, "quantity": quantity, "status": itemStatus});
-  } catch(e) {
-    console.log(e.message);
-  }
+  } catch(e) {}
 
   try{
     enableSave();

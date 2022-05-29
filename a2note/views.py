@@ -28,8 +28,6 @@ from datetime import datetime
 import random
 import numpy as np
 
-import socket
-
 #Caching
 from django.core.cache import cache
 
@@ -1141,7 +1139,6 @@ def save_list_view(request):
     """
     This view saves data about a list in the DB
     """
-
     if request.user.is_authenticated:
         user = request.user
         username = user.username
