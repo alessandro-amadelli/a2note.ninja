@@ -37,6 +37,8 @@ ALLOWED_HOSTS = [
     'a2note-ninja.herokuapp.com'
     ]
 
+CSRF_TRUSTED_ORIGINS = ['a2note.ninja']
+
 # Application definition
 INSTALLED_APPS = [
     'a2note.apps.A2NoteConfig',
