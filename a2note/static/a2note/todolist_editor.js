@@ -130,12 +130,23 @@ function getListTasks() {
 
 }
 
+function saveError() {
+  enableSave();
+  removeLoading();
+  notify(gettext("Sorry, an error occurred. Check your connection."));
+}
+
 function saveTodolistToDB(reload=false) {
   var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
   const request = new XMLHttpRequest();
+
+  request.timeout = 10000; //Timeout in millisecond
+  request.addEventListener('error', () => saveError());
+
   const url = `/save_list_view/`;
   request.open('POST', url);
   request.setRequestHeader('X-CSRFToken', csrftoken);
+  //After request is loaded
   request.onload = () => {
     const response = JSON.parse(request.responseText);
     if (!reload) {
@@ -145,6 +156,12 @@ function saveTodolistToDB(reload=false) {
       location.reload();
     }
   };
+  //If a timeout is received
+  request.ontimeout = () => {
+    saveError();
+    return false;
+  };
+
   const data = new FormData();
   title = document.querySelector("#inpListTitle").value;
   element_id = document.querySelector("#elementID").innerText;

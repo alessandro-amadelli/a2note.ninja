@@ -170,13 +170,24 @@ function getListItems() {
   return JSON.stringify(listItems);
 }
 
+function saveError() {
+  enableSave();
+  removeLoading();
+  notify(gettext("Sorry, an error occurred. Check your connection."));
+}
+
 function saveShoplistToDB(reload) {
   var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
   let element_id = document.querySelector("#elementID").innerText;
   const request = new XMLHttpRequest();
+
+  request.timeout = 10000 //Timeout in millisecon
+  request.addEventListener('error', () => saveError());
+
   const url = `/save_list_view/`;
   request.open('POST', url);
   request.setRequestHeader('X-CSRFToken', csrftoken);
+  //Request is successfully loaded and response received
   request.onload = () => {
     const response = JSON.parse(request.responseText);
     if (reload) {
@@ -186,6 +197,12 @@ function saveShoplistToDB(reload) {
     }
     notify(gettext("List saved"));
   };
+  //If a timeout is received
+  request.ontimeout = () => {
+    saveError();
+    return false;
+  };
+
   const data = new FormData();
   title = document.querySelector("#inpListTitle").value;
 
