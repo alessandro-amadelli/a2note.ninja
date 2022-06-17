@@ -37,8 +37,6 @@ ALLOWED_HOSTS = [
     'a2note-ninja.herokuapp.com'
     ]
 
-CSRF_TRUSTED_ORIGINS = ['a2note.ninja']
-
 # Application definition
 INSTALLED_APPS = [
     'a2note.apps.A2NoteConfig',
@@ -168,6 +166,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://a2note.ninja']
 
 #Caching system with memcache
 def get_cache():
