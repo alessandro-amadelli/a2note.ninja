@@ -30,15 +30,35 @@
     <h3 class="intro-0 col"><span class="material-icons-outlined">checklist_rtl</span> List VIEWER</h3>
 
     <p class="intro-1">
-      {% if shared == "True" %}
-        <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Public' %}">public</span>
-        {% if edit_enabled == "True" %}
-          <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit enabled' %}">edit</span>
+      {% if list.shared == "True" %}
+      <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can view the list.' %}">
+        <span class="badge rounded-pill bg-primary">
+          <span class="material-icons-outlined">public</span>
+          {% translate "Public" %}
+        </span>
+      </span>
+        {% if list.edit_enabled == "True" %}
+        <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can edit the list.' %}">
+          <span class="badge rounded-pill bg-success">
+            <span class="material-icons-outlined">edit</span>
+            {% translate 'Edit enabled' %}
+          </span>
+        </span>
         {% else %}
-          <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit disabled' %}">edit_off</span>
+        <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can edit the list.' %}">
+          <span class="badge rounded-pill bg-danger">
+            <span class="material-icons-outlined">edit_off</span>
+            {% translate 'Edit disabled' %}
+          </span>
+        </span>
         {% endif %}
       {% else %}
-        <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Private' %}">lock</span>
+      <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can view the list.' %}">
+          <span class="badge rounded-pill bg-secondary">
+            <span class="material-icons-outlined" >lock</span>
+            {% translate "Private" %}
+        </span>
+      </span>
       {% endif %}
     </p>
 
