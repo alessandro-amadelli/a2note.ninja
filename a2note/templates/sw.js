@@ -89,23 +89,3 @@ self.addEventListener('fetch', evt => {
   );
   evt.waitUntil(update(evt.request));
 });
-
-// self.addEventListener('fetch', async e => {
-//   const req = e.request;
-//   // const url = new URL(req.url);
-//
-//   e.respondWith(await networkThenCache(req));
-// });
-
-//
-// async function networkThenCache(req) {
-//   const cache = await caches.open(CURRENT_CACHE);
-//   try {
-//     const fresh = await fetch(req);
-//     await cache.put(req, fresh);
-//     return fresh;
-//   } catch {
-//     const cached = await cache.match(req);
-//     return cached;
-//   }
-// }

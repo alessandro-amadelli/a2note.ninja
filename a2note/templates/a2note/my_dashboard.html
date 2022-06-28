@@ -85,7 +85,9 @@
               label: 'Tasks progress',
               backgroundColor: typeDonutPlot["colors"],
               data: typeDonutPlot["values"],
-              hoverOffset: 4
+              hoverOffset: 10,
+              borderWidth: 0,
+              spacing: 3
             }],
           };
 
@@ -128,7 +130,9 @@
               label: 'Tasks progress',
               backgroundColor: taskDonutPlot["colors"],
               data: taskDonutPlot["values"],
-              hoverOffset: 4
+              hoverOffset: 10,
+              borderWidth: 0,
+              spacing: 3
             }],
           };
 
@@ -170,7 +174,8 @@
                 backgroundColor: todoWeekdayPlot["colors"],
                 borderColor: todoWeekdayPlot["colors"],
                 data: todoWeekdayPlot["values"],
-                barPercentage: 0.7,
+                barPercentage: 0.6,
+                borderRadius: 5
               }],
             };
 
@@ -217,7 +222,8 @@
                   backgroundColor: shopWeekdayPlot["colors"],
                   borderColor: shopWeekdayPlot["colors"],
                   data: shopWeekdayPlot["values"],
-                  barPercentage: 0.7,
+                  barPercentage: 0.6,
+                  borderRadius: 5
                 }],
               };
 

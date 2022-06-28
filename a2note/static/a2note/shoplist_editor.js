@@ -89,6 +89,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   initializeModalAutoList();
 
+  //Set initial value of category selection to 'other'
+  document.querySelector("#categorySelect").value = 'category_11';
 });
 
 MODIFICATIONS = {"add": {}, "mod":{}, "del":{}};

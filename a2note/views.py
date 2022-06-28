@@ -619,7 +619,7 @@ def dashboard_view(request):
         context["type_donut_plot"] = {
         "values": [todolists_ctr, shoplists_ctr],
         "labels": ["To-do lists", "Shopping lists"],
-        "colors": ["blue", 'rgb(221, 226, 16)']
+        "colors": ["rgb(0, 51, 153)", 'rgb(247, 247, 43)']
         }
 
     # 2 - Donut plot: done vs pending tasks in to-do lists
@@ -627,7 +627,7 @@ def dashboard_view(request):
         context["task_donut_plot"] = {
         "values": [total_done, total_todo],
         "labels": [gettext("Done"), gettext("To do")],
-        "colors": ["rgb(12, 205, 37)", "grey"]
+        "colors": ["rgb(0, 179, 60)", "rgb(89, 89, 89)"]
         }
 
     # 3 - Bar plot: to-do lists per weekday
@@ -635,7 +635,7 @@ def dashboard_view(request):
         context["todo_weekday_plot"] = {
         "values": todolists_per_weekday,
         "labels": [gettext("Mon"),gettext("Tue"),gettext("Wed"),gettext("Thu"),gettext("Fri"),gettext("Sat"),gettext("Sun")],
-        "colors": ["blue" for i in range(7)]
+        "colors": ["rgb(0, 51, 153)" for i in range(7)]
         }
 
     # 4 - Bar plot: shoplists per weekday
@@ -643,7 +643,7 @@ def dashboard_view(request):
         context["shop_weekday_plot"] = {
         "values": shoplists_per_weekday,
         "labels": [gettext("Mon"),gettext("Tue"),gettext("Wed"),gettext("Thu"),gettext("Fri"),gettext("Sat"),gettext("Sun")],
-        "colors": ["rgb(221, 226, 16)" for i in range(7)]
+        "colors": ["rgb(247, 247, 43)" for i in range(7)]
         }
 
     # 5 - Radar plot: distribution of item categories in shopping lists
