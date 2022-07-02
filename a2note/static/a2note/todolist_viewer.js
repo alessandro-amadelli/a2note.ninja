@@ -44,7 +44,7 @@ function addTaskViewOnly(text=null, creationTime=null, taskStatus=null){
   taskDone.setAttribute("class", "input-group-append taskDoneArea col-1 col-lg-1 col-sm-1 d-inline");
   let taskDoneText = document.createElement("span");
   taskDoneText.setAttribute("class", "float-end");
-  taskDoneText.innerHTML = `<span class="material-icons-outlined">task_alt</span>`;
+  taskDoneText.innerHTML = `<span class="material-symbols-outlined">task_alt</span>`;
   taskDone.appendChild(taskDoneText);
 
   //On mouse over event
@@ -86,7 +86,7 @@ function addTaskViewOnly(text=null, creationTime=null, taskStatus=null){
   timeDiv.setAttribute("class", "col-10 col-sm-10 col-lg-11 text-muted d-inline");
 
   //take the timestamp already present in the saved to-do list
-  timeDiv.innerHTML = `<i class="material-icons-outlined">schedule</i><span class="taskCreationTime">${creationTime}</span>`;
+  timeDiv.innerHTML = `<i class="material-symbols-outlined">schedule</i><span class="taskCreationTime">${creationTime}</span>`;
 
   taskFooter.appendChild(timeDiv);
 

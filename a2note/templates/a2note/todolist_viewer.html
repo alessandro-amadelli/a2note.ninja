@@ -20,34 +20,34 @@
   {% csrf_token %}
 
   <div class="container my-container p-5">
-    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
+    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
 
     <!-- Info alert to tell the user it is in view mode. -->
     <div class="alert alert-info fade show" role="alert">
-      <strong><span class="material-icons-outlined">info</span> {% translate "You are in view mode. Modifications won't be saved." %}</strong>
+      <strong><span class="material-symbols-outlined">info</span> {% translate "You are in view mode. Modifications won't be saved." %}</strong>
     </div>
 
-    <h3 class="intro-0 col"><span class="material-icons-outlined">checklist_rtl</span> List VIEWER</h3>
+    <h3 class="intro-0 col"><span class="material-symbols-outlined">checklist_rtl</span> List VIEWER</h3>
 
     <p class="intro-1">
       {% if list.shared == "True" %}
       <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can view the list.' %}">
         <span class="badge rounded-pill bg-primary">
-          <span class="material-icons-outlined">public</span>
+          <span class="material-symbols-outlined">public</span>
           {% translate "Public" %}
         </span>
       </span>
         {% if list.edit_enabled == "True" %}
         <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can edit the list.' %}">
           <span class="badge rounded-pill bg-success">
-            <span class="material-icons-outlined">edit</span>
+            <span class="material-symbols-outlined">edit</span>
             {% translate 'Edit enabled' %}
           </span>
         </span>
         {% else %}
         <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can edit the list.' %}">
           <span class="badge rounded-pill bg-danger">
-            <span class="material-icons-outlined">edit_off</span>
+            <span class="material-symbols-outlined">edit_off</span>
             {% translate 'Edit disabled' %}
           </span>
         </span>
@@ -55,7 +55,7 @@
       {% else %}
       <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can view the list.' %}">
           <span class="badge rounded-pill bg-secondary">
-            <span class="material-icons-outlined" >lock</span>
+            <span class="material-symbols-outlined" >lock</span>
             {% translate "Private" %}
         </span>
       </span>
@@ -77,13 +77,13 @@
       <div id="statDiv" class="hidden w-100 m-1 mb-2 p-1">
         <div class="row">
           <div class="col text-center">
-            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Total' %}">rule</span> <span id="statTotal">0</span>
+            <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Total' %}">rule</span> <span id="statTotal">0</span>
           </div>
           <div class="col text-center">
-            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Pending' %}">pending</span> <span id="statTodo">0</span>
+            <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Pending' %}">pending</span> <span id="statTodo">0</span>
           </div>
           <div class="col text-center">
-            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Done' %}">task_alt</span> <span id="statDone">0</span>
+            <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Done' %}">task_alt</span> <span id="statDone">0</span>
           </div>
         </div>
       </div>

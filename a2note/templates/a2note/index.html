@@ -23,7 +23,7 @@
     <script src="{% static 'a2note/index.js' %}"></script>
     {% csrf_token %}
 
-    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
+    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
 
     <!-- Modal for list deletion-->
     <div class="modal fade" id="modalDeleteList" tabindex="-1" aria-labelledby="modalDeleteListLabel" aria-hidden="true">
@@ -31,11 +31,11 @@
         <div class="modal-content">
           <div class="modal-header">
             <div class="hidden" id="modalElementId"></div>
-            <h3 class="modal-title" id="modalDeleteListLabel"><span class="material-icons-outlined">delete_forever</span> {% translate "List deletion" %}</h3>
+            <h3 class="modal-title" id="modalDeleteListLabel"><span class="material-symbols-outlined">delete_forever</span> {% translate "List deletion" %}</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <h4><span class="material-icons-outlined">report_problem</span> {% translate "Warning"%}</h4>
+            <h4><span class="material-symbols-outlined">report_problem</span> {% translate "Warning"%}</h4>
             <p>{% translate "You are about to delete this list and all of its content." %}<br>
             {% translate "This list will do <a href='https://en.wikipedia.org/wiki/Seppuku' target='_blank' rel='noopener noreferrer'>seppuku</a> for the shame of failing you!" %}</p>
             <p><strong>{% translate "This action is irreversible, do you wish to continue?" %}</strong></p>
@@ -50,7 +50,7 @@
 
     <h2 class="intro-0">{% translate 'Hi' %} {{ user.username }},</h2>
     <h2 class="intro-1">{% translate "it's good to see you again!" %}
-      <span class="material-icons-outlined fs-1">
+      <span class="material-symbols-outlined fs-1">
         emoji_emotions
         </span>
     </h2>
@@ -61,7 +61,7 @@
 
     <div class="row">
       <div class="col">
-        <span class="material-icons-outlined d-inline" id="info-toggle">help_outline</span>
+        <span class="material-symbols-outlined d-inline" id="info-toggle">help_outline</span>
       </div>
       <div class="w-100"></div>
       <div class="col hidden info-text">
@@ -72,7 +72,7 @@
 
     <div class="row m-1 p-1 d-flex">
       <div class="col-12">
-        <h5><span class="material-icons-outlined">edit</span>{% translate "Create a new" %}</h5>
+        <h5><span class="material-symbols-outlined">edit</span>{% translate "Create a new" %}</h5>
       </div>
       <div class="w-100"></div>
       <div class="col-md-6 col-12 p-3">
@@ -99,7 +99,7 @@
 
     <div class="row m-1 p-1">
       <div class="col-md-3 col-12">
-        <span class="material-icons-outlined">filter_alt</span>
+        <span class="material-symbols-outlined">filter_alt</span>
       </div>
       <div class="col-md-3 col-12">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="TODOLIST">
@@ -124,9 +124,9 @@
             <div class="row">
               <div class="col-10 card-header-text-col m-0">
                 {% if list.element_type == 'SHOPLIST' %}
-                <span class="material-icons-outlined">shopping_cart</span>
+                <span class="material-symbols-outlined">shopping_cart</span>
                 {% else %}
-                <span class="material-icons-outlined">checklist_rtl</span>
+                <span class="material-symbols-outlined">checklist_rtl</span>
                 {% endif %}
               
                 {% if list.title %}
@@ -138,24 +138,24 @@
               <div class="col m-0 p-0">
                 <!-- Trigger delete modal -->
                 <p class="card-text text-danger deleteTrigger float-end">
-                  <span class="material-icons-outlined text-end" data-bs-toggle="modal" data-bs-target="#modalDeleteList">delete</span>
+                  <span class="material-symbols-outlined text-end" data-bs-toggle="modal" data-bs-target="#modalDeleteList">delete</span>
                 </p>
               </div>
             </div>
           </div>
           <div class="card-body">
-            <p class="card-text"><span class="material-icons-outlined">event</span> {{ list.creation_timestamp }}</p>
-            <p class="card-text"><span class="material-icons-outlined">history</span> {{ list.last_modified }}</p>
+            <p class="card-text"><span class="material-symbols-outlined">event</span> {{ list.creation_timestamp }}</p>
+            <p class="card-text"><span class="material-symbols-outlined">history</span> {{ list.last_modified }}</p>
             <p class="card-text">{% translate 'Items' %}: {{ list.length }}</p>
             <hr>
             <p class="card-text d-inline">
               <a class="text-reset text-decoration-none" href="{% url 'list_editor' list.element_id %}">
-                <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit list' %}">edit</span>
+                <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit list' %}">edit</span>
               </a>
             </p>
             <p class="card-text d-inline">
               <a class="text-reset text-decoration-none" href="{% url 'list_viewer' list.element_id %}">
-                <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'View list' %}">visibility</span>
+                <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'View list' %}">visibility</span>
               </a>
             </p>
           </div>
@@ -164,7 +164,7 @@
 
       <br>
       {% empty %}
-      <p><span class="material-icons-outlined">sentiment_dissatisfied</span> {% translate "Oh no! It's all sad and empty here...go make some lists." %}</p>
+      <p><span class="material-symbols-outlined">sentiment_dissatisfied</span> {% translate "Oh no! It's all sad and empty here...go make some lists." %}</p>
       {% endfor %}
     </div>
 

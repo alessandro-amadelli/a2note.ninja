@@ -34,7 +34,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <div class="hidden" id="modalElementId"></div>
-            <h3 class="modal-title" id="modalBulletinLabel"><span class="material-icons-outlined">edit</span> {% translate "Edit bulletin board" %}</h3>
+            <h3 class="modal-title" id="modalBulletinLabel"><span class="material-symbols-outlined">edit</span> {% translate "Edit bulletin board" %}</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -56,8 +56,8 @@
 
     <div class="row bulletin-div p-3 {% if bulletin_content %}{% else %}hidden{% endif %}">
       <div class="col-12 m-0">
-        <span class="material-icons-outlined" id="btnEditBulletin" style="cursor:pointer;">edit</span>
-        <span class="material-icons-outlined" id="btnDeleteBulletin" style="cursor:pointer">delete_forever</span>
+        <span class="material-symbols-outlined" id="btnEditBulletin" style="cursor:pointer;">edit</span>
+        <span class="material-symbols-outlined" id="btnDeleteBulletin" style="cursor:pointer">delete_forever</span>
       </div>
       <div class="col-12 bulletin-not-empty m-0 p-0" data-class="{{ bulletin_class }}">
         <div class="m-0 p-2" id="bulletinContentDiv">
@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="col-12">
-        <label for="bulletinThemeSelect">{% translate "Select theme" %} <span class="material-icons-outlined">brush</span></label>
+        <label for="bulletinThemeSelect">{% translate "Select theme" %} <span class="material-symbols-outlined">brush</span></label>
         <select id="bulletinThemeSelect" aria-label="Theme">
           <option value="default">{% translate "Default" %}</option>
           <option value="mountain">{% translate "Mountain" %}</option>
@@ -79,12 +79,12 @@
           <option value="desert">{% translate "Desert" %}</option>
         </select>
       </div>
-      <div class="col-12 m-2 p-1 fst-italic"><span class="material-icons-outlined">history</span> {{ last_modified }}</div>
+      <div class="col-12 m-2 p-1 fst-italic"><span class="material-symbols-outlined">history</span> {{ last_modified }}</div>
     </div>
 
     <div class="row bulletin-empty-div {% if bulletin_content %}hidden{% else %}{% endif %}">
       <div class="col-12 text-center bulletin-empty">
-        <span class="material-icons-outlined icon" id="btnEditBulletinEmpty">add_circle_outline</span>
+        <span class="material-symbols-outlined icon" id="btnEditBulletinEmpty">add_circle_outline</span>
         <p>{% translate "There is nothing to see here..." %}</p>
         <p>{% translate "Maybe you have nothing to remember...or you just forgot to write it here." %}</p>
       </div>

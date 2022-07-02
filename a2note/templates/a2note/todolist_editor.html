@@ -20,12 +20,12 @@
   {% csrf_token %}
 
   <div class="container my-container p-5">
-    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
+    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
 
     <div class="row m-1 p-1 d-flex">
-      <h3 class="intro-0 col"><span class="material-icons-outlined">checklist_rtl</span> List EDITOR</h3>
+      <h3 class="intro-0 col"><span class="material-symbols-outlined">checklist_rtl</span> List EDITOR</h3>
       <div class="col-lg-3 col-4">
-        <button class="btn btn-success hidden" id="btnSaveList" disabled><span class="material-icons-outlined">save</span> {% translate "Save" %}</button>
+        <button class="btn btn-success hidden" id="btnSaveList" disabled><span class="material-symbols-outlined">save</span> {% translate "Save" %}</button>
       </div>
     </div>
 
@@ -33,21 +33,21 @@
       {% if list.shared == "True" %}
       <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can view the list.' %}">
         <span class="badge rounded-pill bg-primary">
-          <span class="material-icons-outlined">public</span>
+          <span class="material-symbols-outlined">public</span>
           {% translate "Public" %}
         </span>
       </span>
         {% if list.edit_enabled == "True" %}
         <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can edit the list.' %}">
           <span class="badge rounded-pill bg-success">
-            <span class="material-icons-outlined">edit</span>
+            <span class="material-symbols-outlined">edit</span>
             {% translate 'Edit enabled' %}
           </span>
         </span>
         {% else %}
         <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can edit the list.' %}">
           <span class="badge rounded-pill bg-danger">
-            <span class="material-icons-outlined">edit_off</span>
+            <span class="material-symbols-outlined">edit_off</span>
             {% translate 'Edit disabled' %}
           </span>
         </span>
@@ -55,7 +55,7 @@
       {% else %}
       <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can view the list.' %}">
           <span class="badge rounded-pill bg-secondary">
-            <span class="material-icons-outlined" >lock</span>
+            <span class="material-symbols-outlined" >lock</span>
             {% translate "Private" %}
         </span>
       </span>
@@ -65,13 +65,13 @@
     {% if user.username == list.author %}
     <div class="row rounded-3 list-panel">
       <div class="col px-0">
-        <button type="button" class="btn btn-danger px-4" data-bs-toggle="modal" data-bs-target="#modalDeleteList"><span class="material-icons-outlined">delete</span></button>
+        <button type="button" class="btn btn-danger px-4" data-bs-toggle="modal" data-bs-target="#modalDeleteList"><span class="material-symbols-outlined">delete</span></button>
       </div>
       <div class="col text-center px-0">
-        <button type="button" class="btn btn-light px-4" data-bs-toggle="modal" data-bs-target="#modalListSettings"><span class="material-icons-outlined">settings</span></button>
+        <button type="button" class="btn btn-light px-4" data-bs-toggle="modal" data-bs-target="#modalListSettings"><span class="material-symbols-outlined">settings</span></button>
       </div>
       <div class="col text-end px-0">
-        <button type="button" class="btn btn-light px-4" data-bs-toggle="modal" data-bs-target="#modalShareList"><span class="material-icons-outlined">share</span></button>
+        <button type="button" class="btn btn-light px-4" data-bs-toggle="modal" data-bs-target="#modalShareList"><span class="material-symbols-outlined">share</span></button>
       </div>
     </div>
     
@@ -80,11 +80,11 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="modalDeleteListLabel"><span class="material-icons-outlined">delete_forever</span> {% translate "List deletion" %}</h3>
+            <h3 class="modal-title" id="modalDeleteListLabel"><span class="material-symbols-outlined">delete_forever</span> {% translate "List deletion" %}</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <h4><span class="material-icons-outlined">report_problem</span> {% translate "Warning"%}</h4>
+            <h4><span class="material-symbols-outlined">report_problem</span> {% translate "Warning"%}</h4>
             <p>{% translate "You are about to delete this list and all of its content." %}<br>
             {% translate "This list will do <a href='https://en.wikipedia.org/wiki/Seppuku' target='_blank' rel='noopener noreferrer'>seppuku</a> for the shame of failing you!" %}</p>
             <p><strong>{% translate "This action is irreversible, do you wish to continue?" %}</strong></p>
@@ -102,16 +102,16 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="modalListSettingsLabel"><span class="material-icons-outlined">build</span> {% translate "List settings" %}</h3>
+            <h3 class="modal-title" id="modalListSettingsLabel"><span class="material-symbols-outlined">build</span> {% translate "List settings" %}</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <h4><span class="material-icons-outlined">policy</span> {% translate "Privacy"%}</h4>
+            <h4><span class="material-symbols-outlined">policy</span> {% translate "Privacy"%}</h4>
             <p> {% translate "Your list privacy is currently: " %}
-              <strong>{% if list.shared == 'True' %} {% translate 'Public' %} <span class="material-icons-outlined">public</span></strong><br>
+              <strong>{% if list.shared == 'True' %} {% translate 'Public' %} <span class="material-symbols-outlined">public</span></strong><br>
               {% translate 'Anyone with the link can view it.' %}
               {% else %}
-              <strong>{% translate 'Private' %} <span class="material-icons-outlined">lock</span></strong> <br>
+              <strong>{% translate 'Private' %} <span class="material-symbols-outlined">lock</span></strong> <br>
               {% translate 'No one can see it even with the link.' %}
               {% endif %}
             </p>
@@ -120,15 +120,15 @@
               <label class="form-check-label" for="listPrivacySwitch">{% translate "Public list" %}</label>
             </div>
             <hr>
-            <h4><span class="material-icons-outlined">edit</span> {% translate "Edit"%}</h4>
+            <h4><span class="material-symbols-outlined">edit</span> {% translate "Edit"%}</h4>
             <p>
               {% translate "Your list edit policy is: " %}
                 {% if list.edit_enabled == 'True' %}
-                <strong>{% translate 'Edit enabled' %} <span class="material-icons-outlined">edit</span></strong><br>
-                <span class="material-icons-outlined">report_problem</span>
+                <strong>{% translate 'Edit enabled' %} <span class="material-symbols-outlined">edit</span></strong><br>
+                <span class="material-symbols-outlined">report_problem</span>
                 {% translate 'Anyone with the link can edit the list, this includes adding and deleting items.' %}
                 {% else %}
-                <strong>{% translate 'Edit disabled' %} <span class="material-icons-outlined">edit_off</span></strong> <br>
+                <strong>{% translate 'Edit disabled' %} <span class="material-symbols-outlined">edit_off</span></strong> <br>
                 {% translate 'You are the only one who can edit this list.' %}
                 {% endif %}
                 <br>
@@ -141,7 +141,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate "Cancel" %}</button>
-            <button type="button" class="btn btn-light" id="btnSaveSettings" data-bs-dismiss="modal"><span class="material-icons-outlined">save</span> {% translate "Save" %}</button>
+            <button type="button" class="btn btn-light" id="btnSaveSettings" data-bs-dismiss="modal"><span class="material-symbols-outlined">save</span> {% translate "Save" %}</button>
           </div>
         </div>
       </div>
@@ -152,18 +152,18 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="modalShareListLabel"><span class="material-icons-outlined">share</span> {% translate "List sharing" %}</h3>
+            <h3 class="modal-title" id="modalShareListLabel"><span class="material-symbols-outlined">share</span> {% translate "List sharing" %}</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <p>{% translate "List code" %}: {{ element_id }}</p>
-            <button type="button" class="btn btn-light m-2" id="btnCopyClipboard" data-bs-dismiss="modal"><span class="material-icons-outlined">content_paste</span> {% translate "Copy to clipboard" %}</button>
+            <button type="button" class="btn btn-light m-2" id="btnCopyClipboard" data-bs-dismiss="modal"><span class="material-symbols-outlined">content_paste</span> {% translate "Copy to clipboard" %}</button>
             <br>
-            <a type="button" class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnWhatsapp" href="" data-action="share/whatsapp/share" target="_blank"><span class="material-icons-outlined">chat</span> Whatsapp </a>
+            <a type="button" class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnWhatsapp" href="" data-action="share/whatsapp/share" target="_blank"><span class="material-symbols-outlined">chat</span> Whatsapp </a>
             <br>
-            <a type="button" class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnTelegram" href="" target="_blank"><span class="material-icons-outlined">send</span> Telegram </a>
+            <a type="button" class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnTelegram" href="" target="_blank"><span class="material-symbols-outlined">send</span> Telegram </a>
             <br>
-            <a class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnEmail" href=""><span class="material-icons-outlined">email</span> email</a>
+            <a class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnEmail" href=""><span class="material-symbols-outlined">email</span> email</a>
             {% if list.shared == 'False' %}
             <p>{% translate "Some functions are disabled because the list privacy is set to private. If you'd like to share the list please go to 'Settings' and make the list public." %}</p>
             {% endif %}
@@ -189,7 +189,7 @@
 
     <div class="row">
       <input type="text" id="taskText" class="d-inline col-9 col-lg-10 rounded-3 m-1 mb-3 p-1" placeholder="{% translate 'Insert task...' %}"/>
-      <button type="button" id="btnAddTask" class="d-inline btn btn-light col-2 col-lg-1 m-1 mb-3 p-1"><span class="material-icons-outlined">plus_one</span></button>
+      <button type="button" id="btnAddTask" class="d-inline btn btn-light col-2 col-lg-1 m-1 mb-3 p-1"><span class="material-symbols-outlined">plus_one</span></button>
       <div class="w-100"></div>
       <div class="col-12">
         <label for="taskViewSelect" class="d-inline">{% translate 'Filter tasks' %}</label>
@@ -203,13 +203,13 @@
       <div id="statDiv" class="hidden w-100 m-1 mb-2 p-1">
         <div class="row">
           <div class="col text-center">
-            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Total' %}">rule</span> <span id="statTotal">0</span>
+            <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Total' %}">rule</span> <span id="statTotal">0</span>
           </div>
           <div class="col text-center">
-            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Pending' %}">pending</span> <span id="statTodo">0</span>
+            <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Pending' %}">pending</span> <span id="statTodo">0</span>
           </div>
           <div class="col text-center">
-            <span class="material-icons-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Done' %}">task_alt</span> <span id="statDone">0</span>
+            <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Done' %}">task_alt</span> <span id="statDone">0</span>
           </div>
         </div>
         <!-- <div class="progress w-100 rounded-pill shadow-sm">

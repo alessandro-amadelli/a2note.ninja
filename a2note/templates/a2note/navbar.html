@@ -16,32 +16,32 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'index_view' %} active{% endif %}" aria-current="page" href="{% url 'index_view' %}">
-            <span class="material-icons-outlined">home</span> <span class="nav-text">{% translate 'My lists'%}</span>
+            <span class="material-symbols-outlined">home</span> <span class="nav-text">{% translate 'My lists'%}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'dashboard_view' %} active{% endif %}" href="{% url 'dashboard_view' %}">
-            <span class="material-icons-outlined">dashboard</span> <span class="nav-text">{% translate 'My dashboard' %}</span>
+            <span class="material-symbols-outlined">dashboard</span> <span class="nav-text">{% translate 'My dashboard' %}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'bulletin_view' %} active{% endif %}" href="{% url 'bulletin_view' %}">
-            <span class="material-icons-outlined">assignment</span> <span class="nav-text">{% translate 'My bulletin board' %}</span>
+            <span class="material-symbols-outlined">assignment</span> <span class="nav-text">{% translate 'My bulletin board' %}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'list_history' %} active{% endif %}" href="{% url 'list_history' %}">
-            <span class="material-icons-outlined">history</span> <span class="nav-text">{% translate 'Recent lists' %}</span>
+            <span class="material-symbols-outlined">history</span> <span class="nav-text">{% translate 'Recent lists' %}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'open_shared' %} active{% endif %}" aria-current="page" href="{% url 'open_shared' %}">
-            <span class="material-icons-outlined">share</span> <span class="nav-text">{% translate 'Open shared list'%}</span>
+            <span class="material-symbols-outlined">share</span> <span class="nav-text">{% translate 'Open shared list'%}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'about_us' %} active{% endif %}" href="{% url 'about_us' %}">
-            <span class="material-icons-outlined">info</span> <span class="nav-text">About</span>
+            <span class="material-symbols-outlined">info</span> <span class="nav-text">About</span>
           </a>
         </li>
       </ul>
@@ -49,45 +49,45 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="material-icons-outlined">account_circle</span> {{ user.username }}
+              <span class="material-symbols-outlined">account_circle</span> {{ user.username }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               {% if user.is_superuser %}
               <li class="nav-item">
                 <a class="dropdown-item{% if request.resolver_match.url_name == 'admin_view' %} active{% endif %}" href="{% url 'admin_view' %}">
-                  <span class="material-icons-outlined">admin_panel_settings</span> Administration
+                  <span class="material-symbols-outlined">admin_panel_settings</span> Administration
                 </a>
               </li>
               {% endif %}
-              <li><a class="dropdown-item{% if request.resolver_match.url_name == 'my_account_view' %} active{% endif %}" href="{% url 'my_account_view' %}"><span class="material-icons-outlined">badge</span> {% translate 'My account' %}</a></li>
-              <li><a class="dropdown-item" href="{% url 'logout' %}"><span class="material-icons-outlined">logout</span> Logout</a></li>
+              <li><a class="dropdown-item{% if request.resolver_match.url_name == 'my_account_view' %} active{% endif %}" href="{% url 'my_account_view' %}"><span class="material-symbols-outlined">badge</span> {% translate 'My account' %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}"><span class="material-symbols-outlined">logout</span> Logout</a></li>
             </ul>
           </li>
       {% else %}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'index_view' %} active{% endif %}" aria-current="page" href="{% url 'index_view' %}">
-            <span class="material-icons-outlined">home</span> <span class="nav-text">Home</span>
+            <span class="material-symbols-outlined">home</span> <span class="nav-text">Home</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'open_shared' %} active{% endif %}" aria-current="page" href="{% url 'open_shared' %}">
-            <span class="material-icons-outlined">share</span> <span class="nav-text">{% translate 'Open shared list'%}</span>
+            <span class="material-symbols-outlined">share</span> <span class="nav-text">{% translate 'Open shared list'%}</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'todolist_view' %} active{% endif %}" href="{% url 'todolist_view' %}">
-            <span class="material-icons-outlined">checklist_rtl</span> <span class="nav-text">To-do list</span> 
+            <span class="material-symbols-outlined">checklist_rtl</span> <span class="nav-text">To-do list</span> 
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'shoplist_view' %} active{% endif %}" href="{% url 'shoplist_view' %}">
-            <span class="material-icons-outlined">shopping_cart</span> <span class="nav-text">Shopping list</span>
+            <span class="material-symbols-outlined">shopping_cart</span> <span class="nav-text">Shopping list</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.resolver_match.url_name == 'about_us' %} active{% endif %}" href="{% url 'about_us' %}">
-            <span class="material-icons-outlined">info</span> <span class="nav-text">About</span> 
+            <span class="material-symbols-outlined">info</span> <span class="nav-text">About</span> 
           </a>
         </li>
       </ul>
@@ -103,7 +103,7 @@
       </ul>
 
         <div id="darkModeSelector" aria-label="dark mode toggle" class="rounded-circle shadow-md">
-          <span class="material-icons-outlined">light_mode</span>
+          <span class="material-symbols-outlined">light_mode</span>
         </div>
       </div>
 

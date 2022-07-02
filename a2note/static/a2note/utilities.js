@@ -48,7 +48,7 @@ function offlineNotification(status) {
   if (status == "offline") {
     let notif = document.createElement("div");
     notif.setAttribute("class", "offline-notification p-1 px-2 rounded-3");
-    notif.innerHTML = `<span class="material-icons-outlined">cloud_off</span> ` + gettext("Oops! It seems you are offline...");
+    notif.innerHTML = `<span class="material-symbols-outlined">cloud_off</span> ` + gettext("Oops! It seems you are offline...");
     
     document.querySelector(".my-container").appendChild(notif);
   }    
@@ -57,7 +57,7 @@ function offlineNotification(status) {
 function backOnlineNotification() {
   let notif = document.createElement("div");
     notif.setAttribute("class", "backonline-notification p-1 px-2 rounded-3");
-    notif.innerHTML = `<span class="material-icons-outlined">cloud</span> ` + gettext("Wow! You are back online.");
+    notif.innerHTML = `<span class="material-symbols-outlined">cloud</span> ` + gettext("Wow! You are back online.");
     
     notif.addEventListener('animationend', () => {
       notif.remove();
@@ -108,7 +108,7 @@ function toggleTheme(selection=""){
   if (body.classList.contains("light-theme")){
     //Applying LIGHT THEME
     //Darkmode icon
-    darkSelector.innerHTML = `<span class="material-icons-outlined">dark_mode</span>`;
+    darkSelector.innerHTML = `<span class="material-symbols-outlined">dark_mode</span>`;
 
     //Logo
     document.querySelector("#logo-dark").classList.add("hidden");
@@ -140,7 +140,7 @@ function toggleTheme(selection=""){
   } else {
     //Applying DARK THEME
     //Darkmode icon
-    darkSelector.innerHTML = `<span class="material-icons-outlined">light_mode</span>`;
+    darkSelector.innerHTML = `<span class="material-symbols-outlined">light_mode</span>`;
 
     //Logo
     document.querySelector("#logo-light").classList.add("hidden");

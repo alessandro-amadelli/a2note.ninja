@@ -138,7 +138,7 @@ function createSections() {
 
     let sectionTitle = document.createElement("div");
     sectionTitle.setAttribute("class", "section-title w-100 p-1 rounded-3");
-    sectionTitle.innerHTML = `<span class="d-inline">${secTitle}</span> <i class="material-icons-outlined d-inline">${secIcon}</i>`;
+    sectionTitle.innerHTML = `<span class="d-inline">${secTitle}</span> <i class="material-symbols-outlined d-inline">${secIcon}</i>`;
 
     targetSection.appendChild(sectionTitle);
 
@@ -264,7 +264,7 @@ function addItem(category=null, text=null, quantity="1", itemStatus=null, loaded
   itemDel.setAttribute("class", "input-group-prepend taskDeleteArea col-1 col-lg-1 col-sm-1 d-inline");
   let itemDelText = document.createElement("span");
   itemDelText.setAttribute("class", "float-start");
-  itemDelText.innerHTML = `<span class="material-icons-outlined">delete</span>`;
+  itemDelText.innerHTML = `<span class="material-symbols-outlined">delete</span>`;
   itemDel.appendChild(itemDelText);
 
   //On mouse over event
@@ -288,7 +288,7 @@ function addItem(category=null, text=null, quantity="1", itemStatus=null, loaded
   itemDone.setAttribute("class", "input-group-append taskDoneArea col-1 col-lg-1 col-sm-1 d-inline");
   let itemDoneText = document.createElement("span");
   itemDoneText.setAttribute("class", "float-end");
-  itemDoneText.innerHTML = `<span class="material-icons-outlined">task_alt</span>`;
+  itemDoneText.innerHTML = `<span class="material-symbols-outlined">task_alt</span>`;
   itemDone.appendChild(itemDoneText);
 
   //On mouse over event

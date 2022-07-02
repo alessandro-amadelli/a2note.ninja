@@ -42,7 +42,7 @@ function addTask(text=null, creationTime=null, taskStatus=null, loadedFromStorag
   taskDel.setAttribute("class", "input-group-prepend taskDeleteArea col-1 col-lg-1 col-sm-1 d-inline");
   let taskDelText = document.createElement("span");
   taskDelText.setAttribute("class", "float-start");
-  taskDelText.innerHTML = `<span class="material-icons-outlined">delete</span>`;
+  taskDelText.innerHTML = `<span class="material-symbols-outlined">delete</span>`;
   taskDel.appendChild(taskDelText);
 
   //On mouse over event
@@ -66,7 +66,7 @@ function addTask(text=null, creationTime=null, taskStatus=null, loadedFromStorag
   taskDone.setAttribute("class", "input-group-append taskDoneArea col-1 col-lg-1 col-sm-1 d-inline");
   let taskDoneText = document.createElement("span");
   taskDoneText.setAttribute("class", "float-end");
-  taskDoneText.innerHTML = `<span class="material-icons-outlined">task_alt</span>`;
+  taskDoneText.innerHTML = `<span class="material-symbols-outlined">task_alt</span>`;
   taskDone.appendChild(taskDoneText);
 
   //On mouse over event
@@ -115,11 +115,11 @@ function addTask(text=null, creationTime=null, taskStatus=null, loadedFromStorag
     String(today.getHours()).padStart(2,'0'),
     String(today.getMinutes()).padStart(2,'0'),
     String(today.getSeconds()).padStart(2,'0')]
-    timeDiv.innerHTML = `<i class="material-icons-outlined">schedule</i>
+    timeDiv.innerHTML = `<i class="material-symbols-outlined">schedule</i>
       <span class="taskCreationTime">${dateArr[0]}-${dateArr[1]}-${dateArr[2]} h.${dateArr[3]}:${dateArr[4]}:${dateArr[5]}</span>`;
   } else {
     //take the timestamp already present in the saved to-do list
-    timeDiv.innerHTML = `<i class="material-icons-outlined">schedule</i><span class="taskCreationTime">${creationTime}</span>`;
+    timeDiv.innerHTML = `<i class="material-symbols-outlined">schedule</i><span class="taskCreationTime">${creationTime}</span>`;
   }
 
   taskFooter.appendChild(timeDiv);
@@ -128,10 +128,10 @@ function addTask(text=null, creationTime=null, taskStatus=null, loadedFromStorag
   moveDiv.setAttribute("class", "col-2 col-sm-2 col-lg-1 d-inline");
   let arrDown = document.createElement("span");
   arrDown.setAttribute("class", "float-start taskArrow");
-  arrDown.innerHTML = `<i class="material-icons-outlined">keyboard_arrow_down</i>`;
+  arrDown.innerHTML = `<i class="material-symbols-outlined">keyboard_arrow_down</i>`;
   let arrUp = document.createElement("span");
   arrUp.setAttribute("class", "float-end taskArrow");
-  arrUp.innerHTML = `<i class="material-icons-outlined">keyboard_arrow_up</i>`;
+  arrUp.innerHTML = `<i class="material-symbols-outlined">keyboard_arrow_up</i>`;
 
   arrDown.addEventListener('click', () => {
     moveTaskDown(newTask);

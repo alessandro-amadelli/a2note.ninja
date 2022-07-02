@@ -345,6 +345,7 @@ a.active {
   width: 100%;
   background-color: var(--element-background);
   cursor: pointer;
+  user-select: none;
 }
 
 .newList-card:hover {
@@ -366,6 +367,7 @@ a.active {
 
 .list-thumbnail {
   background-color: var(--input-background);
+  user-select: none;
 }
 
 .list-thumbnail:hover {
@@ -383,6 +385,10 @@ a.active {
 
 .list-thumbnail[data-type="SHOPLIST"] .card-header {
   background-color: var(--shoplist-thumb-background);
+}
+
+.thumbnail-title {
+  user-select: all;
 }
 
 .card-header-text-col {

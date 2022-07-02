@@ -75,7 +75,7 @@ function addItemViewOnly(category=null, text=null, quantity=1, itemStatus=null) 
   itemDone.setAttribute("class", "input-group-append taskDoneArea col-1 col-lg-1 col-sm-1 d-inline");
   let itemDoneText = document.createElement("span");
   itemDoneText.setAttribute("class", "float-end");
-  itemDoneText.innerHTML = `<span class="material-icons-outlined">task_alt</span>`;
+  itemDoneText.innerHTML = `<span class="material-symbols-outlined">task_alt</span>`;
   itemDone.appendChild(itemDoneText);
 
   //On mouse over event

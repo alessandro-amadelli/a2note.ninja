@@ -21,21 +21,21 @@
   {% csrf_token %}
 
   <div id="main-container" class="container my-container p-5">
-    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
+    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
 
     <!-- Info alert to tell the user it is in view mode. -->
     <div class="alert alert-info fade show" role="alert">
-      <strong><span class="material-icons-outlined">info</span> {% translate "You are in view mode. Modifications won't be saved." %}</strong>
+      <strong><span class="material-symbols-outlined">info</span> {% translate "You are in view mode. Modifications won't be saved." %}</strong>
     </div>
 
-    <h3 class="intro-0 col"><span class="material-icons-outlined">shopping_cart</span> List VIEWER</h3>
+    <h3 class="intro-0 col"><span class="material-symbols-outlined">shopping_cart</span> List VIEWER</h3>
 
     <!-- Modal for items rundown -->
     <div class="modal fade" id="modalRundown" tabindex="-1" aria-labelledby="modalRundownLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="modalRundownLabel"><span class="material-icons-outlined">list_alt</span> {% translate "Items rundown" %} <span id="modalRundownTot"></span></h3>
+            <h3 class="modal-title" id="modalRundownLabel"><span class="material-symbols-outlined">list_alt</span> {% translate "Items rundown" %} <span id="modalRundownTot"></span></h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -52,7 +52,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="modalBarChartLabel"><span class="material-icons-outlined">bar_chart</span> {% translate "Statistics" %} <span id="modalBarChartTot"></span></h3>
+            <h3 class="modal-title" id="modalBarChartLabel"><span class="material-symbols-outlined">bar_chart</span> {% translate "Statistics" %} <span id="modalBarChartTot"></span></h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -68,21 +68,21 @@
       {% if list.shared == "True" %}
       <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can view the list.' %}">
         <span class="badge rounded-pill bg-primary">
-          <span class="material-icons-outlined">public</span>
+          <span class="material-symbols-outlined">public</span>
           {% translate "Public" %}
         </span>
       </span>
         {% if list.edit_enabled == "True" %}
         <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can edit the list.' %}">
           <span class="badge rounded-pill bg-success">
-            <span class="material-icons-outlined">edit</span>
+            <span class="material-symbols-outlined">edit</span>
             {% translate 'Edit enabled' %}
           </span>
         </span>
         {% else %}
         <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can edit the list.' %}">
           <span class="badge rounded-pill bg-danger">
-            <span class="material-icons-outlined">edit_off</span>
+            <span class="material-symbols-outlined">edit_off</span>
             {% translate 'Edit disabled' %}
           </span>
         </span>
@@ -90,7 +90,7 @@
       {% else %}
       <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can view the list.' %}">
           <span class="badge rounded-pill bg-secondary">
-            <span class="material-icons-outlined" >lock</span>
+            <span class="material-symbols-outlined" >lock</span>
             {% translate "Private" %}
         </span>
       </span>
@@ -110,8 +110,8 @@
       <div class="w-100"></div>
       <div class="col-12 mt-2 mb-0">
         <span>{% translate "Tools" %} </span>
-        <span class="material-icons-outlined" id="btnShowRundown">list_alt</span>
-        <span class="material-icons-outlined" id="btnShowStats">bar_chart</span>
+        <span class="material-symbols-outlined" id="btnShowRundown">list_alt</span>
+        <span class="material-symbols-outlined" id="btnShowStats">bar_chart</span>
       </div>
     </div>
   </div>

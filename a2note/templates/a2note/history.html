@@ -18,7 +18,7 @@
 
 
 {% block body %}
-  <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
+  <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
   <div class="container my-container p-3">
     <h1 class="intro-0">{% translate 'List history' %}</h1>
     <h3 class="intro-1">{% translate "Record of the last 20 lists you opened." %}</h3>
@@ -48,7 +48,7 @@
     {% else %}
     <div class="row">
       <div class="col">
-        <p><span class="material-icons-outlined">support_agent</span> {% translate "No recent data to show." %}</p>
+        <p><span class="material-symbols-outlined">support_agent</span> {% translate "No recent data to show." %}</p>
       </div>
     </div>
     {% endif %}

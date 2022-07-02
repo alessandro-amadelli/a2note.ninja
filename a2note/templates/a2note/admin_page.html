@@ -12,7 +12,7 @@
   {% if user.is_staff %}
   {% csrf_token %}
   <script src="{% static 'a2note/admin_page.js' %}"></script>
-  <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
+  <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
   <div class="container my-container p-3">
     <h1 class="intro-0">{% translate 'Administration panel' %}</h1>
     <h3 class="intro-1">{% translate "Authorized personnel only!" %}</h3>
@@ -45,21 +45,21 @@
           </table>
         </td>
         <td>
-          <span class='material-icons-outlined'>
+          <span class='material-symbols-outlined'>
             {% if u.is_active %}check{% else %}block{% endif %}
           </span>
         </td>
         <td>
-          <span class='material-icons-outlined'>
+          <span class='material-symbols-outlined'>
             {% if u.is_staff %}badge{% else %}person{% endif %}
           </span>
         </td>
         <td>
           {% if u.username != user.username%}
             {% if u.is_active %}
-              <button class="btn btn-danger btnBlock" data-action="block_user" data-username="{{u.username}}"><span class='material-icons-outlined'>lock</span> Block</button>
+              <button class="btn btn-danger btnBlock" data-action="block_user" data-username="{{u.username}}"><span class='material-symbols-outlined'>lock</span> Block</button>
             {% else %}
-              <button class="btn btn-success btnBlock" data-action="activate_user" data-username="{{u.username}}"><span class='material-icons-outlined'>lock_open</span> Activate</button>
+              <button class="btn btn-success btnBlock" data-action="activate_user" data-username="{{u.username}}"><span class='material-symbols-outlined'>lock_open</span> Activate</button>
             {% endif %}
           {% else %}
           Current user

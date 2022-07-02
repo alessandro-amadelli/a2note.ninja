@@ -19,52 +19,52 @@
 
 {% block body %}
   <div class="container my-container p-5">
-    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-icons-outlined">keyboard_arrow_up</span></button>
+    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
     <h1 class="intro-0">{% translate 'Your personal dashboard' %}</h1>
     <h4 class="intro-1">{% translate "Here you can see some numbers and some statistics about your lists." %}</h4>
 
     <hr>
 
-    <h3>{% translate "Report" %} <span class="material-icons-outlined">summarize</span></h3>
+    <h3>{% translate "Report" %} <span class="material-symbols-outlined">summarize</span></h3>
 
     {% if total > 0 %}
     <table class="table table-dark">
       <tr>
-        <th class="table-active fs-5"><span class="material-icons-outlined">checklist_rtl</span> {% translate 'Todolists created' %}</th>
+        <th class="table-active fs-5"><span class="material-symbols-outlined">checklist_rtl</span> {% translate 'Todolists created' %}</th>
         <th class="table-active fs-5">{{ todolists_total }}</th>
       </tr>
       <tr>
-        <th><span class="material-icons-outlined">tag</span> {% translate 'Tasks in to-do lists' %}</th>
+        <th><span class="material-symbols-outlined">tag</span> {% translate 'Tasks in to-do lists' %}</th>
         <td>{{ total_tasks }}</td>
       </tr>
       <tr>
-        <th><span class="material-icons-outlined">check</span> {% translate 'Tasks done' %}</th>
+        <th><span class="material-symbols-outlined">check</span> {% translate 'Tasks done' %}</th>
         <td>{{ tasks_done }}</td>
       </tr>
       <tr>
-        <th><span class="material-icons-outlined">pending</span> {% translate 'Tasks to do' %}</th>
+        <th><span class="material-symbols-outlined">pending</span> {% translate 'Tasks to do' %}</th>
         <td>{{ tasks_todo }}</td>
       </tr>
       <tr>
-        <th class="table-active fs-5"><span class="material-icons-outlined">shopping_cart</span> {% translate 'Shopping lists created' %}</th>
+        <th class="table-active fs-5"><span class="material-symbols-outlined">shopping_cart</span> {% translate 'Shopping lists created' %}</th>
         <th class="table-active fs-5">{{ shoplists_total }}</th>
       </tr>
       <tr>
-        <th><span class="material-icons-outlined">add_shopping_cart</span> {% translate 'Items in shopping lists' %}</th>
+        <th><span class="material-symbols-outlined">add_shopping_cart</span> {% translate 'Items in shopping lists' %}</th>
         <td>{{ total_items }}</td>
       </tr>
       <tr>
-        <th class="table-active fs-5"><span class="material-icons-outlined">functions</span> {% translate 'Total' %}</th>
+        <th class="table-active fs-5"><span class="material-symbols-outlined">functions</span> {% translate 'Total' %}</th>
         <th class="table-active fs-5">{{ total }}</th>
       </tr>
     </table>
     {% else %}
-    <p><span class="material-icons-outlined">sentiment_dissatisfied</span> {% translate "Nothing to report here..." %}</p>
+    <p><span class="material-symbols-outlined">sentiment_dissatisfied</span> {% translate "Nothing to report here..." %}</p>
     {% endif %}
 
     <hr>
 
-    <h3>{% translate "Statistics" %} <span class="material-icons-outlined">bar_chart</span></h3>
+    <h3>{% translate "Statistics" %} <span class="material-symbols-outlined">bar_chart</span></h3>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -87,7 +87,7 @@
               data: typeDonutPlot["values"],
               hoverOffset: 10,
               borderWidth: 0,
-              spacing: 3
+              spacing: 5
             }],
           };
 
@@ -108,8 +108,7 @@
         setTimeout(() => {
           makeTypeDonutPlot();
         }, 150);
-
-
+        
         </script>
 
       </div>
@@ -132,7 +131,7 @@
               data: taskDonutPlot["values"],
               hoverOffset: 10,
               borderWidth: 0,
-              spacing: 3
+              spacing: 5
             }],
           };
 
@@ -328,7 +327,7 @@
 
     </div>
     {% else %}
-    <p><span class="material-icons-outlined">not_interested</span> {% translate "You haven't created any list...yet" %}</p>
+    <p><span class="material-symbols-outlined">not_interested</span> {% translate "You haven't created any list...yet" %}</p>
     {% endif %}
 
 {% endblock %}

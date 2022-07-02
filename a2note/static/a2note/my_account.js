@@ -60,16 +60,16 @@ function calculateRank(){
   full_stars = Math.floor(fulfilledAchievements/2);
   //Full stars to display
   for (i=0;i < full_stars; i++) {
-    stars += "<span class='material-icons-outlined'>star</span>";
+    stars += "<span class='material-symbols-outlined'>star</span>";
   }
   //Display an half-full star if the remainder of the number is odd
   if (fulfilledAchievements % 2 != 0) {
-    stars += "<span class='material-icons-outlined'>star_half</span>";
+    stars += "<span class='material-symbols-outlined'>star_half</span>";
     full_stars ++; //Increment full_stars to correct the number of empty stars to display
   }
   //Display empty stars 
   for (i=0;i < 10 - full_stars; i++) {
-    stars += "<span class='material-icons-outlined'>star_outline</span>"
+    stars += "<span class='material-symbols-outlined'>star_outline</span>"
   }
 
   tdRank.innerHTML = rank + "<br>" + stars;

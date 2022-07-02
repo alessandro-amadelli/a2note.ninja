@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.onclick = function(){
             showLoading("Please wait...");
             btn.setAttribute("class", "btn btn-warning");
-            btn.innerHTML = `<span class='material-icons-outlined'>sync</span> Changed`;
+            btn.innerHTML = `<span class='material-symbols-outlined'>sync</span> Changed`;
             btn.disabled = true;
             blockUser(btn.dataset.action, btn.dataset.username);
         }
