@@ -1,0 +1,110 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+  ninja editor
+{% endblock %}
+
+{% block SEOTitle %}
+  <meta name="title" content="a2note.ninja - {% translate 'View the checklist.' %}" />
+{% endblock %}
+
+{% block description %}
+  <meta name="description" content="{% translate 'Here you can view this checklist. Changes cannot be saved.' %}" />
+{% endblock %}
+
+{% block body %}
+  {% csrf_token %}
+
+  <div class="container my-container p-3">
+    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
+
+    <!-- Info alert to tell the user it is in view mode. -->
+    <div class="alert alert-info fade show" role="alert">
+      <strong><span class="material-symbols-outlined">info</span> {% translate "You are in view mode. Modifications won't be saved." %}</strong>
+    </div>
+
+    <div class="row m-1 p-1 d-flex">
+      <h3 class="intro-0 col"><span class="material-symbols-outlined">table_chart</span> List VIEWER</h3>
+    </div>
+
+    <p class="intro-1">
+      {% if list.shared == "True" %}
+      <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can view the list.' %}">
+        <span class="badge rounded-pill bg-primary">
+          <span class="material-symbols-outlined">public</span>
+          {% translate "Public" %}
+        </span>
+      </span>
+        {% if list.edit_enabled == "True" %}
+        <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can edit the list.' %}">
+          <span class="badge rounded-pill bg-success">
+            <span class="material-symbols-outlined">edit</span>
+            {% translate 'Edit enabled' %}
+          </span>
+        </span>
+        {% else %}
+        <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can edit the list.' %}">
+          <span class="badge rounded-pill bg-danger">
+            <span class="material-symbols-outlined">edit_off</span>
+            {% translate 'Edit disabled' %}
+          </span>
+        </span>
+        {% endif %}
+      {% else %}
+      <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can view the list.' %}">
+          <span class="badge rounded-pill bg-secondary">
+            <span class="material-symbols-outlined" >lock</span>
+            {% translate "Private" %}
+        </span>
+      </span>
+      {% endif %}
+    </p>
+   
+    <h1 class="text-center">{{ list.title }}</h1>
+
+    <div class="table-responsive m-0 mb-1">
+      <table class="table table-fixed m-0">
+        <thead>
+          <tr>
+            <th scope="col" class="border text-center"><span id="colLName"></span></th>
+            <th scope="col" class="border text-center"><span id="colMName"></span></th>
+            <th scope="col" class="border text-center"><span id="colRName"></span></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+    <div id="checkList" class="row mx-0">
+      <div id="checkColL" class="col-4 p-1"></div>
+      <div id="checkColM" class="col-4 p-1"></div>
+      <div id="checkColR" class="col-4 p-1"></div>
+    </div>
+
+    <!-- Passing list items to the javascript in a secure way-->
+    {{ list.items|json_script:"checks" }}
+    <script>
+      var checks = JSON.parse(document.getElementById('checks').textContent);
+    </script>
+
+    <!-- Passing column colors to javascript variables -->
+    {{ list.columns|json_script:"column_config" }}
+    <script>
+      var column_config = JSON.parse(document.getElementById('column_config').textContent);
+    </script>
+    <script src="{% static 'a2note/checklist_functions.js' %}"></script>
+    <script src="{% static 'a2note/checklist_viewer.js' %}"></script>
+
+  </div>
+
+  <div class="container footer-container p-0 hidden">
+    <!-- Footer with shopping list progress -->
+    <div class="progress w-100 shadow-sm m-0">
+      <div id="taskProgress" class="progress-bar progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+
+{% endblock %}

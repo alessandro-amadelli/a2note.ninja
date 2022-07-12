@@ -67,6 +67,7 @@
       <div class="col hidden info-text">
         <p><strong>To-do list:</strong> {% translate 'To-do lists are a great way to put your commitments and important things pen to paper. That way you can see your progress.' %}</p>
         <p><strong>Shopping list:</strong> {% translate "With a shopping list it's easy to remember everything you have to buy. You can see progress as you put items in the cart and everything falls into its own category." %}</p>
+        <p><strong>Checklist:</strong> {% translate "By creating a checklist you can assign every item to a certain category (eg.: 'Pass' or 'Fail', 'Present' or 'Absent', etc.). You can rename the categories as you wish." %}</p>
       </div>
     </div>
 
@@ -75,7 +76,7 @@
         <h5><span class="material-symbols-outlined">edit</span>{% translate "Create a new" %}</h5>
       </div>
       <div class="w-100"></div>
-      <div class="col-md-6 col-12 p-3">
+      <div class="col-md-4 col-12 p-3">
           <div class="card newList-card" data-type="TODOLIST">
             <div class="card-body">
               <p class="card-title col-10 fs-5">To-do list</p>
@@ -83,13 +84,21 @@
           </div>
       </div>
 
-      <div class="col-md-6 col-12 p-3">
+      <div class="col-md-4 col-12 p-3">
           <div class="card newList-card" data-type="SHOPLIST">
             <div class="card-body">
               <p class="card-title fs-5">Shopping list</p>
             </div>
           </div>
       </div>
+
+      <div class="col-md-4 col-12 p-3">
+        <div class="card newList-card" data-type="CHECKLIST">
+          <div class="card-body">
+            <p class="card-title fs-5">Checklist</p>
+          </div>
+        </div>
+    </div>
 
     </div>
 

@@ -1,0 +1,302 @@
+{% extends 'a2note/layout.html' %}
+{% load static %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+  ninja editor
+{% endblock %}
+
+{% block SEOTitle %}
+  <meta name="title" content="a2note.ninja - {% translate 'Edit the checklist.' %}" />
+{% endblock %}
+
+{% block description %}
+  <meta name="description" content="{% translate 'Here you can edit this checklist and save new changes.' %}" />
+{% endblock %}
+
+{% block body %}
+  {% csrf_token %}
+
+  <div class="container my-container p-3">
+    <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
+
+    <div class="row m-1 p-1 d-flex">
+      <h3 class="intro-0 col"><span class="material-symbols-outlined">table_chart</span> List EDITOR</h3>
+      <div class="col-lg-3 col-4">
+        <button class="btn btn-success hidden" id="btnSaveList" disabled><span class="material-symbols-outlined">save</span> {% translate "Save" %}</button>
+      </div>
+    </div>
+
+    <p class="intro-1">
+      {% if list.shared == "True" %}
+      <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can view the list.' %}">
+        <span class="badge rounded-pill bg-primary">
+          <span class="material-symbols-outlined">public</span>
+          {% translate "Public" %}
+        </span>
+      </span>
+        {% if list.edit_enabled == "True" %}
+        <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Anyone with the link can edit the list.' %}">
+          <span class="badge rounded-pill bg-success">
+            <span class="material-symbols-outlined">edit</span>
+            {% translate 'Edit enabled' %}
+          </span>
+        </span>
+        {% else %}
+        <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can edit the list.' %}">
+          <span class="badge rounded-pill bg-danger">
+            <span class="material-symbols-outlined">edit_off</span>
+            {% translate 'Edit disabled' %}
+          </span>
+        </span>
+        {% endif %}
+      {% else %}
+      <span class="p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Only you can view the list.' %}">
+          <span class="badge rounded-pill bg-secondary">
+            <span class="material-symbols-outlined" >lock</span>
+            {% translate "Private" %}
+        </span>
+      </span>
+      {% endif %}
+    </p>
+
+    {% if user.username == list.author %}
+    <div class="row rounded-3 list-panel">
+      <div class="col px-0">
+        <button type="button" class="btn btn-danger px-4" data-bs-toggle="modal" data-bs-target="#modalDeleteList"><span class="material-symbols-outlined">delete</span></button>
+      </div>
+      <div class="col text-center px-0">
+        <button type="button" class="btn btn-light px-4" data-bs-toggle="modal" data-bs-target="#modalListSettings"><span class="material-symbols-outlined">settings</span></button>
+      </div>
+      <div class="col text-end px-0">
+        <button type="button" class="btn btn-light px-4" data-bs-toggle="modal" data-bs-target="#modalShareList"><span class="material-symbols-outlined">share</span></button>
+      </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modalDeleteList" tabindex="-1" aria-labelledby="modalDeleteListLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalDeleteListLabel"><span class="material-symbols-outlined">delete_forever</span> {% translate "List deletion" %}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h4><span class="material-symbols-outlined">report_problem</span> {% translate "Warning"%}</h4>
+            <p>{% translate "You are about to delete this list and all of its content." %}<br>
+            {% translate "This list will do <a href='https://en.wikipedia.org/wiki/Seppuku' target='_blank' rel='noopener noreferrer'>seppuku</a> for the shame of failing you!" %}</p>
+            <p><strong>{% translate "This action is irreversible, do you wish to continue?" %}</strong></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="btnNevermind" data-bs-dismiss="modal">{% translate "Nah...nevermind" %}</button>
+            <button type="button" class="btn btn-danger" id="btnDeleteList">{% translate "Yes, go ahed!" %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for list settings -->
+    <div class="modal fade" id="modalListSettings" tabindex="-1" aria-labelledby="modalListSettingsLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalListSettingsLabel"><span class="material-symbols-outlined">build</span> {% translate "List settings" %}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h4><span class="material-symbols-outlined">policy</span> {% translate "Privacy"%}</h4>
+            <p> {% translate "Your list privacy is currently: " %}
+              <strong>{% if list.shared == 'True' %} {% translate 'Public' %} <span class="material-symbols-outlined">public</span></strong><br>
+              {% translate 'Anyone with the link can view it.' %}
+              {% else %}
+              <strong>{% translate 'Private' %} <span class="material-symbols-outlined">lock</span></strong> <br>
+              {% translate 'No one can see it even with the link.' %}
+              {% endif %}
+            </p>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="listPrivacySwitch" {% if list.shared == 'True' %}checked{% endif %}>
+              <label class="form-check-label" for="listPrivacySwitch">{% translate "Public list" %}</label>
+            </div>
+            <hr>
+            <h4><span class="material-symbols-outlined">edit</span> {% translate "Edit"%}</h4>
+            <p>
+              {% translate "Your list edit policy is: " %}
+                {% if list.edit_enabled == 'True' %}
+                <strong>{% translate 'Edit enabled' %} <span class="material-symbols-outlined">edit</span></strong><br>
+                <span class="material-symbols-outlined">report_problem</span>
+                {% translate 'Anyone with the link can edit the list, this includes adding and deleting items.' %}
+                {% else %}
+                <strong>{% translate 'Edit disabled' %} <span class="material-symbols-outlined">edit_off</span></strong> <br>
+                {% translate 'You are the only one who can edit this list.' %}
+                {% endif %}
+                <br>
+                {% translate "Only you can delete this list." %}
+            </p>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="editEnableSwitch" {% if list.shared == 'False' %}disabled{% else %}{% if list.edit_enabled == 'True' %}checked{% endif %}{% endif %}>
+              <label class="form-check-label" for="editEnableSwitch">{% translate "Enable editing" %}</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate "Cancel" %}</button>
+            <button type="button" class="btn btn-light" id="btnSaveSettings" data-bs-dismiss="modal"><span class="material-symbols-outlined">save</span> {% translate "Save" %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for list sharing -->
+    <div class="modal fade" id="modalShareList" tabindex="-1" aria-labelledby="modalShareListLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalShareListLabel"><span class="material-symbols-outlined">share</span> {% translate "List sharing" %}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>{% translate "List code" %}: {{ element_id }}</p>
+            <button type="button" class="btn btn-light m-2" id="btnCopyClipboard" data-bs-dismiss="modal"><span class="material-symbols-outlined">content_paste</span> {% translate "Copy to clipboard" %}</button>
+            <br>
+            <a type="button" class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnWhatsapp" href="" data-action="share/whatsapp/share" target="_blank"><span class="material-symbols-outlined">chat</span> Whatsapp </a>
+            <br>
+            <a type="button" class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnTelegram" href="" target="_blank"><span class="material-symbols-outlined">send</span> Telegram </a>
+            <br>
+            <a class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnEmail" href=""><span class="material-symbols-outlined">email</span> email</a>
+            {% if list.shared == 'False' %}
+            <p>{% translate "Some functions are disabled because the list privacy is set to private. If you'd like to share the list please go to 'Settings' and make the list public." %}</p>
+            {% endif %}
+          </div>
+          <div class="modal-footer">
+            <input type="text" class="hidden" id="urlText" value="" readonly />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for columns editing -->
+    <div class="modal fade" id="modalEditCols" tabindex="-1" aria-labelledby="modalEditColsLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalEditColsLabel"><span class="material-symbols-outlined">share</span> {% translate "Column editor" %}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>{% translate "Here you can modify column names and colors" %}</p>
+            <div class="row mb-2 border">
+              <fieldset>
+                <legend>Column 1</legend>
+                <div class="col mb-2">
+                  <label for="modalC1Name">Name</label>
+                  <input type="text" name="modalC1Name" id="modalC1Name" maxlength="30">
+                </div>
+                <div class="w-100"></div>
+                <div class="col mb-2">
+                  <label for="modalC1Color">Color</label>
+                  <input type="color" name="modalC1Color" id="modalC1Color">
+                </div>
+              </fieldset>
+            </div>
+            <div class="row mb-2 border">
+              <fieldset>
+                <legend>Column 2</legend>
+                <div class="col mb-2">
+                  <label for="modalC2Name">Name</label>
+                  <input type="text" name="modalC2Name" id="modalC2Name" maxlength="30">
+                </div>
+                <div class="w-100"></div>
+                <div class="col mb-2">
+                  <label for="modalC2Color">Color</label>
+                  <input type="color" name="modalC2Color" id="modalC2Color">
+                </div>
+              </fieldset>
+            </div>
+            <div class="row mb-2 border">
+              <fieldset>
+                <legend>Column 3</legend>
+                <div class="col mb-2">
+                  <label for="modalC3Name">Name</label>
+                  <input type="text" name="modalC3Name" id="modalC3Name" maxlength="30">
+                </div>
+                <div class="w-100"></div>
+                <div class="col mb-2">
+                  <label for="modalC3Color">Color</label>
+                  <input type="color" name="modalC3Color" id="modalC3Color">
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate "Cancel" %}</button>
+            <button type="button" class="btn btn-light" id="btnSaveColumns" data-bs-dismiss="modal"><span class="material-symbols-outlined">save</span> {% translate "Save" %}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="row m-1 p-1">
+      <div class="input-group">
+        <span class=" col-lg-2 col-3 mb-3 p-1" id="titleDescription">{% translate 'Title' %}</span>
+        <input type="text" class="col-lg-10 col-9 rounded-3 mb-3 p-1" id="inpListTitle" aria-describedby="titleDescription"  placeholder="{% translate 'List title...' %}" maxlength="30" autocomplete="off" value="{{ list.title }}">
+      </div>
+    </div>
+
+    {% if list.element_id %}
+    <span id="elementID" class="hidden">{{ list.element_id }}</span>
+    {% endif %}
+
+    <div class="row">
+      <input type="text" id="checkText" class="d-inline col-9 col-lg-10 rounded-3 m-1 mb-3 p-1" placeholder="{% translate 'Insert task...' %}" maxlength="50"/>
+      <button type="button" id="btnAddCheck" class="d-inline btn btn-light col-2 col-lg-1 m-1 mb-3 p-1"><span class="material-symbols-outlined">plus_one</span></button>
+      <div class="w-100"></div>
+    </div>
+
+    <div class="row">
+      <span class="material-symbols-outlined col-1" id="editColsTrigger" data-bs-toggle="modal" data-bs-target="#modalEditCols">edit</span>
+    </div>
+
+    <div class="table-responsive m-0 mb-1">
+      <table class="table table-fixed m-0">
+        <thead>
+          <tr>
+            <th scope="col" class="border text-center"><span id="colLName"></span></th>
+            <th scope="col" class="border text-center"><span id="colMName"></span></th>
+            <th scope="col" class="border text-center"><span id="colRName"></span></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+    <div id="checkList" class="row mx-0">
+      <div id="checkColL" class="col-4 p-1"></div>
+      <div id="checkColM" class="col-4 p-1"></div>
+      <div id="checkColR" class="col-4 p-1"></div>
+    </div>
+
+    <!-- Passing list items to the javascript in a secure way-->
+    {{ list.items|json_script:"checks" }}
+    <script>
+      var checks = JSON.parse(document.getElementById('checks').textContent);
+    </script>
+
+    <!-- Passing column colors to javascript variables -->
+    {{ list.columns|json_script:"column_config" }}
+    <script>
+      var column_config = JSON.parse(document.getElementById('column_config').textContent);
+    </script>
+    <script src="{% static 'a2note/checklist_functions.js' %}"></script>
+    <script src="{% static 'a2note/checklist_editor.js' %}"></script>
+
+  </div>
+
+  <div class="container footer-container p-0 hidden">
+    <!-- Footer with shopping list progress -->
+    <div class="progress w-100 shadow-sm m-0">
+      <div id="taskProgress" class="progress-bar progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+
+{% endblock %}

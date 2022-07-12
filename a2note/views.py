@@ -18,7 +18,7 @@ from django.core.validators import validate_email
 #translation
 from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
-from django.utils.translation import activate, get_language
+# from django.utils.translation import activate, get_language
 
 from a2note.dynamoDB_ops import *
 from a2note.mailer import send_email
@@ -98,7 +98,7 @@ def error_view(request, message="", pagemessage=""):
         "<li>The entire website exploded</li></ul><br>" \
         "Ok, maybe not the last option...")
 
-    #Checking if the user is authenticade to assign the achievement#8
+    #Checking if the user is authenticated to assign achievement#8
     if request.user.is_authenticated:
         username = request.user.username
         assign_achievements_to_user(username, ["achievement#8"])
@@ -568,7 +568,7 @@ def dashboard_view(request):
 
     total_tasks, total_items = 0,0
     total_done, total_todo = 0,0
-    todolists_ctr, shoplists_ctr = 0,0
+    todolists_ctr, shoplists_ctr, checklists_ctr = 0,0,0
 
     #Number of lists created for each weekday
     todolists_per_weekday = [0 for i in range(7)]
@@ -600,6 +600,8 @@ def dashboard_view(request):
                     total_done += 1
                 else:
                     total_todo +=1
+        elif l["element_type"] == "CHECKLIST":
+            checklists_ctr += 1
         else:
             pass
 
@@ -607,6 +609,7 @@ def dashboard_view(request):
         "total": len(created_lists),
         "todolists_total": todolists_ctr,
         "shoplists_total": shoplists_ctr,
+        "checklists_total": checklists_ctr,
         "total_tasks": total_tasks,
         "tasks_done": total_done,
         "tasks_todo": total_todo,
@@ -615,11 +618,11 @@ def dashboard_view(request):
 
     #Passing plots data to the webpage to build plots with chart.js
     # 1 - Donut plot: type of created lists
-    if todolists_ctr > 0 or shoplists_ctr > 0:
+    if todolists_ctr > 0 or shoplists_ctr > 0 or checklists_ctr > 0:
         context["type_donut_plot"] = {
-        "values": [todolists_ctr, shoplists_ctr],
-        "labels": ["To-do lists", "Shopping lists"],
-        "colors": ["rgb(0, 51, 153)", 'rgb(247, 247, 43)']
+        "values": [todolists_ctr, shoplists_ctr, checklists_ctr],
+        "labels": ["To-do lists", "Shopping lists", "Checklists"],
+        "colors": ["rgb(0, 51, 153)", 'rgb(247, 247, 43)', '#a80038']
         }
 
     # 2 - Donut plot: done vs pending tasks in to-do lists
@@ -781,6 +784,17 @@ def create_list_view(request):
     """
     element_type = request.POST["element_type"]
 
+    #Allowed list types
+    list_types = [ 
+        "SHOPLIST",
+        "TODOLIST",
+        "CHECKLIST"
+    ]
+    #If element type is not in allowed types, the error page is returned and the list is not created
+    if element_type not in(list_types):
+        response = {"element_id": "error"}
+        return JsonResponse(response)
+
     item = {
     "element_type": element_type,
     "author": request.user.username,
@@ -788,6 +802,22 @@ def create_list_view(request):
     "edit_enabled": "False",
     "title": "",
     "items": {}
+    }
+
+    # For checklists only it is necessary to add an additional field (with default values)
+    item["columns"] = {
+        "column_left": {
+            "name": gettext("Fail"),
+            "color": "#CC0000"
+        },
+        "column_middle": {
+            "name": "-",
+            "color": "#262626"
+        },
+        "column_right": {
+            "name": gettext("Pass"),
+            "color": "#14AD00"
+        }
     }
 
     new_list = insert_item(item)
@@ -878,6 +908,24 @@ def update_history(username, element_id, author, title):
         insert_item(new_item)
         cache.set(cache_key + "_UPDATED", True, 2) #Cache key with TTL=2s to avoid consecutive updates on DB
 
+def list_type_from_UID(listUID):
+    # Dictionary with the type of lists based on list code
+    type_dictionary = {
+        "SL": "SHOPLIST",
+        "TL": "TODOLIST",
+        "CL": "CHECKLIST"
+    }
+
+    list_code = listUID[:2]
+
+    try:
+        list_type = type_dictionary[list_code]
+    except:
+        list_type = "TODOLIST"
+    
+    return list_type
+
+
 def list_editor(request, listUID):
     """
     This is the list editor.
@@ -886,10 +934,7 @@ def list_editor(request, listUID):
     Only the list author can change the privacy settings for the list or delete the list.
     """
     #Choose the correct type of list
-    if listUID[:2] == "SL":
-        list_type = "SHOPLIST"
-    else:
-        list_type = "TODOLIST"
+    list_type = list_type_from_UID(listUID)
 
     cache_key = list_type + listUID
     item = cache.get(cache_key)
@@ -946,8 +991,12 @@ def list_editor(request, listUID):
                 cat["category_name"] = cat['EN_name']
         context["categories"] = categories
         return render(request, "a2note/shoplist_editor.html", context)
-    else:
+    elif list_type == "TODOLIST":
         return render(request, "a2note/todolist_editor.html", context)
+    elif list_type == "CHECKLIST":
+        return render(request, "a2note/checklist_editor.html", context)
+    else:
+        return error_view(request, _("Ooops! That's awkward..."))
 
 def list_viewer(request, listUID):
     """
@@ -955,10 +1004,7 @@ def list_viewer(request, listUID):
     This page presents the lists and all of it's content (if the user has privilege to see it).
     No modification can be made or saved to the list itself.
     """
-    if listUID[:2] == "SL":
-        element_type = "SHOPLIST"
-    else:
-        element_type = "TODOLIST"
+    element_type = list_type_from_UID(listUID)
 
     cache_key = element_type + listUID
     item = cache.get(cache_key)
@@ -1006,8 +1052,12 @@ def list_viewer(request, listUID):
                 cat["category_name"] = cat['EN_name']
         context["categories"] = categories
         return render(request, "a2note/shoplist_viewer.html", context)
-    else:
+    elif element_type == "TODOLIST":
         return render(request, "a2note/todolist_viewer.html", context)
+    elif element_type == "CHECKLIST":
+        return render(request, "a2note/checklist_viewer.html", context)
+    else:
+        return error_view(request, _("Ooops! That's awkward..."))
 
 def get_all_products():
     #Checking if the products are already present in the cache
@@ -1152,6 +1202,15 @@ def save_list_view(request):
     if element_type == "SHOPLIST":
         modifications = request.POST["modifications"]
         modifications = json.loads(modifications)
+    elif element_type == "CHECKLIST":
+        column_left_name = request.POST["colLName"] if request.POST["colLName"].replace(" ", "") != "" else "Absent"
+        column_left_color = request.POST["colLColor"]
+        column_middle_name = request.POST["colMName"] if request.POST["colMName"].replace(" ", "") != "" else "To-do"
+        column_middle_color = request.POST["colMColor"]
+        column_right_name = request.POST["colRName"] if request.POST["colRName"].replace(" ", "") != "" else "Present"
+        column_right_color = request.POST["colRColor"]
+        items = request.POST["items"]
+        items = json.loads(items)
     else:
         items = request.POST["items"]
         items = json.loads(items)
@@ -1231,6 +1290,24 @@ def save_list_view(request):
         'creation_timestamp': list_data["creation_timestamp"]
     }
 
+    #For checklists only, it is necessary to add an additional field containing the column names
+    if element_type == "CHECKLIST":
+        item["columns"] = {
+            "column_left": {
+                "name": column_left_name,
+                "color": column_left_color
+            },
+            "column_middle": {
+                "name": column_middle_name,
+                "color": column_middle_color
+            },
+            "column_right": {
+                "name": column_right_name,
+                "color": column_right_color
+            },
+        }
+
+    #Saving list to DB
     insert_item(item)
 
     #delete cached lists for the list author
@@ -1444,7 +1521,7 @@ def theme_changed(request):
     """
     if request.user.is_authenticated:
         username = request.user.username
-        #Assigne achievement#6 for toggling the theme
+        #Assign achievement#6 for toggling the theme
         assign_achievements_to_user(username, ["achievement#6"])
 
     response = {"RESULT": "OK"}
@@ -1454,7 +1531,7 @@ def deletion_canceled(request):
     """
     This view is created with the sole purpose of assigning the achievement for
     the merciful users.
-    (Go for delete a list and then "spare" the list's life)
+    (Go to delete a list and then "spare" the list's life)
     """
     if request.user.is_authenticated:
         username = request.user.username

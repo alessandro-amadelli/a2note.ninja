@@ -91,8 +91,12 @@ function deleteList(element_id) {
   const data = new FormData();
   if (element_id.substring(0,2) == "SL") {
     element_type = "SHOPLIST";
-  } else {
+  } else if (element_id.substring(0,2) == "TL") {
     element_type = "TODOLIST";
+  } else if (element_id.substring(0,2) == "CL") {
+    element_type = "CHECKLIST";
+  } else {
+    element_type = "";
   }
   data.append("element_id", element_id);
   data.append("element_type", element_type);

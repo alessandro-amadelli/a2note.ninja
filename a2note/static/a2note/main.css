@@ -5,6 +5,11 @@
   --background-color: rgb(26, 26, 26);
   --body-background-color: #000;
   --bulletin-background: rgba(0, 0, 0, .2);
+  --check-background: rgba(0,0,0,.6);
+  --check-col-l-background: #a81f1fcc;
+  --check-col-m-background: #464646cc;
+  --check-col-r-background: #3acc00cc;
+  --checklist-thumb-background: #a80038;
   --donetask-background: rgba(0, 0, 0, .1);
   --element-background: rgba(0, 0, 0, .9);
   --filter-value: invert();
@@ -39,6 +44,11 @@
   --background-color: rgba(20, 130, 232, 0.75);
   --body-background-color: #f7f7f7;
   --bulletin-background: rgba(0, 0, 0, .5);
+  --check-background: rgba(247, 247, 247, .6);
+  --check-col-l-background: #a81f1fcc;
+  --check-col-m-background: #464646cc;
+  --check-col-r-background: #3acc00cc;
+  --checklist-thumb-background: #a80038;
   --donetask-background: rgba(0, 0, 0, 0.1);
   --element-background: rgba(247, 247, 247, 0.9);
   --filter-value: none;
@@ -360,6 +370,10 @@ a.active {
   background-color: var(--shoplist-thumb-background);
 }
 
+.newList-card[data-type="CHECKLIST"] {
+  background-color: var(--checklist-thumb-background);
+}
+
 .thumbnail-div {
   overflow-y: auto;
   background-color: var(--task-background);
@@ -385,6 +399,10 @@ a.active {
 
 .list-thumbnail[data-type="SHOPLIST"] .card-header {
   background-color: var(--shoplist-thumb-background);
+}
+
+.list-thumbnail[data-type="CHECKLIST"] .card-header {
+  background-color: var(--checklist-thumb-background);
 }
 
 .thumbnail-title {
@@ -900,6 +918,46 @@ option {
   background-repeat: no-repeat;
   background-position: center center;
   opacity: 0.3;
+}
+
+#editColsTrigger {
+  cursor: pointer;
+}
+
+.table-fixed {
+  table-layout: fixed;
+}
+
+.table-fixed th {
+  overflow: auto;
+}
+
+.singleCheck {
+  overflow-y: hidden;
+  background-color: var(--check-background);
+}
+
+.singleCheck .checkMiddleSection {
+  max-height: 10rem;
+  margin: 0;
+  padding: .1rem;
+  overflow-y: auto;
+}
+
+.deleteCheckTrigger:hover {
+  color: red;
+}
+
+#checkColL {
+  background-color: var(--check-col-l-background);
+}
+
+#checkColM {
+  background-color: var(--check-col-m-background);
+}
+
+#checkColR {
+  background-color: var(--check-col-r-background);
 }
 
 .toast-animated {

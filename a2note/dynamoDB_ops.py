@@ -115,14 +115,17 @@ def insert_item(item):
             if select_element_by_id(new_UID) == []:
                 element_id = new_UID
 
-        if item["element_type"] == "TODOLIST":
-            item["element_id"] = "TL_" + element_id
-            item["items"] = {}
-        elif item["element_type"] == "SHOPLIST":
-            item["element_id"] = "SL_" + element_id
-            item["items"] = {}
-        else:
-            item["element_id"] = "A2_" + element_id
+        #Selecting correct prefix
+        prefix = "A2" #Default prefix
+        if item["element_type"] == "SHOPLIST":
+            prefix = "SL"
+        elif item["element_type"] == "TODOLIST":
+            prefix = "TL"
+        elif item["element_type"] == "CHECKLIST":
+            prefix = "CL"
+
+        item["element_id"] = f"{prefix}_{element_id}"
+        item["items"] = {}
 
     table.put_item(Item=item)
     return item

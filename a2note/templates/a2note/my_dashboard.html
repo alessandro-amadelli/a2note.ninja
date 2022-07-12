@@ -54,8 +54,12 @@
         <td>{{ total_items }}</td>
       </tr>
       <tr>
-        <th class="table-active fs-5"><span class="material-symbols-outlined">functions</span> {% translate 'Total' %}</th>
-        <th class="table-active fs-5">{{ total }}</th>
+        <th class="table-active fs-5"><span class="material-symbols-outlined">table_chart</span> {% translate 'Checklist created' %}</th>
+        <th class="table-active fs-5">{{ checklists_total }}</th>
+      </tr>
+      <tr>
+        <th class="table-active fs-4"><span class="material-symbols-outlined">functions</span> {% translate 'Total' %}</th>
+        <th class="table-active fs-4">{{ total }}</th>
       </tr>
     </table>
     {% else %}
