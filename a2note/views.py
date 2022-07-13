@@ -811,7 +811,7 @@ def create_list_view(request):
             "color": "#CC0000"
         },
         "column_middle": {
-            "name": "-",
+            "name": "?",
             "color": "#262626"
         },
         "column_right": {
