@@ -807,7 +807,7 @@ def create_list_view(request):
     # For checklists only it is necessary to add an additional field (with default values)
     item["columns"] = {
         "column_left": {
-            "name": gettext("Fail"),
+            "name": gettext("No"),
             "color": "#CC0000"
         },
         "column_middle": {
@@ -815,7 +815,7 @@ def create_list_view(request):
             "color": "#262626"
         },
         "column_right": {
-            "name": gettext("Pass"),
+            "name": gettext("Yes"),
             "color": "#14AD00"
         }
     }
