@@ -253,6 +253,7 @@
       <div class="w-100"></div>
       <div class="col-12">
         <label for="categorySelect" class="d-inline">{% translate 'Category' %}</label>
+        <!-- Select containing product categories -->
         <select id="categorySelect" class="form-select form-select-sm d-inline" aria-label="View tasks">
           {% for category in categories %}
             <option value="{{ category.element_id }}" data-icon="{{ category.category_icon }}">{{ category.category_name }}</option>

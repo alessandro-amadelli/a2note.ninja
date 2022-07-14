@@ -107,23 +107,16 @@
     <h4>{% translate "Your lists" %} ( {{ total }} )</h4>
 
     <div class="row m-1 p-1">
-      <div class="col-md-3 col-12">
-        <span class="material-symbols-outlined">filter_alt</span>
-      </div>
-      <div class="col-md-3 col-12">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="TODOLIST">
-        <label class="form-check-label" for="inlineRadio1">To-do lists</label>
-      </div>
-      <div class="col-md-3 col-12">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="SHOPLIST">
-        <label class="form-check-label" for="inlineRadio2">Shopping lists</label>
-      </div>
-      <div class="col-md-3 col-12">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="ALL" checked>
-        <label class="form-check-label" for="inlineRadio3">{% translate 'All' %}</label>
+      <div class="col">
+        <label for="filterListSelect" class="d-inline"><span class="material-symbols-outlined">filter_alt</span></label>
+      <select class="form-select form-select-sm d-inline" name="filterListSelect" id="filterListSelect">
+        <option value="ALL" selected>{% translate 'All' %}</option>
+        <option value="TODOLIST">To-do lists</option>
+        <option value="SHOPLIST">Shopping lists</option>
+        <option value="CHECKLIST">Checklists</option>
+      </select>
       </div>
     </div>
-
 
     <div class="row thumbnail-div rounded d-flex">
       {% for list in lists %}
@@ -134,8 +127,10 @@
               <div class="col-10 card-header-text-col m-0">
                 {% if list.element_type == 'SHOPLIST' %}
                 <span class="material-symbols-outlined">shopping_cart</span>
-                {% else %}
+                {% elif list.element_type == 'TODOLIST' %}
                 <span class="material-symbols-outlined">checklist_rtl</span>
+                {% else %}
+                <span class="material-symbols-outlined">table_chart</span>
                 {% endif %}
               
                 {% if list.title %}

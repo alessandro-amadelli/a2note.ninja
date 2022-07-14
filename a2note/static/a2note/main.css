@@ -459,7 +459,7 @@ input[type="text"]:focus {
   animation-play-state: running;
 }
 
-#taskViewSelect, #categorySelect, #bulletinThemeSelect {
+#taskViewSelect, #categorySelect, #bulletinThemeSelect, #filterListSelect {
   background-color: var(--input-background);
   max-width: 40%;
   color: inherit;

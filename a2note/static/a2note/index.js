@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function(){
     showInfo(this.parentElement.parentElement);
   });
 
-  initializeRadioBtn();
+  initializeFilter();
 
   //list dletion
   initializeModalDeleteBtn();
@@ -46,33 +46,26 @@ function showInfo(item) {
   item.querySelector(".info-text").classList.toggle("hidden");
 }
 
-function initializeRadioBtn(){
-  let radios = document.querySelectorAll(`input[type="radio"]`);
+function initializeFilter(){
+  let filterSelect = document.querySelector("#filterListSelect");
 
-  radios.forEach((radio, i) => {
-    radio.onclick = function() {
-      filterLists(this);
-    }
+  filterSelect.addEventListener('change', function() {
+    filterLists(filterSelect.value);
   });
 }
 
-function filterLists(radio) {
-  if (radio.checked) {
-    let val = radio.value;
-
-    document.querySelectorAll(".list-thumbnail").forEach((thumbnail, i) => {
-      if (val == "ALL") {
+function filterLists(filter) {
+  document.querySelectorAll(".list-thumbnail").forEach((thumbnail, i) => {
+    if (filter == "ALL") {
+      thumbnail.parentElement.classList.remove("hidden");
+    } else {
+      if (thumbnail.dataset.type == filter) {
         thumbnail.parentElement.classList.remove("hidden");
       } else {
-        let type = thumbnail.dataset.type;
-        if (type == val) {
-          thumbnail.parentElement.classList.remove("hidden");
-        } else {
-          thumbnail.parentElement.classList.add("hidden");
-        }
+        thumbnail.parentElement.classList.add("hidden");
       }
-    });
-  }
+    }
+  });
 }
 
 function deleteList(element_id) {
