@@ -394,8 +394,9 @@ def check_fulfilled_achievements(achievement_list, username):
         #achievement#13 "Milk is expired!"
         from datetime import timedelta
         target_date = (today - timedelta(weeks=24)).strftime("%Y%m%d")
-        if older_list_date.strftime("%Y%m%d") <= target_date:
-            user_fulfilled.append("achievement#13")
+        if older_list_date != 0:
+            if older_list_date.strftime("%Y%m%d") <= target_date:
+                user_fulfilled.append("achievement#13")
 
         #achievemnt#14 'Happy birthday!!!'
         if "achievement#14" not in user_fulfilled:
