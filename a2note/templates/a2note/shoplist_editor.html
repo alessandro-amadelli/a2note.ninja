@@ -20,7 +20,7 @@
 {% block body %}
   {% csrf_token %}
 
-  <div id="main-container" class="container my-container p-5">
+  <div id="main-container" class="container my-container p-4">
     <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
 
     <div class="row m-1 p-1 d-flex">
@@ -260,11 +260,18 @@
           {% endfor %}
         </select>
       </div>
-      <div class="w-100"></div>
-      <div class="col-12 mt-2 mb-0">
+    </div>
+    <div class="row mt-2">
+      <div class="col-lg-1 col-3 text-center">
         <span>{% translate "Tools" %} </span>
+      </div>
+      <div class="col-1 text-center">
         <span class="material-symbols-outlined" id="btnShowRundown" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Rundown' %}">list_alt</span>
+      </div>
+      <div class="col-1 text-center">
         <span class="material-symbols-outlined" id="btnShowStats" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Stats' %}">bar_chart</span>
+      </div>
+      <div class="col-1 text-center">
         <span class="material-symbols-outlined" id="btnShowAutoList" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Shoplist generator' %}">auto_awesome</span>
       </div>
     </div>
