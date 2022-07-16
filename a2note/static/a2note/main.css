@@ -926,7 +926,6 @@ option {
 
 .table-fixed {
   table-layout: fixed;
-  color: inherit;
 }
 
 .table-fixed th {
