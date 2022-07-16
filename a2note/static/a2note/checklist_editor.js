@@ -72,7 +72,27 @@ document.addEventListener('DOMContentLoaded', function(){
 
   } catch {}
 
+  let reportTrigger = document.querySelector("#reportTrigger");
+  reportTrigger.style.setProperty('cursor','pointer');
+  reportTrigger.addEventListener('click', () =>{
+    buildReportModal();
+  });
+
 });
+
+function initializeShareBtns() {
+  let text = gettext("Hi! Check out this cool list I created on a2note.ninja...")
+
+  let btnWhatsapp = document.querySelector("#btnWhatsapp");
+  btnWhatsapp.href = "https://api.whatsapp.com/send?text=" + text + window.location.href;
+
+  let btnTelegram = document.querySelector("#btnTelegram");
+  btnTelegram.href = "https://telegram.me/share/url?url=" + window.location.href + "&text=" + text;
+
+  let bntEmail = document.querySelector("#btnEmail");
+  btnEmail.href = "mailto:?subject='Shopping list'&body=" + text + window.location.href;
+
+}
 
 function initializeColEditModal() {
   document.querySelector("#modalC1Name").value = column_config["column_left"]["name"];
@@ -84,16 +104,6 @@ function initializeColEditModal() {
   document.querySelector("#modalC3Name").value = column_config["column_right"]["name"];
   document.querySelector("#modalC3Color").value = column_config["column_right"]["color"];
 
-}
-
-function styleListColumns() {
-  document.querySelector("#checkColL").style.backgroundColor = column_config["column_left"]["color"];
-  document.querySelector("#checkColM").style.backgroundColor = column_config["column_middle"]["color"];
-  document.querySelector("#checkColR").style.backgroundColor = column_config["column_right"]["color"];
-
-  document.querySelector("#colLName").innerText = column_config["column_left"]["name"];
-  document.querySelector("#colMName").innerText = column_config["column_middle"]["name"];
-  document.querySelector("#colRName").innerText = column_config["column_right"]["name"];
 }
 
 function updateConfigs() {
@@ -108,12 +118,6 @@ function updateConfigs() {
 
   styleListColumns();
   enableSave();
-}
-
-function loadChecklist(){
-  Object.keys(checks).forEach((check, i) => {
-    addCheck(checks[check]["text"], checks[check]["column"], true);
-  });
 }
 
 function initializeBtnDelete(){

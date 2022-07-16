@@ -133,3 +133,68 @@ function styleListColumns() {
   document.querySelector("#colMName").innerText = column_config["column_middle"]["name"];
   document.querySelector("#colRName").innerText = column_config["column_right"]["name"];
 }
+
+var checklistChart = null;
+function buildReportModal() {
+  //Numerics
+  let colLNum = document.querySelector("#checkColL").querySelectorAll(".singleCheck").length;
+  let colMNum = document.querySelector("#checkColM").querySelectorAll(".singleCheck").length;
+  let colRNum = document.querySelector("#checkColR").querySelectorAll(".singleCheck").length;
+  let totalNum = colLNum + colMNum + colRNum;
+
+  //Chart data
+  let labels = [
+    document.querySelector("#colLName").innerText,
+    document.querySelector("#colMName").innerText,
+    document.querySelector("#colRName").innerText
+  ]
+
+  let colors = [
+    column_config["column_left"]["color"],
+    column_config["column_middle"]["color"],
+    column_config["column_right"]["color"]
+  ]
+
+  let values = [colLNum,colMNum,colRNum]
+
+  let data = {
+    labels: labels,
+    datasets: [{
+      label: '',
+      backgroundColor: colors,
+      data: values,
+      hoverOffset: 10,
+      borderWidth: 0,
+      spacing: 5
+    }],
+  };
+
+  let config = {
+    type: 'doughnut',
+    data,
+    options: {
+      cutout: "88%"
+    }
+  };
+
+  //Numerics on modal table
+  document.querySelector("#modalTableC1Name").innerText = labels[0];
+  document.querySelector("#modalTableC1Num").innerText = colLNum;
+  document.querySelector("#modalTableC2Name").innerText = labels[1];
+  document.querySelector("#modalTableC2Num").innerText = colMNum;
+  document.querySelector("#modalTableC3Name").innerText = labels[2];
+  document.querySelector("#modalTableC3Num").innerText = colRNum;
+  document.querySelector("#modalTableTot").innerText = totalNum;
+
+
+  //Destroy previously created graph
+  if (checklistChart) {
+    checklistChart.destroy();
+  }
+
+  checklistChart = new Chart(
+    document.querySelector('#checklistChart'),
+    config
+  );
+
+}

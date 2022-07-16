@@ -4,7 +4,13 @@ document.addEventListener('DOMContentLoaded', function(){
     
     //Column styling according to configurations
     styleListColumns();
-  
+
+    let reportTrigger = document.querySelector("#reportTrigger");
+    reportTrigger.style.setProperty('cursor','pointer');
+    reportTrigger.addEventListener('click', () =>{
+      buildReportModal();
+    });
+
   });
 
   function enableSave() {}
