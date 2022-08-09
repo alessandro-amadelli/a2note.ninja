@@ -19,7 +19,35 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
+  //Initialize filter trigger functionality (showing/hiding option menu)
+  let filterTrigger = document.querySelector("#filterTrigger");
+  filterTrigger.addEventListener("click", () => {
+    toggleFilterVisibility();
+  });
+  let optionMenu = document.querySelector("#filterListSelect");
+  optionMenu.addEventListener("animationend", () => {
+    if (optionMenu.classList.contains("disappearingElement")) {
+      optionMenu.classList.remove("d-inline");
+      optionMenu.classList.add("hidden");
+      optionMenu.classList.remove("disappearingElement");
+    } else {
+      optionMenu.classList.add("d-inline");
+      optionMenu.classList.remove("appearingElement");
+    }    
+  });
+
 });
+
+function toggleFilterVisibility() {
+  let optionMenu = document.querySelector("#filterListSelect");
+  if (optionMenu.classList.contains("hidden")) {
+    optionMenu.classList.add("d-inline");
+    optionMenu.classList.remove("hidden");
+    optionMenu.classList.add("appearingElement");
+  } else {
+    optionMenu.classList.add("disappearingElement");
+  }
+}
 
 function initializeModalDeleteBtn() {
   document.querySelector("#btnDeleteList").onclick = function() {
@@ -51,6 +79,7 @@ function initializeFilter(){
 
   filterSelect.addEventListener('change', function() {
     filterLists(filterSelect.value);
+    toggleFilterVisibility();
   });
 }
 

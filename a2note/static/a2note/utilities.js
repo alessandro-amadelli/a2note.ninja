@@ -200,7 +200,7 @@ function showLoading(message=""){
   overlayContent.setAttribute("class", "overlay-content");
 
   let loadDiv = document.createElement("div");
-  loadDiv.setAttribute("class", "spinner-border text-primary overlay-content");
+  loadDiv.setAttribute("class", "spinner-grow text-light overlay-content");
   loadDiv.setAttribute("role", "status");
   let loadSpan = document.createElement("span");
   loadSpan.setAttribute("class", "sr-only");

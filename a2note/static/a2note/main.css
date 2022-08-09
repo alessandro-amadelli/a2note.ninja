@@ -189,6 +189,19 @@
   }
 }
 
+@keyframes appearAnimation {
+  0% {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+    height: auto;
+  }
+}
+
 /** STYLE */
 body {
   font-family: sans-serif, helvetica;
@@ -372,6 +385,23 @@ a.active {
 
 .newList-card[data-type="CHECKLIST"] {
   background-color: var(--checklist-thumb-background);
+}
+
+.appearingElement {
+  animation-name: appearAnimation;
+  animation-duration: .6s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+}
+
+.disappearingElement {
+  animation-name: appearAnimation;
+  animation-duration: .6s;
+  animation-fill-mode: forwards;
+  animation-direction: reverse;
+  animation-iteration-count: 1;
+  animation-play-state: running;
 }
 
 .thumbnail-div {
@@ -1030,10 +1060,6 @@ option {
   transition: background-color 1.5s ease;
 }
 
-.hidden {
-  display: none;
-}
-
 .footer-container {
   position: fixed;
   bottom: 0;
@@ -1295,4 +1321,8 @@ option {
 
 .triggerUserInfo:hover {
   opacity: .8;
+}
+
+.hidden {
+  display: none;
 }

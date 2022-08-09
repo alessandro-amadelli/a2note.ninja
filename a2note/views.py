@@ -298,7 +298,7 @@ def register_success(request):
     else:
         ip_address = request.META.get('REMOTE_ADDR')
 
-    #...user registration TO-DO
+    #User registration
     new_user = User.objects.create_user(username=username, email=email, password=psw0)
     try:
         additional_info = AdditionalInfo(user=new_user, consent_ip=ip_address)
