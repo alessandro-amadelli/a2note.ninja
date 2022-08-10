@@ -166,7 +166,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://a2note.ninja']
+CSRF_TRUSTED_ORIGINS = ['https://a2note.ninja', 'https://www.a2note.ninja']
 
 #Caching system with memcache
 def get_cache():
