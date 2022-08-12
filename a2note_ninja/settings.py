@@ -168,6 +168,9 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = ['https://a2note.ninja', 'https://www.a2note.ninja']
 
+# Custom settings variable
+MAX_LISTS_ALLOWED = 25 #Maximum number of lists a user is allowed to have
+
 #Caching system with memcache
 def get_cache():
   try:

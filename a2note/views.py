@@ -18,7 +18,6 @@ from django.core.validators import validate_email
 #translation
 from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
-# from django.utils.translation import activate, get_language
 
 from a2note.dynamoDB_ops import *
 from a2note.mailer import send_email
@@ -30,6 +29,9 @@ import numpy as np
 
 #Caching
 from django.core.cache import cache
+
+#Settings
+from a2note_ninja.settings import MAX_LISTS_ALLOWED
 
 def get_fulfilled_achievements(username):
     """
@@ -105,6 +107,22 @@ def error_view(request, message="", pagemessage=""):
 
     return render(request, "a2note/error_page.html", context)
 
+def get_created_lists_user(username):
+    """
+    This function gets all the lists created by a specific user with a cache-first logic.
+    """
+    #Getting lists from cache
+    cache_key = username + "_LISTS"
+    created_lists = cache.get(cache_key)
+
+    #If cache is empty for the current user then access database and update cache
+    if not created_lists:
+            created_lists = select_lists_by_author(username)
+            cache.set(cache_key, created_lists)
+    
+    return created_lists
+
+
 def index(request):
     if request.user.is_authenticated:
         #Get user information
@@ -112,11 +130,7 @@ def index(request):
 
         total, todolists_ctr, shoplists_ctr = 0,0,0
         #Get all lists created by the current user
-        cache_key = user.username + "_LISTS"
-        created_lists = cache.get(cache_key)
-        if not created_lists:
-            created_lists = select_lists_by_author(user.username)
-            cache.set(cache_key, created_lists)
+        created_lists = get_created_lists_user(user.username)
 
         lists = []
 
@@ -153,6 +167,7 @@ def index(request):
         context = {
             "lists": lists,
             "total": total,
+            "lists_allowed": MAX_LISTS_ALLOWED,
             "todolists": todolists_ctr,
             "shoplists": shoplists_ctr
         }
@@ -344,11 +359,7 @@ def check_fulfilled_achievements(achievement_list, username):
     #achievement#19 -> see deletion_canceled()
 
     #Checking list related achievement completion
-    cache_key = username + "_LISTS"
-    created_lists = cache.get(cache_key)
-    if not created_lists:
-        created_lists = select_lists_by_author(username)
-        cache.set(cache_key, created_lists)
+    created_lists = get_created_lists_user(username)
 
     shop_num, todo_num = 0,0
     task_num, done_task_num = 0,0
@@ -428,11 +439,7 @@ def my_account_view(request):
     user = request.user
 
     #Get all lists created by the current user (cache-first)
-    cache_key = user.username + "_LISTS"
-    created_lists = cache.get(cache_key)
-    if not created_lists:
-        created_lists = select_lists_by_author(user.username)
-        cache.set(cache_key, created_lists)
+    created_lists = get_created_lists_user(user.username)
 
     shop_num, todo_num = 0,0
     for l in created_lists:
@@ -561,11 +568,7 @@ def dashboard_view(request):
     user = request.user
     
     #Get all lists created by the current user - cache first logic
-    cache_key = user.username + "_LISTS"
-    created_lists = cache.get(cache_key)
-    if not created_lists:
-        created_lists = select_lists_by_author(user.username)
-        cache.set(cache_key, created_lists)
+    created_lists = get_created_lists_user(user.username)
 
     total_tasks, total_items = 0,0
     total_done, total_todo = 0,0
@@ -793,12 +796,23 @@ def create_list_view(request):
     ]
     #If element type is not in allowed types, the error page is returned and the list is not created
     if element_type not in(list_types):
-        response = {"element_id": "error"}
+        response = {
+            "element_id": "error",
+            "description": gettext("Sorry, an error occurred. Try again later.")
+        }
+        return JsonResponse(response)
+    
+    #If the user reached the maximum number of created lists, then block creation with a message
+    username = request.user.username
+    created_lists = get_created_lists_user(username)
+    if len(created_lists) >= MAX_LISTS_ALLOWED: #To modify value go to a2note_ninja.settings
+        response = {"element_id": "error",
+        "description": gettext("We appreciate your enthusiasm for lists (we really do!) but please delete an old list before creating a new one.")}
         return JsonResponse(response)
 
     item = {
     "element_type": element_type,
-    "author": request.user.username,
+    "author": username,
     "shared": "False",
     "edit_enabled": "False",
     "title": "",

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-09 16:08+0200\n"
+"POT-Creation-Date: 2022-08-12 12:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -654,8 +654,8 @@ msgstr ""
 "Crea le tue liste della spesa o to-do list e salvale sul cloud. Condividi le "
 "tue liste con chiunque vuoi."
 
-#: .\a2note\templates\a2note\index.html:51 .\a2note\views.py:197
-#: .\a2note\views.py:1406
+#: .\a2note\templates\a2note\index.html:51 .\a2note\views.py:212
+#: .\a2note\views.py:1420
 msgid "Hi"
 msgstr "Ciao"
 
@@ -1323,7 +1323,7 @@ msgstr "Da fare"
 
 #: .\a2note\templates\a2note\todolist.html:68
 #: .\a2note\templates\a2note\todolist_editor.html:212
-#: .\a2note\templates\a2note\todolist_viewer.html:86 .\a2note\views.py:633
+#: .\a2note\templates\a2note\todolist_viewer.html:86 .\a2note\views.py:636
 msgid "Done"
 msgstr "Completati"
 
@@ -1335,7 +1335,7 @@ msgstr "Visualizza la to-do list."
 msgid "Here you can view the to-do list. Changes cannot be saved."
 msgstr "Qui puoi visualizzare la to-do list. Le modifiche non vengono salvate."
 
-#: .\a2note\views.py:95
+#: .\a2note\views.py:97
 msgid ""
 "Possible reasons for this error: <br><ul><li>The list is not shared so only "
 "the author can see it</li><li>The list encountered its demise and it's not "
@@ -1347,19 +1347,19 @@ msgstr ""
 "triste fine e non è più tra noi</li><li>L'intero sito web è esploso</li></"
 "ul><br>Ok, forse non l'ultima opzione..."
 
-#: .\a2note\views.py:187
+#: .\a2note\views.py:202
 msgid "Email address is invalid...please check"
 msgstr "L'indirizzo email non è valido...per favore controlla"
 
-#: .\a2note\views.py:198
+#: .\a2note\views.py:213
 msgid "Here's the code to complete your registration on a2note.ninja"
 msgstr "Ecco il codice per completare la tua registrazione su a2note.ninja"
 
-#: .\a2note\views.py:207 .\a2note\views.py:1416
+#: .\a2note\views.py:222 .\a2note\views.py:1430
 msgid "Something went wrong...try again later."
 msgstr "Qualcosa è andato storto...riprova più tardi."
 
-#: .\a2note\views.py:248
+#: .\a2note\views.py:263
 msgid ""
 "Oh no! The ninja name you chose seems to be already taken...don't worry! "
 "Just choose a different one : )"
@@ -1367,7 +1367,7 @@ msgstr ""
 "Oh no! Il nome ninja che hai scelto sembra sia già stato preso...non "
 "preoccuparti! Basta che tu ne scelga uno diverso : )"
 
-#: .\a2note\views.py:261
+#: .\a2note\views.py:276
 msgid ""
 "Ooops...the email address you inserted is already associated with another "
 "ninja..."
@@ -1375,92 +1375,104 @@ msgstr ""
 "Ooops...l'indirizzo email che hai inserito è già associato ad un altro "
 "ninja..."
 
-#: .\a2note\views.py:273
+#: .\a2note\views.py:288
 msgid "The two password you entered do not match..."
 msgstr "Le due password che hai inserito non corrispondono..."
 
-#: .\a2note\views.py:285
+#: .\a2note\views.py:300
 msgid "Sorry, OTP is incorrect..."
 msgstr "Mi spiace, l'OTP non è corretto..."
 
-#: .\a2note\views.py:507
+#: .\a2note\views.py:514
 msgid "Please, enter all fields"
 msgstr "Per favore, riempi tutti i campi"
 
-#: .\a2note\views.py:516
+#: .\a2note\views.py:523
 msgid "Sorry, the passwords you entered do not match..."
 msgstr "Le due password che hai inserito non corrispondono..."
 
-#: .\a2note\views.py:526
+#: .\a2note\views.py:533
 msgid "Old password is incorrect..."
 msgstr "La vecchia password è incorretta..."
 
-#: .\a2note\views.py:535
+#: .\a2note\views.py:542
 msgid "New password cannot be the same as the old one..."
 msgstr ""
 
-#: .\a2note\views.py:553
+#: .\a2note\views.py:560
 msgid "Password changed successfully"
 msgstr "Password modificata con successo"
 
-#: .\a2note\views.py:633
+#: .\a2note\views.py:636
 msgid "To do"
 msgstr "Da fare"
 
-#: .\a2note\views.py:641 .\a2note\views.py:649
+#: .\a2note\views.py:644 .\a2note\views.py:652
 msgid "Mon"
 msgstr "Lun"
 
-#: .\a2note\views.py:641 .\a2note\views.py:649
+#: .\a2note\views.py:644 .\a2note\views.py:652
 msgid "Tue"
 msgstr "Mar"
 
-#: .\a2note\views.py:641 .\a2note\views.py:649
+#: .\a2note\views.py:644 .\a2note\views.py:652
 msgid "Wed"
 msgstr "Mer"
 
-#: .\a2note\views.py:641 .\a2note\views.py:649
+#: .\a2note\views.py:644 .\a2note\views.py:652
 msgid "Thu"
 msgstr "Gio"
 
-#: .\a2note\views.py:641 .\a2note\views.py:649
+#: .\a2note\views.py:644 .\a2note\views.py:652
 msgid "Fri"
 msgstr "Ven"
 
-#: .\a2note\views.py:641 .\a2note\views.py:649
+#: .\a2note\views.py:644 .\a2note\views.py:652
 msgid "Sat"
 msgstr "Sab"
 
-#: .\a2note\views.py:641 .\a2note\views.py:649
+#: .\a2note\views.py:644 .\a2note\views.py:652
 msgid "Sun"
 msgstr "Dom"
 
-#: .\a2note\views.py:811
+#: .\a2note\views.py:801
+msgid "Sorry, an error occurred. Try again later."
+msgstr "Spiacente, si è verificato un errore. Prova più tardi."
+
+#: .\a2note\views.py:810
+msgid ""
+"We appreciate your enthusiasm for lists (we really do!) but please delete an "
+"old list before creating a new one."
+msgstr ""
+"Apprezziamo il tuo entusiasmo per le liste (veramente!) ma per favore elimina una "
+"vecchia lista prima di crearne una nuova."
+
+#: .\a2note\views.py:825
 msgid "No"
 msgstr "No"
 
-#: .\a2note\views.py:819
+#: .\a2note\views.py:833
 msgid "Yes"
 msgstr "Sì"
 
-#: .\a2note\views.py:949 .\a2note\views.py:1000 .\a2note\views.py:1019
-#: .\a2note\views.py:1061
+#: .\a2note\views.py:963 .\a2note\views.py:1014 .\a2note\views.py:1033
+#: .\a2note\views.py:1075
 msgid "Ooops! That's awkward..."
 msgstr "Ooops! E' imbarazzante..."
 
-#: .\a2note\views.py:977
+#: .\a2note\views.py:991
 msgid "This is not the list you were looking for..."
 msgstr "Questa non è la lista che stavi cercando..."
 
-#: .\a2note\views.py:1038
+#: .\a2note\views.py:1052
 msgid "Sorry, nothing to see here..."
 msgstr "Mi dispiace, non c'è nulla da vedere..."
 
-#: .\a2note\views.py:1267
+#: .\a2note\views.py:1281
 msgid "You do not have edit privilege on this list."
 msgstr "Non hai privilegi di modifica su questa lista."
 
-#: .\a2note\views.py:1407
+#: .\a2note\views.py:1421
 msgid ""
 "Here's the code to confirm the password reset for your a2note.ninja account."
 msgstr ""

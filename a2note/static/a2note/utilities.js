@@ -258,6 +258,11 @@ function notify(text) {
 }
 
 function showPageMessage(msgClass, msgText) {
+  //Delete any previous alert
+  document.querySelectorAll(".alert").forEach((item) => {
+    item.remove();
+  });
+
   let newDiv = document.createElement("div");
   newDiv.setAttribute("class", msgClass + " fade show");
   newDiv.setAttribute("role", "alert");

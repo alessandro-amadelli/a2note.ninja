@@ -134,7 +134,12 @@ function createList(element_type){
   request.setRequestHeader('X-CSRFToken', csrftoken);
   request.onload = () => {
     const response = JSON.parse(request.responseText);
-    window.location.href = '/list_editor/' + response["element_id"];
+    if (response["element_id"] != "error") {
+      window.location.href = '/list_editor/' + response["element_id"];
+    } else {
+      showPageMessage("alert alert-danger alert-dismissible", response["description"])
+      removeLoading();
+    }
   };
   const data = new FormData();
 
