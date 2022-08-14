@@ -112,9 +112,12 @@
         <div class="card achievement-card {{ achievement.fulfilled }}">
           <div class="card-body">
             <h5 class="card-title">{{ achievement.name }}</h5>
-            <p class="card-text text-center"><span class="material-symbols-outlined" style="font-size:3rem;">
-              {% if achievement.fulfilled != "" %}star{% else %}star_border{% endif %}
-            </span>
+            <p class="card-text text-center">
+              {% if achievement.fulfilled != "" %}
+              <span class="material-symbols-outlined text-success" style="font-size:3rem;">verified</span>
+              {% else %}
+              <span class="material-symbols-outlined" style="font-size:3rem;">star</span>
+              {% endif %}
           </p>
             <p class="card-text">{{ achievement.description }}</p>
           </div>

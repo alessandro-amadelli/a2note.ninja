@@ -19,6 +19,7 @@ function calculateRank(){
   fulfilledAchievements = parseInt(fulfilledAchievements);
 
   let rank = "";
+  let goldenStars = "";
   switch (fulfilledAchievements) {
     case 1:
     case 2:
@@ -53,14 +54,16 @@ function calculateRank(){
       break;
     case 20:
       rank = gettext("Legend");
+      goldenStars = " text-warning";
       break;
   }
 
   let stars = "";
   full_stars = Math.floor(fulfilledAchievements/2);
+
   //Full stars to display
   for (i=0;i < full_stars; i++) {
-    stars += "<span class='material-symbols-outlined'>star</span>";
+    stars += "<span class='material-symbols-outlined" + goldenStars + "'>stars</span>";
   }
   //Display an half-full star if the remainder of the number is odd
   if (fulfilledAchievements % 2 != 0) {
