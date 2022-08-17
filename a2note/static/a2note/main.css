@@ -387,6 +387,10 @@ a.active {
   background-color: var(--checklist-thumb-background);
 }
 
+#filterTrigger {
+  cursor: pointer;
+}
+
 .appearingElement {
   animation-name: appearAnimation;
   animation-duration: .6s;

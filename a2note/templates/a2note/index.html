@@ -153,12 +153,12 @@
             <p class="card-text">{% translate 'Items' %}: {{ list.length }}</p>
             <hr>
             <p class="card-text d-inline">
-              <a class="text-reset text-decoration-none" href="{% url 'list_editor' list.element_id %}">
+              <a class="text-reset text-decoration-none" href="{% url 'list_editor' list.element_id %}" onclick="showLoading()">
                 <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Edit list' %}">edit</span>
               </a>
             </p>
             <p class="card-text d-inline">
-              <a class="text-reset text-decoration-none" href="{% url 'list_viewer' list.element_id %}">
+              <a class="text-reset text-decoration-none" href="{% url 'list_viewer' list.element_id %}" onclick="showLoading()">
                 <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'View list' %}">visibility</span>
               </a>
             </p>
@@ -175,8 +175,8 @@
     {% else %}
     <!-- User not authenticated -->
     <br>
-    <h1 class="intro-0" align="center">{% translate 'Welcome to a<sub>2</sub>note.ninja!' %}</h1>
-    <h3 class="intro-1" align="center">{% translate "a simple way to make lists" %}</h3>
+    <h1 class="intro-0 text-center">{% translate 'Welcome to a<sub>2</sub>note.ninja!' %}</h1>
+    <h3 class="intro-1 text-center">{% translate "a simple way to make lists" %}</h3>
     <br>
     <br>
     <div class="row">
