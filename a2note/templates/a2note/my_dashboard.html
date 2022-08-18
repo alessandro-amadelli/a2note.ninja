@@ -70,9 +70,9 @@
 
     <h3>{% translate "Statistics" %} <span class="material-symbols-outlined">bar_chart</span></h3>
 
+    {% if total > 0 %}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    {% if total > 0 %}
     <div class="row">
       {% if type_donut_plot %}
       <div class="col-lg-6 col-12 p-4">
