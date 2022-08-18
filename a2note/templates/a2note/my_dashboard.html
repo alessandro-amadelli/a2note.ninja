@@ -79,6 +79,7 @@
         <h4>{% translate "Type of lists you make" %}</h4>
         <canvas class="position-relative" id="typeDonutPlot"></canvas>
         <script>
+        var delay = 500;
 
         function makeTypeDonutPlot() {
           let typeDonutPlot = {{ type_donut_plot|safe }};
@@ -111,7 +112,7 @@
 
         setTimeout(() => {
           makeTypeDonutPlot();
-        }, 150);
+        }, delay);
         
         </script>
 
@@ -123,6 +124,8 @@
         <h4>{% translate "Your overall progress with the tasks" %}</h4>
         <canvas class="position-relative" id="taskDonutPlot"></canvas>
         <script>
+        
+        delay += 500;
 
         function makeTaskDonutPlot() {
           let taskDonutPlot = {{ task_donut_plot|safe }};
@@ -155,7 +158,7 @@
 
         setTimeout(() => {
           makeTaskDonutPlot();
-        }, 350);
+        }, delay);
 
         </script>
       </div>
@@ -166,6 +169,8 @@
         <h4>{% translate "Your favourite days to make a to-do list" %}</h4>
         <canvas class="position-relative" id="todoPerWeekdayChart"></canvas>
           <script>
+          
+          delay += 500;
 
           function makeTodoWeekdayPlot() {
             let todoWeekdayPlot = {{ todo_weekday_plot|safe }};
@@ -202,7 +207,7 @@
 
           setTimeout(() => {
             makeTodoWeekdayPlot();
-          }, 550);
+          }, delay);
 
           </script>
       </div>
@@ -214,11 +219,11 @@
         <div class="position-relative">
           <canvas class="position-relative" id="shopPerWeekdayChart"></canvas>
             <script>
-
+            delay += 500;
             function makeShopWeekdayPlot() {
               let shopWeekdayPlot = {{ shop_weekday_plot|safe }};
 
-              const data = {
+              let data = {
                 labels: shopWeekdayPlot["labels"],
                 datasets: [{
                   label: 'Shopping lists',
@@ -230,7 +235,7 @@
                 }],
               };
 
-              const config = {
+              let config = {
                 type: 'bar',
                 data,
                 options: {
@@ -249,7 +254,7 @@
             }
             setTimeout(() => {
               makeShopWeekdayPlot();
-            }, 750);
+            }, delay);
 
             </script>
         </div>
@@ -263,11 +268,12 @@
         <div class="position-relative">
           <canvas class="position-relative" id="shopCategoriesChart"></canvas>
             <script>
+            delay += 500;
 
             function makeShopCategoriesPlot() {
               let shopCategoriesPlot = {{ shop_categories_plot|safe }};
 
-              const data = {
+              let data = {
                 labels: shopCategoriesPlot["labels"],
                 datasets: [{
                   label: '',
@@ -282,7 +288,7 @@
                 }],
               };
 
-              const config = {
+              let config = {
                 type: 'radar',
                 data: data,
                 options: {
@@ -322,7 +328,7 @@
             }
             setTimeout(() => {
               makeShopCategoriesPlot();
-            }, 950);
+            }, delay);
 
             </script>
         </div>
