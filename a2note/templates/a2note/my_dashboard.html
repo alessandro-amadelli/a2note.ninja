@@ -28,40 +28,65 @@
     <h3>{% translate "Report" %} <span class="material-symbols-outlined">summarize</span></h3>
 
     {% if total > 0 %}
-    <table class="table table-dark">
-      <tr>
-        <th class="table-active fs-5"><span class="material-symbols-outlined">checklist_rtl</span> {% translate 'Todolists created' %}</th>
-        <th class="table-active fs-5">{{ todolists_total }}</th>
-      </tr>
-      <tr>
-        <th><span class="material-symbols-outlined">tag</span> {% translate 'Tasks in to-do lists' %}</th>
-        <td>{{ total_tasks }}</td>
-      </tr>
-      <tr>
-        <th><span class="material-symbols-outlined">check</span> {% translate 'Tasks done' %}</th>
-        <td>{{ tasks_done }}</td>
-      </tr>
-      <tr>
-        <th><span class="material-symbols-outlined">pending</span> {% translate 'Tasks to do' %}</th>
-        <td>{{ tasks_todo }}</td>
-      </tr>
-      <tr>
-        <th class="table-active fs-5"><span class="material-symbols-outlined">shopping_cart</span> {% translate 'Shopping lists created' %}</th>
-        <th class="table-active fs-5">{{ shoplists_total }}</th>
-      </tr>
-      <tr>
-        <th><span class="material-symbols-outlined">add_shopping_cart</span> {% translate 'Items in shopping lists' %}</th>
-        <td>{{ total_items }}</td>
-      </tr>
-      <tr>
-        <th class="table-active fs-5"><span class="material-symbols-outlined">table_chart</span> {% translate 'Checklist created' %}</th>
-        <th class="table-active fs-5">{{ checklists_total }}</th>
-      </tr>
-      <tr>
-        <th class="table-active fs-4"><span class="material-symbols-outlined">functions</span> {% translate 'Total' %}</th>
-        <th class="table-active fs-4">{{ total }}</th>
-      </tr>
-    </table>
+
+    <div class="row bg-dark rounded-3">
+      <div class="col-9 fs-4 mt-3">
+        <span class="material-symbols-outlined">checklist_rtl</span> {% translate 'Todolists created' %}
+      </div>
+      <div class="col-3 fs-4 mt-3">
+        {{ todolists_total }}
+      </div>
+      <div class="w-100"></div>
+      <div class="col-9 ps-4">
+        <span class="material-symbols-outlined">tag</span> {% translate 'Tasks in to-do lists' %}
+      </div>
+      <div class="col-3">
+        {{ total_tasks }}
+      </div>
+      <div class="w-100"></div>
+      <div class="col-9 ps-4">
+        <span class="material-symbols-outlined">check</span> {% translate 'Tasks done' %}
+      </div>
+      <div class="col-3">
+        {{ tasks_done }}
+      </div>
+      <div class="w-100"></div>
+      <div class="col-9 ps-4">
+        <span class="material-symbols-outlined">pending</span> {% translate 'Tasks to do' %}
+      </div>
+      <div class="col-3">
+        {{ tasks_todo }}
+      </div>
+      <div class="w-100"></div>
+      <div class="col-9 fs-4 mt-3">
+        <span class="material-symbols-outlined">shopping_cart</span> {% translate 'Shopping lists created' %}
+      </div>
+      <div class="col-3 fs-4 mt-3">
+        {{ shoplists_total }}
+      </div>
+      <div class="w-100"></div>
+      <div class="col-9 ps-4">
+        <span class="material-symbols-outlined">add_shopping_cart</span> {% translate 'Items in shopping lists' %}
+      </div>
+      <div class="col-3">
+        {{ total_items }}
+      </div>
+      <div class="w-100"></div>
+      <div class="col-9 fs-4 mt-3">
+        <span class="material-symbols-outlined">table_chart</span> {% translate 'Checklist created' %}
+      </div>
+      <div class="col-3 fs-4 mt-3">
+        {{ checklists_total }}
+      </div>
+    </div>
+    <div class="row my-3 fs-3 fw-bold bg-dark rounded-3">
+      <div class="col-9">
+        <span class="material-symbols-outlined">functions</span> {% translate 'Total' %}
+      </div>
+      <div class="col-3">
+        {{ total }}
+      </div>
+    </div>
     {% else %}
     <p><span class="material-symbols-outlined">sentiment_dissatisfied</span> {% translate "Nothing to report here..." %}</p>
     {% endif %}

@@ -134,6 +134,12 @@ function toggleTheme(selection=""){
       table.classList.add("table-light");
     });
 
+    //bg-dark bootstrap class
+    document.querySelectorAll(".bg-dark").forEach((element) => {
+      element.classList.remove("bg-dark");
+      element.classList.add("bg-light");
+    });
+
     //localstorage
     localStorage.setItem("currentTheme", "light");
 
@@ -164,6 +170,12 @@ function toggleTheme(selection=""){
     document.querySelectorAll(".table").forEach((table, i) => {
       table.classList.remove("table-light");
       table.classList.add("table-dark");
+    });
+
+    //bg-light bootstrap class
+    document.querySelectorAll(".bg-light").forEach((element) => {
+      element.classList.remove("bg-light");
+      element.classList.add("bg-dark");
     });
 
     //localstorage
