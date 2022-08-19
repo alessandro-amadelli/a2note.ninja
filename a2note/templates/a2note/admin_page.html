@@ -18,6 +18,46 @@
     <h3 class="intro-1">{% translate "Authorized personnel only!" %}</h3>
     <hr>
 
+    <!-- Modal for user details -->
+    <div class="modal fade" id="modalUserDetails" tabindex="-1" aria-labelledby="modalUserDetailsLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalUserDetailsLabel"><span class="material-symbols-outlined">share</span> {% translate "List sharing" %}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-dark">
+                <th>Status</th>
+                <td><span id="mUserStatus"></span></td>
+              </tr>
+              <tr>
+                <th>ID</th>
+                <td><span id="mUserID"></span></td>
+              <tr>
+                <th>Username</th>
+                <td><span id="mUsername"></span></td>
+              </tr>
+              <tr>
+                <th>Last Login</th>
+                <td><span id="mUserLastLogin"></span></td>
+              </tr>
+              <tr>
+                <th>Registration</th>
+                <td><span id="mUserRegistration"></span></td>
+              </tr>
+              <tr>
+                <th>List created</th>
+                <td><span id="mUserLists"></span></td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <h5>Utenti registrati: {{ user_list|length }}</h5>
 
     <table class="table table-dark">
@@ -31,18 +71,12 @@
       {% for u in user_list %}
       <tr {% if not u.is_active %} class='text-danger'{% endif %}>
         <td>{{u.id}}</td>
-        <td class="triggerUserInfo">
+        <td class="triggerUserInfo" data-userid="{{u.id}}" data-username="{{u.username}}" 
+        data-registration="{{u.date_joined}}" data-lastlogin="{{u.last_login}}"
+        data-status="{% if u.is_active %}active{% else %}blocked{% endif %}"
+        data-listcreated="{{u.list_created}}"
+        data-bs-toggle="modal" data-bs-target="#modalUserDetails">
           {{u.username}}
-          <table class="hidden border">
-            <tr>
-              <th class="p-1 tex-end">registration</th>
-              <td class="p-1">{{u.date_joined}}</td>
-            </tr>
-            <tr>
-              <th class="p-1 text-end">last login</th>
-              <td class="p-1">{{u.last_login}}</td>
-            </tr>
-          </table>
         </td>
         <td>
           <span class='material-symbols-outlined'>

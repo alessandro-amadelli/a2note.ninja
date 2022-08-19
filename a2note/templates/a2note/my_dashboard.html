@@ -18,7 +18,7 @@
 
 
 {% block body %}
-  <div class="container my-container p-5">
+  <div class="container my-container p-4">
     <button type="button" id="btnBackTop" class="btn btn-light btn-lg rounded-circle p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Back to top' %}"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
     <h1 class="intro-0">{% translate 'Your personal dashboard' %}</h1>
     <h4 class="intro-1">{% translate "Here you can see some numbers and some statistics about your lists." %}</h4>
@@ -30,60 +30,60 @@
     {% if total > 0 %}
 
     <div class="row bg-dark rounded-3">
-      <div class="col-11 fs-4 mt-3">
+      <div class="col-10 fs-4 mt-3">
         <span class="material-symbols-outlined">checklist_rtl</span> {% translate 'Todolists created' %}
       </div>
-      <div class="col-1 fs-4 mt-3">
+      <div class="col-2 fs-4 mt-3 text-center">
         {{ todolists_total }}
       </div>
       <div class="w-100"></div>
-      <div class="col-11 ps-4">
+      <div class="col-10 ps-3">
         <span class="material-symbols-outlined">tag</span> {% translate 'Tasks in to-do lists' %}
       </div>
-      <div class="col-1 p-1">
+      <div class="col-2 p-1 text-center">
         {{ total_tasks }}
       </div>
       <div class="w-100"></div>
-      <div class="col-11 ps-4">
+      <div class="col-10 ps-3">
         <span class="material-symbols-outlined">check</span> {% translate 'Tasks done' %}
       </div>
-      <div class="col-1 p-1">
+      <div class="col-2 p-1 text-center">
         {{ tasks_done }}
       </div>
       <div class="w-100"></div>
-      <div class="col-11 ps-4">
+      <div class="col-10 ps-3">
         <span class="material-symbols-outlined">pending</span> {% translate 'Tasks to do' %}
       </div>
-      <div class="col-1 p-1">
+      <div class="col-2 p-1 text-center">
         {{ tasks_todo }}
       </div>
       <div class="w-100"></div>
-      <div class="col-11 fs-4 mt-3">
+      <div class="col-10 fs-4 mt-3">
         <span class="material-symbols-outlined">shopping_cart</span> {% translate 'Shopping lists created' %}
       </div>
-      <div class="col-1 fs-4 mt-3 p-1">
+      <div class="col-2 fs-4 mt-3 p-1  text-center">
         {{ shoplists_total }}
       </div>
       <div class="w-100"></div>
-      <div class="col-11 ps-4">
+      <div class="col-10 ps-3">
         <span class="material-symbols-outlined">add_shopping_cart</span> {% translate 'Items in shopping lists' %}
       </div>
-      <div class="col-1 p-1">
+      <div class="col-2 p-1 text-center">
         {{ total_items }}
       </div>
       <div class="w-100"></div>
-      <div class="col-11 fs-4 mt-3">
+      <div class="col-10 fs-4 mt-3">
         <span class="material-symbols-outlined">table_chart</span> {% translate 'Checklist created' %}
       </div>
-      <div class="col-1 fs-4 mt-3 p-1">
+      <div class="col-2 fs-4 mt-3 p-1 text-center">
         {{ checklists_total }}
       </div>
     </div>
     <div class="row my-3 fs-4 fw-bold bg-dark rounded-3">
-      <div class="col-11">
+      <div class="col-10">
         <span class="material-symbols-outlined">functions</span> {% translate 'Total' %}
       </div>
-      <div class="col-1 p-1">
+      <div class="col-2 p-1 text-center">
         {{ total }}
       </div>
     </div>

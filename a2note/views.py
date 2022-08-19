@@ -1562,7 +1562,20 @@ def admin_view(request):
 
     user_list = User.objects.all().order_by("id")
 
-    context["user_list"] = user_list
+    # List containing users information enriched with number of lists created by each one
+    user_info = []
+    for u in user_list:
+        list_created = len(get_created_lists_user(u.username))
+        user_info.append({
+            "id": u.id,
+            "username": u.username,
+            "date_joined": u.date_joined,
+            "last_login": u.last_login,
+            "is_active": u.is_active,
+            "list_created": list_created
+        })
+
+    context["user_list"] = user_info
 
     return render(request, 'a2note/admin_page.html', context)
 
