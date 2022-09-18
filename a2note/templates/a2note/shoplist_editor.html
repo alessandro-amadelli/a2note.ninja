@@ -116,6 +116,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+            {% if list.shared == 'False' %}
+            <p class="text-warning"><span class="material-symbols-outlined">report_problem</span> {% translate "Some functions are disabled because the list privacy is set to private. If you'd like to share the list please go to 'Settings' and make the list public." %}</p>
+            {% endif %}
             <p>{% translate "List code" %}: {{ list.element_id }}</p>
             <button type="button" class="btn btn-light m-2" id="btnCopyClipboard" data-bs-dismiss="modal"><span class="material-symbols-outlined">content_paste</span> {% translate "Copy to clipboard" %}</button>
             <br>
@@ -124,9 +127,6 @@
             <a type="button" class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnTelegram" href="" target="_blank"><span class="material-symbols-outlined">send</span> Telegram </a>
             <br>
             <a class="btn btn-light m-2 {% if list.shared == 'False' %} disabled {% endif %}" id="btnEmail" href=""><span class="material-symbols-outlined">email</span> email</a>
-            {% if list.shared == 'False' %}
-            <p>{% translate "Some functions are disabled because the list privacy is set to private. If you'd like to share the list please go to 'Settings' and make the list public." %}</p>
-            {% endif %}
           </div>
           <div class="modal-footer">
             <input type="text" class="hidden" id="urlText" value="" readonly />
