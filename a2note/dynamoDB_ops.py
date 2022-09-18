@@ -21,8 +21,9 @@ if os.environ['A2NOTE_ENVIRONMENT'] == 'PRODUCTION':
     dynamodb = boto3.resource('dynamodb', region_name='eu-central-1',
         aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 else:
+    AWS_ACCESS_KEY_ID = os.environ["TEST_AWS_ACCESS_KEY_ID"]
+    AWS_SECRET_ACCESS_KEY = os.environ["TEST_AWS_SECRET_ACCESS_KEY"]
     dynamodb = boto3.resource('dynamodb', endpoint_url="http://localhost:8080")
-
 
 table = dynamodb.Table('a2note_ninja')
 
